@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- 
+ Copyright © 2025 Matthew A Vorst.
+ All Rights Reserved. 
+ Permission to use, copy, modify, and distribute this software is strictly prohibited without the explicit written consent of Matthew A Vorst.
+-->
+
+<environments>
+
+	<environment type="ALL">
+		<properties>
+			<property id="ADMINISTRATOR_EMAIL">matt@mattvorst.com</property>
+			<property id="BUILD_NUMBER">1</property>
+			<property id="EXTERNAL_JS_URL"></property>
+		</properties>
+	</environment>
+
+	<environment id="VORST" type="DEV">
+		<properties>
+			<property id="AWS_SES_REGION">us-east-2</property>
+			<property id="AWS_DYNAMO_DB_REGION">us-east-2</property>
+			<property id="AWS_SQS_REGION">us-east-2</property>
+			<property id="AWS_S3_REGION">us-east-2</property>
+			<property id="AWS_SQS_SERVICE_ENDPOINT">https://sqs.us-east-2.amazonaws.com</property>
+			<property id="BASE_URL">http://dev.theaiexplained.com</property>
+			<property id="CDN_URL"></property>
+			<property id="LOG_REQUESTS_LOCALLY">TRUE</property>
+
+			<list id="TOKEN_KEY_256_LIST">
+				<property><![CDATA[SYwocrfXiw/ajk+LjId4sBbahLKpFSImkqwlKBEvDho=]]></property>
+			</list>
+			<list id="TOKEN_IV_256_LIST">
+				<property><![CDATA[Lfp8kmDNpccLmbHP]]></property>
+			</list>
+
+			<property id="CURSOR_PASSWORD"><![CDATA[w67YHOe5uSsm2JAF0+9wtkE5T2dm0kNMkJy0bVr7nYI=]]></property>
+			<property id="CURSOR_IV"><![CDATA[NZW46d5TKB5BHCZu]]></property>
+
+			<property id="AWS_S3_BUCKET_TEMP_FILE_DATA">us-east-2.ci.ai.temp.mattvorst.com</property>
+			<property id="AWS_S3_BUCKET_FILE_DATA">us-east-2.ci.ai.file.mattvorst.com</property>
+			
+			<property id="AWS_SQS_LOG_QUEUE">https://sqs.us-east-2.amazonaws.com/661422100724/log_queue</property>
+
+		</properties>
+	</environment>
+
+	<environment id="US-WEST-1" type="CI">
+		<properties>
+			<property id="AWS_SES_REGION">us-east-2</property>
+			<property id="AWS_DYNAMO_DB_REGION">us-east-2</property>
+			<property id="AWS_SQS_REGION">us-east-2</property>
+			<property id="AWS_S3_REGION">us-east-2</property>
+			<property id="AWS_SQS_SERVICE_ENDPOINT">https://sqs.us-east-2.amazonaws.com</property>
+			<property id="BASE_URL">https://ci.mattvorst.com</property>
+			<property id="CDN_URL"></property>
+			<property id="EXTERNAL_JS_URL"></property>
+			<property id="LOG_REQUESTS_LOCALLY">TRUE</property>
+
+			<list id="TOKEN_KEY_256_LIST">
+				<property><![CDATA[SYwocrfXiw/ajk+LjId4sBbahLKpFSImkqwlKBEvDho=]]></property>
+			</list>
+			<list id="TOKEN_IV_256_LIST">
+				<property><![CDATA[Lfp8kmDNpccLmbHP]]></property>
+			</list>
+
+			<property id="CURSOR_PASSWORD"><![CDATA[w67YHOe5uSsm2JAF0+9wtkE5T2dm0kNMkJy0bVr7nYI=]]></property>
+			<property id="CURSOR_IV"><![CDATA[NZW46d5TKB5BHCZu]]></property>
+
+		</properties>
+	</environment>
+
+</environments>

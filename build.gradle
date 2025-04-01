@@ -1,0 +1,76 @@
+plugins {
+    id 'java'
+    id 'war'
+    id 'org.springframework.boot' version '3.4.4'
+    id 'io.spring.dependency-management' version '1.1.7'
+}
+
+group = 'com.theaiexplained'
+version = '0.0.1'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(23)
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+sourceSets {
+    main {
+        java {
+            srcDirs = ['src/main/java', 'src/proto/java']
+        }
+    }
+}
+
+ext {
+    set('springAiVersion', "1.0.0-M6")
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-tomcat'
+//    implementation 'org.springframework.ai:spring-ai-anthropic-spring-boot-starter'
+//    implementation 'org.springframework.ai:spring-ai-mistral-ai-spring-boot-starter'
+//    implementation 'org.springframework.ai:spring-ai-ollama-spring-boot-starter'
+//    implementation 'org.springframework.ai:spring-ai-openai-spring-boot-starter'
+
+    implementation 'org.dom4j:dom4j:2.1.4'
+    implementation 'commons-codec:commons-codec:1.16.0'
+    implementation 'org.apache.commons:commons-lang3:3.14.0'
+
+    implementation 'com.fasterxml.jackson.core:jackson-databind'
+    implementation 'software.amazon.awssdk:sqs:2.21.0'
+    implementation 'software.amazon.awssdk:dynamodb:2.21.0'
+    implementation 'software.amazon.awssdk:dynamodb-enhanced:2.21.0'
+    implementation 'software.amazon.awssdk:s3:2.21.0'
+    implementation 'software.amazon.awssdk:ses:2.21.0'
+    implementation 'software.amazon.awssdk:netty-nio-client:2.21.0'
+
+    implementation 'javax.servlet:jstl:1.2'
+
+    implementation "com.googlecode.owasp-java-html-sanitizer:owasp-java-html-sanitizer:20220608.1"
+    implementation "com.google.zxing:core:3.5.1"
+    implementation "com.google.zxing:javase:3.5.1"
+    implementation "com.google.code.gson:gson:2.11.0"
+
+    implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
+
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.springframework.security:spring-security-test'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.ai:spring-ai-bom:${springAiVersion}"
+    }
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
