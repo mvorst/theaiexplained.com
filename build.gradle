@@ -34,6 +34,9 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-security'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-tomcat'
+    implementation 'org.springframework.security:spring-security-oauth2-jose'
+    implementation 'org.springframework.security:spring-security-oauth2-authorization-server'
+
 //    implementation 'org.springframework.ai:spring-ai-anthropic-spring-boot-starter'
 //    implementation 'org.springframework.ai:spring-ai-mistral-ai-spring-boot-starter'
 //    implementation 'org.springframework.ai:spring-ai-ollama-spring-boot-starter'
@@ -50,6 +53,8 @@ dependencies {
     implementation 'software.amazon.awssdk:s3:2.21.0'
     implementation 'software.amazon.awssdk:ses:2.21.0'
     implementation 'software.amazon.awssdk:netty-nio-client:2.21.0'
+
+    implementation 'com.fasterxml.jackson.core:jackson-databind'
 
     implementation 'javax.servlet:jstl:1.2'
 
