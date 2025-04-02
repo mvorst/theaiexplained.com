@@ -41,7 +41,7 @@ const Homepage = () => {
               </div>
             </div>
             <div className="hero-image">
-              <img src="/api/placeholder/500/300" alt="AI and Human Collaboration" />
+              <img src="/img/home/main_md.png" alt="AI and Human Collaboration" />
             </div>
           </div>
         </div>
@@ -52,7 +52,7 @@ const Homepage = () => {
         <div className="container">
           <div className="section-header centered">
             <h2>AI Doesn't Have to Be Complicated</h2>
-            <p>We simplify AI concepts and show you practical applications that enhance your work and life.</p>
+            <p>We simplify AI concepts and show you practical applications that enhance your life.</p>
           </div>
           <div className="feature-cards">
             <div className="feature-card">

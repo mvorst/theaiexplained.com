@@ -21,7 +21,7 @@ repositories {
 sourceSets {
     main {
         java {
-            srcDirs = ['src/main/java', 'src/proto/java']
+            srcDirs = ['src/main/java', 'src/proto/java', 'src/sample/java']
         }
     }
 }
@@ -36,11 +36,6 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-tomcat'
     implementation 'org.springframework.security:spring-security-oauth2-jose'
     implementation 'org.springframework.security:spring-security-oauth2-authorization-server'
-
-//    implementation 'org.springframework.ai:spring-ai-anthropic-spring-boot-starter'
-//    implementation 'org.springframework.ai:spring-ai-mistral-ai-spring-boot-starter'
-//    implementation 'org.springframework.ai:spring-ai-ollama-spring-boot-starter'
-//    implementation 'org.springframework.ai:spring-ai-openai-spring-boot-starter'
 
     implementation 'org.dom4j:dom4j:2.1.4'
     implementation 'commons-codec:commons-codec:1.16.0'

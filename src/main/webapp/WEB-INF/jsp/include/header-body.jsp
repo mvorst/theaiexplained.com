@@ -24,13 +24,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>MattVorst.com | <%= htmlTitle %></title>
+	<title>The AI Explained | <%= htmlTitle %></title>
 
-	<meta name="application-name" content="MattVorst.com" />
+	<meta name="application-name" content="The AI Explained" />
 	<meta name="apple-mobile-web-app-capable" content="yes" />
 	<meta name="apple-mobile-web-app-status-bar-style" content="default" />
-	<meta name="apple-mobile-web-app-title" content="MattVorst.com" />
-	<meta name="description" content="MattVorst.com" />
+	<meta name="apple-mobile-web-app-title" content="The AI Explained" />
+	<meta name="description" content="The AI Explained - We simplify AI concepts and show you practical applications that enhance your life." />
 	<meta name="format-detection" content="telephone=no" />
 	<meta name="mobile-web-app-capable" content="yes" />
 	<meta name="theme-color" content="#FFFFFF" />
