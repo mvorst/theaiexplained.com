@@ -31,6 +31,7 @@ public class SecurityConfig {
 						.requestMatchers(new AntPathRequestMatcher("/rest/auth/**")).permitAll()
 						.requestMatchers("/error",
 								"/rest/info",
+								"/rest/api/**",
 								"/rest/auth/**").permitAll()
 						.anyRequest().authenticated()
 				);
