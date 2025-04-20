@@ -10,6 +10,7 @@ import com.mattvorst.shared.security.AuthorizationUtils;
 import com.mattvorst.shared.util.DynamoDbUtils;
 import com.theaiexplained.website.dao.model.Content;
 import org.springframework.stereotype.Component;
+import software.amazon.awssdk.enhanced.dynamodb.DynamoDbAsyncIndex;
 import software.amazon.awssdk.enhanced.dynamodb.DynamoDbAsyncTable;
 import software.amazon.awssdk.enhanced.dynamodb.Key;
 import software.amazon.awssdk.enhanced.dynamodb.TableSchema;
@@ -46,6 +47,21 @@ public class ContentDao extends BaseDao {
 		ScanEnhancedRequest request = ScanEnhancedRequest.builder()
 				.limit(pageSize)
 				.exclusiveStartKey(exclusiveStartKey)
+				.build();
+
+		// Execute the scan
+		return DynamoDbUtils.queryWithPagination(table, request);
+	}
+
+	public CompletableFuture<DynamoResultList<Content>> getContentListByDate(int pageSize, Map<String, AttributeValue> exclusiveStartKey) {
+		DynamoDbAsyncTable<Content> table = dynamoDbEnhancedAsyncClient.table(Content.TABLE_NAME, TableSchema.fromBean(Content.class));
+		DynamoDbAsyncIndex<Content> index = table.index("");
+
+		// Build the ScanEnhancedRequest with pagination
+		QueryEnhancedRequest request = QueryEnhancedRequest.builder()
+				.limit(pageSize)
+				.exclusiveStartKey(exclusiveStartKey)
+				.scanIndexForward(false)
 				.build();
 
 		// Execute the scan

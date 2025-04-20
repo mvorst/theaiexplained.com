@@ -4,8 +4,10 @@ import com.mattvorst.shared.util.Environment;
 import com.mattvorst.shared.util.Utils;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
+@ComponentScan(basePackages = {"com.theaiexplained", "com.mattvorst"})
 public class Application {
 
 	public static void main(String[] args) {

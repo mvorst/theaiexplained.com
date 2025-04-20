@@ -37,8 +37,8 @@
 			<property id="CURSOR_PASSWORD"><![CDATA[w67YHOe5uSsm2JAF0+9wtkE5T2dm0kNMkJy0bVr7nYI=]]></property>
 			<property id="CURSOR_IV"><![CDATA[NZW46d5TKB5BHCZu]]></property>
 
-			<property id="AWS_S3_BUCKET_TEMP_FILE_DATA">us-east-2.ci.ai.temp.mattvorst.com</property>
-			<property id="AWS_S3_BUCKET_FILE_DATA">us-east-2.ci.ai.file.mattvorst.com</property>
+			<property id="AWS_S3_BUCKET_TEMP_FILE_DATA">us-west-1.ci.temp.theaiexplained.com</property>
+			<property id="AWS_S3_BUCKET_FILE_DATA">us-west-1.ci.cdn.theaiexplained.com</property>
 			
 			<property id="AWS_SQS_LOG_QUEUE">https://sqs.us-east-2.amazonaws.com/661422100724/log_queue</property>
 

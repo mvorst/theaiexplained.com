@@ -78,6 +78,10 @@ public class ContentService {
 		return contentDao.getAllContent(count, attributeValueMap).join();
 	}
 
+	public DynamoResultList<Content> getContentListByDate(int count, Map<String, AttributeValue> attributeValueMap) {
+		return contentDao.getAllContent(count, attributeValueMap).join();
+	}
+
 	private void validateContent(ViewContent viewContent) throws ValidationException {
 		FieldValidator.get(messageSource, LocaleContextHolder.getLocale())
 				.validateNotEmpty("cardTitle", viewContent.getCardTitle())

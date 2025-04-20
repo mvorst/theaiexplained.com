@@ -17,7 +17,7 @@
 
 		<%if (EnvironmentType.DEV.equals(Environment.getEnvironmentType())) {%>
 			<script type="module">
-				import RefreshRuntime from 'http://dev.theaiexplained.com:3011/@react-refresh'
+				import RefreshRuntime from '<%= Environment.get(EnvironmentConstants.BASE_URL) %>:3011/@react-refresh'
 
 				RefreshRuntime.injectIntoGlobalHook(window)
 				window.$RefreshReg$ = () => {
@@ -25,7 +25,7 @@
 				window.$RefreshSig$ = () => (type) => type
 				window.__vite_plugin_react_preamble_installed__ = true
 			</script>
-			<script type="module" src="http://dev.theaiexplained.com:3011/js<%= request.getRequestURI().replace(".jsp", "").replace("/WEB-INF/jsp/", "/") %>.jsx" crossorigin></script>
+			<script type="module" src="<%= Environment.get(EnvironmentConstants.BASE_URL) %>:3011/js<%= request.getRequestURI().replace(".jsp", "").replace("/WEB-INF/jsp/", "/") %>.jsx" crossorigin></script>
 		<% } else {%>
 			<script type="text/javascript" src="<%= Environment.get(EnvironmentConstants.CDN_URL) %>/<%= Environment.get(EnvironmentConstants.BUILD_NUMBER) %>/dist/js<%= request.getRequestURI().replace(".jsp", "").replace("/WEB-INF/jsp/", "/") %>.js" crossorigin></script>
 		<% }%>

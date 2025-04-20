@@ -17,6 +17,10 @@ import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.stereotype.Service;
 import software.amazon.awssdk.services.dynamodb.model.AttributeValue;
 
+/**
+ * Service class for managing tasks.
+ * This class provides methods for creating, retrieving, updating, and deleting tasks.
+ */
 @Service
 public class TaskService {
 

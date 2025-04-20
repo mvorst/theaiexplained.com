@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import FileUpload from "../../controls/FileUpload.jsx";
 
 const ContentDetail = () => {
   const { contentUuid } = useParams();
@@ -83,6 +84,38 @@ const ContentDetail = () => {
     } catch (err) {
       setError('Failed to save content. Please check your input and try again.');
       setSubmitting(false);
+    }
+  };
+
+  const handleFileUpload = async (assetType, e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    try {
+      // Get presigned URL from the server
+      const response = await axios.get(`/rest/api/1/admin/s3/upload/url`);
+      const { url, s3Bucket, s3Key } = response.data;
+
+      const axiosInstance = axios.create({
+        headers: {
+          'Content-Type': file.type
+        }
+      });
+      await axiosInstance.put(url, file);
+
+      const uploadResponse = await axios.post(`/rest/api/1/admin/s3/upload/complete/`, {
+        s3Bucket: s3Bucket,
+        s3Key: s3Key,
+        name: file.name,
+        contentType: file.type,
+        size: file.size,
+        assetType: assetType
+      });
+
+      const s3UploadComplete = uploadResponse.data;
+
+    } catch (error) {
+      console.error('Error uploading file:', error);
     }
   };
 
@@ -187,6 +220,13 @@ const ContentDetail = () => {
               onChange={handleChange}
             />
           </div>
+
+          <FileUpload
+            id="banner-image-file-upload"
+            acceptedTypes=".png,.jpg,.jpeg"
+            onFileSelected={(e) => handleFileUpload('MARKETING_BANNER_IMAGE', e)}
+            hint="PNG, JPG up to 10MB"
+          />
 
           <div className="form-group">
             <label htmlFor="markupContent">Content (HTML) *</label>

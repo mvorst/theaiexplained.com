@@ -1,16 +1,25 @@
 package com.theaiexplained.website.dao.model;
 
+import java.util.Date;
 import java.util.UUID;
 
+import com.mattvorst.shared.dao.convert.DateAttributeConverter;
 import com.mattvorst.shared.model.DefaultAuditable;
+import com.mattvorst.shared.util.Utils;
+import com.theaiexplained.website.constant.ContentCategoryType;
+import com.theaiexplained.website.dao.convert.ContentCategoryTypeAttributeConverter;
 import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbBean;
+import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbConvertedBy;
 import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbPartitionKey;
+import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbSecondaryPartitionKey;
+import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbSecondarySortKey;
 
 @DynamoDbBean
 public class Content extends DefaultAuditable {
 	public static final String TABLE_NAME = "content";
 
 	private UUID contentUuid;
+	private ContentCategoryType contentCategoryType;
 	private String cardHeaderImageUrl;
 	private UUID cardHeaderImageFileUuid;
 	private String cardTitle;
@@ -36,6 +45,7 @@ public class Content extends DefaultAuditable {
 	private String metaTwiterCard;
 	private String metaFBAppId;
 	private String metaTwitterSite;
+	private Date publishedDate;
 
 	// Constructors
 	public Content() {}
@@ -236,5 +246,32 @@ public class Content extends DefaultAuditable {
 
 	public void setMetaTwitterSite(String metaTwitterSite) {
 		this.metaTwitterSite = metaTwitterSite;
+	}
+
+	@DynamoDbSecondaryPartitionKey(indexNames = {"contentCategoryType-publishedDateAndContentUuid-index"})
+	@DynamoDbConvertedBy(ContentCategoryTypeAttributeConverter.class)
+	public ContentCategoryType getContentCategoryType() {
+		return contentCategoryType;
+	}
+
+	public void setContentCategoryType(ContentCategoryType contentCategoryType) {
+		this.contentCategoryType = contentCategoryType;
+	}
+
+	@DynamoDbConvertedBy(DateAttributeConverter.class)
+	public Date getPublishedDate() {
+		return publishedDate;
+	}
+
+	public void setPublishedDate(Date publishedDate) {
+		this.publishedDate = publishedDate;
+	}
+
+	@DynamoDbSecondarySortKey(indexNames = {"contentCategoryType-publishedDateAndContentUuid-index"})
+	public String getPublishedDateAndContentUuid() {
+		return Utils.toUtcTimestamp(publishedDate) + "|" + contentUuid;
+	}
+
+	public void setPublishedDateAndContentUuid(String publishedDateAndContentUuid) {
 	}
 }
