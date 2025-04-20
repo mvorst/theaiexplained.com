@@ -3,7 +3,6 @@ package com.theaiexplained.website.controller;
 import java.util.Map;
 import java.util.UUID;
 
-import com.mattvorst.shared.constant.AssetType;
 import com.mattvorst.shared.constant.EnvironmentConstants;
 import com.mattvorst.shared.model.DynamoResultList;
 import com.mattvorst.shared.model.file.S3UploadComplete;
@@ -44,7 +43,7 @@ public class AdminController {
 		return modelAndView;
 	}
 
-	@GetMapping("/admin/content/")
+	@GetMapping("/rest/admin/{version}/content/")
 	public ResponseEntity<DynamoResultList<ViewContent>> getContentByDate(@RequestParam(required = false) String cursor, @RequestParam(required = false, defaultValue = "10") int count) {
 		Map<String, AttributeValue> attributeValueMap = CursorUtils.decodeLastEvaluatedKeyFromCursor(cursor);
 
@@ -56,24 +55,22 @@ public class AdminController {
 	}
 
 
-	@GetMapping("/admin/content/{contentUuid}")
+	@GetMapping("/rest/admin/{version}/content/{contentUuid}")
 	public ResponseEntity<ViewContent> getContent(@PathVariable UUID contentUuid) {
 		Content content = contentService.getContent(contentUuid);
 
 		return ResponseEntity.ok(new ViewContent(content));
 	}
 
-	@GetMapping("/rest/api/{version}/admin/s3/upload/url")
+	@GetMapping("/rest/admin/{version}/s3/upload/url")
 	public S3UploadUrl getSignedUrl() {
 		return fileService.getPreSignedUrl(Environment.get(EnvironmentConstants.AWS_S3_BUCKET_TEMP_FILE_DATA), UUID.randomUUID().toString());
 	}
 
-	@PostMapping("/rest/api/{version}/admin/s3/upload/complete/")
+	@PostMapping("/rest/admin/{version}/s3/upload/complete/")
 	public S3UploadComplete uploadUserProfileImage(@RequestBody S3UploadComplete s3UploadComplete) {
 
 		UserToken userToken = AuthorizationUtils.getUserToken();
-
-		s3UploadComplete.setAssetType(AssetType.PROFILE_IMAGE);
 
 		s3UploadComplete = fileService.uploadImageComplete(userToken.getUserUuid(), s3UploadComplete);
 		if(s3UploadComplete != null){
@@ -85,7 +82,7 @@ public class AdminController {
 		return s3UploadComplete;
 	}
 
-	@GetMapping("/rest/api/{version}/admin/s3/file/{fileUuid}/download")
+	@GetMapping("/rest/admin/{version}/s3/file/{fileUuid}/download")
 	public S3UploadUrl getSignedUrl(@PathVariable UUID fileUuid) {
 		return fileService.getSignedUrl(fileUuid);
 	}

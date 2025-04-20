@@ -34,25 +34,28 @@
 				<property><![CDATA[Lfp8kmDNpccLmbHP]]></property>
 			</list>
 
+			<property id="JWT_PUBLIC_KEY">MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0g8VACh/p8kJjy/WeFxKlud9EYthWwkoiB9TR+JvsPW8xvwBKrOPAmXsUrpWMaK9YtfQRcknK4b0so2iLcO6y7hPz7nii9EjXKKCkin+8ig95bl2n4XU2m2XV4BoNQZdbafJ+0mNnn+keK1kitglv2OLiyorvphm0o3hcegspYYupOcm1zE8ctO7ddubk9P5RGn8wX5ofzYWChjuirHC+6LiN2KN4ihriMsiyj+3A4KMliHUcoBnBc7aMYLD8c/HZZlFWyME28KZ6qkWsuftQewiFzposa1cRpD1JYE6AdFoY29dg7Jzolg40cTw24gvY+2RlAJ93sngtT9sAqCofQIDAQAB</property>
+			<property id="JWT_PRIVATE_KEY">MIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQDSDxUAKH+nyQmPL9Z4XEqW530Ri2FbCSiIH1NH4m+w9bzG/AEqs48CZexSulYxor1i19BFyScrhvSyjaItw7rLuE/PueKL0SNcooKSKf7yKD3luXafhdTabZdXgGg1Bl1tp8n7SY2ef6R4rWSK2CW/Y4uLKiu+mGbSjeFx6Cylhi6k5ybXMTxy07t125uT0/lEafzBfmh/NhYKGO6KscL7ouI3Yo3iKGuIyyLKP7cDgoyWIdRygGcFztoxgsPxz8dlmUVbIwTbwpnqqRay5+1B7CIXOmixrVxGkPUlgToB0Whjb12DsnOiWDjRxPDbiC9j7ZGUAn3eyeC1P2wCoKh9AgMBAAECggEAASX0dS8DfaEPdJEsILXOcZM734ntww/igRX8wE6YUjURrlvHzNo07KwudchPes97LgxkdtEx7d67vTMhgRMKFR2BkC7hsmZ3BUVdJdvlaSD3r6cLIzWZ04TYWDHbP/j0L0qEw+Mjy0tC1KcL/udOE4UBiQX2vcC7BSkh45vDjLcTxo0DBgcYomqVr1Ar5e9RHy4bqG0XBBjd7C6/nrdVw3qt5Hq84y3fHrKjPFGMxJ6TEr1CeUP1e0E64pw0RumNXSSnt3kIhdZTotxA4BNxn+JbYfk66ZZsGBTdxcg/bRqw1Da9WPXQa1wm+Bp6Wgc87txN5MUe4FkuNtuFcupxqQKBgQDsRUHb8/gD1+G2R4CPtOHj0SHxUT9ZCRxZUaynbYGJhXGHj7uHzkkYz6icyTtLm1YN+HitU2BZ45UPPbFUr/uIaLT7bzmDAmCuzUf2r57jqrVODMvV9+0VkYP2wmLKMqTXGgqP8ODYPCv7qveCMmIPY5f5HjIiTUkqKPViEI1MyQKBgQDjmYAUusOOWLCQPaStHMg9eB6JLlPTH7guqUteirsMCicVlYQarmUYE+G48w64GpNB1J/jwQbdSE4O88EUa+7Ye+VIOOid/TgiXIU4ybY5xPX3tmM4o7eSRZqV86EOjYcCndgqJehhkm0H6TUUQuYygpOVMQZiBZUIsrVdaxh8FQKBgDFGcGnTA9KpX2WInANckg/VOeL+Mtv6znLCWePBLtbjgb3n+BBmsU//Xwbz4O3vw46+V0yuqtWUZS38i9NBsI/OZpBZrgDoqglKvstv7Q9GNvHEMW66ejOZWZBJEhlhXoeN4s4KSppOUk32ZhA9Ob5D4xoNdh85Rx0H1cVR9mYhAoGAXwU57O2gMTCj3kRuGPv4OXmJvhoCUxVeDtUNK1ZeCwO+F4vJkF4YxLmgNlf7YC9wJT7A1hRDamUCecmYZY8+M1Fegw2HSFZsdiQMVo4YLvwk+JtDx2TKgh3fERWauvmpURVXJxmWcA3yySe6yk+3zYSoWtQR5yCPfQcnIu5QVZUCgYAsLdiySWHoXoIbVW687C8kCyDtbJKJyF5bCnC8niPlQFswEl/HBMloNCK1966k/FDorN9I4I5G7yzy46An1MgrxxZJjFaNBUZsFSqosxYPxBWFL1zKivdSnxSzoai/VkGreNGXQZ3bAshIayLRZv5e3Td+LwfCXQ2WprBjWrjAvQ==</property>
+
 			<property id="CURSOR_PASSWORD"><![CDATA[w67YHOe5uSsm2JAF0+9wtkE5T2dm0kNMkJy0bVr7nYI=]]></property>
 			<property id="CURSOR_IV"><![CDATA[NZW46d5TKB5BHCZu]]></property>
 
 			<property id="AWS_S3_BUCKET_TEMP_FILE_DATA">us-west-1.ci.temp.theaiexplained.com</property>
 			<property id="AWS_S3_BUCKET_FILE_DATA">us-west-1.ci.cdn.theaiexplained.com</property>
 			
-			<property id="AWS_SQS_LOG_QUEUE">https://sqs.us-east-2.amazonaws.com/661422100724/log_queue</property>
+			<property id="AWS_SQS_LOG_QUEUE">https://sqs.us-west-1.amazonaws.com/230817973666/log_queue</property>
 
 		</properties>
 	</environment>
 
 	<environment id="US-WEST-1" type="CI">
 		<properties>
-			<property id="AWS_SES_REGION">us-east-2</property>
-			<property id="AWS_DYNAMO_DB_REGION">us-east-2</property>
-			<property id="AWS_SQS_REGION">us-east-2</property>
-			<property id="AWS_S3_REGION">us-east-2</property>
-			<property id="AWS_SQS_SERVICE_ENDPOINT">https://sqs.us-east-2.amazonaws.com</property>
-			<property id="BASE_URL">https://ci.mattvorst.com</property>
+			<property id="AWS_SES_REGION">sqs.us-west-1</property>
+			<property id="AWS_DYNAMO_DB_REGION">us-west-1</property>
+			<property id="AWS_SQS_REGION">us-west-1</property>
+			<property id="AWS_S3_REGION">us-west-1</property>
+			<property id="AWS_SQS_SERVICE_ENDPOINT">https://sqs.us-west-1.amazonaws.com</property>
+			<property id="BASE_URL">https://ci.theaiexplained.com</property>
 			<property id="CDN_URL"></property>
 			<property id="EXTERNAL_JS_URL"></property>
 			<property id="LOG_REQUESTS_LOCALLY">TRUE</property>
@@ -64,8 +67,17 @@
 				<property><![CDATA[Lfp8kmDNpccLmbHP]]></property>
 			</list>
 
+			<property id="JWT_PUBLIC_KEY">MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0g8VACh/p8kJjy/WeFxKlud9EYthWwkoiB9TR+JvsPW8xvwBKrOPAmXsUrpWMaK9YtfQRcknK4b0so2iLcO6y7hPz7nii9EjXKKCkin+8ig95bl2n4XU2m2XV4BoNQZdbafJ+0mNnn+keK1kitglv2OLiyorvphm0o3hcegspYYupOcm1zE8ctO7ddubk9P5RGn8wX5ofzYWChjuirHC+6LiN2KN4ihriMsiyj+3A4KMliHUcoBnBc7aMYLD8c/HZZlFWyME28KZ6qkWsuftQewiFzposa1cRpD1JYE6AdFoY29dg7Jzolg40cTw24gvY+2RlAJ93sngtT9sAqCofQIDAQAB</property>
+			<property id="JWT_PRIVATE_KEY">MIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQDSDxUAKH+nyQmPL9Z4XEqW530Ri2FbCSiIH1NH4m+w9bzG/AEqs48CZexSulYxor1i19BFyScrhvSyjaItw7rLuE/PueKL0SNcooKSKf7yKD3luXafhdTabZdXgGg1Bl1tp8n7SY2ef6R4rWSK2CW/Y4uLKiu+mGbSjeFx6Cylhi6k5ybXMTxy07t125uT0/lEafzBfmh/NhYKGO6KscL7ouI3Yo3iKGuIyyLKP7cDgoyWIdRygGcFztoxgsPxz8dlmUVbIwTbwpnqqRay5+1B7CIXOmixrVxGkPUlgToB0Whjb12DsnOiWDjRxPDbiC9j7ZGUAn3eyeC1P2wCoKh9AgMBAAECggEAASX0dS8DfaEPdJEsILXOcZM734ntww/igRX8wE6YUjURrlvHzNo07KwudchPes97LgxkdtEx7d67vTMhgRMKFR2BkC7hsmZ3BUVdJdvlaSD3r6cLIzWZ04TYWDHbP/j0L0qEw+Mjy0tC1KcL/udOE4UBiQX2vcC7BSkh45vDjLcTxo0DBgcYomqVr1Ar5e9RHy4bqG0XBBjd7C6/nrdVw3qt5Hq84y3fHrKjPFGMxJ6TEr1CeUP1e0E64pw0RumNXSSnt3kIhdZTotxA4BNxn+JbYfk66ZZsGBTdxcg/bRqw1Da9WPXQa1wm+Bp6Wgc87txN5MUe4FkuNtuFcupxqQKBgQDsRUHb8/gD1+G2R4CPtOHj0SHxUT9ZCRxZUaynbYGJhXGHj7uHzkkYz6icyTtLm1YN+HitU2BZ45UPPbFUr/uIaLT7bzmDAmCuzUf2r57jqrVODMvV9+0VkYP2wmLKMqTXGgqP8ODYPCv7qveCMmIPY5f5HjIiTUkqKPViEI1MyQKBgQDjmYAUusOOWLCQPaStHMg9eB6JLlPTH7guqUteirsMCicVlYQarmUYE+G48w64GpNB1J/jwQbdSE4O88EUa+7Ye+VIOOid/TgiXIU4ybY5xPX3tmM4o7eSRZqV86EOjYcCndgqJehhkm0H6TUUQuYygpOVMQZiBZUIsrVdaxh8FQKBgDFGcGnTA9KpX2WInANckg/VOeL+Mtv6znLCWePBLtbjgb3n+BBmsU//Xwbz4O3vw46+V0yuqtWUZS38i9NBsI/OZpBZrgDoqglKvstv7Q9GNvHEMW66ejOZWZBJEhlhXoeN4s4KSppOUk32ZhA9Ob5D4xoNdh85Rx0H1cVR9mYhAoGAXwU57O2gMTCj3kRuGPv4OXmJvhoCUxVeDtUNK1ZeCwO+F4vJkF4YxLmgNlf7YC9wJT7A1hRDamUCecmYZY8+M1Fegw2HSFZsdiQMVo4YLvwk+JtDx2TKgh3fERWauvmpURVXJxmWcA3yySe6yk+3zYSoWtQR5yCPfQcnIu5QVZUCgYAsLdiySWHoXoIbVW687C8kCyDtbJKJyF5bCnC8niPlQFswEl/HBMloNCK1966k/FDorN9I4I5G7yzy46An1MgrxxZJjFaNBUZsFSqosxYPxBWFL1zKivdSnxSzoai/VkGreNGXQZ3bAshIayLRZv5e3Td+LwfCXQ2WprBjWrjAvQ==</property>
+
 			<property id="CURSOR_PASSWORD"><![CDATA[w67YHOe5uSsm2JAF0+9wtkE5T2dm0kNMkJy0bVr7nYI=]]></property>
 			<property id="CURSOR_IV"><![CDATA[NZW46d5TKB5BHCZu]]></property>
+
+			<property id="AWS_S3_BUCKET_TEMP_FILE_DATA">us-west-1.ci.temp.theaiexplained.com</property>
+			<property id="AWS_S3_BUCKET_FILE_DATA">us-west-1.ci.cdn.theaiexplained.com</property>
+			<property id="AWS_IMAGE_CDN_URL">https://ci.cdn.theaiexplained.com</property>
+
+			<property id="AWS_SQS_LOG_QUEUE">https://sqs.us-west-1.amazonaws.com/230817973666/log_queue</property>
 
 		</properties>
 	</environment>

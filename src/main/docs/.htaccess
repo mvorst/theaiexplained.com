@@ -6,8 +6,11 @@ RewriteRule ^.*$ /error.action [NC,L]
 RewriteCond %{REQUEST_URI} ^/login/?$ [NC]
 RewriteRule ^.*$ /login.action [NC,L]
 
-RewriteCond %{REQUEST_URI} ^/rest/poo/?$ [NC]
-RewriteRule ^.*$ /rest/info [NC,L]
+RewriteCond %{REQUEST_URI} ^/admin/?$ [NC]
+RewriteRule ^.*$ /admin.action [NC,L]
+
+RewriteCond %{REQUEST_URI} ^/blog/?$ [NC]
+RewriteRule ^.*$ /blog.action [NC,L]
 
 RewriteCond %{REQUEST_URI} ^/\d+/(\S+)$ [NC]
 RewriteRule ^.*$ /%1 [NC,L]

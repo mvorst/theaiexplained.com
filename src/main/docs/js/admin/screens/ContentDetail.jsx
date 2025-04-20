@@ -2,9 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import FileUpload from "../../controls/FileUpload.jsx";
+import Optional from "../../controls/Optional.jsx";
+import LexicalEditor from "../../controls/LexicalEditor.jsx";
 
 const ContentDetail = () => {
-  const { contentUuid } = useParams();
+  const { id } = useParams();
+  const contentUuid = id;
   const navigate = useNavigate();
   const [loading, setLoading] = useState(contentUuid ? true : false);
   const [submitting, setSubmitting] = useState(false);
@@ -46,17 +49,20 @@ const ContentDetail = () => {
   const fetchContent = async () => {
     try {
       setLoading(true);
-      const response = await axios.get(`/rest/api/v1/content/${contentUuid}`);
+      // Updated URL to match the endpoint in AdminController
+      const response = await axios.get(`/rest/admin/1/content/${contentUuid}`);
       setContent(response.data);
       setLoading(false);
     } catch (err) {
       setError('Failed to load content. Please try again later.');
       setLoading(false);
+      console.error('Error fetching content:', err);
     }
   };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+
     setContent(prev => ({
       ...prev,
       [name]: value
@@ -73,17 +79,18 @@ const ContentDetail = () => {
 
       if (contentUuid) {
         // Update existing content
-        response = await axios.put(`/rest/api/v1/content/${contentUuid}`, content);
+        response = await axios.put(`/rest/admin/1/content/${contentUuid}`, content);
       } else {
         // Create new content
-        response = await axios.post('/rest/api/v1/content/', content);
+        response = await axios.post('/rest/admin/1/content/', content);
       }
 
-      // Redirect to content detail page
-      navigate(`/content/${response.data.contentUuid}`);
+      // Redirect to content list page after successful save
+      navigate('/content/');
     } catch (err) {
       setError('Failed to save content. Please check your input and try again.');
       setSubmitting(false);
+      console.error('Error saving content:', err);
     }
   };
 
@@ -92,8 +99,7 @@ const ContentDetail = () => {
     if (!file) return;
 
     try {
-      // Get presigned URL from the server
-      const response = await axios.get(`/rest/api/1/admin/s3/upload/url`);
+      const response = await axios.get(`/rest/admin/1/s3/upload/url`);
       const { url, s3Bucket, s3Key } = response.data;
 
       const axiosInstance = axios.create({
@@ -103,7 +109,7 @@ const ContentDetail = () => {
       });
       await axiosInstance.put(url, file);
 
-      const uploadResponse = await axios.post(`/rest/api/1/admin/s3/upload/complete/`, {
+      const uploadResponse = await axios.post(`/rest/admin/1/s3/upload/complete/`, {
         s3Bucket: s3Bucket,
         s3Key: s3Key,
         name: file.name,
@@ -113,6 +119,27 @@ const ContentDetail = () => {
       });
 
       const s3UploadComplete = uploadResponse.data;
+
+      // Update the appropriate image URL based on asset type
+      if (assetType === 'MARKETING_BANNER_IMAGE') {
+        setContent(prev => ({
+          ...prev,
+          headerImageUrl: s3UploadComplete.downloadUrl,
+          headerImageFileUuid: s3UploadComplete.fileUuid
+        }));
+      } else if (assetType === 'CARD_IMAGE') {
+        setContent(prev => ({
+          ...prev,
+          cardHeaderImageUrl: s3UploadComplete.downloadUrl,
+          cardHeaderImageFileUuid: s3UploadComplete.fileUuid
+        }));
+      } else if (assetType === 'AUDIO_CONTENT') {
+        setContent(prev => ({
+          ...prev,
+          audioContentUrl: s3UploadComplete.downloadUrl,
+          audioContentFileUuid: s3UploadComplete.fileUuid
+        }));
+      }
 
     } catch (error) {
       console.error('Error uploading file:', error);
@@ -134,6 +161,120 @@ const ContentDetail = () => {
       )}
 
       <form onSubmit={handleSubmit} className="content-form">
+
+        <div className="form-section">
+          <h2>Content</h2>
+
+          <div className="form-group">
+            <label htmlFor="title">Content Title *</label>
+            <input
+              type="text"
+              id="title"
+              name="title"
+              value={content.title}
+              onChange={handleChange}
+              required
+            />
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="subtitle">Content Subtitle</label>
+            <input
+              type="text"
+              id="subtitle"
+              name="subtitle"
+              value={content.subtitle}
+              onChange={handleChange}
+            />
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="headerImageUrl">Header Image URL</label>
+            <input
+              type="text"
+              id="headerImageUrl"
+              name="headerImageUrl"
+              value={content.headerImageUrl}
+              onChange={handleChange}
+            />
+          </div>
+
+          <Optional show={content?.headerImageUrl?.length}>
+            <img src={content?.headerImageUrl} alt="" />
+          </Optional>
+          <Optional show={!content?.headerImageUrl?.length}>
+            <FileUpload
+              id="banner-image-file-upload"
+              acceptedTypes=".png,.jpg,.jpeg"
+              onFileSelected={(e) => handleFileUpload('MARKETING_BANNER_IMAGE', e)}
+              hint="PNG, JPG up to 10MB"
+            />
+          </Optional>
+
+          <div className="form-group">
+            <label htmlFor="markupContent">Content (HTML) *</label>
+
+            {/*<div className="container">*/}
+            {/*  <LexicalEditor*/}
+            {/*    // Assuming LexicalEditor takes initial HTML or state string*/}
+            {/*    initialValue={content?.markupContent}*/}
+            {/*    // Assuming onChange provides the updated content as an HTML string*/}
+            {/*    onChange={(htmlContent) => handleChange({ target: { name: 'markupContent', value: htmlContent } })}*/}
+            {/*  />*/}
+            {/*</div>*/}
+
+            <textarea
+              id="markupContent"
+              name="markupContent"
+              value={content.markupContent}
+              onChange={handleChange}
+              rows={10}
+              required
+            ></textarea>
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="audioContentUrl">Audio Content URL</label>
+            <input
+              type="text"
+              id="audioContentUrl"
+              name="audioContentUrl"
+              value={content.audioContentUrl}
+              onChange={handleChange}
+            />
+          </div>
+
+          <FileUpload
+            id="audio-content-file-upload"
+            acceptedTypes=".mp3,.wav,.ogg"
+            onFileSelected={(e) => handleFileUpload('AUDIO_CONTENT', e)}
+            hint="MP3, WAV, OGG up to 50MB"
+          />
+
+          <div className="form-group">
+            <label htmlFor="referenceUrl">Reference URL</label>
+            <input
+              type="text"
+              id="referenceUrl"
+              name="referenceUrl"
+              value={content.referenceUrl}
+              onChange={handleChange}
+            />
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="referenceUrlTitle">Reference URL Title</label>
+            <input
+              type="text"
+              id="referenceUrlTitle"
+              name="referenceUrlTitle"
+              value={content.referenceUrlTitle}
+              onChange={handleChange}
+              placeholder="Learn more"
+            />
+          </div>
+        </div>
+
         <div className="form-section">
           <h2>Card Display</h2>
 
@@ -182,97 +323,13 @@ const ContentDetail = () => {
               onChange={handleChange}
             />
           </div>
-        </div>
-
-        <div className="form-section">
-          <h2>Content Details</h2>
-
-          <div className="form-group">
-            <label htmlFor="title">Content Title *</label>
-            <input
-              type="text"
-              id="title"
-              name="title"
-              value={content.title}
-              onChange={handleChange}
-              required
-            />
-          </div>
-
-          <div className="form-group">
-            <label htmlFor="subtitle">Content Subtitle</label>
-            <input
-              type="text"
-              id="subtitle"
-              name="subtitle"
-              value={content.subtitle}
-              onChange={handleChange}
-            />
-          </div>
-
-          <div className="form-group">
-            <label htmlFor="headerImageUrl">Header Image URL</label>
-            <input
-              type="text"
-              id="headerImageUrl"
-              name="headerImageUrl"
-              value={content.headerImageUrl}
-              onChange={handleChange}
-            />
-          </div>
 
           <FileUpload
-            id="banner-image-file-upload"
+            id="card-image-file-upload"
             acceptedTypes=".png,.jpg,.jpeg"
-            onFileSelected={(e) => handleFileUpload('MARKETING_BANNER_IMAGE', e)}
+            onFileSelected={(e) => handleFileUpload('CARD_IMAGE', e)}
             hint="PNG, JPG up to 10MB"
           />
-
-          <div className="form-group">
-            <label htmlFor="markupContent">Content (HTML) *</label>
-            <textarea
-              id="markupContent"
-              name="markupContent"
-              value={content.markupContent}
-              onChange={handleChange}
-              rows={10}
-              required
-            ></textarea>
-          </div>
-
-          <div className="form-group">
-            <label htmlFor="audioContentUrl">Audio Content URL</label>
-            <input
-              type="text"
-              id="audioContentUrl"
-              name="audioContentUrl"
-              value={content.audioContentUrl}
-              onChange={handleChange}
-            />
-          </div>
-
-          <div className="form-group">
-            <label htmlFor="referenceUrl">Reference URL</label>
-            <input
-              type="text"
-              id="referenceUrl"
-              name="referenceUrl"
-              value={content.referenceUrl}
-              onChange={handleChange}
-            />
-          </div>
-
-          <div className="form-group">
-            <label htmlFor="referenceUrlTitle">Reference URL Title</label>
-            <input
-              type="text"
-              id="referenceUrlTitle"
-              name="referenceUrlTitle"
-              value={content.referenceUrlTitle}
-              onChange={handleChange}
-              placeholder="Learn more"
-            />
-          </div>
         </div>
 
         <div className="form-section">

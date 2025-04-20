@@ -51,6 +51,11 @@ dependencies {
 
     implementation 'com.fasterxml.jackson.core:jackson-databind'
 
+    implementation 'jakarta.servlet:jakarta.servlet-api:6.0.0'
+    implementation 'jakarta.servlet.jsp:jakarta.servlet.jsp-api:3.0.0'
+    implementation 'jakarta.servlet.jsp.jstl:jakarta.servlet.jsp.jstl-api:3.0.0'
+    implementation 'org.glassfish.web:jakarta.servlet.jsp.jstl:3.0.1'
+
     implementation 'javax.servlet:jstl:1.2'
 
     implementation "com.googlecode.owasp-java-html-sanitizer:owasp-java-html-sanitizer:20220608.1"

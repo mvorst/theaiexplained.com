@@ -45,9 +45,9 @@ public class JwtService implements JwtDecoder {
 		return generate(userUuid, name, expiryMinutes, timeZone, AccountType.ADMIN, null);
 	}
 
-	public Jwt generateUserJwt(User user, UUID homeUuid){
+	public Jwt generateUserJwt(User user){
 		String displayName = !Utils.empty(user.getFirstName()) && !Utils.empty(user.getFirstName()) ? user.getFirstName() + " " + user.getLastName() : "Anonymous";
-		return generate(user.getUserUuid(), displayName, -1, user.getTimeZone(), AccountType.USER, Map.of(JwtAuthenticationProvider.HOME_UUID, homeUuid.toString()));
+		return generate(user.getUserUuid(), displayName, -1, user.getTimeZone(), AccountType.USER, null);
 	}
 
 	private Jwt generate(UUID userUuid, String name, int expiryMinutes, String timeZone, AccountType accountType, Map<String, Object> additionalClaimMap) {
@@ -88,13 +88,12 @@ public class JwtService implements JwtDecoder {
 		return this.jwtEncoder.encode(JwtEncoderParameters.from(headers, claims));
 	}
 
-	public Jwt updateUserTokenJwt(UserToken userToken, UUID homeUuid) {
-		return generate(userToken.getUserUuid(), userToken.getName(), -1, userToken.getTimeZone(), AccountType.USER, Map.of(JwtAuthenticationProvider.HOME_UUID, homeUuid.toString()));
+	public Jwt updateUserTokenJwt(UserToken userToken) {
+		return generate(userToken.getUserUuid(), userToken.getName(), -1, userToken.getTimeZone(), AccountType.USER, null);
 	}
 
 	@Override
 	public Jwt decode(String token) throws JwtException {
-
 		return this.jwtDecoder.decode(token);
 	}
 }
