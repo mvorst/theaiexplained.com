@@ -1,10 +1,13 @@
 package com.theaiexplained.website.controller;
 
 import java.util.Map;
+import java.util.UUID;
 
 import com.mattvorst.shared.model.DynamoResultList;
 import com.mattvorst.shared.util.CursorUtils;
+import com.mattvorst.shared.util.Streams;
 import com.theaiexplained.website.dao.model.Content;
+import com.theaiexplained.website.model.ViewContent;
 import com.theaiexplained.website.service.ContentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestAttribute;
@@ -52,6 +55,17 @@ public class WebController {
 
 		DynamoResultList<Content> contentList = contentService.getContentListByDate(count, attributeValueMap);
 
-		return new ModelAndView("blog", Map.of("contentList", contentList));
+		DynamoResultList<ViewContent> dynamoResultList = new DynamoResultList<>(Streams.of(contentList.getList()).map(content -> new ViewContent(content)).toList(), contentList.getLastEvaluatedKey());
+
+		return new ModelAndView("blog", Map.of("contentList", dynamoResultList));
+	}
+
+	/* GET: /blog/{uuid}/* -> /blog-detail.action */
+	@RequestMapping(value="/blog-detail.action", method= RequestMethod.GET)
+	public ModelAndView blogDetail(@RequestParam(required = true) UUID contentUuid){
+
+		Content content = contentService.getContent(contentUuid);
+
+		return new ModelAndView("blog-detail", Map.of("content", new ViewContent(content)));
 	}
 }

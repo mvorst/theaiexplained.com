@@ -6,15 +6,15 @@
     <div class="container">
         <div class="header-content">
             <div class="logo">
-                <a href="<%= Environment.get(EnvironmentConstants.BASE_URL) %>/index.jsp"><img src="<%= Environment.get(EnvironmentConstants.CDN_URL) %>/<%= Environment.get(EnvironmentConstants.BUILD_NUMBER) %>/img/LogoH.svg" alt="The AI Explained Logo" /></a>
+                <a href="<%= Environment.get(EnvironmentConstants.BASE_URL) %>/"><img src="<%= Environment.get(EnvironmentConstants.CDN_URL) %>/<%= Environment.get(EnvironmentConstants.BUILD_NUMBER) %>/img/LogoH.svg" alt="The AI Explained Logo" /></a>
             </div>
             <nav class="main-nav">
                 <ul>
-                    <li><a href="<%= Environment.get(EnvironmentConstants.BASE_URL) %>/start-here.jsp">Start Here</a></li>
-                    <li><a href="<%= Environment.get(EnvironmentConstants.BASE_URL) %>/learn-ai.jsp">Learn AI</a></li>
-                    <li><a href="<%= Environment.get(EnvironmentConstants.BASE_URL) %>/resources.jsp">Resources</a></li>
-                    <li><a href="<%= Environment.get(EnvironmentConstants.BASE_URL) %>/blog.jsp">Blog</a></li>
-                    <li><a href="<%= Environment.get(EnvironmentConstants.BASE_URL) %>/about.jsp">About</a></li>
+                    <li><a href="<%= Environment.get(EnvironmentConstants.BASE_URL) %>/start-here/">Start Here</a></li>
+                    <li><a href="<%= Environment.get(EnvironmentConstants.BASE_URL) %>/news/">AI News</a></li>
+                    <li><a href="<%= Environment.get(EnvironmentConstants.BASE_URL) %>/resources/">Resources</a></li>
+                    <li><a href="<%= Environment.get(EnvironmentConstants.BASE_URL) %>/blog/">Blog</a></li>
+                    <li><a href="<%= Environment.get(EnvironmentConstants.BASE_URL) %>/about/">About</a></li>
                 </ul>
             </nav>
             <div class="header-buttons">

@@ -5,12 +5,16 @@ import java.util.UUID;
 import java.util.concurrent.atomic.AtomicReference;
 
 import com.mattvorst.shared.async.processor.TaskProcessor;
+import com.mattvorst.shared.constant.AssetType;
 import com.mattvorst.shared.constant.EnvironmentConstants;
 import com.mattvorst.shared.dao.FileDao;
 import com.mattvorst.shared.dao.model.file.File;
 import com.mattvorst.shared.dao.model.file.FileReference;
+import com.mattvorst.shared.dao.model.image.CropData;
 import com.mattvorst.shared.model.file.S3UploadComplete;
 import com.mattvorst.shared.model.file.S3UploadUrl;
+import com.mattvorst.shared.task.image.CreateImageCroppedTask;
+import com.mattvorst.shared.task.image.CreateImageCroppedTask.Parameters;
 import com.mattvorst.shared.util.Environment;
 import com.mattvorst.shared.util.Utils;
 import org.slf4j.Logger;
@@ -121,6 +125,10 @@ public class FileService {
 
 		s3UploadComplete.setS3Bucket(Environment.get(EnvironmentConstants.AWS_S3_BUCKET_FILE_DATA));
 		s3UploadComplete.setS3Key(destinationKey.toString());
+
+//		if(AssetType.MARKETING_BANNER_IMAGE.equals(s3UploadComplete.getAssetType())){
+//			taskProcessor.processLocally(new Parameters(s3UploadComplete.getS3Bucket(), s3UploadComplete.getS3Key(), s3UploadComplete.getS3Bucket(), s3UploadComplete.getS3Key(), new CropData(0, 0, 1200, 630, 10000), s3UploadComplete.getContentType(), null));
+//		}
 
 		return s3UploadComplete;
 	}

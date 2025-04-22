@@ -1,7 +1,9 @@
 package com.theaiexplained.website.model;
 
+import java.util.Date;
 import java.util.UUID;
 
+import com.mattvorst.shared.service.FileService;
 import com.theaiexplained.website.dao.model.Content;
 import org.springframework.beans.BeanUtils;
 
@@ -32,6 +34,7 @@ public class ViewContent {
     private String metaTwiterCard;
     private String metaFBAppId;
     private String metaTwitterSite;
+    private Date publishedDate;
 
     // Default constructor
     public ViewContent() {}
@@ -234,5 +237,13 @@ public class ViewContent {
 
     public void setMetaTwitterSite(String metaTwitterSite) {
         this.metaTwitterSite = metaTwitterSite;
+    }
+
+    public Date getPublishedDate() {
+        return publishedDate;
+    }
+
+    public void setPublishedDate(Date publishedDate) {
+        this.publishedDate = publishedDate;
     }
 }

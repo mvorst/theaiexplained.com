@@ -12,6 +12,19 @@ public class CropData {
 	private int height;
 	private int scaleE4;
 
+	public CropData(){
+		super();
+	}
+
+	public CropData(int x, int y, int width, int height, int scaleE4) {
+		this();
+		this.x = x;
+		this.y = y;
+		this.width = width;
+		this.height = height;
+		this.scaleE4 = scaleE4;
+	}
+
 	public int getX() {
 		return x;
 	}

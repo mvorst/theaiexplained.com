@@ -77,12 +77,12 @@ const ContentDetail = () => {
     try {
       let response;
 
-      if (contentUuid) {
-        // Update existing content
-        response = await axios.put(`/rest/admin/1/content/${contentUuid}`, content);
-      } else {
+      if (contentUuid === 'new') {
         // Create new content
         response = await axios.post('/rest/admin/1/content/', content);
+      } else {
+        // Update existing content
+        response = await axios.put(`/rest/admin/1/content/${contentUuid}`, content);
       }
 
       // Redirect to content list page after successful save
@@ -127,7 +127,7 @@ const ContentDetail = () => {
           headerImageUrl: s3UploadComplete.downloadUrl,
           headerImageFileUuid: s3UploadComplete.fileUuid
         }));
-      } else if (assetType === 'CARD_IMAGE') {
+      } else if (assetType === 'BLOG_CARD_IMAGE') {
         setContent(prev => ({
           ...prev,
           cardHeaderImageUrl: s3UploadComplete.downloadUrl,
@@ -327,7 +327,7 @@ const ContentDetail = () => {
           <FileUpload
             id="card-image-file-upload"
             acceptedTypes=".png,.jpg,.jpeg"
-            onFileSelected={(e) => handleFileUpload('CARD_IMAGE', e)}
+            onFileSelected={(e) => handleFileUpload('BLOG_CARD_IMAGE', e)}
             hint="PNG, JPG up to 10MB"
           />
         </div>

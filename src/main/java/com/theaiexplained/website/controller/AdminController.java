@@ -3,7 +3,9 @@ package com.theaiexplained.website.controller;
 import java.util.Map;
 import java.util.UUID;
 
+import com.mattvorst.shared.constant.AssetType;
 import com.mattvorst.shared.constant.EnvironmentConstants;
+import com.mattvorst.shared.exception.ValidationException;
 import com.mattvorst.shared.model.DynamoResultList;
 import com.mattvorst.shared.model.file.S3UploadComplete;
 import com.mattvorst.shared.model.file.S3UploadUrl;
@@ -22,6 +24,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -58,6 +61,22 @@ public class AdminController {
 	@GetMapping("/rest/admin/{version}/content/{contentUuid}")
 	public ResponseEntity<ViewContent> getContent(@PathVariable UUID contentUuid) {
 		Content content = contentService.getContent(contentUuid);
+
+		return ResponseEntity.ok(new ViewContent(content));
+	}
+
+	@PostMapping("/rest/admin/{version}/content/")
+	public ResponseEntity<ViewContent> createContent(@RequestBody ViewContent viewContent) throws ValidationException {
+
+		Content content = contentService.createContent(viewContent);
+
+		return ResponseEntity.ok(new ViewContent(content));
+	}
+
+	@PutMapping("/rest/admin/{version}/content/{contentUuid}")
+	public ResponseEntity<ViewContent> updateContent(@PathVariable UUID contentUuid, @RequestBody ViewContent viewContent) throws ValidationException {
+
+		Content content = contentService.updateContent(contentUuid, viewContent);
 
 		return ResponseEntity.ok(new ViewContent(content));
 	}
