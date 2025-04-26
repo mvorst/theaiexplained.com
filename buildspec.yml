@@ -24,7 +24,7 @@ phases:
   post_build:
     commands:
       - echo Deploying assets...
-      - unzip ./build/libs/AIExplained_Webapp-CI-CI-0.0.1.war -d ./build/libs/dependencies
+      - unzip ./build/libs/AIExplained_Webapp-CI-0.0.1.war -d ./build/libs/dependencies
       - java -cp ./build/libs/dependencies/WEB-INF/lib/*:./build/libs/dependencies/WEB-INF/classes "com.mattvorst.deploy.main.CodeBuildDeployMain"
       - rm -rf ./build/libs/dependencies
       - echo Build complete `date`

@@ -52,6 +52,7 @@ public class EnvironmentConstants
 	public static final String AWS_S3_BUCKET_PUBLIC_FILE_DATA = "AWS_S3_BUCKET_PUBLIC_FILE_DATA";
 	public static final String AWS_S3_BUCKET_TEMP_FILE_DATA = "AWS_S3_BUCKET_TEMP_FILE_DATA";
 	public static final String AWS_S3_URL_SIGNER_PROFILE = "AWS_S3_URL_SIGNER_PROFILE";
+	public static final String AWS_S3_BUCKET_CDN = "AWS_S3_BUCKET_CDN";
 
 	/* GOOGLE AUTH */
 	public static final String GOOGLE_OAUTH_CLIENT_ID_ADMIN = "GOOGLE_OAUTH_CLIENT_ID_ADMIN";
