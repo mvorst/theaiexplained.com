@@ -37,7 +37,7 @@
                 <div class="feature-cards">
                     <div class="feature-card">
                         <div class="icon">
-                            <img src="<%= Environment.get(EnvironmentConstants.CDN_URL) %>/<%= Environment.get(EnvironmentConstants.BUILD_NUMBER) %>/img/icons/learn.svg" alt="Learn AI" />
+                            <img src="https://ci.cdn.theaiexplained.com/2aac4b85-a035-4da2-8f05-57ffafb6e3d9" alt="Learn AI" />
                         </div>
                         <h3>Learn AI Fundamentals</h3>
                         <p>Understand the basics of AI and how it can help your work.</p>

@@ -10,7 +10,7 @@ version = '0.0.1'
 
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(23)
+        languageVersion = JavaLanguageVersion.of(17)
     }
 }
 
@@ -85,6 +85,28 @@ dependencyManagement {
     }
 }
 
+tasks.register('makeWar', War) {
+    archiveBaseName = "AIExplained_Webapp-CI"
+    archiveClassifier = ""
+}
+
+tasks.register('makeDocs', Zip) {
+    archiveBaseName = "AIExplained_Docs-CI"
+    from("src/main/docs/") {
+        exclude("node_modules")
+        into("html")
+    }
+}
+
+tasks.register('makeUtilJar', Jar) {
+    archiveBaseName = "AIExplained_Utils-CI"
+    from(tasks.named("jar"))
+}
+
+tasks.register('makeUtilDependencies', Zip) {
+    archiveBaseName = "AIExplained_Dependencies-CI"
+    from(configurations.compileClasspath)
+}
 tasks.named('test') {
     useJUnitPlatform()
 }

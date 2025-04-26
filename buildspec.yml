@@ -1,0 +1,36 @@
+version: 0.2
+
+phases:
+  install:
+    #If you use the Ubuntu standard image 2.0 or later, you must specify runtime-versions.
+    #If you specify runtime-versions and use an image other than Ubuntu standard image 2.0, the build fails.
+    runtime-versions:
+      java: corretto17
+      nodejs: 22
+    commands:
+      - echo Installing dependencies...
+      - chmod +x gradlew
+      - ./gradlew clean
+  build:
+    commands:
+      - cd src/main/docs
+      - yarn install
+      - yarn build
+      - cd ../../..
+      - java --version
+      - ./gradlew --version
+      - echo Building WAR file `date`
+      - ./gradlew bootJar bootWar makeWar makeDocs makeUtilJar makeUtilDependencies
+  post_build:
+    commands:
+      - echo Deploying assets...
+      - unzip ./build/libs/AIExplained_Webapp-CI-CI-0.0.1.war -d ./build/libs/dependencies
+      - java -cp ./build/libs/dependencies/WEB-INF/lib/*:./build/libs/dependencies/WEB-INF/classes "com.mattvorst.deploy.main.CodeBuildDeployMain"
+      - rm -rf ./build/libs/dependencies
+      - echo Build complete `date`
+artifacts:
+  files:
+    - '**/*.war'
+    - '**/*.zip'
+    - '**/*.jar'
+  discard-paths: yes
