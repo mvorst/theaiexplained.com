@@ -6,30 +6,43 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.util.Date;
 import java.util.Iterator;
+import java.util.Map;
+import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicReference;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
 import com.mattvorst.shared.constant.EnvironmentConstants;
 import com.mattvorst.shared.constant.PropertyType;
+import com.mattvorst.shared.constant.SystemMessageType;
 import com.mattvorst.shared.dao.model.system.SystemProperty;
+import com.mattvorst.shared.dao.model.system.UserSystemMessage;
+import com.mattvorst.shared.model.DynamoResultList;
 import com.mattvorst.shared.service.AmazonServiceFactory;
+import com.mattvorst.shared.util.DynamoDbUtils;
 import com.mattvorst.shared.util.Environment;
+import com.mattvorst.shared.util.Streams;
 import com.mattvorst.shared.util.Utils;
 import org.dom4j.Document;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
 import software.amazon.awssdk.core.async.AsyncRequestBody;
+import software.amazon.awssdk.enhanced.dynamodb.DynamoDbAsyncIndex;
 import software.amazon.awssdk.enhanced.dynamodb.DynamoDbAsyncTable;
 import software.amazon.awssdk.enhanced.dynamodb.DynamoDbEnhancedAsyncClient;
 import software.amazon.awssdk.enhanced.dynamodb.Key;
 import software.amazon.awssdk.enhanced.dynamodb.TableSchema;
+import software.amazon.awssdk.enhanced.dynamodb.model.QueryConditional;
+import software.amazon.awssdk.enhanced.dynamodb.model.QueryEnhancedRequest;
 import software.amazon.awssdk.services.dynamodb.DynamoDbAsyncClient;
+import software.amazon.awssdk.services.dynamodb.model.AttributeValue;
 import software.amazon.awssdk.services.s3.S3AsyncClient;
 import software.amazon.awssdk.services.s3.model.ObjectCannedACL;
 import software.amazon.awssdk.services.s3.model.PutObjectRequest;
@@ -55,8 +68,8 @@ public class CodeBuildDeployMain {
 	}
 
 	private void run(){
-		String destRegion = Environment.get(EnvironmentConstants.AWS_S3_REGION); //"us-west-1";
-		String destBucket = Environment.get(EnvironmentConstants.AWS_S3_BUCKET_CDN); //"us-west-1.ci.mattvorst.com";
+		String destRegion = Environment.get(EnvironmentConstants.AWS_S3_REGION);
+		String destBucket = Environment.get(EnvironmentConstants.AWS_S3_BUCKET_CDN);
 
 		amazonS3Destination = AmazonServiceFactory.getS3AsyncClient(destRegion, "");
 		dynamoDbAsyncClient = AmazonServiceFactory.getDynamoDbAsyncClient(destRegion, "");
@@ -115,72 +128,72 @@ public class CodeBuildDeployMain {
 		return table.getItem(Key.builder().partitionValue(propertyType.toString()).build());
 	}
 
-//	public CompletableFuture<UserSystemMessage> getUserSystemMessage(UUID messageUuid) {
-//		DynamoDbAsyncTable<UserSystemMessage> table = dynamoDbEnhancedAsyncClient.table(UserSystemMessage.TABLE_NAME, TableSchema.fromBean(UserSystemMessage.class));
-//		return table.getItem(Key.builder().partitionValue(messageUuid.toString()).build());
-//	}
-//
-//	public CompletableFuture<Void> saveUserSystemMessage(UserSystemMessage userSystemMessage) {
-//		DynamoDbAsyncTable<UserSystemMessage> table = dynamoDbEnhancedAsyncClient.table(UserSystemMessage.TABLE_NAME, TableSchema.fromBean(UserSystemMessage.class));
-//		return table.putItem(userSystemMessage);
-//	}
-//
-//	private CompletableFuture<DynamoResultList<UserSystemMessage>> getUserSystemMessageListByUserUuid(UUID userUuid, int pageSize, Map<String, AttributeValue> exclusiveStartKey) {
-//		final DynamoDbAsyncTable<UserSystemMessage> table = dynamoDbEnhancedAsyncClient.table(UserSystemMessage.TABLE_NAME, TableSchema.fromBean(UserSystemMessage.class));
-//		final DynamoDbAsyncIndex<UserSystemMessage> dynamoDbAsyncIndex = table.index("userUuid-createdDateAndMessageUuid-index");
-//
-//		QueryEnhancedRequest request = QueryEnhancedRequest.builder()
-//				.queryConditional(QueryConditional.keyEqualTo(Key.builder().partitionValue(userUuid.toString()).build()))
-//				.limit(pageSize)
-//				.scanIndexForward(false)
-//				.exclusiveStartKey(exclusiveStartKey)
-//				.build();
-//
-//		return DynamoDbUtils.queryWithPagination(dynamoDbAsyncIndex, request);
-//	}
-//
+	public CompletableFuture<UserSystemMessage> getUserSystemMessage(UUID messageUuid) {
+		DynamoDbAsyncTable<UserSystemMessage> table = dynamoDbEnhancedAsyncClient.table(UserSystemMessage.TABLE_NAME, TableSchema.fromBean(UserSystemMessage.class));
+		return table.getItem(Key.builder().partitionValue(messageUuid.toString()).build());
+	}
+
+	public CompletableFuture<Void> saveUserSystemMessage(UserSystemMessage userSystemMessage) {
+		DynamoDbAsyncTable<UserSystemMessage> table = dynamoDbEnhancedAsyncClient.table(UserSystemMessage.TABLE_NAME, TableSchema.fromBean(UserSystemMessage.class));
+		return table.putItem(userSystemMessage);
+	}
+
+	private CompletableFuture<DynamoResultList<UserSystemMessage>> getUserSystemMessageListByUserUuid(UUID userUuid, int pageSize, Map<String, AttributeValue> exclusiveStartKey) {
+		final DynamoDbAsyncTable<UserSystemMessage> table = dynamoDbEnhancedAsyncClient.table(UserSystemMessage.TABLE_NAME, TableSchema.fromBean(UserSystemMessage.class));
+		final DynamoDbAsyncIndex<UserSystemMessage> dynamoDbAsyncIndex = table.index("userUuid-createdDateAndMessageUuid-index");
+
+		QueryEnhancedRequest request = QueryEnhancedRequest.builder()
+				.queryConditional(QueryConditional.keyEqualTo(Key.builder().partitionValue(userUuid.toString()).build()))
+				.limit(pageSize)
+				.scanIndexForward(false)
+				.exclusiveStartKey(exclusiveStartKey)
+				.build();
+
+		return DynamoDbUtils.queryWithPagination(dynamoDbAsyncIndex, request);
+	}
+
 	private void createUserSystemMessage(int deployedBuildNumber, int availableBuildNumber){
 
 		System.out.println("Send (Dev / CI) User Message");
-//
-//		UUID userUuid = Environment.getUuid(EnvironmentConstants.ADMIN_USER_UUID);
-//
-//		AtomicReference<UserSystemMessage> userSystemMessageAtomicReference = new AtomicReference<>();
-//		DynamoResultList<UserSystemMessage> dynamoResultList = new DynamoResultList<>();
-//		do {
-//			dynamoResultList = getUserSystemMessageListByUserUuid(userUuid, 20, dynamoResultList.getLastEvaluatedKey()).join();
-//			Streams.of(dynamoResultList.getList()).forEach(userSystemMessage -> {
-//				if(SystemMessageType.SERVER_UPGRADE_AVAILABLE.equals(userSystemMessage.getSystemMessageType())){
-//					userSystemMessageAtomicReference.set(userSystemMessage);
-//				}
-//			});
-//		}while(!dynamoResultList.empty());
-//
-//		UserSystemMessage userSystemMessage = userSystemMessageAtomicReference.get();
-//		if(userSystemMessage == null) {
-//			System.out.println("- Message not found; Creating User Message");
-//			userSystemMessage = new UserSystemMessage();
-//			userSystemMessage.setUserUuid(userUuid);
-//			userSystemMessage.setSystemMessageType(SystemMessageType.SERVER_UPGRADE_AVAILABLE);
-//			int count = 0;
-//			do{
-//				UUID messageUuid = UUID.randomUUID();
-//				if(getUserSystemMessage(messageUuid).join() == null){
-//					userSystemMessage.setMessageUuid(messageUuid);
-//				}
-//			}while(userSystemMessage.getMessageUuid() == null && count++ < 10);
-//		}else{
-//			System.out.println("- Message found; Updating User Message");
-//		}
-//
-//		userSystemMessage.setTitle("Server Upgrade Available (" + deployedBuildNumber + " -> " + availableBuildNumber + ")");
-//		userSystemMessage.setMessage("Server version " + availableBuildNumber + " is available. Please upgrade the server from version " + deployedBuildNumber + ".");
-//		userSystemMessage.setCreatedDate(new Date());
-//		userSystemMessage.setUpdatedDate(new Date());
-//
-//		saveUserSystemMessage(userSystemMessage).join();
-//
-//		System.out.println("- User Message Saved");
+
+		UUID userUuid = Environment.getUuid(EnvironmentConstants.ADMIN_USER_UUID);
+
+		AtomicReference<UserSystemMessage> userSystemMessageAtomicReference = new AtomicReference<>();
+		DynamoResultList<UserSystemMessage> dynamoResultList = new DynamoResultList<>();
+		do {
+			dynamoResultList = getUserSystemMessageListByUserUuid(userUuid, 20, dynamoResultList.getLastEvaluatedKey()).join();
+			Streams.of(dynamoResultList.getList()).forEach(userSystemMessage -> {
+				if(SystemMessageType.SERVER_UPGRADE_AVAILABLE.equals(userSystemMessage.getSystemMessageType())){
+					userSystemMessageAtomicReference.set(userSystemMessage);
+				}
+			});
+		}while(!dynamoResultList.empty());
+
+		UserSystemMessage userSystemMessage = userSystemMessageAtomicReference.get();
+		if(userSystemMessage == null) {
+			System.out.println("- Message not found; Creating User Message");
+			userSystemMessage = new UserSystemMessage();
+			userSystemMessage.setUserUuid(userUuid);
+			userSystemMessage.setSystemMessageType(SystemMessageType.SERVER_UPGRADE_AVAILABLE);
+			int count = 0;
+			do{
+				UUID messageUuid = UUID.randomUUID();
+				if(getUserSystemMessage(messageUuid).join() == null){
+					userSystemMessage.setMessageUuid(messageUuid);
+				}
+			}while(userSystemMessage.getMessageUuid() == null && count++ < 10);
+		}else{
+			System.out.println("- Message found; Updating User Message");
+		}
+
+		userSystemMessage.setTitle("Server Upgrade Available (" + deployedBuildNumber + " -> " + availableBuildNumber + ")");
+		userSystemMessage.setMessage("Server version " + availableBuildNumber + " is available. Please upgrade the server from version " + deployedBuildNumber + ".");
+		userSystemMessage.setCreatedDate(new Date());
+		userSystemMessage.setUpdatedDate(new Date());
+
+		saveUserSystemMessage(userSystemMessage).join();
+
+		System.out.println("- User Message Saved");
 	}
 
 	private int getBuildNumber() {

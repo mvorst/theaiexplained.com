@@ -11,7 +11,7 @@
 	<environment type="ALL">
 		<properties>
 			<property id="ADMINISTRATOR_EMAIL">matt@mattvorst.com</property>
-			<property id="BUILD_NUMBER">2</property>
+			<property id="BUILD_NUMBER">3</property>
 			<property id="EXTERNAL_JS_URL"></property>
 		</properties>
 	</environment>
@@ -46,6 +46,8 @@
 			
 			<property id="AWS_SQS_LOG_QUEUE">https://sqs.us-west-1.amazonaws.com/230817973666/log_queue</property>
 
+			<property id="ADMIN_USER_UUID">3386d6ec-96a7-4ea5-bf3e-c33c00288d89</property>
+
 		</properties>
 	</environment>
 
@@ -79,6 +81,8 @@
 			<property id="AWS_IMAGE_CDN_URL">https://ci.cdn.theaiexplained.com</property>
 
 			<property id="AWS_SQS_LOG_QUEUE">https://sqs.us-west-1.amazonaws.com/230817973666/log_queue</property>
+
+			<property id="ADMIN_USER_UUID">3386d6ec-96a7-4ea5-bf3e-c33c00288d89</property>
 
 		</properties>
 	</environment>
