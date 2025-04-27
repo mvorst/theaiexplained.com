@@ -55,7 +55,7 @@ public class CodeBuildDeployMain {
 	}
 
 	private void run(){
-		String destRegion = Environment.get(EnvironmentConstants.AWS_REGION); //"us-west-1";
+		String destRegion = Environment.get(EnvironmentConstants.AWS_S3_REGION); //"us-west-1";
 		String destBucket = Environment.get(EnvironmentConstants.AWS_S3_BUCKET_CDN); //"us-west-1.ci.mattvorst.com";
 
 		amazonS3Destination = AmazonServiceFactory.getS3AsyncClient(destRegion, "");
