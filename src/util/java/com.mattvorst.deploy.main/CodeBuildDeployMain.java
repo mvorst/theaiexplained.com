@@ -243,7 +243,7 @@ public class CodeBuildDeployMain {
 		ZipInputStream zipInputStream = null;
 
 		try {
-			inputStream = new FileInputStream("./build/distributions/MattVorst_Docs-CI-0.0.1.zip");
+			inputStream = new FileInputStream("./build/distributions/AIExplained_Docs-CI-0.0.1.zip");
 			zipInputStream = new ZipInputStream(inputStream);
 
 			ZipEntry zipEntry = null;
