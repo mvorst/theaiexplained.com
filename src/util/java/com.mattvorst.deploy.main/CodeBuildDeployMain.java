@@ -69,7 +69,7 @@ public class CodeBuildDeployMain {
 
 	private void run(){
 		String destRegion = Environment.get(EnvironmentConstants.AWS_S3_REGION);
-		String destBucket = Environment.get(EnvironmentConstants.AWS_S3_BUCKET_BUILD);
+		String destBucket = Environment.get(EnvironmentConstants.AWS_S3_BUCKET_CDN);
 
 		amazonS3Destination = AmazonServiceFactory.getS3AsyncClient(destRegion, "");
 		dynamoDbAsyncClient = AmazonServiceFactory.getDynamoDbAsyncClient(destRegion, "");
