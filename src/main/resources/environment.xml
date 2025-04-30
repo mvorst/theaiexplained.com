@@ -79,8 +79,9 @@
 
 			<property id="AWS_S3_BUCKET_TEMP_FILE_DATA">us-west-1.ci.temp.theaiexplained.com</property>
 			<property id="AWS_S3_BUCKET_FILE_DATA">us-west-1.ci.cdn.theaiexplained.com</property>
-			<property id="AWS_IMAGE_CDN_URL">https://ci.cdn.theaiexplained.com</property>
 			<property id="AWS_S3_BUCKET_BUILD">us-west-1.ci.theaiexplained.com</property>
+
+			<property id="AWS_IMAGE_CDN_URL">https://ci.cdn.theaiexplained.com</property>
 
 			<property id="AWS_SQS_LOG_QUEUE">https://sqs.us-west-1.amazonaws.com/230817973666/log_queue</property>
 

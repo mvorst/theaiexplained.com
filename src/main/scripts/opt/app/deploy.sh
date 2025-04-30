@@ -2,9 +2,9 @@
 # deploy.sh - Script to update Spring Boot app from S3 and restart the service
 
 # Variables (modify as needed)
-S3_WAR="s3://app.theaiexplained.com/build/TheAIExplained_com-0.0.1.war"
+S3_WAR="s3://us-west-1.ci.theaiexplained.com/build/TheAIExplained_com-0.0.1.war"
 DEST_WAR="/opt/app/webapp.war"
-S3_DOCS="s3://app.theaiexplained.com/build/AIExplained_Docs-CI-0.0.1.zip"
+S3_DOCS="s3://us-west-1.ci.theaiexplained.com/build/AIExplained_Docs-CI-0.0.1.zip"
 DOCS_DEST="/var/www/html"
 SERVICE_NAME="webapp.service"  # Change to your service name
 
