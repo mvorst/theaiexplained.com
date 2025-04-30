@@ -11,7 +11,7 @@
 	<environment type="ALL">
 		<properties>
 			<property id="ADMINISTRATOR_EMAIL">matt@mattvorst.com</property>
-			<property id="BUILD_NUMBER">3</property>
+			<property id="BUILD_NUMBER">4</property>
 			<property id="EXTERNAL_JS_URL"></property>
 		</properties>
 	</environment>
@@ -43,6 +43,7 @@
 			<property id="AWS_S3_BUCKET_TEMP_FILE_DATA">us-west-1.ci.temp.theaiexplained.com</property>
 			<property id="AWS_S3_BUCKET_FILE_DATA">us-west-1.ci.cdn.theaiexplained.com</property>
 			<property id="AWS_S3_BUCKET_CDN">us-west-1.ci.cdn.theaiexplained.com</property>
+			<property id="AWS_S3_BUCKET_BUILD">us-west-1.ci.theaiexplained.com</property>
 			
 			<property id="AWS_SQS_LOG_QUEUE">https://sqs.us-west-1.amazonaws.com/230817973666/log_queue</property>
 
@@ -59,7 +60,7 @@
 			<property id="AWS_S3_REGION">us-west-1</property>
 			<property id="AWS_SQS_SERVICE_ENDPOINT">https://sqs.us-west-1.amazonaws.com</property>
 			<property id="BASE_URL">https://ci.theaiexplained.com</property>
-			<property id="CDN_URL"></property>
+			<property id="CDN_URL">https://ci.cdn.theaiexplained.com/cdn</property>
 			<property id="EXTERNAL_JS_URL"></property>
 			<property id="LOG_REQUESTS_LOCALLY">TRUE</property>
 
@@ -79,6 +80,7 @@
 			<property id="AWS_S3_BUCKET_TEMP_FILE_DATA">us-west-1.ci.temp.theaiexplained.com</property>
 			<property id="AWS_S3_BUCKET_FILE_DATA">us-west-1.ci.cdn.theaiexplained.com</property>
 			<property id="AWS_IMAGE_CDN_URL">https://ci.cdn.theaiexplained.com</property>
+			<property id="AWS_S3_BUCKET_BUILD">us-west-1.ci.theaiexplained.com</property>
 
 			<property id="AWS_SQS_LOG_QUEUE">https://sqs.us-west-1.amazonaws.com/230817973666/log_queue</property>
 

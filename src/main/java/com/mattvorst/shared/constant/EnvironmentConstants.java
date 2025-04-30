@@ -49,6 +49,7 @@ public class EnvironmentConstants
 	public static final String AWS_SQS_SERVICE_ENDPOINT = "AWS_SQS_SERVICE_ENDPOINT";
 	public static final String AWS_SQS_REGION = "AWS_SQS_REGION";
 	public static final String AWS_S3_BUCKET_FILE_DATA = "AWS_S3_BUCKET_FILE_DATA";
+	public static final String AWS_S3_BUCKET_BUILD = "AWS_S3_BUCKET_BUILD";
 	public static final String AWS_S3_BUCKET_PUBLIC_FILE_DATA = "AWS_S3_BUCKET_PUBLIC_FILE_DATA";
 	public static final String AWS_S3_BUCKET_TEMP_FILE_DATA = "AWS_S3_BUCKET_TEMP_FILE_DATA";
 	public static final String AWS_S3_URL_SIGNER_PROFILE = "AWS_S3_URL_SIGNER_PROFILE";
