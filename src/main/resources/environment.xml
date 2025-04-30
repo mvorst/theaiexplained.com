@@ -11,7 +11,7 @@
 	<environment type="ALL">
 		<properties>
 			<property id="ADMINISTRATOR_EMAIL">matt@mattvorst.com</property>
-			<property id="BUILD_NUMBER">5</property>
+			<property id="BUILD_NUMBER">6</property>
 			<property id="EXTERNAL_JS_URL"></property>
 		</properties>
 	</environment>

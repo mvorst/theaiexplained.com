@@ -5,7 +5,7 @@
 S3_WAR="s3://us-west-1.ci.theaiexplained.com/build/TheAIExplained_com-0.0.1.war"
 DEST_WAR="/opt/app/webapp.war"
 S3_DOCS="s3://us-west-1.ci.theaiexplained.com/build/AIExplained_Docs-CI-0.0.1.zip"
-DOCS_DEST="/var/www/html"
+DOCS_DEST="/var/www"
 SERVICE_NAME="webapp.service"  # Change to your service name
 
 echo "Clearing logs"

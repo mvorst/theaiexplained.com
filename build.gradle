@@ -93,7 +93,14 @@ tasks.register('makeWar', War) {
 tasks.register('makeDocs', Zip) {
     archiveBaseName = "AIExplained_Docs-CI"
     from("src/main/docs/") {
+        exclude("eslint.config.js")
+        exclude("js")
         exclude("node_modules")
+        exclude("package*.json")
+        exclude("rollup.config.js")
+        exclude("scripts")
+        exclude("vite.config.js")
+        exclude("yarn.lock")
         into("html")
     }
 }
