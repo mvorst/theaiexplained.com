@@ -97,6 +97,7 @@ tasks.register('makeDocs', Zip) {
         exclude("js")
         exclude("node_modules")
         exclude("package*.json")
+        exclude("README.md")
         exclude("rollup.config.js")
         exclude("scripts")
         exclude("vite.config.js")
