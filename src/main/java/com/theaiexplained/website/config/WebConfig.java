@@ -5,10 +5,19 @@ import java.util.Locale;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.mattvorst.shared.constant.EnvironmentConstants;
+import com.mattvorst.shared.dao.FileDao;
+import com.mattvorst.shared.dao.SecurityDao;
+import com.mattvorst.shared.dao.SystemDao;
+import com.mattvorst.shared.util.Environment;
+import com.mattvorst.shared.util.UUIDConverter;
+import com.theaiexplained.website.dao.ContentDao;
+import com.theaiexplained.website.dao.UserDao;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ResourceBundleMessageSource;
+import org.springframework.format.FormatterRegistry;
 import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
@@ -31,32 +40,42 @@ public class WebConfig implements WebMvcConfigurer {
 		return messageSource;
 	}
 
-//	@Bean
-//	public InternalResourceViewResolver viewResolver() {
-//		InternalResourceViewResolver resolver = new InternalResourceViewResolver();
-//		// Assuming your JSP files are directly in /webapp/WEB-INF/ (which is the usual location)
-//		// If you truly want them at the root of webapp, adjust the prefix accordingly.
-//		resolver.setPrefix("/WEB-INF/jsp/");
-//		resolver.setSuffix(".jsp");
-//		return resolver;
-//	}
-
 	@Override
 	public void configureViewResolvers(ViewResolverRegistry registry) {
 		registry.jsp("/WEB-INF/jsp/", ".jsp");
 	}
 
-//	public void addFormatters(FormatterRegistry registry) {
-//		registry.addConverter(new UUIDConverter());
-//	}
+	public void addFormatters(FormatterRegistry registry) {
+		registry.addConverter(new UUIDConverter());
+	}
 
 	@Bean
-	ObjectMapper objectMapper() {
+	public ObjectMapper objectMapper() {
 		return new ObjectMapper().setSerializationInclusion(Include.NON_NULL).configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 	}
 
-//	@Override
-//	public void addInterceptors(InterceptorRegistry registry) {
-//		registry.addInterceptor(springRequestInterceptor);
+//	@Bean
+//	public ContentDao contentDao() {
+//		return new ContentDao(Environment.get(EnvironmentConstants.AWS_DEFAULT_PROFILE));
+//	}
+//
+//	@Bean
+//	public UserDao userDao() {
+//		return  new UserDao(Environment.get(EnvironmentConstants.AWS_DEFAULT_PROFILE));
+//	}
+//
+//	@Bean
+//	public FileDao fileDao() {
+//		return new FileDao(Environment.get(EnvironmentConstants.AWS_DEFAULT_PROFILE));
+//	}
+//
+//	@Bean
+//	public SecurityDao securityDao() {
+//		return new SecurityDao(Environment.get(EnvironmentConstants.AWS_DEFAULT_PROFILE));
+//	}
+//
+//	@Bean
+//	public SystemDao systemDao() {
+//		return new SystemDao(Environment.get(EnvironmentConstants.AWS_DEFAULT_PROFILE));
 //	}
 }

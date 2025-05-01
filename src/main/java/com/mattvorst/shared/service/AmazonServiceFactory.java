@@ -25,8 +25,8 @@ public class AmazonServiceFactory {
 			.readTimeout(Duration.ofSeconds(90))
 			.build();
 
-	public static AwsCredentialsProvider getAWSCredentialsProvider(String credentialProfile){
-		return !Utils.empty(credentialProfile) ? ProfileCredentialsProvider.builder().profileName(credentialProfile).build() : DefaultCredentialsProvider.create();
+	public static AwsCredentialsProvider getAWSCredentialsProvider(String profile){
+		return !Utils.empty(profile) ? ProfileCredentialsProvider.builder().profileName(profile).build() : DefaultCredentialsProvider.create();
 	}
 
 	public static SqsAsyncClient getSqsAsyncClient(String profile){
@@ -53,10 +53,10 @@ public class AmazonServiceFactory {
 	}
 
 
-	public static S3AsyncClient getS3AsyncClient(String region, String credentialProfile){
+	public static S3AsyncClient getS3AsyncClient(String region, String profile){
 		S3AsyncClient s3AsyncClient = S3AsyncClient.builder()
 				.region(Region.of(region))
-				.credentialsProvider(getAWSCredentialsProvider(credentialProfile))
+				.credentialsProvider(getAWSCredentialsProvider(profile))
 				.httpClient(httpS3Client)
 				.build();
 

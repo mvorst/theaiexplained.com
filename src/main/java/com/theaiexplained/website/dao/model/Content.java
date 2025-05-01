@@ -1,6 +1,7 @@
 package com.theaiexplained.website.dao.model;
 
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 import com.mattvorst.shared.dao.convert.DateAttributeConverter;

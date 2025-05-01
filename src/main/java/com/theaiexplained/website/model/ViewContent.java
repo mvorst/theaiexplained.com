@@ -3,12 +3,15 @@ package com.theaiexplained.website.model;
 import java.util.Date;
 import java.util.UUID;
 
-import com.mattvorst.shared.service.FileService;
+import com.theaiexplained.website.constant.ContentCategoryType;
 import com.theaiexplained.website.dao.model.Content;
+import com.theaiexplained.website.dao.model.ContentAssociation;
+import com.theaiexplained.website.dao.model.FeaturedContent;
 import org.springframework.beans.BeanUtils;
 
 public class ViewContent {
     private UUID contentUuid;
+    private ContentCategoryType contentCategoryType;
     private String cardHeaderImageUrl;
     private UUID cardHeaderImageFileUuid;
     private String cardTitle;
@@ -46,6 +49,18 @@ public class ViewContent {
         }
     }
 
+    public ViewContent(ContentAssociation contentAssociation) {
+        if (contentAssociation != null) {
+            BeanUtils.copyProperties(contentAssociation, this);
+        }
+    }
+
+    public ViewContent(FeaturedContent featuredContent) {
+        if (featuredContent != null) {
+            BeanUtils.copyProperties(featuredContent, this);
+        }
+    }
+
     // Getters and Setters
     public UUID getContentUuid() {
         return contentUuid;
@@ -53,6 +68,14 @@ public class ViewContent {
 
     public void setContentUuid(UUID contentUuid) {
         this.contentUuid = contentUuid;
+    }
+
+    public ContentCategoryType getContentCategoryType() {
+        return contentCategoryType;
+    }
+
+    public void setContentCategoryType(ContentCategoryType contentCategoryType) {
+        this.contentCategoryType = contentCategoryType;
     }
 
     public String getCardHeaderImageUrl() {

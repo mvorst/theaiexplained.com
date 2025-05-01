@@ -15,6 +15,7 @@ const ContentDetail = () => {
 
   const [content, setContent] = useState({
     contentUuid: null,
+    contentCategoryType: 'BLOG_POST',
     cardHeaderImageUrl: '',
     cardHeaderImageFileUuid: null,
     cardTitle: '',
@@ -41,8 +42,10 @@ const ContentDetail = () => {
   });
 
   useEffect(() => {
-    if (contentUuid) {
+    if (contentUuid && contentUuid !== 'new') {
       fetchContent();
+    }else{
+      setLoading(false);
     }
   }, [contentUuid]);
 
@@ -164,6 +167,30 @@ const ContentDetail = () => {
 
         <div className="form-section">
           <h2>Content</h2>
+
+          <div className="form-group">
+            <label htmlFor="contentCategoryType">Content Category Type *</label>
+            <select
+              id="contentCategoryType"
+              name="contentCategoryType"
+              value={content.contentCategoryType}
+              onChange={handleChange}
+              required
+            >
+              <optgroup label="Screens">
+                <option value="START_HERE">Start Here</option>
+                <option value="NEWS_ARTICLE">AI News</option>
+                <option value="RESOURCES">Resources</option>
+                <option value="BLOG_POST">Blog</option>
+              </optgroup>
+              <optgroup label="Other">
+                <option value="INSTRUCTIONS">Instructions</option>
+                <option value="MODEL">Model</option>
+                <option value="COMPANY">Company</option>
+                <option value="PERSON">Person</option>
+              </optgroup>
+            </select>
+          </div>
 
           <div className="form-group">
             <label htmlFor="title">Content Title *</label>
