@@ -1,3 +1,4 @@
+<%@ taglib uri="jakarta.tags.core" prefix="c" %>
 <% request.setAttribute("htmlTitle", "Home"); %>
 
 <%@ include file="./include/header-body.jsp" %>
@@ -29,38 +30,27 @@
 
         <!-- Introduction Section -->
         <section class="intro">
-            <div class="container">
-                <div class="section-header centered">
-                    <h2>AI Doesn't Have to Be Complicated</h2>
-                    <p>We simplify AI concepts and show you practical applications that enhance your life.</p>
+        <c:choose>
+            <c:when test="${empty homeContent.startHereContentList.list}">
+                <div class="no-content">
+                    <p>No articles available at this time. Check back soon!</p>
                 </div>
-                <div class="feature-cards">
-                    <div class="feature-card">
-                        <div class="icon">
-                            <img src="https://ci.cdn.theaiexplained.com/2aac4b85-a035-4da2-8f05-57ffafb6e3d9" alt="Learn AI" />
-                        </div>
-                        <h3>Learn AI Fundamentals</h3>
-                        <p>Understand the basics of AI and how it can help your work.</p>
-                        <a href="<%= Environment.get(EnvironmentConstants.BASE_URL) %>/learn-ai.jsp" class="card-link">Start Learning →</a>
+            </c:when>
+            <c:otherwise>
+                <div class="container">
+                    <div class="section-header centered">
+                        <h2>AI Doesn't Have to Be Complicated</h2>
+                        <p>We simplify AI concepts and show you practical applications that enhance your life.</p>
                     </div>
-                    <div class="feature-card">
-                        <div class="icon">
-                            <img src="<%= Environment.get(EnvironmentConstants.CDN_URL) %>/<%= Environment.get(EnvironmentConstants.BUILD_NUMBER) %>/img/icons/industry.svg" alt="Industry Solutions" />
-                        </div>
-                        <h3>Industry Applications</h3>
-                        <p>Discover how AI is being used in your specific field.</p>
-                        <a href="<%= Environment.get(EnvironmentConstants.BASE_URL) %>/industries.jsp" class="card-link">Browse Industries →</a>
-                    </div>
-                    <div class="feature-card">
-                        <div class="icon">
-                            <img src="<%= Environment.get(EnvironmentConstants.CDN_URL) %>/<%= Environment.get(EnvironmentConstants.BUILD_NUMBER) %>/img/icons/tools.svg" alt="Practical Tools" />
-                        </div>
-                        <h3>Practical AI Tools</h3>
-                        <p>Find the right AI tools to enhance your productivity.</p>
-                        <a href="<%= Environment.get(EnvironmentConstants.BASE_URL) %>/tools.jsp" class="card-link">Explore Tools →</a>
+                    <div class="feature-cards">
+                        <c:forEach var="content" items="${homeContent.startHereContentList.list}" begin="0" end="3" varStatus="status">
+                            <c:set var="content" value="${content}" scope="request" />
+                            <%@ include file="./include/content-card.jsp" %>
+                        </c:forEach>
                     </div>
                 </div>
-            </div>
+            </c:otherwise>
+            </c:choose>
         </section>
 
         <!-- Popular Resources Section -->

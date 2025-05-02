@@ -62,34 +62,8 @@
                         <!-- Blog Grid (remaining items) -->
                         <div class="blog-grid">
                             <c:forEach var="content" items="${contentList.list}" begin="1" varStatus="status">
-                                <div class="blog-card">
-                                    <div class="blog-card-image">
-                                        <c:choose>
-                                            <c:when test="${not empty content.headerImageUrl}">
-                                                <img src="${content.headerImageUrl}" alt="${content.cardTitle}" />
-                                            </c:when>
-                                            <c:otherwise>
-                                                <div class="placeholder-image">
-                                                    <img src="<%= Environment.get(EnvironmentConstants.CDN_URL) %>/<%= Environment.get(EnvironmentConstants.BUILD_NUMBER) %>/img/placeholder.png" alt="Placeholder" />
-                                                </div>
-                                            </c:otherwise>
-                                        </c:choose>
-                                        <c:if test="${not empty content.publishedDate}">
-                                            <div class="blog-card-date-badge">
-                                                <fmt:formatDate pattern="MMM d" value="${content.publishedDate}" />
-                                            </div>
-                                        </c:if>
-                                    </div>
-                                    <div class="blog-card-content">
-                                        <h3 class="blog-card-title">${content.cardTitle}</h3>
-                                        <p class="blog-card-subtitle">${content.cardSubtitle}</p>
-                                        <div class="blog-card-footer">
-                                            <a href="<%= Environment.get(EnvironmentConstants.BASE_URL) %>/blog/${content.contentUuid}/${fn:replace(content.cardTitle," ","-")}" class="blog-card-link">
-                                                ${not empty content.cardCTATitle ? content.cardCTATitle : 'Continue Reading'} <span class="arrow-icon">&rarr;</span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
+                                <c:set var="content" value="${content}" scope="request" />
+                                <%@ include file="./include/content-card.jsp" %>
                             </c:forEach>
                         </div>
                     </c:otherwise>
