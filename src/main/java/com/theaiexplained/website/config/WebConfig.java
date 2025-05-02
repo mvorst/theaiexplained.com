@@ -5,12 +5,14 @@ import java.util.Locale;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.mattvorst.shared.async.processor.TaskProcessor;
 import com.mattvorst.shared.constant.EnvironmentConstants;
 import com.mattvorst.shared.dao.FileDao;
 import com.mattvorst.shared.dao.SecurityDao;
 import com.mattvorst.shared.dao.SystemDao;
 import com.mattvorst.shared.util.Environment;
 import com.mattvorst.shared.util.UUIDConverter;
+import com.theaiexplained.website.async.processor.AppTaskProcessor;
 import com.theaiexplained.website.dao.ContentDao;
 import com.theaiexplained.website.dao.UserDao;
 import org.springframework.context.MessageSource;
@@ -54,7 +56,7 @@ public class WebConfig implements WebMvcConfigurer {
 		return new ObjectMapper().setSerializationInclusion(Include.NON_NULL).configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 	}
 
-//	@Bean
+	//	@Bean
 //	public ContentDao contentDao() {
 //		return new ContentDao(Environment.get(EnvironmentConstants.AWS_DEFAULT_PROFILE));
 //	}

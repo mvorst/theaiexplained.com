@@ -39,6 +39,8 @@ public class ViewContent {
     private String metaTwitterSite;
     private Date publishedDate;
 
+    private boolean featured;
+
     // Default constructor
     public ViewContent() {}
 
@@ -268,5 +270,13 @@ public class ViewContent {
 
     public void setPublishedDate(Date publishedDate) {
         this.publishedDate = publishedDate;
+    }
+
+    public boolean isFeatured() {
+        return featured;
+    }
+
+    public void setFeatured(boolean featured) {
+        this.featured = featured;
     }
 }

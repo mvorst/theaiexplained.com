@@ -38,13 +38,26 @@ const ContentDetail = () => {
     metaTwitterImageAltText: '',
     metaTwiterCard: 'summary_large_image',
     metaFBAppId: '',
-    metaTwitterSite: '@theaiexplained'
+    metaTwitterSite: '@theaiexplained',
+    featured: false,
+    publishedDate: formatDateForInput(new Date())
   });
+
+  // Function to format date for HTML input
+  function formatDateForInput(date) {
+    if (!date) return '';
+    if (typeof date === 'string') {
+      date = new Date(date);
+    }
+    return date instanceof Date && !isNaN(date)
+      ? date.toISOString().split('T')[0]
+      : '';
+  }
 
   useEffect(() => {
     if (contentUuid && contentUuid !== 'new') {
       fetchContent();
-    }else{
+    } else {
       setLoading(false);
     }
   }, [contentUuid]);
@@ -54,7 +67,14 @@ const ContentDetail = () => {
       setLoading(true);
       // Updated URL to match the endpoint in AdminController
       const response = await axios.get(`/rest/admin/1/content/${contentUuid}`);
-      setContent(response.data);
+      const contentData = response.data;
+
+      // Format the publishedDate if it exists
+      if (contentData.publishedDate) {
+        contentData.publishedDate = formatDateForInput(contentData.publishedDate);
+      }
+
+      setContent(contentData);
       setLoading(false);
     } catch (err) {
       setError('Failed to load content. Please try again later.');
@@ -64,11 +84,14 @@ const ContentDetail = () => {
   };
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
+    const { name, value, type, checked } = e.target;
+
+    // Handle checkbox inputs differently from other inputs
+    const newValue = type === 'checkbox' ? checked : value;
 
     setContent(prev => ({
       ...prev,
-      [name]: value
+      [name]: newValue
     }));
   };
 
@@ -78,14 +101,22 @@ const ContentDetail = () => {
     setError(null);
 
     try {
+      // Prepare submission data
+      const submissionData = { ...content };
+
+      // Convert publishedDate from string to Date object if it's set
+      if (submissionData.publishedDate) {
+        submissionData.publishedDate = new Date(submissionData.publishedDate);
+      }
+
       let response;
 
       if (contentUuid === 'new') {
         // Create new content
-        response = await axios.post('/rest/admin/1/content/', content);
+        response = await axios.post('/rest/admin/1/content/', submissionData);
       } else {
         // Update existing content
-        response = await axios.put(`/rest/admin/1/content/${contentUuid}`, content);
+        response = await axios.put(`/rest/admin/1/content/${contentUuid}`, submissionData);
       }
 
       // Redirect to content list page after successful save
@@ -159,14 +190,36 @@ const ContentDetail = () => {
         {contentUuid ? 'Edit Content' : 'Create New Content'}
       </h1>
 
-      {error && (
+      <Optional show={error !== null}>
         <div className="content-form-error">{error}</div>
-      )}
+      </Optional>
 
       <form onSubmit={handleSubmit} className="content-form">
 
         <div className="form-section">
           <h2>Content</h2>
+
+          <div className="form-group checkbox-group">
+            <input
+              type="checkbox"
+              id="featured"
+              name="featured"
+              checked={content.featured}
+              onChange={handleChange}
+            />
+            <label htmlFor="featured">Featured Content</label>
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="publishedDate">Publication Date</label>
+            <input
+              type="date"
+              id="publishedDate"
+              name="publishedDate"
+              value={content.publishedDate}
+              onChange={handleChange}
+            />
+          </div>
 
           <div className="form-group">
             <label htmlFor="contentCategoryType">Content Category Type *</label>

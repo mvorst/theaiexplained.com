@@ -1089,6 +1089,23 @@ section {
   margin-top: 1rem;
 }
 
+/* Checkbox Group Styling */
+.checkbox-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.checkbox-group input[type="checkbox"] {
+  width: auto;
+  margin-right: 0.5rem;
+}
+
+.checkbox-group label {
+  display: inline;
+  margin-bottom: 0;
+}
+
 .btn-cancel,
 .btn-submit {
   padding: 0.75rem 1.5rem;

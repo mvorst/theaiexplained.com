@@ -17,6 +17,7 @@ import software.amazon.awssdk.enhanced.dynamodb.DynamoDbAsyncIndex;
 import software.amazon.awssdk.enhanced.dynamodb.DynamoDbAsyncTable;
 import software.amazon.awssdk.enhanced.dynamodb.Key;
 import software.amazon.awssdk.enhanced.dynamodb.TableSchema;
+import software.amazon.awssdk.enhanced.dynamodb.model.GetItemEnhancedRequest;
 import software.amazon.awssdk.enhanced.dynamodb.model.QueryConditional;
 import software.amazon.awssdk.enhanced.dynamodb.model.QueryEnhancedRequest;
 import software.amazon.awssdk.enhanced.dynamodb.model.ScanEnhancedRequest;
@@ -29,7 +30,11 @@ public class ContentDao extends BaseDao {
 
 	public CompletableFuture<Content> getContent(UUID contentUuid) {
 		DynamoDbAsyncTable<Content> table = dynamoDbEnhancedAsyncClient.table(Content.TABLE_NAME, TableSchema.fromBean(Content.class));
-		return table.getItem(Key.builder().partitionValue(contentUuid.toString()).build());
+		return table.getItem(GetItemEnhancedRequest.builder()
+						.key(Key.builder().partitionValue(contentUuid.toString()).build())
+				.consistentRead(true)
+				.build()
+		);
 	}
 
 	public CompletableFuture<Void> saveContent(Content content) {
@@ -149,10 +154,11 @@ public class ContentDao extends BaseDao {
 	// FeaturedContent methods
 	public CompletableFuture<FeaturedContent> getFeaturedContent(ContentCategoryType contentCategoryType, UUID contentUuid) {
 		DynamoDbAsyncTable<FeaturedContent> table = dynamoDbEnhancedAsyncClient.table(FeaturedContent.TABLE_NAME, TableSchema.fromBean(FeaturedContent.class));
-		return table.getItem(Key.builder()
-				.partitionValue(contentCategoryType.toString())
-				.sortValue(contentUuid.toString())
-				.build());
+		return table.getItem(GetItemEnhancedRequest.builder()
+				.key(Key.builder().partitionValue(contentCategoryType.toString()).sortValue(contentUuid.toString()).build())
+				.consistentRead(true)
+				.build()
+		);
 	}
 
 	public CompletableFuture<Void> saveFeaturedContent(FeaturedContent featuredContent) {

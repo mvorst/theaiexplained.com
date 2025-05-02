@@ -1,23 +1,44 @@
 package com.theaiexplained.website.model;
 
-import java.util.Date;
-import java.util.UUID;
-
 import com.mattvorst.shared.model.DynamoResultList;
-import com.theaiexplained.website.constant.ContentCategoryType;
-import com.theaiexplained.website.dao.model.Content;
-import com.theaiexplained.website.dao.model.ContentAssociation;
 import com.theaiexplained.website.dao.model.FeaturedContent;
-import org.springframework.beans.BeanUtils;
 
 public class ViewHomeContent {
-    private DynamoResultList<FeaturedContent> blogPostList;
 
-    public DynamoResultList<FeaturedContent> getBlogPostList() {
-        return blogPostList;
+    private DynamoResultList<FeaturedContent> startHereContentList;
+    private DynamoResultList<FeaturedContent> blogPostContentList;
+    private DynamoResultList<FeaturedContent> resourcesContentList;
+    private DynamoResultList<FeaturedContent> modelsContentList;
+
+    public DynamoResultList<FeaturedContent> getStartHereContentList() {
+        return startHereContentList;
     }
 
-    public void setBlogPostList(DynamoResultList<FeaturedContent> blogPostList) {
-        this.blogPostList = blogPostList;
+    public void setStartHereContentList(DynamoResultList<FeaturedContent> startHereContentList) {
+        this.startHereContentList = startHereContentList;
+    }
+
+    public DynamoResultList<FeaturedContent> getBlogPostContentList() {
+        return blogPostContentList;
+    }
+
+    public void setBlogPostContentList(DynamoResultList<FeaturedContent> blogPostContentList) {
+        this.blogPostContentList = blogPostContentList;
+    }
+
+    public DynamoResultList<FeaturedContent> getResourcesContentList() {
+        return resourcesContentList;
+    }
+
+    public void setResourcesContentList(DynamoResultList<FeaturedContent> resourcesContentList) {
+        this.resourcesContentList = resourcesContentList;
+    }
+
+    public DynamoResultList<FeaturedContent> getModelsContentList() {
+        return modelsContentList;
+    }
+
+    public void setModelsContentList(DynamoResultList<FeaturedContent> modelsContentList) {
+        this.modelsContentList = modelsContentList;
     }
 }

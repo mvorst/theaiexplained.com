@@ -48,6 +48,8 @@ public class Content extends DefaultAuditable {
 	private String metaTwitterSite;
 	private Date publishedDate;
 
+	private boolean featured;
+
 	// Constructors
 	public Content() {}
 
@@ -266,6 +268,14 @@ public class Content extends DefaultAuditable {
 
 	public void setPublishedDate(Date publishedDate) {
 		this.publishedDate = publishedDate;
+	}
+
+	public boolean isFeatured() {
+		return featured;
+	}
+
+	public void setFeatured(boolean featured) {
+		this.featured = featured;
 	}
 
 	@DynamoDbSecondarySortKey(indexNames = {"contentCategoryType-publishedDateAndContentUuid-index"})

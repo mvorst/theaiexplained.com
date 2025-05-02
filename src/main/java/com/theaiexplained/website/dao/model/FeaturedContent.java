@@ -13,6 +13,7 @@ import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbConve
 import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbPartitionKey;
 import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbSecondaryPartitionKey;
 import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbSecondarySortKey;
+import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbSortKey;
 
 @DynamoDbBean
 public class FeaturedContent extends DefaultAuditable {
@@ -49,6 +50,7 @@ public class FeaturedContent extends DefaultAuditable {
 		this.contentCategoryType = contentCategoryType;
 	}
 
+	@DynamoDbSortKey
 	@DynamoDbSecondaryPartitionKey(indexNames = {"contentUuid-contentCategoryType-index"})
 	public UUID getContentUuid() {
 		return contentUuid;

@@ -8,6 +8,7 @@ import com.mattvorst.shared.util.CursorUtils;
 import com.mattvorst.shared.util.Streams;
 import com.theaiexplained.website.dao.model.Content;
 import com.theaiexplained.website.model.ViewContent;
+import com.theaiexplained.website.model.ViewHomeContent;
 import com.theaiexplained.website.service.ContentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestAttribute;
@@ -34,9 +35,9 @@ public class WebController {
 	/* GET: / -> /index.action */
 	@RequestMapping(value="/index.action", method= RequestMethod.GET)
 	public ModelAndView index(){
-		ModelAndView modelAndView = new ModelAndView("index");
+		ViewHomeContent viewHomeContent = contentService.getHomeContent();
 
-		return modelAndView;
+		return new ModelAndView("index", Map.of("homeContent", viewHomeContent));
 	}
 
 	/* GET: /login/ -> /login.action */
