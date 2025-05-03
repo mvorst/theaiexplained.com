@@ -6,7 +6,7 @@
     <div class="container">
         <div class="footer-content">
             <div class="footer-logo">
-                <img src="<%= Environment.get(EnvironmentConstants.CDN_URL) %>/<%= Environment.get(EnvironmentConstants.BUILD_NUMBER) %>/img/LogoLight.svg" alt="The AI Explained Logo" />
+                <a href="<%= Environment.get(EnvironmentConstants.BASE_URL) %>/"><img src="<%= Environment.get(EnvironmentConstants.CDN_URL) %>/<%= Environment.get(EnvironmentConstants.BUILD_NUMBER) %>/img/LogoHLight.svg" alt="The AI Explained Logo" /></a>
                 <p>Empowering everyone to thrive alongside AI</p>
             </div>
             <div class="footer-links">
@@ -52,7 +52,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>© <%= new java.util.Date().getYear() + 1900 %> TheAIExplained.com. All rights reserved.</p>
+            <p>&copy; <%= new java.util.Date().getYear() + 1900 %> TheAIExplained.com. All rights reserved.</p>
             <div class="footer-legal">
                 <a href="<%= Environment.get(EnvironmentConstants.BASE_URL) %>/privacy-policy.jsp">Privacy Policy</a>
                 <a href="<%= Environment.get(EnvironmentConstants.BASE_URL) %>/terms-of-use.jsp">Terms of Use</a>

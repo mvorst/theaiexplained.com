@@ -23,7 +23,7 @@ import org.springframework.stereotype.Service;
 import software.amazon.awssdk.services.dynamodb.model.AttributeValue;
 
 @Service
-public class ContentService {
+public class AdminService {
 
 	@Autowired private MessageSource messageSource;
 

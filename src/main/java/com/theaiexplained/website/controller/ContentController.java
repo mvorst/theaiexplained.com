@@ -40,30 +40,6 @@ public class ContentController extends BaseRestController {
 		return ResponseEntity.ok(new ViewContent(content));
 	}
 
-	@PostMapping("/")
-	public ResponseEntity<ViewContent> createContent(@RequestBody ViewContent viewContent) throws ValidationException {
-		Content content = contentService.createContent(viewContent);
-		return new ResponseEntity<>(new ViewContent(content), HttpStatus.CREATED);
-	}
-
-	@PutMapping("/{contentUuid}")
-	public ResponseEntity<ViewContent> updateContent(@PathVariable UUID contentUuid, @RequestBody ViewContent viewContent) throws ValidationException {
-		Content content = contentService.updateContent(contentUuid, viewContent);
-		if (content == null) {
-			return ResponseEntity.notFound().build();
-		}
-		return ResponseEntity.ok(new ViewContent(content));
-	}
-
-	@DeleteMapping("/{contentUuid}")
-	public ResponseEntity<ViewContent> deleteContent(@PathVariable UUID contentUuid) {
-		Content content = contentService.deleteContent(contentUuid);
-		if (content == null) {
-			return ResponseEntity.notFound().build();
-		}
-		return ResponseEntity.ok(new ViewContent(content));
-	}
-
 	@GetMapping("/")
 	public ResponseEntity<DynamoResultList<ViewContent>> getAllContent(@RequestParam(required = false) String cursor, @RequestParam(required = false, defaultValue = "10") int count) {
 		Map<String, AttributeValue> attributeValueMap = CursorUtils.decodeLastEvaluatedKeyFromCursor(cursor);

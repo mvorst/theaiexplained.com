@@ -100,6 +100,7 @@ tasks.register('makeDocs', Zip) {
         exclude("README.md")
         exclude("rollup.config.js")
         exclude("scripts")
+        exclude("static")
         exclude("vite.config.js")
         exclude("yarn.lock")
         into("html")

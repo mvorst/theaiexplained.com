@@ -46,6 +46,7 @@
 
 	<link href="<%= Environment.get(EnvironmentConstants.CDN_URL) %>/<%= Environment.get(EnvironmentConstants.BUILD_NUMBER) %>/style/<%=stylesheet%>" rel="stylesheet" type="text/css">
 	<link href="<%= Environment.get(EnvironmentConstants.CDN_URL) %>/<%= Environment.get(EnvironmentConstants.BUILD_NUMBER) %>/style/admin.css" rel="stylesheet" type="text/css">
+	<link href="<%= Environment.get(EnvironmentConstants.CDN_URL) %>/static/quill-2.0.3/quill.bubble.css" rel="stylesheet">
 
 	<meta charset="UTF-8">
 
@@ -54,6 +55,8 @@
 	<script type="text/javascript">
 		const environment = { baseUrl:"<%= Environment.get(EnvironmentConstants.BASE_URL) %>", buildNumber:"<%= Environment.get(EnvironmentConstants.BUILD_NUMBER) %>", cdnUrl:"<%= Environment.get(EnvironmentConstants.CDN_URL) %>" };
 	</script>
+
+	<script src="<%= Environment.get(EnvironmentConstants.CDN_URL) %>/static/quill-2.0.3/quill.js"></script>
 
 </head>
 

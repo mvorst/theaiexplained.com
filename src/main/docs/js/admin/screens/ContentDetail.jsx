@@ -3,7 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import FileUpload from "../../controls/FileUpload.jsx";
 import Optional from "../../controls/Optional.jsx";
-import LexicalEditor from "../../controls/LexicalEditor.jsx";
+import QuillEditor from "../../controls/QuillEditor.jsx";
 
 const ContentDetail = () => {
   const { id } = useParams();
@@ -294,14 +294,14 @@ const ContentDetail = () => {
           <div className="form-group">
             <label htmlFor="markupContent">Content (HTML) *</label>
 
-            {/*<div className="container">*/}
-            {/*  <LexicalEditor*/}
-            {/*    // Assuming LexicalEditor takes initial HTML or state string*/}
-            {/*    initialValue={content?.markupContent}*/}
-            {/*    // Assuming onChange provides the updated content as an HTML string*/}
-            {/*    onChange={(htmlContent) => handleChange({ target: { name: 'markupContent', value: htmlContent } })}*/}
-            {/*  />*/}
-            {/*</div>*/}
+            <QuillEditor
+              value={'initialValue'}
+              onChange={handleChange}
+              name={name}
+              placeholder={'placeholder'}
+              height={'3'}
+              readOnly={false}
+            />
 
             <textarea
               id="markupContent"

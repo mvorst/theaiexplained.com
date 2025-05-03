@@ -3,7 +3,6 @@ package com.theaiexplained.website.controller;
 import java.util.Map;
 import java.util.UUID;
 
-import com.mattvorst.shared.constant.AssetType;
 import com.mattvorst.shared.constant.EnvironmentConstants;
 import com.mattvorst.shared.exception.ValidationException;
 import com.mattvorst.shared.model.DynamoResultList;
@@ -15,9 +14,10 @@ import com.mattvorst.shared.service.FileService;
 import com.mattvorst.shared.util.CursorUtils;
 import com.mattvorst.shared.util.Environment;
 import com.mattvorst.shared.util.Utils;
+import com.theaiexplained.website.constant.ContentCategoryType;
 import com.theaiexplained.website.dao.model.Content;
 import com.theaiexplained.website.model.ViewContent;
-import com.theaiexplained.website.service.ContentService;
+import com.theaiexplained.website.service.AdminService;
 import org.apache.commons.lang3.stream.Streams;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -36,7 +36,7 @@ import software.amazon.awssdk.services.dynamodb.model.AttributeValue;
 @RestController
 public class AdminController {
 
-	@Autowired private ContentService contentService;
+	@Autowired private AdminService adminService;
 	@Autowired private FileService fileService;
 
 	@RequestMapping(value="/admin.action", method= RequestMethod.GET)
@@ -47,10 +47,10 @@ public class AdminController {
 	}
 
 	@GetMapping("/rest/admin/{version}/content/")
-	public ResponseEntity<DynamoResultList<ViewContent>> getContentByDate(@RequestParam(required = false) String cursor, @RequestParam(required = false, defaultValue = "10") int count) {
+	public ResponseEntity<DynamoResultList<ViewContent>> getContentListByDate(@RequestParam(required = true) ContentCategoryType contentCategoryType, @RequestParam(required = false) String cursor, @RequestParam(required = false, defaultValue = "10") int count) {
 		Map<String, AttributeValue> attributeValueMap = CursorUtils.decodeLastEvaluatedKeyFromCursor(cursor);
 
-		DynamoResultList<Content> dynamoResultList = contentService.getContentListByDate(count, attributeValueMap);
+		DynamoResultList<Content> dynamoResultList = adminService.getContentListByDate(contentCategoryType, count, attributeValueMap);
 
 		return ResponseEntity.ok(new DynamoResultList<>(
 				Streams.of(dynamoResultList.getList()).map(ViewContent::new).toList(),
@@ -60,7 +60,7 @@ public class AdminController {
 
 	@GetMapping("/rest/admin/{version}/content/{contentUuid}")
 	public ResponseEntity<ViewContent> getContent(@PathVariable UUID contentUuid) {
-		Content content = contentService.getContent(contentUuid);
+		Content content = adminService.getContent(contentUuid);
 
 		return ResponseEntity.ok(new ViewContent(content));
 	}
@@ -68,7 +68,7 @@ public class AdminController {
 	@PostMapping("/rest/admin/{version}/content/")
 	public ResponseEntity<ViewContent> createContent(@RequestBody ViewContent viewContent) throws ValidationException {
 
-		Content content = contentService.createContent(viewContent);
+		Content content = adminService.createContent(viewContent);
 
 		return ResponseEntity.ok(new ViewContent(content));
 	}
@@ -76,7 +76,7 @@ public class AdminController {
 	@PutMapping("/rest/admin/{version}/content/{contentUuid}")
 	public ResponseEntity<ViewContent> updateContent(@PathVariable UUID contentUuid, @RequestBody ViewContent viewContent) throws ValidationException {
 
-		Content content = contentService.updateContent(contentUuid, viewContent);
+		Content content = adminService.updateContent(contentUuid, viewContent);
 
 		return ResponseEntity.ok(new ViewContent(content));
 	}

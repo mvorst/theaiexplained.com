@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import axios from "axios";
 
 const ContentList = () => {
   const [contentItems, setContentItems] = useState([]);
@@ -7,46 +8,55 @@ const ContentList = () => {
   const [error, setError] = useState(null);
   const [cursor, setCursor] = useState(null);
   const [hasMore, setHasMore] = useState(false);
+  const [contentCategoryType, setContentCategoryType] = useState("BLOG_POST");
   const navigate = useNavigate();
 
   useEffect(() => {
-    const fetchContent = async () => {
-      try {
-        let url = '/rest/api/1/content/';
-        if (cursor) {
-          url += `?cursor=${cursor}`;
-        }
-
-        const response = await fetch(url);
-        if (!response.ok) {
-          throw new Error(`API error: ${response.status}`);
-        }
-
-        const data = await response.json();
-        setContentItems(data.list || []);
-        setHasMore(data.cursor !== null);
-        setCursor(data.cursor);
-        setLoading(false);
-      } catch (err) {
-        setError(err.message);
-        setLoading(false);
-      }
-    };
-
     fetchContent();
-  }, []);
+  }, [contentCategoryType]);
+
+  const fetchContent = async () => {
+    try {
+      setLoading(true);
+      let url = `/rest/admin/1/content/?contentCategoryType=${contentCategoryType}`;
+      if (cursor && contentCategoryType === prevCategoryRef.current) {
+        url += `&cursor=${cursor}`;
+      } else {
+        // Reset pagination when category changes
+        setCursor(null);
+      }
+
+      const response = await axios.get(url);
+      if (response.status !== 200) {
+        throw new Error(`API error: ${response.status}`);
+      }
+
+      const data = response.data;
+      setContentItems(data.list || []);
+      setHasMore(data.cursor !== null);
+      setCursor(data.cursor);
+      setLoading(false);
+      prevCategoryRef.current = contentCategoryType;
+    } catch (err) {
+      setError(err.message);
+      setLoading(false);
+    }
+  };
+
+  // Reference to keep track of category changes
+  const prevCategoryRef = React.useRef(contentCategoryType);
 
   const loadMore = async () => {
     if (!cursor || !hasMore) return;
 
     setLoading(true);
     try {
-      const response = await fetch(`/rest/api/1/content/?cursor=${cursor}`);
-      if (!response.ok) {
+      const response = await axios.get(`/rest/admin/1/content/?contentCategoryType=${contentCategoryType}&cursor=${cursor}`);
+      if (response.status !== 200) {
         throw new Error(`API error: ${response.status}`);
       }
 
-      const data = await response.json();
+      const data = response.data;
       setContentItems([...contentItems, ...(data.list || [])]);
       setHasMore(data.cursor !== null);
       setCursor(data.cursor);
@@ -55,6 +65,10 @@ const ContentList = () => {
       setError(err.message);
       setLoading(false);
     }
+  };
+
+  const handleCategoryChange = (e) => {
+    setContentCategoryType(e.target.value);
   };
 
   const handleRowClick = (contentUuid) => {
@@ -84,6 +98,28 @@ const ContentList = () => {
         <Link to="/content/new/detail" className="btn btn-primary">
           <span className="btn-icon">+</span> Create New Content
         </Link>
+      </div>
+
+      <div className="filter-section">
+        <div className="filter-group">
+          <label htmlFor="contentCategoryType">Filter by category:</label>
+          <select
+            id="contentCategoryType"
+            className="form-select"
+            value={contentCategoryType}
+            onChange={handleCategoryChange}
+          >
+            <option value="BLOG_POST">Blog Post</option>
+            <option value="INSTRUCTIONS">Instructions</option>
+            <option value="START_HERE">Start Here</option>
+            <option value="RESOURCES">Resources</option>
+            <option value="MODEL">Model</option>
+            <option value="COMPANY">Company</option>
+            <option value="PERSON">Person</option>
+            <option value="NEWS_ARTICLE">News Article</option>
+            <option value="HOME_CONTENT">Home Content</option>
+          </select>
+        </div>
       </div>
 
       <div className="content-list">

@@ -38,7 +38,6 @@ let config = {
       'preventAssignment': true,
       'process.env.NODE_ENV': JSON.stringify('production'),
     })
-    // uglify()
   ],
   output: {
     format: 'iife',

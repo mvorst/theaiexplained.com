@@ -6,6 +6,7 @@ import java.util.UUID;
 import com.mattvorst.shared.model.DynamoResultList;
 import com.mattvorst.shared.util.CursorUtils;
 import com.mattvorst.shared.util.Streams;
+import com.theaiexplained.website.constant.ContentCategoryType;
 import com.theaiexplained.website.dao.model.Content;
 import com.theaiexplained.website.model.ViewContent;
 import com.theaiexplained.website.model.ViewHomeContent;
@@ -54,7 +55,7 @@ public class WebController {
 
 		Map<String, AttributeValue> attributeValueMap = CursorUtils.decodeLastEvaluatedKeyFromCursor(cursor);
 
-		DynamoResultList<Content> contentList = contentService.getContentListByDate(count, attributeValueMap);
+		DynamoResultList<Content> contentList = contentService.getContentListByDate(ContentCategoryType.BLOG_POST, count, attributeValueMap);
 
 		DynamoResultList<ViewContent> dynamoResultList = new DynamoResultList<>(Streams.of(contentList.getList()).map(content -> new ViewContent(content)).toList(), contentList.getLastEvaluatedKey());
 
