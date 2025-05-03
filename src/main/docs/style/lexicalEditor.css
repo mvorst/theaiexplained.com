@@ -1,0 +1,173 @@
+/* Lexical Editor Styles */
+
+/* Editor Container */
+.editor-container {
+    position: relative;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    background-color: #fff;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.editor-inner {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+/* Toolbar */
+.toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 8px;
+    background-color: #f5f5f5;
+    border-bottom: 1px solid #ddd;
+    gap: 5px;
+}
+
+.toolbar-item {
+    border: none;
+    background: #fff;
+    border-radius: 4px;
+    padding: 6px 12px;
+    cursor: pointer;
+    font-size: 14px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #333;
+    border: 1px solid #ddd;
+    transition: all 0.2s ease;
+}
+
+.toolbar-item:hover {
+    background-color: #e9e9e9;
+}
+
+.toolbar-item.active {
+    background-color: #e0e0e0;
+    border-color: #ccc;
+}
+
+/* Editor Content Area */
+.editor-content {
+    flex-grow: 1;
+    position: relative;
+    min-height: 300px;
+}
+
+.content-editable {
+    min-height: 300px;
+    padding: 15px;
+    outline: none;
+    font-family: 'Arial', sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #333;
+}
+
+.editor-placeholder {
+    color: #999;
+    overflow: hidden;
+    position: absolute;
+    text-overflow: ellipsis;
+    top: 15px;
+    left: 15px;
+    user-select: none;
+    pointer-events: none;
+}
+
+/* Text Formatting */
+.editor-text-bold {
+    font-weight: bold;
+}
+
+.editor-text-italic {
+    font-style: italic;
+}
+
+.editor-text-underline {
+    text-decoration: underline;
+}
+
+.editor-text-code {
+    background-color: #f0f0f0;
+    padding: 2px 4px;
+    border-radius: 3px;
+    font-family: monospace;
+}
+
+/* Paragraph and Headings */
+.editor-paragraph {
+    margin: 0 0 15px 0;
+    position: relative;
+}
+
+.editor-heading-h1 {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 20px 0 10px 0;
+    color: #222;
+}
+
+.editor-heading-h2 {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 15px 0 10px 0;
+    color: #333;
+}
+
+.editor-heading-h3 {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 12px 0 8px 0;
+    color: #444;
+}
+
+/* Lists */
+.editor-list-ol {
+    padding-left: 25px;
+    margin: 0 0 15px 0;
+}
+
+.editor-list-ul {
+    padding-left: 25px;
+    margin: 0 0 15px 0;
+    list-style-type: disc;
+}
+
+.editor-listitem {
+    margin: 5px 0;
+}
+
+.editor-nested-listitem {
+    list-style-type: circle;
+}
+
+/* Links */
+.editor-link {
+    color: #1a73e8;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+/* Quotes */
+.editor-quote {
+    border-left: 4px solid #ddd;
+    margin: 15px 0;
+    padding-left: 15px;
+    color: #666;
+    font-style: italic;
+}
+
+/* Rich Text Editor Specific */
+.rich-text-editor {
+    width: 100%;
+}
+
+/* Focus States */
+.content-editable:focus {
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}

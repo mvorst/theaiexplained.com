@@ -46,7 +46,6 @@
 
 	<link href="<%= Environment.get(EnvironmentConstants.CDN_URL) %>/<%= Environment.get(EnvironmentConstants.BUILD_NUMBER) %>/style/<%=stylesheet%>" rel="stylesheet" type="text/css">
 	<link href="<%= Environment.get(EnvironmentConstants.CDN_URL) %>/<%= Environment.get(EnvironmentConstants.BUILD_NUMBER) %>/style/admin.css" rel="stylesheet" type="text/css">
-	<link href="<%= Environment.get(EnvironmentConstants.CDN_URL) %>/static/quill-2.0.3/quill.bubble.css" rel="stylesheet">
 
 	<meta charset="UTF-8">
 
@@ -56,7 +55,16 @@
 		const environment = { baseUrl:"<%= Environment.get(EnvironmentConstants.BASE_URL) %>", buildNumber:"<%= Environment.get(EnvironmentConstants.BUILD_NUMBER) %>", cdnUrl:"<%= Environment.get(EnvironmentConstants.CDN_URL) %>" };
 	</script>
 
-	<script src="<%= Environment.get(EnvironmentConstants.CDN_URL) %>/static/quill-2.0.3/quill.js"></script>
+<%--	<link href="<%= Environment.get(EnvironmentConstants.CDN_URL) %>/static/react-draft-wysiwyg@1.15.0/react-draft-wysiwyg.css" rel="stylesheet">--%>
+
+<%--	<script src="<%= Environment.get(EnvironmentConstants.CDN_URL) %>/static/draft-js@0.11.7/Draft.min.js"></script>--%>
+<%--	<!-- React Draft WYSIWYG JS -->--%>
+<%--	<script src="<%= Environment.get(EnvironmentConstants.CDN_URL) %>/static/react-draft-wysiwyg@1.15.0/react-draft-wysiwyg.js"></script>--%>
+
+<%--	<script src="<%= Environment.get(EnvironmentConstants.CDN_URL) %>/static/draftjs-to-html@0.9.1/draftjs-to-html.js"></script>--%>
+
+<%--	<script src="<%= Environment.get(EnvironmentConstants.CDN_URL) %>/static/immutable@3.8.2/immutable.min.js"></script>--%>
+
 
 </head>
 

@@ -14,12 +14,15 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@lexical/html": "^0.31.0",
+    "@lexical/link": "^0.31.0",
+    "@lexical/list": "^0.31.0",
+    "@lexical/react": "^0.31.0",
+    "@lexical/rich-text": "^0.31.0",
     "axios": "^1.9.0",
-    "draft-js": "^0.11.7",
-    "quill": "^2.0.3",
+    "lexical": "^0.31.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-draft-wysiwyg": "^1.15.0",
     "react-router": "^7.1.5",
     "react-router-dom": "^7.1.5",
     "recharts": "^2.15.1"

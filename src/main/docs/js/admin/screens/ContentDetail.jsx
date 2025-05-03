@@ -1,9 +1,75 @@
+import {$getRoot, $getSelection} from 'lexical';
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import FileUpload from "../../controls/FileUpload.jsx";
 import Optional from "../../controls/Optional.jsx";
-import QuillEditor from "../../controls/QuillEditor.jsx";
+
+import {AutoFocusPlugin} from '@lexical/react/LexicalAutoFocusPlugin';
+import {LexicalComposer} from '@lexical/react/LexicalComposer';
+import {RichTextPlugin} from '@lexical/react/LexicalRichTextPlugin';
+import {ContentEditable} from '@lexical/react/LexicalContentEditable';
+import {HistoryPlugin} from '@lexical/react/LexicalHistoryPlugin';
+import {LexicalErrorBoundary} from '@lexical/react/LexicalErrorBoundary';
+import {HeadingNode, QuoteNode} from '@lexical/rich-text';
+import {TableCellNode, TableNode, TableRowNode} from '@lexical/table';
+import {ListItemNode, ListNode} from '@lexical/list';
+import {LinkNode} from '@lexical/link';
+import {OnChangePlugin} from '@lexical/react/LexicalOnChangePlugin';
+import {$generateHtmlFromNodes, $generateNodesFromDOM} from '@lexical/html';
+
+import { ToolbarPlugin } from '../../controls/plugins/ToolbarPlugin';
+
+import '../../../style/lexicalEditor.css';
+
+const theme = {
+  ltr: 'ltr',
+  rtl: 'rtl',
+  paragraph: 'editor-paragraph',
+  quote: 'editor-quote',
+  heading: {
+    h1: 'editor-heading-h1',
+    h2: 'editor-heading-h2',
+    h3: 'editor-heading-h3',
+    h4: 'editor-heading-h4',
+    h5: 'editor-heading-h5',
+  },
+  list: {
+    nested: {
+      listitem: 'editor-nested-listitem',
+    },
+    ol: 'editor-list-ol',
+    ul: 'editor-list-ul',
+    listitem: 'editor-listitem',
+  },
+  image: 'editor-image',
+  link: 'editor-link',
+  text: {
+    bold: 'editor-text-bold',
+    italic: 'editor-text-italic',
+    underline: 'editor-text-underline',
+    code: 'editor-text-code',
+  },
+}
+
+// Function to convert HTML to Lexical editor state
+function convertHtmlToLexical(htmlString, editor) {
+  // This will be handled by the importDOM function in the initialConfig
+  // We're not actually converting here, just returning the HTML
+  return htmlString;
+}
+
+// Function to convert Lexical editor state to HTML
+function onEditorChange(editorState, editor, setContent) {
+  editor.update(() => {
+    const htmlString = $generateHtmlFromNodes(editor);
+
+    setContent(prev => ({
+      ...prev,
+      markupContent: htmlString
+    }));
+  });
+}
 
 const ContentDetail = () => {
   const { id } = useParams();
@@ -12,6 +78,7 @@ const ContentDetail = () => {
   const [loading, setLoading] = useState(contentUuid ? true : false);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState(null);
+  const [editorState, setEditorState] = useState(null);
 
   const [content, setContent] = useState({
     contentUuid: null,
@@ -180,6 +247,39 @@ const ContentDetail = () => {
     }
   };
 
+  // Initial config for Lexical Editor
+  const initialConfig = {
+    namespace: 'ContentEditor',
+    theme,
+    onError: (error) => console.error(error),
+    nodes: [
+      HeadingNode,
+      ListNode,
+      ListItemNode,
+      QuoteNode,
+      TableNode,
+      TableCellNode,
+      TableRowNode,
+      LinkNode
+    ],
+    // Import content if it exists
+    editorState: (editor) => {
+      if (content.markupContent) {
+        const parser = new DOMParser();
+        const dom = parser.parseFromString(content.markupContent, 'text/html');
+
+        if (dom) {
+          const nodes = $generateNodesFromDOM(editor, dom);
+          if (nodes) {
+            $getRoot().select();
+            $getRoot().clear();
+            $getRoot().append(...nodes);
+          }
+        }
+      }
+    },
+  };
+
   if (loading) {
     return <div className="content-form-loading">Loading content data...</div>;
   }
@@ -294,14 +394,25 @@ const ContentDetail = () => {
           <div className="form-group">
             <label htmlFor="markupContent">Content (HTML) *</label>
 
-            <QuillEditor
-              value={'initialValue'}
-              onChange={handleChange}
-              name={name}
-              placeholder={'placeholder'}
-              height={'3'}
-              readOnly={false}
-            />
+            <div className="editor-container">
+              <LexicalComposer initialConfig={initialConfig}>
+                <div className="editor-inner">
+                  <ToolbarPlugin />
+                  <div className="editor-content">
+                    <RichTextPlugin
+                      contentEditable={<ContentEditable className="content-editable" />}
+                      placeholder={<div className="editor-placeholder">Enter some rich text...</div>}
+                      ErrorBoundary={LexicalErrorBoundary}
+                    />
+                  </div>
+                </div>
+                <HistoryPlugin />
+                <AutoFocusPlugin />
+                <OnChangePlugin onChange={(editorState, editor) =>
+                  onEditorChange(editorState, editor, setContent)}
+                />
+              </LexicalComposer>
+            </div>
 
             <textarea
               id="markupContent"
@@ -310,6 +421,7 @@ const ContentDetail = () => {
               onChange={handleChange}
               rows={10}
               required
+              style={{ display: 'none' }}
             ></textarea>
           </div>
 
@@ -355,6 +467,7 @@ const ContentDetail = () => {
           </div>
         </div>
 
+        {/* Rest of the form remains the same */}
         <div className="form-section">
           <h2>Card Display</h2>
 
