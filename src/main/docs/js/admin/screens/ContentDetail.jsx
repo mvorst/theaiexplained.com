@@ -1,26 +1,9 @@
-import {$getRoot, $getSelection} from 'lexical';
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import FileUpload from "../../controls/FileUpload.jsx";
 import Optional from "../../controls/Optional.jsx";
-
-import {AutoFocusPlugin} from '@lexical/react/LexicalAutoFocusPlugin';
-import {LexicalComposer} from '@lexical/react/LexicalComposer';
-import {RichTextPlugin} from '@lexical/react/LexicalRichTextPlugin';
-import {ContentEditable} from '@lexical/react/LexicalContentEditable';
-import {HistoryPlugin} from '@lexical/react/LexicalHistoryPlugin';
-import {LexicalErrorBoundary} from '@lexical/react/LexicalErrorBoundary';
-import {HeadingNode, QuoteNode} from '@lexical/rich-text';
-import {TableCellNode, TableNode, TableRowNode} from '@lexical/table';
-import {ListItemNode, ListNode} from '@lexical/list';
-import {LinkNode} from '@lexical/link';
-import {OnChangePlugin} from '@lexical/react/LexicalOnChangePlugin';
-import {$generateHtmlFromNodes, $generateNodesFromDOM} from '@lexical/html';
-
-import { ToolbarPlugin } from '../../controls/plugins/ToolbarPlugin';
-
-import '../../../style/lexicalEditor.css';
+import QuillEditor from "../../controls/QuillEditor.jsx";
 
 const theme = {
   ltr: 'ltr',
@@ -50,25 +33,6 @@ const theme = {
     underline: 'editor-text-underline',
     code: 'editor-text-code',
   },
-}
-
-// Function to convert HTML to Lexical editor state
-function convertHtmlToLexical(htmlString, editor) {
-  // This will be handled by the importDOM function in the initialConfig
-  // We're not actually converting here, just returning the HTML
-  return htmlString;
-}
-
-// Function to convert Lexical editor state to HTML
-function onEditorChange(editorState, editor, setContent) {
-  editor.update(() => {
-    const htmlString = $generateHtmlFromNodes(editor);
-
-    setContent(prev => ({
-      ...prev,
-      markupContent: htmlString
-    }));
-  });
 }
 
 const ContentDetail = () => {
@@ -142,6 +106,8 @@ const ContentDetail = () => {
       }
 
       setContent(contentData);
+      setEditorContent(contentData.markupContent);
+
       setLoading(false);
     } catch (err) {
       setError('Failed to load content. Please try again later.');
@@ -170,6 +136,8 @@ const ContentDetail = () => {
     try {
       // Prepare submission data
       const submissionData = { ...content };
+
+      submissionData.markupContent = editorContent;
 
       // Convert publishedDate from string to Date object if it's set
       if (submissionData.publishedDate) {
@@ -247,37 +215,10 @@ const ContentDetail = () => {
     }
   };
 
-  // Initial config for Lexical Editor
-  const initialConfig = {
-    namespace: 'ContentEditor',
-    theme,
-    onError: (error) => console.error(error),
-    nodes: [
-      HeadingNode,
-      ListNode,
-      ListItemNode,
-      QuoteNode,
-      TableNode,
-      TableCellNode,
-      TableRowNode,
-      LinkNode
-    ],
-    // Import content if it exists
-    editorState: (editor) => {
-      if (content.markupContent) {
-        const parser = new DOMParser();
-        const dom = parser.parseFromString(content.markupContent, 'text/html');
+  const [editorContent, setEditorContent] = useState("Some COntent");
 
-        if (dom) {
-          const nodes = $generateNodesFromDOM(editor, dom);
-          if (nodes) {
-            $getRoot().select();
-            $getRoot().clear();
-            $getRoot().append(...nodes);
-          }
-        }
-      }
-    },
+  const handleEditorChange = (htmlContent) => {
+    setEditorContent(htmlContent);
   };
 
   if (loading) {
@@ -294,7 +235,7 @@ const ContentDetail = () => {
         <div className="content-form-error">{error}</div>
       </Optional>
 
-      <form onSubmit={handleSubmit} className="content-form">
+      <form className="content-form">
 
         <div className="form-section">
           <h2>Content</h2>
@@ -395,23 +336,10 @@ const ContentDetail = () => {
             <label htmlFor="markupContent">Content (HTML) *</label>
 
             <div className="editor-container">
-              <LexicalComposer initialConfig={initialConfig}>
-                <div className="editor-inner">
-                  <ToolbarPlugin />
-                  <div className="editor-content">
-                    <RichTextPlugin
-                      contentEditable={<ContentEditable className="content-editable" />}
-                      placeholder={<div className="editor-placeholder">Enter some rich text...</div>}
-                      ErrorBoundary={LexicalErrorBoundary}
-                    />
-                  </div>
-                </div>
-                <HistoryPlugin />
-                <AutoFocusPlugin />
-                <OnChangePlugin onChange={(editorState, editor) =>
-                  onEditorChange(editorState, editor, setContent)}
-                />
-              </LexicalComposer>
+              <QuillEditor
+                initialContent={editorContent}
+                onChange={handleEditorChange}
+              />
             </div>
 
             <textarea
@@ -586,6 +514,7 @@ const ContentDetail = () => {
             type="submit"
             className="btn-submit"
             disabled={submitting}
+            onClick={handleSubmit}
           >
             {submitting ? 'Saving...' : (contentUuid ? 'Update Content' : 'Create Content')}
           </button>
