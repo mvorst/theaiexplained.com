@@ -19,7 +19,7 @@
             </nav>
             <div class="header-buttons">
                 <button class="btn btn-primary" onclick="location.href='<%= Environment.get(EnvironmentConstants.BASE_URL) %>/get-started.jsp'">Get Started</button>
-                <button class="btn btn-outline" onclick="location.href='<%= Environment.get(EnvironmentConstants.BASE_URL) %>/newsletter.jsp'">Newsletter</button>
+                <button class="btn btn-outline" onclick="location.href='<%= Environment.get(EnvironmentConstants.BASE_URL) %>/newsletter/'">Newsletter</button>
             </div>
         </div>
     </div>

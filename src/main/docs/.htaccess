@@ -18,6 +18,8 @@ RewriteRule ^.*$ /blog-detail.action?contentUuid=%1 [NC,L]
 RewriteCond %{REQUEST_URI} ^/start-here/?$ [NC]
 RewriteRule ^.*$ /start-here.action [NC,L]
 
+RewriteCond %{REQUEST_URI} ^/newsletter/?$ [NC]
+RewriteRule ^.*$ /newsletter.action [NC,L]
 
 RewriteCond %{REQUEST_URI} ^/\d+/(\S+)$ [NC]
 RewriteRule ^.*$ /%1 [NC,L]
