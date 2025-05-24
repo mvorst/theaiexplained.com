@@ -14,6 +14,7 @@ const Layout = () => {
             <nav className="main-nav">
               <ul>
                 <li><NavLink to="/content" className={({ isActive }) => isActive ? 'active' : ''}>Content</NavLink></li>
+                <li><NavLink to="/newsletter" className={({ isActive }) => isActive ? 'active' : ''}>Newsletter</NavLink></li>
                 <li><NavLink to="/account" className={({ isActive }) => isActive ? 'active' : ''}>Accounts</NavLink></li>
                 <li><NavLink to="/asset" className={({ isActive }) => isActive ? 'active' : ''}>Assets</NavLink></li>
               </ul>

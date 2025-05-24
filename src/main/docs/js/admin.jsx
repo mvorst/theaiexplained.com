@@ -8,6 +8,8 @@ import AccountDetail from "./admin/screens/AccountDetail.jsx";
 import AssetList from "./admin/screens/AssetList.jsx";
 import AssetDetail from "./admin/screens/AssetDetail.jsx";
 import ContentDetail from "./admin/screens/ContentDetail.jsx";
+import NewsletterList from "./admin/screens/NewsletterList.jsx";
+import NewsletterDetail from "./admin/screens/NewsletterDetail.jsx";
 import axios from "axios";
 
 const Homepage = () => {
@@ -39,6 +41,8 @@ const Homepage = () => {
           <Route path="account/:id/detail" element={<AccountDetail />} />
           <Route path="asset/" element={<AssetList />} />
           <Route path="assets/:id/detail" element={<AssetDetail />} />
+          <Route path="newsletter/" element={<NewsletterList />} />
+          <Route path="newsletter/:id/detail" element={<NewsletterDetail />} />
         </Route>
       </Routes>
     </HashRouter>
