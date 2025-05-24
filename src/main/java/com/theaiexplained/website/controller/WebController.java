@@ -41,6 +41,15 @@ public class WebController {
 		return new ModelAndView("index", Map.of("homeContent", viewHomeContent));
 	}
 
+	/* GET: / -> /index.action */
+	@RequestMapping(value="/start-here.action", method= RequestMethod.GET)
+	public ModelAndView startHere(){
+//		ViewHomeContent viewHomeContent = contentService.getHomeContent();
+
+//		return new ModelAndView("start-here", Map.of("homeContent", viewHomeContent));
+		return new ModelAndView("start-here");
+	}
+
 	/* GET: /login/ -> /login.action */
 	@RequestMapping(value="/login.action", method= RequestMethod.GET)
 	public ModelAndView login(){

@@ -15,6 +15,10 @@ RewriteRule ^.*$ /blog.action [NC,L]
 RewriteCond %{REQUEST_URI} ^/blog/([0-9a-fA-F\-]+)/?.* [NC]
 RewriteRule ^.*$ /blog-detail.action?contentUuid=%1 [NC,L]
 
+RewriteCond %{REQUEST_URI} ^/start-here/?$ [NC]
+RewriteRule ^.*$ /start-here.action [NC,L]
+
+
 RewriteCond %{REQUEST_URI} ^/\d+/(\S+)$ [NC]
 RewriteRule ^.*$ /%1 [NC,L]
 
