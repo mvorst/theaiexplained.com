@@ -4,7 +4,7 @@
 <%@ taglib uri="jakarta.tags.functions" prefix="functions" %>
 <%@ taglib uri="jakarta.tags.fmt" prefix="formats" %>
 
-<div class="blog-card">
+<div class="blog-card clickable-card" onclick="navigateToBlogPost('${content.contentUuid}', '${functions:escapeXml(content.cardTitle)}')">
   <div class="blog-card-image">
     <core:choose>
       <core:when test="${not empty content.cardHeaderImageUrl}">
@@ -26,7 +26,7 @@
     <h3 class="blog-card-title">${content.cardTitle}</h3>
     <p class="blog-card-subtitle">${content.cardSubtitle}</p>
     <div class="blog-card-footer">
-      <a href="<%= Environment.get(EnvironmentConstants.BASE_URL) %>/blog/${content.contentUuid}/${functions:replace(content.cardTitle," ","-")}" class="blog-card-link">
+      <a href="<%= Environment.get(EnvironmentConstants.BASE_URL) %>/blog/${content.contentUuid}/${functions:replace(functions:replace(functions:toLowerCase(content.cardTitle), ' ', '-'), '--', '-')}" class="blog-card-link" onclick="event.stopPropagation()">
         ${not empty content.cardCTATitle ? content.cardCTATitle : 'Continue Reading'} <span class="arrow-icon">&rarr;</span>
       </a>
     </div>

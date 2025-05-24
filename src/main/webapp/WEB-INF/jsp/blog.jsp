@@ -29,7 +29,7 @@
                     <c:otherwise>
                         <!-- Featured article (first item) -->
                         <c:if test="${not empty contentList.list}">
-                            <div class="featured-article">
+                            <div class="featured-article clickable-featured" onclick="navigateToBlogPost('${contentList.list[0].contentUuid}', '${fn:escapeXml(contentList.list[0].cardTitle)}')">
                                 <div class="featured-article-content">
                                     <c:choose>
                                         <c:when test="${not empty contentList.list[0].headerImageUrl}">
@@ -51,7 +51,7 @@
                                         </c:if>
                                         <h3 class="featured-article-title">${contentList.list[0].cardTitle}</h3>
                                         <p class="featured-article-subtitle">${contentList.list[0].cardSubtitle}</p>
-                                        <a href="<%= Environment.get(EnvironmentConstants.BASE_URL) %>/blog/${contentList.list[0].contentUuid}/${contentList.list[0].cardTitle}" class="btn btn-primary">
+                                        <a href="<%= Environment.get(EnvironmentConstants.BASE_URL) %>/blog/${contentList.list[0].contentUuid}/${fn:replace(fn:replace(fn:toLowerCase(contentList.list[0].cardTitle), ' ', '-'), '--', '-')}" class="btn btn-primary" onclick="event.stopPropagation()">
                                             ${not empty contentList.list[0].cardCTATitle ? contentList.list[0].cardCTATitle : 'Read Article'}
                                         </a>
                                     </div>
@@ -88,6 +88,20 @@
 
 <!-- Add page-specific JavaScript functions -->
 <script type="text/javascript">
+  // Blog post navigation
+  function navigateToBlogPost(contentUuid, title) {
+    // Create SEO-friendly URL slug from title for the existing URL pattern
+    const slug = title ? title.toLowerCase()
+                              .replace(/[^a-z0-9\s-]/g, '') // Remove special characters
+                              .replace(/\s+/g, '-') // Replace spaces with hyphens
+                              .replace(/-+/g, '-') // Replace multiple hyphens with single
+                              .trim('-') : 'article'; // Remove leading/trailing hyphens
+    
+    // Use existing SEO-friendly URL pattern: /blog/{contentUuid}/{slug}
+    // The .htaccess file will rewrite this to /blog-detail.action?contentUuid={contentUuid}
+    window.location.href = "<%= Environment.get(EnvironmentConstants.BASE_URL) %>/blog/" + contentUuid + "/" + slug;
+  }
+
   // Story navigation
   function nextStory() {
     // Code to navigate to next story
@@ -112,6 +126,25 @@
     console.log("Book consultation");
     window.location.href = "<%= Environment.get(EnvironmentConstants.BASE_URL) %>/book-consultation.jsp";
   }
+
+  // Add hover effects and cursor styles for clickable elements
+  document.addEventListener('DOMContentLoaded', function() {
+    // Add pointer cursor to clickable cards
+    const clickableCards = document.querySelectorAll('.clickable-card, .clickable-featured');
+    clickableCards.forEach(function(card) {
+      card.style.cursor = 'pointer';
+      
+      // Add hover effect
+      card.addEventListener('mouseenter', function() {
+        this.style.transform = 'translateY(-2px)';
+        this.style.transition = 'transform 0.2s ease';
+      });
+      
+      card.addEventListener('mouseleave', function() {
+        this.style.transform = 'translateY(0)';
+      });
+    });
+  });
 </script>
 
 <%@ include file="./include/footer-body.jsp" %>
