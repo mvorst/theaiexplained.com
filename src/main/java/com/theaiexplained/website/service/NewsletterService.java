@@ -7,9 +7,13 @@ import com.mattvorst.shared.constant.Status;
 import com.mattvorst.shared.exception.ValidationException;
 import com.mattvorst.shared.model.DynamoResultList;
 import com.mattvorst.shared.util.FieldValidator;
+import com.theaiexplained.website.constant.TemplateCategory;
 import com.theaiexplained.website.dao.NewsletterDao;
+import com.theaiexplained.website.dao.NewsletterTemplateDao;
 import com.theaiexplained.website.dao.model.Newsletter;
+import com.theaiexplained.website.dao.model.NewsletterTemplate;
 import com.theaiexplained.website.model.ViewNewsletter;
+import com.theaiexplained.website.model.ViewNewsletterTemplate;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
@@ -22,6 +26,7 @@ public class NewsletterService {
 
     @Autowired private MessageSource messageSource;
     @Autowired private NewsletterDao newsletterDao;
+    @Autowired private NewsletterTemplateDao templateDao;
 
     public Newsletter getNewsletter(UUID newsletterUuid) {
         return newsletterDao.getNewsletter(newsletterUuid).join();
@@ -159,5 +164,96 @@ public class NewsletterService {
         }
 
         validator.apply();
+    }
+
+    // Template Management Methods
+
+    public NewsletterTemplate getTemplate(UUID templateUuid) {
+        return templateDao.getTemplate(templateUuid).join();
+    }
+
+    public NewsletterTemplate createTemplate(ViewNewsletterTemplate viewTemplate) throws ValidationException {
+        validateTemplate(viewTemplate);
+
+        // Generate UUID for new template
+        int count = 0;
+        do {
+            UUID templateUuid = UUID.randomUUID();
+            NewsletterTemplate existingTemplate = templateDao.getTemplate(templateUuid).join();
+            if (existingTemplate == null) {
+                viewTemplate.setTemplateUuid(templateUuid);
+                break;
+            }
+        } while (count++ < 10);
+
+        NewsletterTemplate template = new NewsletterTemplate();
+        BeanUtils.copyProperties(viewTemplate, template);
+
+        // Set default category if not provided
+        if (template.getCategory() == null) {
+            template.setCategory(TemplateCategory.GENERAL);
+        }
+
+        templateDao.saveTemplate(template).join();
+
+        return template;
+    }
+
+    public NewsletterTemplate updateTemplate(UUID templateUuid, ViewNewsletterTemplate viewTemplate) throws ValidationException {
+        validateTemplate(viewTemplate);
+
+        NewsletterTemplate template = getTemplate(templateUuid);
+        if (template == null) {
+            return null;
+        }
+
+        // Update fields
+        BeanUtils.copyProperties(viewTemplate, template, "templateUuid", "createdDate", "createdBySubject");
+
+        // Save changes
+        templateDao.saveTemplate(template).join();
+
+        return template;
+    }
+
+    public NewsletterTemplate deleteTemplate(UUID templateUuid) {
+        NewsletterTemplate template = getTemplate(templateUuid);
+        if (template != null) {
+            return templateDao.deleteTemplate(template).join();
+        }
+        return template;
+    }
+
+    public DynamoResultList<NewsletterTemplate> getAllTemplates(int count, Map<String, AttributeValue> attributeValueMap) {
+        return templateDao.getAllTemplateList(count, attributeValueMap).join();
+    }
+
+    public DynamoResultList<NewsletterTemplate> getTemplateListByCreatedDate(int count, Map<String, AttributeValue> attributeValueMap) {
+        return templateDao.getTemplateListByCreatedDate(count, attributeValueMap).join();
+    }
+
+    public DynamoResultList<NewsletterTemplate> getTemplateListByCategoryAndCreatedDate(TemplateCategory category, int count, Map<String, AttributeValue> attributeValueMap) {
+        return templateDao.getTemplateListByCategoryAndCreatedDate(category, count, attributeValueMap).join();
+    }
+
+    public NewsletterTemplate duplicateTemplate(UUID templateUuid) throws ValidationException {
+        NewsletterTemplate originalTemplate = getTemplate(templateUuid);
+        if (originalTemplate == null) {
+            throw new ValidationException("Template not found");
+        }
+
+        // Create a copy with a new UUID
+        ViewNewsletterTemplate duplicateView = new ViewNewsletterTemplate(originalTemplate);
+        duplicateView.setTemplateUuid(null); // Will be generated in createTemplate
+        duplicateView.setName(originalTemplate.getName() + " (Copy)");
+
+        return createTemplate(duplicateView);
+    }
+
+    private void validateTemplate(ViewNewsletterTemplate viewTemplate) throws ValidationException {
+        FieldValidator.get(messageSource, LocaleContextHolder.getLocale())
+                .validateNotEmpty("name", viewTemplate.getName())
+                .validateNotEmpty("htmlContent", viewTemplate.getHtmlContent())
+                .apply();
     }
 }

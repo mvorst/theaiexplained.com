@@ -9,8 +9,11 @@ import com.mattvorst.shared.exception.ValidationException;
 import com.mattvorst.shared.model.DynamoResultList;
 import com.mattvorst.shared.util.CursorUtils;
 import com.mattvorst.shared.util.Streams;
+import com.theaiexplained.website.constant.TemplateCategory;
 import com.theaiexplained.website.dao.model.Newsletter;
+import com.theaiexplained.website.dao.model.NewsletterTemplate;
 import com.theaiexplained.website.model.ViewNewsletter;
+import com.theaiexplained.website.model.ViewNewsletterTemplate;
 import com.theaiexplained.website.service.NewsletterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -126,5 +129,73 @@ public class NewsletterController extends BaseRestController {
 
         Newsletter duplicatedNewsletter = newsletterService.createNewsletter(duplicateViewNewsletter);
         return ResponseEntity.status(HttpStatus.CREATED).body(new ViewNewsletter(duplicatedNewsletter));
+    }
+
+    // Template Endpoints
+
+    @GetMapping("/template/{templateUuid}")
+    public ResponseEntity<ViewNewsletterTemplate> getTemplate(@PathVariable UUID templateUuid) {
+        NewsletterTemplate template = newsletterService.getTemplate(templateUuid);
+        if (template == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(new ViewNewsletterTemplate(template));
+    }
+
+    @GetMapping("/template/")
+    public ResponseEntity<DynamoResultList<ViewNewsletterTemplate>> getAllTemplates(
+            @RequestParam(required = false) String cursor, 
+            @RequestParam(required = false, defaultValue = "10") int count) {
+        
+        Map<String, AttributeValue> attributeValueMap = CursorUtils.decodeLastEvaluatedKeyFromCursor(cursor);
+        DynamoResultList<NewsletterTemplate> dynamoResultList = newsletterService.getTemplateListByCreatedDate(count, attributeValueMap);
+
+        return ResponseEntity.ok(new DynamoResultList<>(
+                Streams.of(dynamoResultList.getList()).map(ViewNewsletterTemplate::new).toList(),
+                dynamoResultList.getLastEvaluatedKey()));
+    }
+
+    @GetMapping("/template/category/{category}")
+    public ResponseEntity<DynamoResultList<ViewNewsletterTemplate>> getTemplateListByCategoryAndCreatedDate(
+            @PathVariable TemplateCategory category,
+            @RequestParam(required = false) String cursor, 
+            @RequestParam(required = false, defaultValue = "10") int count) {
+        
+        Map<String, AttributeValue> attributeValueMap = CursorUtils.decodeLastEvaluatedKeyFromCursor(cursor);
+        DynamoResultList<NewsletterTemplate> dynamoResultList = newsletterService.getTemplateListByCategoryAndCreatedDate(category, count, attributeValueMap);
+
+        return ResponseEntity.ok(new DynamoResultList<>(
+                Streams.of(dynamoResultList.getList()).map(ViewNewsletterTemplate::new).toList(),
+                dynamoResultList.getLastEvaluatedKey()));
+    }
+
+    @PostMapping("/template/")
+    public ResponseEntity<?> createTemplate(@RequestBody ViewNewsletterTemplate viewTemplate) throws ValidationException {
+        NewsletterTemplate template = newsletterService.createTemplate(viewTemplate);
+        return ResponseEntity.status(HttpStatus.CREATED).body(new ViewNewsletterTemplate(template));
+    }
+
+    @PutMapping("/template/{templateUuid}")
+    public ResponseEntity<?> updateTemplate(@PathVariable UUID templateUuid, @RequestBody ViewNewsletterTemplate viewTemplate) throws ValidationException {
+        NewsletterTemplate template = newsletterService.updateTemplate(templateUuid, viewTemplate);
+        if (template == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(new ViewNewsletterTemplate(template));
+    }
+
+    @DeleteMapping("/template/{templateUuid}")
+    public ResponseEntity<?> deleteTemplate(@PathVariable UUID templateUuid) {
+        NewsletterTemplate template = newsletterService.deleteTemplate(templateUuid);
+        if (template == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(new ViewNewsletterTemplate(template));
+    }
+
+    @PostMapping("/template/{templateUuid}/duplicate")
+    public ResponseEntity<?> duplicateTemplate(@PathVariable UUID templateUuid) throws ValidationException {
+        NewsletterTemplate duplicatedTemplate = newsletterService.duplicateTemplate(templateUuid);
+        return ResponseEntity.status(HttpStatus.CREATED).body(new ViewNewsletterTemplate(duplicatedTemplate));
     }
 }
