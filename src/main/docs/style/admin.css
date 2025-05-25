@@ -650,7 +650,8 @@
 }
 
 .tab {
-  padding: 0.75rem 1rem;
+  padding: 0.75rem 0;
+  margin-right: 2rem;
   background: none;
   border: none;
   color: #6b7280;
@@ -658,6 +659,11 @@
   font-weight: 500;
   border-bottom: 2px solid transparent;
   transition: all 0.2s ease;
+  font-size: 1rem;
+    -webkit-user-select: none;  /* Safari */
+    -moz-user-select: none;    /* Firefox */
+    -ms-user-select: none;     /* IE 10 and Edge */
+    user-select: none;         /* Standard syntax */
 }
 
 .tab:hover {

@@ -142,27 +142,34 @@ const NewsletterDetail = () => {
     }));
   };
 
-  const handleTemplateChange = async (templateId) => {
-    // Update the templateId field
+  const handleTemplateChange = (templateId) => {
+    // Simply update the templateId field
+    // Template serves as wrapper, newsletter content goes into {{content}} variable
     handleInputChange('templateId', templateId);
+  };
 
-    // If a template is selected, offer to populate content
-    if (templateId && canEdit) {
-      const selectedTemplate = templates.find(t => t.templateUuid === templateId);
-      if (selectedTemplate) {
-        const shouldPopulate = confirm(
-          `Would you like to populate the newsletter content with the template "${selectedTemplate.name}"? This will replace your current content.`
-        );
-        
-        if (shouldPopulate) {
-          setNewsletter(prev => ({
-            ...prev,
-            templateId: templateId,
-            htmlContent: selectedTemplate.htmlContent || prev.htmlContent,
-            textContent: selectedTemplate.textContent || prev.textContent
-          }));
-        }
-      }
+  const previewWithTemplate = () => {
+    const selectedTemplate = templates.find(t => t.templateUuid === newsletter.templateId);
+    if (selectedTemplate && newsletter.htmlContent) {
+      // Create preview by replacing {{content}} with newsletter content
+      const previewHtml = selectedTemplate.htmlContent.replace('{{content}}', newsletter.htmlContent);
+      
+      // Open preview in new window
+      const previewWindow = window.open('', '_blank');
+      previewWindow.document.write(`
+        <html>
+          <head>
+            <title>Newsletter Preview - ${newsletter.title || 'Draft'}</title>
+            <style>body { font-family: Arial, sans-serif; margin: 20px; }</style>
+          </head>
+          <body>
+            <div style="max-width: 600px; margin: 0 auto; border: 1px solid #ccc; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+              ${previewHtml}
+            </div>
+          </body>
+        </html>
+      `);
+      previewWindow.document.close();
     }
   };
 
@@ -252,25 +259,25 @@ const NewsletterDetail = () => {
 
       <div className="content-body">
         <div className="tabs">
-          <button 
+          <div 
             className={`tab ${activeTab === 'content' ? 'active' : ''}`}
             onClick={() => setActiveTab('content')}
           >
             Content
-          </button>
-          <button 
+          </div>
+          <div 
             className={`tab ${activeTab === 'settings' ? 'active' : ''}`}
             onClick={() => setActiveTab('settings')}
           >
             Settings
-          </button>
+          </div>
           {!isNew && (
-            <button 
+            <div 
               className={`tab ${activeTab === 'analytics' ? 'active' : ''}`}
               onClick={() => setActiveTab('analytics')}
             >
               Analytics
-            </button>
+            </div>
           )}
         </div>
 
@@ -321,13 +328,19 @@ const NewsletterDetail = () => {
 
               <div className="form-row">
                 <div className="form-group">
-                  <label>HTML Content *</label>
+                  <label>Newsletter Content *</label>
                   <QuillEditor
                     value={newsletter.htmlContent}
                     onChange={(value) => handleInputChange('htmlContent', value)}
                     readOnly={!canEdit}
-                    placeholder="Enter your newsletter content here..."
+                    placeholder="Enter your main newsletter content here. This will be inserted into the {{content}} area of your selected template."
                   />
+                  <small className="form-help">
+                    {newsletter.templateId 
+                      ? "This content will be wrapped by your selected template. Focus on your main message - headers, footers, and styling are handled by the template."
+                      : "Write your complete newsletter content including any HTML structure you need."
+                    }
+                  </small>
                 </div>
               </div>
 
@@ -340,8 +353,11 @@ const NewsletterDetail = () => {
                     onChange={(e) => handleInputChange('textContent', e.target.value)}
                     disabled={!canEdit}
                     rows={6}
-                    placeholder="Plain text version of your newsletter"
+                    placeholder="Plain text version of your main newsletter content (will be inserted into template's {{content}} area)"
                   />
+                  <small className="form-help">
+                    Plain text version of your content for email clients that don't support HTML.
+                  </small>
                 </div>
               </div>
             </div>
@@ -381,14 +397,25 @@ const NewsletterDetail = () => {
                       ))}
                     </select>
                     {newsletter.templateId && (
-                      <Link 
-                        to={`/newsletter/template/${newsletter.templateId}/detail`}
-                        className="btn btn-outline btn-sm"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        View Template
-                      </Link>
+                      <>
+                        <Link 
+                          to={`/newsletter/template/${newsletter.templateId}/detail`}
+                          className="btn btn-outline btn-sm"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          Edit Template
+                        </Link>
+                        {newsletter.htmlContent && (
+                          <button 
+                            onClick={previewWithTemplate}
+                            className="btn btn-secondary btn-sm"
+                            type="button"
+                          >
+                            Preview Final
+                          </button>
+                        )}
+                      </>
                     )}
                   </div>
                   {templatesLoading && (
@@ -401,7 +428,7 @@ const NewsletterDetail = () => {
                   )}
                   {newsletter.templateId && (
                     <small className="form-help">
-                      Template selected. Content can be customized after applying the template.
+                      Template will wrap your content. Your newsletter content goes into the template's {'{'}{'{'} content {'}'}{'}'}  variable.
                     </small>
                   )}
                 </div>

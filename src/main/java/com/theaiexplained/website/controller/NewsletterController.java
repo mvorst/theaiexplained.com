@@ -1,5 +1,6 @@
 package com.theaiexplained.website.controller;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
@@ -14,7 +15,9 @@ import com.theaiexplained.website.dao.model.Newsletter;
 import com.theaiexplained.website.dao.model.NewsletterTemplate;
 import com.theaiexplained.website.model.ViewNewsletter;
 import com.theaiexplained.website.model.ViewNewsletterTemplate;
+import com.theaiexplained.website.service.EmailTemplateProcessor;
 import com.theaiexplained.website.service.NewsletterService;
+import com.theaiexplained.website.util.TemplateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -34,6 +37,7 @@ import software.amazon.awssdk.services.dynamodb.model.AttributeValue;
 public class NewsletterController extends BaseRestController {
 
     @Autowired private NewsletterService newsletterService;
+    @Autowired private EmailTemplateProcessor emailTemplateProcessor;
 
     @GetMapping("/{newsletterUuid}")
     public ResponseEntity<ViewNewsletter> getNewsletter(@PathVariable UUID newsletterUuid) {
@@ -197,5 +201,86 @@ public class NewsletterController extends BaseRestController {
     public ResponseEntity<?> duplicateTemplate(@PathVariable UUID templateUuid) throws ValidationException {
         NewsletterTemplate duplicatedTemplate = newsletterService.duplicateTemplate(templateUuid);
         return ResponseEntity.status(HttpStatus.CREATED).body(new ViewNewsletterTemplate(duplicatedTemplate));
+    }
+
+    // Email Generation Endpoints
+
+    @GetMapping("/{newsletterUuid}/preview/html")
+    public ResponseEntity<String> getNewsletterHtmlPreview(@PathVariable UUID newsletterUuid) {
+        try {
+            String htmlPreview = emailTemplateProcessor.generatePreviewHtml(newsletterUuid);
+            return ResponseEntity.ok()
+                    .header("Content-Type", "text/html; charset=UTF-8")
+                    .body(htmlPreview);
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body("Error generating preview: " + e.getMessage());
+        }
+    }
+
+    @GetMapping("/{newsletterUuid}/preview/text")
+    public ResponseEntity<String> getNewsletterTextPreview(@PathVariable UUID newsletterUuid) {
+        try {
+            String textPreview = emailTemplateProcessor.generateTextEmail(newsletterUuid, null);
+            return ResponseEntity.ok()
+                    .header("Content-Type", "text/plain; charset=UTF-8")
+                    .body(textPreview);
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body("Error generating text preview: " + e.getMessage());
+        }
+    }
+
+    @PostMapping("/{newsletterUuid}/generate/html")
+    public ResponseEntity<String> generateNewsletterHtml(
+            @PathVariable UUID newsletterUuid, 
+            @RequestBody(required = false) Map<String, String> recipientData) {
+        try {
+            String html = emailTemplateProcessor.generateHtmlEmail(newsletterUuid, recipientData);
+            return ResponseEntity.ok()
+                    .header("Content-Type", "text/html; charset=UTF-8")
+                    .body(html);
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body("Error generating HTML: " + e.getMessage());
+        }
+    }
+
+    @PostMapping("/{newsletterUuid}/generate/text")
+    public ResponseEntity<String> generateNewsletterText(
+            @PathVariable UUID newsletterUuid, 
+            @RequestBody(required = false) Map<String, String> recipientData) {
+        try {
+            String text = emailTemplateProcessor.generateTextEmail(newsletterUuid, recipientData);
+            return ResponseEntity.ok()
+                    .header("Content-Type", "text/plain; charset=UTF-8")
+                    .body(text);
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body("Error generating text: " + e.getMessage());
+        }
+    }
+
+    // Template Validation Endpoints
+
+    @PostMapping("/template/validate")
+    public ResponseEntity<Map<String, Object>> validateTemplate(@RequestBody Map<String, String> request) {
+        String templateContent = request.get("content");
+        
+        Map<String, Object> result = new HashMap<>();
+        result.put("valid", true);
+        result.put("issues", TemplateUtils.validateTemplate(templateContent));
+        result.put("variables", TemplateUtils.extractVariables(templateContent));
+        result.put("hasContentVariable", TemplateUtils.hasContentVariable(templateContent));
+        
+        return ResponseEntity.ok(result);
+    }
+
+    @GetMapping("/template/sample/{category}")
+    public ResponseEntity<String> getSampleTemplate(@PathVariable String category) {
+        try {
+            String sampleTemplate = TemplateUtils.createSampleTemplate("Sample Template", category);
+            return ResponseEntity.ok()
+                    .header("Content-Type", "text/html; charset=UTF-8")
+                    .body(sampleTemplate);
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body("Error creating sample template: " + e.getMessage());
+        }
     }
 }
