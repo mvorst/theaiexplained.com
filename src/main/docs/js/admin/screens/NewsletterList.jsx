@@ -120,9 +120,14 @@ const NewsletterList = () => {
     <div className="container content-container">
       <div className="section-header">
         <h2>Newsletter Management</h2>
-        <Link to="/newsletter/new/detail" className="btn btn-primary">
-          <span className="btn-icon">+</span> Create New Newsletter
-        </Link>
+        <div className="header-actions">
+          <Link to="/newsletter/new/detail" className="btn btn-primary">
+            <span className="btn-icon">+</span> Create New Newsletter
+          </Link>
+          <Link to="/newsletter/settings" className="btn btn-secondary">
+            <span className="btn-icon">⚙️</span>
+          </Link>
+        </div>
       </div>
 
       <div className="content-list">
