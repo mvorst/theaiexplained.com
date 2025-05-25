@@ -984,3 +984,21 @@
   background-color: #c82333;
   border-color: #bd2130;
 }
+
+/* Template Selection Styles */
+.template-selection {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.template-selection .form-select {
+  flex: 1;
+}
+
+.btn-sm {
+  padding: 0.375rem 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  border-radius: 0.25rem;
+}

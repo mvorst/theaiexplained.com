@@ -25,11 +25,14 @@ const NewsletterDetail = () => {
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
   const [activeTab, setActiveTab] = useState('content');
+  const [templates, setTemplates] = useState([]);
+  const [templatesLoading, setTemplatesLoading] = useState(false);
 
   useEffect(() => {
     if (!isNew) {
       loadNewsletter();
     }
+    loadTemplates();
   }, [id]);
 
   const loadNewsletter = async () => {
@@ -43,6 +46,23 @@ const NewsletterDetail = () => {
       console.error('Error loading newsletter:', err);
     } finally {
       setLoading(false);
+    }
+  };
+
+  const loadTemplates = async () => {
+    try {
+      setTemplatesLoading(true);
+      const response = await axios.get('/rest/api/1/newsletter/template/', {
+        params: {
+          count: 100 // Load up to 100 templates for the dropdown
+        }
+      });
+      setTemplates(response.data.list || []);
+    } catch (err) {
+      console.error('Error loading templates:', err);
+      // Don't show error for templates, just log it
+    } finally {
+      setTemplatesLoading(false);
     }
   };
 
@@ -120,6 +140,30 @@ const NewsletterDetail = () => {
       ...prev,
       [field]: value
     }));
+  };
+
+  const handleTemplateChange = async (templateId) => {
+    // Update the templateId field
+    handleInputChange('templateId', templateId);
+
+    // If a template is selected, offer to populate content
+    if (templateId && canEdit) {
+      const selectedTemplate = templates.find(t => t.templateUuid === templateId);
+      if (selectedTemplate) {
+        const shouldPopulate = confirm(
+          `Would you like to populate the newsletter content with the template "${selectedTemplate.name}"? This will replace your current content.`
+        );
+        
+        if (shouldPopulate) {
+          setNewsletter(prev => ({
+            ...prev,
+            templateId: templateId,
+            htmlContent: selectedTemplate.htmlContent || prev.htmlContent,
+            textContent: selectedTemplate.textContent || prev.textContent
+          }));
+        }
+      }
+    }
   };
 
   const getStatusBadge = (status) => {
@@ -320,15 +364,46 @@ const NewsletterDetail = () => {
 
               <div className="form-row">
                 <div className="form-group">
-                  <label htmlFor="templateId">Template ID</label>
-                  <input
-                    id="templateId"
-                    type="text"
-                    value={newsletter.templateId}
-                    onChange={(e) => handleInputChange('templateId', e.target.value)}
-                    disabled={!canEdit}
-                    placeholder="Email template identifier"
-                  />
+                  <label htmlFor="templateId">Newsletter Template</label>
+                  <div className="template-selection">
+                    <select
+                      id="templateId"
+                      value={newsletter.templateId || ''}
+                      onChange={(e) => handleTemplateChange(e.target.value)}
+                      disabled={!canEdit || templatesLoading}
+                      className="form-select"
+                    >
+                      <option value="">No Template (Custom Content)</option>
+                      {templates.map(template => (
+                        <option key={template.templateUuid} value={template.templateUuid}>
+                          {template.name} ({template.category})
+                        </option>
+                      ))}
+                    </select>
+                    {newsletter.templateId && (
+                      <Link 
+                        to={`/newsletter/template/${newsletter.templateId}/detail`}
+                        className="btn btn-outline btn-sm"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        View Template
+                      </Link>
+                    )}
+                  </div>
+                  {templatesLoading && (
+                    <small className="form-help">Loading templates...</small>
+                  )}
+                  {!templatesLoading && templates.length === 0 && (
+                    <small className="form-help">
+                      No templates available. <Link to="/newsletter/settings/templates">Create your first template</Link>.
+                    </small>
+                  )}
+                  {newsletter.templateId && (
+                    <small className="form-help">
+                      Template selected. Content can be customized after applying the template.
+                    </small>
+                  )}
                 </div>
               </div>
 
