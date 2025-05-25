@@ -19,8 +19,10 @@ const TemplateDetail = () => {
 
   const [loading, setLoading] = useState(false);
   const [saving, setSaving] = useState(false);
+  const [deleting, setDeleting] = useState(false);
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
+  const [validationErrors, setValidationErrors] = useState({});
 
   useEffect(() => {
     if (!isNew) {
@@ -42,10 +44,31 @@ const TemplateDetail = () => {
     }
   };
 
+  const validateTemplate = () => {
+    const errors = {};
+    
+    if (!template.name || template.name.trim() === '') {
+      errors.name = 'Template name is required';
+    }
+    
+    if (!template.htmlContent || template.htmlContent.trim() === '') {
+      errors.htmlContent = 'HTML content is required';
+    }
+    
+    setValidationErrors(errors);
+    return Object.keys(errors).length === 0;
+  };
+
   const saveTemplate = async () => {
+    if (!validateTemplate()) {
+      setError('Please fix validation errors before saving');
+      return;
+    }
+
     try {
       setSaving(true);
       setError(null);
+      setValidationErrors({});
 
       const payload = { ...template };
 
@@ -68,11 +91,63 @@ const TemplateDetail = () => {
     }
   };
 
+  const deleteTemplate = async () => {
+    if (!confirm('Are you sure you want to delete this template? This action cannot be undone.')) {
+      return;
+    }
+
+    try {
+      setDeleting(true);
+      setError(null);
+
+      await axios.delete(`/rest/api/1/newsletter/template/${id}`);
+      setSuccess('Template deleted successfully');
+      
+      // Navigate back to template list after a short delay
+      setTimeout(() => {
+        navigate('/newsletter/settings/templates');
+      }, 1500);
+    } catch (err) {
+      setError(err.response?.data?.message || 'Failed to delete template');
+      console.error('Error deleting template:', err);
+    } finally {
+      setDeleting(false);
+    }
+  };
+
+  const duplicateTemplate = async () => {
+    try {
+      setSaving(true);
+      setError(null);
+
+      const response = await axios.post(`/rest/api/1/newsletter/template/${id}/duplicate`);
+      setSuccess('Template duplicated successfully');
+      
+      // Navigate to the new template
+      setTimeout(() => {
+        navigate(`/newsletter/template/${response.data.templateUuid}/detail`);
+      }, 1500);
+    } catch (err) {
+      setError(err.response?.data?.message || 'Failed to duplicate template');
+      console.error('Error duplicating template:', err);
+    } finally {
+      setSaving(false);
+    }
+  };
+
   const handleInputChange = (field, value) => {
     setTemplate(prev => ({
       ...prev,
       [field]: value
     }));
+    
+    // Clear validation error for this field when user starts typing
+    if (validationErrors[field]) {
+      setValidationErrors(prev => ({
+        ...prev,
+        [field]: null
+      }));
+    }
   };
 
   if (loading) {
@@ -102,9 +177,27 @@ const TemplateDetail = () => {
           <Link to="/newsletter/settings/templates" className="btn btn-outline">
             Back to Templates
           </Link>
+          {!isNew && (
+            <>
+              <button 
+                onClick={duplicateTemplate}
+                disabled={saving || deleting}
+                className="btn btn-secondary"
+              >
+                {saving ? 'Duplicating...' : 'Duplicate'}
+              </button>
+              <button 
+                onClick={deleteTemplate}
+                disabled={saving || deleting}
+                className="btn btn-danger"
+              >
+                {deleting ? 'Deleting...' : 'Delete'}
+              </button>
+            </>
+          )}
           <button 
             onClick={saveTemplate}
-            disabled={saving}
+            disabled={saving || deleting}
             className="btn btn-primary"
           >
             {saving ? 'Saving...' : 'Save Template'}
@@ -135,7 +228,11 @@ const TemplateDetail = () => {
                 value={template.name}
                 onChange={(e) => handleInputChange('name', e.target.value)}
                 placeholder="Enter template name"
+                className={validationErrors.name ? 'error' : ''}
               />
+              {validationErrors.name && (
+                <div className="field-error">{validationErrors.name}</div>
+              )}
             </div>
           </div>
 
@@ -178,10 +275,10 @@ const TemplateDetail = () => {
                 type="text"
                 value={template.variables}
                 onChange={(e) => handleInputChange('variables', e.target.value)}
-                placeholder="Comma-separated variables (e.g. {{firstName}}, {{lastName}})"
+                placeholder="Comma-separated variables (e.g. firstName, lastName)"
               />
               <small className="form-help">
-                Define variables that can be replaced when using this template. Use double curly braces like {{variableName}}.
+                Define variables that can be replaced when using this template. Use double curly braces like {'{'}{'{'} variableName {'}'}{'}'}. 
               </small>
             </div>
           </div>
@@ -192,8 +289,11 @@ const TemplateDetail = () => {
               <QuillEditor
                 value={template.htmlContent}
                 onChange={(value) => handleInputChange('htmlContent', value)}
-                placeholder="Enter your template content here... Use {{variableName}} for dynamic content."
+                placeholder="Enter your template content here... Use double curly braces for dynamic content."
               />
+              {validationErrors.htmlContent && (
+                <div className="field-error">{validationErrors.htmlContent}</div>
+              )}
             </div>
           </div>
 
