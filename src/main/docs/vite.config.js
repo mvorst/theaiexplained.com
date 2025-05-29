@@ -5,11 +5,11 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   server: {
-    host: 'theaiexplained.local',
+    host: 'thebridgetoai.local',
     port: 3011,
     https: false,
     cors: {
-      origin: 'http://theaiexplained.local',
+      origin: 'http://thebridgetoai.local',
       methods: ['DELETE', 'GET', 'POST', 'PUT', 'OPTIONS'],
     },
   }

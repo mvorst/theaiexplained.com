@@ -1,15 +1,14 @@
 package com.theaiexplained.util;
 
 import java.util.Date;
-import java.util.UUID;
 
 import com.mattvorst.shared.constant.EnvironmentConstants;
 import com.mattvorst.shared.model.DynamoResultList;
 import com.mattvorst.shared.util.Environment;
 import com.mattvorst.shared.util.Streams;
-import com.theaiexplained.website.constant.ContentCategoryType;
-import com.theaiexplained.website.dao.ContentDao;
-import com.theaiexplained.website.dao.model.Content;
+import com.thebridgetoai.website.constant.ContentCategoryType;
+import com.thebridgetoai.website.dao.ContentDao;
+import com.thebridgetoai.website.dao.model.Content;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
@@ -19,7 +18,7 @@ public class ContentDataPublishMain {
 
 		Environment.instance(EnvironmentConstants.ENV_VORST);
 
-		ContentDao contentDao = new ContentDao("theaiexplained-ci");
+		ContentDao contentDao = new ContentDao("thebridgetoai");
 
 		DynamoResultList<Content> dynamoResultList = contentDao.getAllContent(20, null).join();
 		Streams.of(dynamoResultList.getList()).forEach(content -> {

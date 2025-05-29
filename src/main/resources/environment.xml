@@ -13,21 +13,21 @@
 			<property id="AWS_DEFAULT_PROFILE">default</property>
 
 			<property id="ADMINISTRATOR_EMAIL">matt@mattvorst.com</property>
-			<property id="BUILD_NUMBER">11</property>
+			<property id="BUILD_NUMBER">13</property>
 			<property id="EXTERNAL_JS_URL"></property>
 		</properties>
 	</environment>
 
 	<environment id="VORST" type="DEV">
 		<properties>
-			<property id="AWS_DEFAULT_PROFILE">theaiexplained-dev</property>
+			<property id="AWS_DEFAULT_PROFILE">thebridgetoai</property>
 
 			<property id="AWS_SES_REGION">us-west-1</property>
 			<property id="AWS_DYNAMO_DB_REGION">us-west-1</property>
 			<property id="AWS_SQS_REGION">us-west-1</property>
 			<property id="AWS_S3_REGION">us-west-1</property>
 			<property id="AWS_SQS_SERVICE_ENDPOINT">https://sqs.us-west-1.amazonaws.com</property>
-			<property id="BASE_URL">http://theaiexplained.local</property>
+			<property id="BASE_URL">http://thebridgetoai.local</property>
 			<property id="CDN_URL"></property>
 			<property id="LOG_REQUESTS_LOCALLY">TRUE</property>
 
@@ -44,10 +44,10 @@
 			<property id="CURSOR_PASSWORD"><![CDATA[w67YHOe5uSsm2JAF0+9wtkE5T2dm0kNMkJy0bVr7nYI=]]></property>
 			<property id="CURSOR_IV"><![CDATA[NZW46d5TKB5BHCZu]]></property>
 
-			<property id="AWS_S3_BUCKET_TEMP_FILE_DATA">us-west-1.ci.temp.theaiexplained.com</property>
-			<property id="AWS_S3_BUCKET_FILE_DATA">us-west-1.ci.cdn.theaiexplained.com</property>
-			<property id="AWS_S3_BUCKET_CDN">us-west-1.ci.cdn.theaiexplained.com</property>
-			<property id="AWS_S3_BUCKET_BUILD">us-west-1.ci.theaiexplained.com</property>
+			<property id="AWS_S3_BUCKET_TEMP_FILE_DATA">us-west-1.temp.thebridgetoai.com</property>
+			<property id="AWS_S3_BUCKET_FILE_DATA">us-west-1.cdn.thebridgetoai.com</property>
+			<property id="AWS_S3_BUCKET_CDN">us-west-1.cdn.thebridgetoai.com</property>
+			<property id="AWS_S3_BUCKET_BUILD">us-west-1.thebridgetoai.com</property>
 			
 			<property id="AWS_SQS_LOG_QUEUE">https://sqs.us-west-1.amazonaws.com/230817973666/log_queue</property>
 
@@ -56,15 +56,15 @@
 		</properties>
 	</environment>
 
-	<environment id="US-WEST-1" type="CI">
+	<environment id="US-WEST-1" type="PROD">
 		<properties>
 			<property id="AWS_SES_REGION">sqs.us-west-1</property>
 			<property id="AWS_DYNAMO_DB_REGION">us-west-1</property>
 			<property id="AWS_SQS_REGION">us-west-1</property>
 			<property id="AWS_S3_REGION">us-west-1</property>
 			<property id="AWS_SQS_SERVICE_ENDPOINT">https://sqs.us-west-1.amazonaws.com</property>
-			<property id="BASE_URL">https://ci.theaiexplained.com</property>
-			<property id="CDN_URL">https://ci.cdn.theaiexplained.com/cdn</property>
+			<property id="BASE_URL">https://www.thebridgetoai.com</property>
+			<property id="CDN_URL">https://cdn.thebridgetoai.com/cdn</property>
 			<property id="EXTERNAL_JS_URL"></property>
 			<property id="LOG_REQUESTS_LOCALLY">TRUE</property>
 
@@ -81,11 +81,11 @@
 			<property id="CURSOR_PASSWORD"><![CDATA[w67YHOe5uSsm2JAF0+9wtkE5T2dm0kNMkJy0bVr7nYI=]]></property>
 			<property id="CURSOR_IV"><![CDATA[NZW46d5TKB5BHCZu]]></property>
 
-			<property id="AWS_S3_BUCKET_TEMP_FILE_DATA">us-west-1.ci.temp.theaiexplained.com</property>
-			<property id="AWS_S3_BUCKET_FILE_DATA">us-west-1.ci.cdn.theaiexplained.com</property>
-			<property id="AWS_S3_BUCKET_BUILD">us-west-1.ci.theaiexplained.com</property>
+			<property id="AWS_S3_BUCKET_TEMP_FILE_DATA">us-west-1.app.temp.thebridgetoai.com</property>
+			<property id="AWS_S3_BUCKET_FILE_DATA">us-west-1.app.cdn.thebridgetoai.com</property>
+			<property id="AWS_S3_BUCKET_BUILD">us-west-1.app.thebridgetoai.com</property>
 
-			<property id="AWS_IMAGE_CDN_URL">https://ci.cdn.theaiexplained.com</property>
+			<property id="AWS_IMAGE_CDN_URL">https://cdn.thebridgetoai.com</property>
 
 			<property id="AWS_SQS_LOG_QUEUE">https://sqs.us-west-1.amazonaws.com/230817973666/log_queue</property>
 

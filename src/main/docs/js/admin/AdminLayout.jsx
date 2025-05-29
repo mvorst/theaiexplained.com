@@ -9,7 +9,7 @@ const Layout = () => {
         <div className="container">
           <div className="header-content">
             <div className="logo">
-              <NavLink to="/"><img src="/img/LogoH.svg" alt="The AI Explained Logo" /></NavLink>
+              <NavLink to="/"><img src="/img/LogoH.svg" alt="TheBridgeToAI.com Logo" /></NavLink>
             </div>
             <nav className="main-nav">
               <ul>
@@ -49,7 +49,7 @@ const Layout = () => {
             </div>
           </div>
           <div className="footer-bottom">
-            <p>© 2025 TheAIExplained.com. All rights reserved.</p>
+            <p>© 2025 TheBridgeToAI.com. All rights reserved.</p>
             <div className="footer-legal">
               <NavLink to="/privacy">Privacy Policy</NavLink>
               <NavLink to="/terms">Terms of Use</NavLink>

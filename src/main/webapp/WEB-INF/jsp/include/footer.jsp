@@ -6,7 +6,7 @@
     <div class="container">
         <div class="footer-content">
             <div class="footer-logo">
-                <a href="<%= Environment.get(EnvironmentConstants.BASE_URL) %>/"><img src="<%= Environment.get(EnvironmentConstants.CDN_URL) %>/<%= Environment.get(EnvironmentConstants.BUILD_NUMBER) %>/img/LogoHLight.svg" alt="The AI Explained Logo" /></a>
+                <a href="<%= Environment.get(EnvironmentConstants.BASE_URL) %>/"><img src="<%= Environment.get(EnvironmentConstants.CDN_URL) %>/<%= Environment.get(EnvironmentConstants.BUILD_NUMBER) %>/img/LogoHLight.svg" alt="TheBridgeToAI.com Logo" /></a>
                 <p>Empowering everyone to thrive alongside AI</p>
             </div>
             <div class="footer-links">
@@ -44,15 +44,15 @@
             <div class="footer-social">
                 <h4>Follow Us</h4>
                 <div class="social-icons">
-                    <a href="https://twitter.com/theaiexplained" class="social-icon">Tw</a>
-                    <a href="https://facebook.com/theaiexplained" class="social-icon">Fb</a>
-                    <a href="https://linkedin.com/company/theaiexplained" class="social-icon">In</a>
-                    <a href="https://youtube.com/c/theaiexplained" class="social-icon">Yt</a>
+                    <a href="https://twitter.com/thebridgetoai" class="social-icon">Tw</a>
+                    <a href="https://facebook.com/thebridgetoai" class="social-icon">Fb</a>
+                    <a href="https://linkedin.com/company/thebridgetoai" class="social-icon">In</a>
+                    <a href="https://youtube.com/c/thebridgetoai" class="social-icon">Yt</a>
                 </div>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; <%= new java.util.Date().getYear() + 1900 %> TheAIExplained.com. All rights reserved.</p>
+            <p>&copy; <%= new java.util.Date().getYear() + 1900 %> TheBridgeToAI.com. All rights reserved.</p>
             <div class="footer-legal">
                 <a href="<%= Environment.get(EnvironmentConstants.BASE_URL) %>/privacy-policy.jsp">Privacy Policy</a>
                 <a href="<%= Environment.get(EnvironmentConstants.BASE_URL) %>/terms-of-use.jsp">Terms of Use</a>

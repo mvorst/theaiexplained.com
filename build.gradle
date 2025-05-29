@@ -5,7 +5,7 @@ plugins {
     id 'io.spring.dependency-management' version '1.1.7'
 }
 
-group = 'com.theaiexplained'
+group = 'com.thebridgetoai'
 version = '0.0.1'
 
 java {
@@ -88,12 +88,12 @@ dependencyManagement {
 }
 
 tasks.register('makeWar', War) {
-    archiveBaseName = "AIExplained_Webapp-CI"
+    archiveBaseName = "BridgeToAI_Webapp"
     archiveClassifier = ""
 }
 
 tasks.register('makeDocs', Zip) {
-    archiveBaseName = "AIExplained_Docs-CI"
+    archiveBaseName = "BridgeToAI_Docs"
     from("src/main/docs/") {
         exclude("eslint.config.js")
         exclude("js")
@@ -110,12 +110,12 @@ tasks.register('makeDocs', Zip) {
 }
 
 tasks.register('makeUtilJar', Jar) {
-    archiveBaseName = "AIExplained_Utils-CI"
+    archiveBaseName = "BridgeToAI_Utils"
     from(tasks.named("jar"))
 }
 
 tasks.register('makeUtilDependencies', Zip) {
-    archiveBaseName = "AIExplained_Dependencies-CI"
+    archiveBaseName = "BridgeToAI_Dependencies"
     from(configurations.compileClasspath)
 }
 tasks.named('test') {

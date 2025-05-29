@@ -2,6 +2,12 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Project Overview
+
+www.theBridgeToAI.com is a website devoted to helping people learn how they can learn about AI and apply it to their lives. It contains a blog with interesting articles, tips, news articles, and useful resources.
+
+Alternate domain: www.theBridgeTo.ai
+
 ## Build Commands
 
 ### Java/Spring Boot Backend
@@ -27,7 +33,7 @@ Navigate to `src/main/docs/` for frontend commands:
   - `src/proto/java` - Prototype/one-off utilities
   - `src/sample/java` - Sample/example code
 - **Shared framework**: `com.mattvorst.shared` provides reusable components (security, logging, AWS services, etc.)
-- **Application package**: `com.theaiexplained.website` contains the main website logic
+- **Application package**: `com.thebridgetoai.website` contains the main website logic
 
 ### Key Backend Components
 - **Security**: JWT-based authentication with Spring Security OAuth2

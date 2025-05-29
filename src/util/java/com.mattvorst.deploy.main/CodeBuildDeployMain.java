@@ -58,7 +58,7 @@ public class CodeBuildDeployMain {
 
 	public static void main(String[] args) {
 
-		Environment.instance(EnvironmentConstants.ENV_VORST);
+		Environment.instance(EnvironmentConstants.ENV_PROD);
 
 		CodeBuildDeployMain main = new CodeBuildDeployMain();
 
@@ -248,7 +248,7 @@ public class CodeBuildDeployMain {
 
 	private void deployToCDN(long buildNumber, String bucketName) throws IOException {
 
-		System.out.println("Deploying Assets to CDN (Dev / CI)");
+		System.out.println("Deploying Assets to CDN (PROD)");
 
 		int filesCopied = 0;
 
@@ -256,7 +256,7 @@ public class CodeBuildDeployMain {
 		ZipInputStream zipInputStream = null;
 
 		try {
-			inputStream = new FileInputStream("./build/distributions/AIExplained_Docs-CI-0.0.1.zip");
+			inputStream = new FileInputStream("./build/distributions/BridgeToAI_Docs-0.0.1.zip");
 			zipInputStream = new ZipInputStream(inputStream);
 
 			ZipEntry zipEntry = null;

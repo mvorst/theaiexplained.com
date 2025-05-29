@@ -10,6 +10,8 @@ package com.mattvorst.shared.constant;
 public class EnvironmentConstants
 {
 	public static final String ENV_VORST = "VORST";
+	public static final String ENV_PROD = "US-WEST-1";
+
 
 	/* AWS EC2 Instance Properties - All dynamically pulled from instance, should not be in environment.ml */
 	public static final String AWS_INSTANCE_ID = "aws_instance_id";

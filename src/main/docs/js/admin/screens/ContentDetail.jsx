@@ -69,7 +69,7 @@ const ContentDetail = () => {
     metaTwitterImageAltText: '',
     metaTwiterCard: 'summary_large_image',
     metaFBAppId: '',
-    metaTwitterSite: '@theaiexplained',
+    metaTwitterSite: '@thebridgetoai',
     featured: false,
     publishedDate: formatDateForInput(new Date())
   });

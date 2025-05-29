@@ -21,7 +21,7 @@ The most important template variable is `{{content}}`, which represents the main
 <!DOCTYPE html>
 <html>
 <head>
-    <title>{{title}} - TheAIExplained Newsletter</title>
+    <title>{{title}} - TheBridgeToAI.com Newsletter</title>
     <style>
         /* Consistent branding styles */
         .header { background: #0099B3; color: white; padding: 20px; }
@@ -31,7 +31,7 @@ The most important template variable is `{{content}}`, which represents the main
 </head>
 <body>
     <div class="header">
-        <img src="/img/LogoHLight.svg" alt="TheAIExplained" />
+        <img src="/img/LogoHLight.svg" alt="TheBridgeToAI.com" />
         <h1>Weekly AI Newsletter</h1>
     </div>
     
@@ -41,7 +41,7 @@ The most important template variable is `{{content}}`, which represents the main
     
     <div class="footer">
         <p>Thanks for reading! {{unsubscribeLink}}</p>
-        <p>&copy; 2025 TheAIExplained.com</p>
+        <p>&copy; 2025 TheBridgeToAI.com</p>
     </div>
 </body>
 </html>

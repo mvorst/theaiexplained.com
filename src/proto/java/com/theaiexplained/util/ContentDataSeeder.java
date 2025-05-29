@@ -4,8 +4,8 @@ import java.util.UUID;
 
 import com.mattvorst.shared.constant.EnvironmentConstants;
 import com.mattvorst.shared.util.Environment;
-import com.theaiexplained.website.dao.ContentDao;
-import com.theaiexplained.website.dao.model.Content;
+import com.thebridgetoai.website.dao.ContentDao;
+import com.thebridgetoai.website.dao.model.Content;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
@@ -74,12 +74,12 @@ public class ContentDataSeeder {
 		content.setReferenceUrlTitle("AI Glossary: Learn More Terms");
 
 		// SEO metadata
-		content.setMetaTitle("AI Fundamentals: Getting Started with Artificial Intelligence | TheAIExplained");
+		content.setMetaTitle("AI Fundamentals: Getting Started with Artificial Intelligence | theBridgeToAI.com");
 		content.setMetaDescription("Learn the basics of artificial intelligence, key AI concepts, and how to incorporate AI tools into your daily workflow to enhance productivity and career growth.");
 		content.setMetaType("article");
 		content.setMetaUrl("https://www.theaiexplained.com/learn/ai-fundamentals");
 		content.setMetaImage("https://www.theaiexplained.com/images/ai-fundamentals-social.jpg");
-		content.setMetaTwitterImageAltText("AI Fundamentals learning guide from TheAIExplained");
+		content.setMetaTwitterImageAltText("AI Fundamentals learning guide from theBridgeToAI.com");
 		content.setMetaTwiterCard("summary_large_image");
 		content.setMetaTwitterSite("@theaiexplained");
 
@@ -144,7 +144,7 @@ public class ContentDataSeeder {
 		content.setMetaType("article");
 		content.setMetaUrl("https://www.theaiexplained.com/learn/ai-prompting-tips");
 		content.setMetaImage("https://www.theaiexplained.com/images/prompting-social.jpg");
-		content.setMetaTwitterImageAltText("AI Prompting Tips from TheAIExplained");
+		content.setMetaTwitterImageAltText("AI Prompting Tips from theBridgeToAI.com");
 		content.setMetaTwiterCard("summary_large_image");
 		content.setMetaTwitterSite("@theaiexplained");
 

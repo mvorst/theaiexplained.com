@@ -21,7 +21,7 @@ public class CreateUserMain {
 
 		Environment.instance(EnvironmentConstants.ENV_VORST);
 
-		SecurityDao securityDao = new SecurityDao("theaiexplained-ci");
+		SecurityDao securityDao = new SecurityDao("thebridgetoai");
 
 		UUID userUuid = UUID.fromString("3386d6ec-96a7-4ea5-bf3e-c33c00288d89");
 		String emailAddress = "mavorst@gmail.com";
