@@ -33,6 +33,8 @@ import com.mattvorst.shared.util.Utils;
 import org.dom4j.Document;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import software.amazon.awssdk.core.async.AsyncRequestBody;
 import software.amazon.awssdk.enhanced.dynamodb.DynamoDbAsyncIndex;
 import software.amazon.awssdk.enhanced.dynamodb.DynamoDbAsyncTable;
@@ -52,6 +54,8 @@ public class CodeBuildDeployMain {
 
 	static ExecutorService executorService = new ThreadPoolExecutor(10, 20, 0L, TimeUnit.MILLISECONDS, new LinkedBlockingQueue<Runnable>());
 
+	private static final Logger log = LoggerFactory.getLogger(Environment.class);
+
 	S3AsyncClient amazonS3Destination;
 	DynamoDbAsyncClient dynamoDbAsyncClient;
 	DynamoDbEnhancedAsyncClient dynamoDbEnhancedAsyncClient;
@@ -70,6 +74,8 @@ public class CodeBuildDeployMain {
 	private void run(){
 		String destRegion = Environment.get(EnvironmentConstants.AWS_S3_REGION);
 		String destBucket = Environment.get(EnvironmentConstants.AWS_S3_BUCKET_CDN);
+
+		log.info("Destination Region: " + destRegion + ", Bucket: " + destBucket);
 
 		amazonS3Destination = AmazonServiceFactory.getS3AsyncClient(destRegion, "");
 		dynamoDbAsyncClient = AmazonServiceFactory.getDynamoDbAsyncClient(destRegion, "");
