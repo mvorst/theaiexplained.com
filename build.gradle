@@ -91,15 +91,10 @@ springBoot {
     mainClass = 'com.thebridgetoai.website.Application'
 }
 
-tasks.register('makeWar') {
-    dependsOn bootWar
-    doLast {
-        copy {
-            from bootWar.archiveFile
-            into project.buildDir
-            rename { "BridgeToAI_Webapp.war" }
-        }
-    }
+
+tasks.register('makeWar', War) {
+    archiveBaseName = "BridgeToAI_Webapp"
+    archiveClassifier = ""
 }
 
 tasks.register('makeDocs', Zip) {
