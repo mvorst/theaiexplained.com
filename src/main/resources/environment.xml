@@ -13,7 +13,7 @@
 			<property id="AWS_DEFAULT_PROFILE">default</property>
 
 			<property id="ADMINISTRATOR_EMAIL">matt@mattvorst.com</property>
-			<property id="BUILD_NUMBER">16</property>
+			<property id="BUILD_NUMBER">17</property>
 			<property id="EXTERNAL_JS_URL"></property>
 		</properties>
 	</environment>
@@ -64,7 +64,7 @@
 			<property id="AWS_S3_REGION">us-west-1</property>
 			<property id="AWS_SQS_SERVICE_ENDPOINT">https://sqs.us-west-1.amazonaws.com</property>
 			<property id="BASE_URL">https://www.thebridgetoai.com</property>
-			<property id="CDN_URL">https://cdn.thebridgetoai.com/cdn</property>
+			<property id="CDN_URL">https://cdn.thebridgetoai.com</property>
 			<property id="EXTERNAL_JS_URL"></property>
 			<property id="LOG_REQUESTS_LOCALLY">TRUE</property>
 

@@ -87,6 +87,10 @@ dependencyManagement {
     }
 }
 
+springBoot {
+    mainClassName = 'com.thebridgetoai.website.Application'
+}
+
 tasks.register('makeWar', War) {
     archiveBaseName = "BridgeToAI_Webapp"
     archiveClassifier = ""
