@@ -30,7 +30,7 @@ phases:
       - echo Build complete `date`
 artifacts:
   files:
-    - '**/*.war'
-    - '**/*.zip'
-    - '**/*.jar'
+    - '**/BridgeToAI_*.war'
+    - '**/BridgeToAI_*.zip'
+    - '**/BridgeToAI_*.jar'
   discard-paths: yes
