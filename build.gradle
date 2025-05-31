@@ -94,7 +94,6 @@ springBoot {
 tasks.register('makeWar', War) {
     archiveBaseName = "BridgeToAI_Webapp"
     archiveClassifier = ""
-    executable = true
 }
 
 tasks.register('makeDocs', Zip) {
