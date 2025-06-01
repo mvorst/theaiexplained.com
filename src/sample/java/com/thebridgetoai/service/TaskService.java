@@ -1,4 +1,4 @@
-package com.theaiexplained.service;
+package com.thebridgetoai.service;
 
 import java.util.Map;
 import java.util.UUID;
@@ -6,10 +6,10 @@ import java.util.UUID;
 import com.mattvorst.shared.exception.ValidationException;
 import com.mattvorst.shared.model.DynamoResultList;
 import com.mattvorst.shared.util.FieldValidator;
-import com.theaiexplained.constant.TaskStatus;
-import com.theaiexplained.dao.TaskDao;
-import com.theaiexplained.dao.model.Task;
-import com.theaiexplained.model.task.ViewTask;
+import com.thebridgetoai.constant.TaskStatus;
+import com.thebridgetoai.dao.TaskDao;
+import com.thebridgetoai.dao.model.Task;
+import com.thebridgetoai.task.ViewTask;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;

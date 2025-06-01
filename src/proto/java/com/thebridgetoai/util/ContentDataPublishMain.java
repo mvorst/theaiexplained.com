@@ -1,4 +1,4 @@
-package com.theaiexplained.util;
+package com.thebridgetoai.util;
 
 import java.util.Date;
 

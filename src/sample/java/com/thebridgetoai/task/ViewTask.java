@@ -1,9 +1,9 @@
-package com.theaiexplained.model.task;
+package com.thebridgetoai.task;
 
 import java.util.UUID;
 
-import com.theaiexplained.constant.TaskStatus;
-import com.theaiexplained.dao.model.Task;
+import com.thebridgetoai.constant.TaskStatus;
+import com.thebridgetoai.dao.model.Task;
 import org.springframework.beans.BeanUtils;
 
 public class ViewTask {

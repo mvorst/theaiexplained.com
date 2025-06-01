@@ -1,10 +1,10 @@
-package com.theaiexplained.dao.model;
+package com.thebridgetoai.dao.model;
 
 import java.util.UUID;
 
 import com.mattvorst.shared.model.DefaultAuditable;
 import com.mattvorst.shared.util.Utils;
-import com.theaiexplained.constant.TaskStatus;
+import com.thebridgetoai.constant.TaskStatus;
 import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbBean;
 import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbPartitionKey;
 import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbSecondaryPartitionKey;

@@ -1,4 +1,4 @@
-package com.theaiexplained.constant;
+package com.thebridgetoai.constant;
 
 /**
  * Enum for task status

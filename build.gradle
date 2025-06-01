@@ -99,6 +99,14 @@ jar {
     }
 }
 
+bootWar {
+    mainClass = 'com.thebridgetoai.website.Application'
+    // Required for executable WAR
+    manifest {
+        attributes 'Main-Class': 'org.springframework.boot.loader.WarLauncher'
+    }
+}
+
 tasks.register('makeWar', War) {
     archiveBaseName = "BridgeToAI_Webapp"
     archiveClassifier = ""

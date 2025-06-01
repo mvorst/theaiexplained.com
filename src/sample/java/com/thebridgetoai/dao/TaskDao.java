@@ -1,4 +1,4 @@
-package com.theaiexplained.dao;
+package com.thebridgetoai.dao;
 
 import java.util.Map;
 import java.util.UUID;
@@ -8,8 +8,8 @@ import com.mattvorst.shared.dao.BaseDao;
 import com.mattvorst.shared.model.DynamoResultList;
 import com.mattvorst.shared.security.AuthorizationUtils;
 import com.mattvorst.shared.util.DynamoDbUtils;
-import com.theaiexplained.constant.TaskStatus;
-import com.theaiexplained.dao.model.Task;
+import com.thebridgetoai.constant.TaskStatus;
+import com.thebridgetoai.dao.model.Task;
 import org.springframework.stereotype.Component;
 import software.amazon.awssdk.enhanced.dynamodb.DynamoDbAsyncIndex;
 import software.amazon.awssdk.enhanced.dynamodb.DynamoDbAsyncTable;

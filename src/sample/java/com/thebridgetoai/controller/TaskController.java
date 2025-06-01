@@ -1,4 +1,4 @@
-package com.theaiexplained.controller;
+package com.thebridgetoai.controller;
 
 import java.util.Map;
 import java.util.UUID;
@@ -9,10 +9,10 @@ import com.mattvorst.shared.model.DynamoResultList;
 import com.mattvorst.shared.security.AuthorizationUtils;
 import com.mattvorst.shared.security.token.UserToken;
 import com.mattvorst.shared.util.CursorUtils;
-import com.theaiexplained.constant.TaskStatus;
-import com.theaiexplained.dao.model.Task;
-import com.theaiexplained.model.task.ViewTask;
-import com.theaiexplained.service.TaskService;
+import com.thebridgetoai.constant.TaskStatus;
+import com.thebridgetoai.dao.model.Task;
+import com.thebridgetoai.task.ViewTask;
+import com.thebridgetoai.service.TaskService;
 import org.apache.commons.lang3.stream.Streams;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
