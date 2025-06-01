@@ -13,7 +13,7 @@
 			<property id="AWS_DEFAULT_PROFILE">default</property>
 
 			<property id="ADMINISTRATOR_EMAIL">matt@mattvorst.com</property>
-			<property id="BUILD_NUMBER">18</property>
+			<property id="BUILD_NUMBER">19</property>
 			<property id="EXTERNAL_JS_URL"></property>
 		</properties>
 	</environment>
