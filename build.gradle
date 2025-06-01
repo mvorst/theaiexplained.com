@@ -116,7 +116,7 @@ bootWar {
     manifest {
         attributes 'Main-Class': 'org.springframework.boot.loader.WarLauncher'
     }
-    classpath = webappSourceSet.runtimeClasspath
+//    classpath = webappSourceSet.runtimeClasspath
 }
 
 tasks.register('makeWar', War) {
@@ -125,7 +125,7 @@ tasks.register('makeWar', War) {
     manifest {
         attributes 'Main-Class': 'com.thebridgetoai.website.Application'
     }
-    classpath = webappSourceSet.runtimeClasspath
+//    classpath = webappSourceSet.runtimeClasspath
 }
 
 tasks.register('makeDocs', Zip) {
