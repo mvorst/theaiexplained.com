@@ -111,21 +111,18 @@ jar {
 
 bootWar {
     archiveBaseName = "BridgeToAI_Webapp"
-    mainClass = 'com.thebridgetoai.website.Application'
     archiveClassifier = ""
-    manifest {
-        attributes 'Main-Class': 'org.springframework.boot.loader.WarLauncher'
-    }
-//    classpath = webappSourceSet.runtimeClasspath
 }
 
-tasks.register('makeWar', War) {
-    archiveBaseName = "BridgeToAI_Webapp"
-    archiveClassifier = ""
-    manifest {
-        attributes 'Main-Class': 'com.thebridgetoai.website.Application'
+tasks.register('makeWar') {
+    dependsOn bootWar
+    doLast {
+        copy {
+            from bootWar.archiveFile
+            into project.buildDir
+            rename { "BridgeToAI_Webapp.war" }
+        }
     }
-//    classpath = webappSourceSet.runtimeClasspath
 }
 
 tasks.register('makeDocs', Zip) {
