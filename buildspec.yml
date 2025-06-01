@@ -20,7 +20,7 @@ phases:
       - java --version
       - ./gradlew --version
       - echo Building WAR file `date`
-      - ./gradlew jar makeWar makeDocs makeUtilJar makeUtilDependencies
+      - ./gradlew jar bootWar makeDocs makeUtilJar makeUtilDependencies
   post_build:
     commands:
       - echo Deploying assets...
