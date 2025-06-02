@@ -209,7 +209,7 @@ section {
 }
 
 .logo img{
-  height:4rem;
+  height:6rem;
 }
 
 .main-nav ul {
@@ -1083,6 +1083,7 @@ section {
 }
 
 .form-actions {
+  display: flex;
   display: flex;
   justify-content: flex-end;
   gap: 1rem;
