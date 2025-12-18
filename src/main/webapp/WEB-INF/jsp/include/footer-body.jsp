@@ -25,9 +25,9 @@
 				window.$RefreshSig$ = () => (type) => type
 				window.__vite_plugin_react_preamble_installed__ = true
 			</script>
-			<script type="module" src="<%= Environment.get(EnvironmentConstants.BASE_URL) %>:3011/js<%= request.getRequestURI().replace(".jsp", "").replace("/WEB-INF/jsp/", "/") %>.jsx" crossorigin></script>
+			<script type="module" src="<%= Environment.get(EnvironmentConstants.BASE_URL) %>:3011/js<%= request.getRequestURI().replace(".action", "").replace(".jsp", "").replace("/WEB-INF/jsp/", "/") %>.jsx" crossorigin></script>
 		<% } else {%>
-			<script type="text/javascript" src="<%= Environment.get(EnvironmentConstants.CDN_URL) %>/<%= Environment.get(EnvironmentConstants.BUILD_NUMBER) %>/dist/js<%= request.getRequestURI().replace(".jsp", "").replace("/WEB-INF/jsp/", "/") %>.js" crossorigin></script>
+			<script type="text/javascript" src="<%= Environment.get(EnvironmentConstants.CDN_URL) %>/<%= Environment.get(EnvironmentConstants.BUILD_NUMBER) %>/dist/js<%= request.getRequestURI().replace(".action", "").replace(".jsp", "").replace("/WEB-INF/jsp/", "/") %>.js" crossorigin></script>
 		<% }%>
 </body>
 </html>

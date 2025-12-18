@@ -2,6 +2,7 @@ package com.thebridgetoai.website.controller;
 
 import java.util.Map;
 import java.util.UUID;
+import java.util.concurrent.ExecutionException;
 
 import com.mattvorst.shared.constant.Status;
 import com.mattvorst.shared.model.DynamoResultList;
@@ -10,9 +11,11 @@ import com.mattvorst.shared.util.Streams;
 import com.thebridgetoai.website.constant.ContentCategoryType;
 import com.thebridgetoai.website.dao.model.Content;
 import com.thebridgetoai.website.dao.model.Newsletter;
+import com.thebridgetoai.website.model.DataStoreResponse;
 import com.thebridgetoai.website.model.ViewContent;
 import com.thebridgetoai.website.model.ViewHomeContent;
 import com.thebridgetoai.website.service.ContentService;
+import com.thebridgetoai.website.service.DataStoreService;
 import com.thebridgetoai.website.service.NewsletterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -29,6 +32,7 @@ import software.amazon.awssdk.services.dynamodb.model.AttributeValue;
 public class WebController {
 
 	@Autowired private ContentService contentService;
+	@Autowired private DataStoreService dataStoreService;
 	@Autowired private NewsletterService newsletterService;
 
 	/* GET: /error/ -> /error.action */
@@ -101,6 +105,19 @@ public class WebController {
 			return new ModelAndView("newsletter", Map.of("newsletter", latestNewsletter));
 		}else {
 			return new ModelAndView("newsletter");
+		}
+	}
+
+
+	/* GET: /newsletter/ -> /newsletter.action */
+	@RequestMapping(value="/application.action", method= RequestMethod.GET)
+	public ModelAndView app(@RequestParam(required = true) UUID applicationUuid) throws ExecutionException, InterruptedException {
+		DataStoreResponse application = dataStoreService.getDataStore(applicationUuid, "system", "application").get();
+
+		if(application != null) {
+			return new ModelAndView((String)application.getData().get("jsp"), Map.of("application", application));
+		}else {
+			return new ModelAndView("application/trip-split");
 		}
 	}
 
