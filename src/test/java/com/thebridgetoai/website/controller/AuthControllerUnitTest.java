@@ -42,7 +42,7 @@ class AuthControllerUnitTest {
 
         ResponseEntity<?> result = authController.userLogin(loginRequest);
 
-        assertEquals(200, result.getStatusCodeValue());
+        assertEquals(200, result.getStatusCode().value());
         Map<String, String> body = (Map<String, String>) result.getBody();
         assertEquals(expectedToken, body.get("token"));
         verify(authService).authenticateWithEmailAndPassword("test@example.com", "password123");
@@ -55,7 +55,7 @@ class AuthControllerUnitTest {
 
         ResponseEntity<?> result = authController.userLogin(loginRequest);
 
-        assertEquals(401, result.getStatusCodeValue());
+        assertEquals(401, result.getStatusCode().value());
         Map<String, String> body = (Map<String, String>) result.getBody();
         assertEquals("Invalid credentials", body.get("error"));
         verify(authService).authenticateWithEmailAndPassword("test@example.com", "password123");
@@ -70,7 +70,7 @@ class AuthControllerUnitTest {
 
         ResponseEntity<?> result = authController.userLogin(loginRequest);
 
-        assertEquals(401, result.getStatusCodeValue());
+        assertEquals(401, result.getStatusCode().value());
         Map<String, String> body = (Map<String, String>) result.getBody();
         assertEquals("Invalid credentials", body.get("error"));
         verify(authService).authenticateWithEmailAndPassword("test@example.com", null);
@@ -85,7 +85,7 @@ class AuthControllerUnitTest {
 
         ResponseEntity<?> result = authController.userLogin(loginRequest);
 
-        assertEquals(401, result.getStatusCodeValue());
+        assertEquals(401, result.getStatusCode().value());
         Map<String, String> body = (Map<String, String>) result.getBody();
         assertEquals("Invalid credentials", body.get("error"));
         verify(authService).authenticateWithEmailAndPassword("", "password123");

@@ -24,10 +24,11 @@ import javax.crypto.spec.GCMParameterSpec;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 
+import java.util.Base64;
+
 import org.apache.commons.codec.DecoderException;
 import org.apache.commons.codec.binary.Base32;
 import org.apache.commons.codec.binary.Hex;
-import org.apache.tomcat.util.codec.binary.Base64;
 
 public class Encryption
 {
@@ -76,12 +77,12 @@ public class Encryption
 
 	public static String encryptToBase64(String data, byte[] password, byte[] iv) throws InvalidKeyException, UnsupportedEncodingException, NoSuchAlgorithmException, NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException, InvalidAlgorithmParameterException
 	{
-		return Base64.encodeBase64String(encryptAES128(data.getBytes("UTF-8"), Encryption.md5Hash(password), Encryption.md5Hash(iv)));
+		return Base64.getEncoder().encodeToString(encryptAES128(data.getBytes("UTF-8"), Encryption.md5Hash(password), Encryption.md5Hash(iv)));
 	}
 
 	public static String decryptFromBase64(String data, byte[] password, byte[] iv) throws InvalidKeyException, UnsupportedEncodingException, NoSuchAlgorithmException, NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException, InvalidAlgorithmParameterException
 	{
-		byte[] bytes = Base64.decodeBase64(data);
+		byte[] bytes = Base64.getDecoder().decode(data);
 
 		return new String(decryptAES128(bytes, Encryption.md5Hash(password), Encryption.md5Hash(iv)));
 	}
@@ -149,11 +150,11 @@ public class Encryption
 
 	public static String encryptAES256ToBase64(String data, byte[] password, byte[] iv) throws InvalidKeyException, UnsupportedEncodingException, NoSuchAlgorithmException, NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException, InvalidAlgorithmParameterException{
 		byte[] bytes = encryptAES256(data.getBytes("UTF-8"), Encryption.md5Hash(password), Encryption.md5Hash(iv));
-		return Base64.encodeBase64String(bytes);
+		return Base64.getEncoder().encodeToString(bytes);
 	}
 
 	public static String decryptAES256FromBase64(String data, byte[] password, byte[] iv) throws InvalidKeyException, UnsupportedEncodingException, NoSuchAlgorithmException, NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException, InvalidAlgorithmParameterException{
-		byte[] bytes = Base64.decodeBase64(data);
+		byte[] bytes = Base64.getDecoder().decode(data);
 		return new String(decryptAES256(bytes, Encryption.md5Hash(password), Encryption.md5Hash(iv)));
 	}
 
@@ -169,12 +170,12 @@ public class Encryption
 
 	public static String base64StringFromBytes(byte[] bytes)
 	{
-		return Base64.encodeBase64String(bytes);
+		return Base64.getEncoder().encodeToString(bytes);
 	}
 
 	public static byte[] bytesFromBase64String(String string)
 	{
-		return Base64.decodeBase64(string);
+		return Base64.getDecoder().decode(string);
 	}
 
 	public static String encodeHuman32(int number, int places)

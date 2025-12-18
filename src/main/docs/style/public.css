@@ -20,8 +20,8 @@
   --black: #1A202C;
 
   /* Fonts */
-  --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-heading: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-primary: 'Inter', sans-serif;
+  --font-heading: 'Open Sans', sans-serif;
 
   /* Spacing */
   --spacing-xs: 0.25rem;

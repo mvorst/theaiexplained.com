@@ -1,7 +1,7 @@
 plugins {
     id 'java'
     id 'war'
-    id 'org.springframework.boot' version '3.4.4'
+    id 'org.springframework.boot' version '4.0.0'
     id 'io.spring.dependency-management' version '1.1.7'
 }
 
@@ -43,11 +43,18 @@ ext {
 }
 
 dependencies {
+    // Spring Boot 4.0 starters
     implementation 'org.springframework.boot:spring-boot-starter-security'
-    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-webmvc'
     implementation 'org.springframework.boot:spring-boot-starter-tomcat'
-    implementation 'org.thymeleaf:thymeleaf:3.1.2.RELEASE'
-    implementation 'org.thymeleaf:thymeleaf-spring6:3.1.2.RELEASE'
+
+    // Jackson 2 compatibility module for Spring Boot 4.0
+    implementation 'org.springframework.boot:spring-boot-jackson2'
+
+    // Thymeleaf (managed by Spring Boot)
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+
+    // Spring Security OAuth2 (now part of Spring Security 7.0)
     implementation 'org.springframework.security:spring-security-oauth2-jose'
     implementation 'org.springframework.security:spring-security-oauth2-authorization-server'
 
@@ -55,7 +62,7 @@ dependencies {
     implementation 'commons-codec:commons-codec:1.16.0'
     implementation 'org.apache.commons:commons-lang3:3.14.0'
 
-    implementation 'com.fasterxml.jackson.core:jackson-databind'
+    // AWS SDK
     implementation 'software.amazon.awssdk:sqs:2.21.0'
     implementation 'software.amazon.awssdk:dynamodb:2.21.0'
     implementation 'software.amazon.awssdk:dynamodb-enhanced:2.21.0'
@@ -63,13 +70,13 @@ dependencies {
     implementation 'software.amazon.awssdk:ses:2.21.0'
     implementation 'software.amazon.awssdk:netty-nio-client:2.21.0'
 
-    implementation 'com.fasterxml.jackson.core:jackson-databind'
-
-    implementation 'jakarta.servlet:jakarta.servlet-api:6.0.0'
-    implementation 'jakarta.servlet.jsp:jakarta.servlet.jsp-api:3.0.0'
-    implementation 'jakarta.servlet.jsp.jstl:jakarta.servlet.jsp.jstl-api:3.0.0'
+    // Jakarta EE 11 (Servlet 6.1 baseline for Spring Boot 4.0)
+    implementation 'jakarta.servlet:jakarta.servlet-api:6.1.0'
+    implementation 'jakarta.servlet.jsp:jakarta.servlet.jsp-api:4.0.0'
+    implementation 'jakarta.servlet.jsp.jstl:jakarta.servlet.jsp.jstl-api:3.0.2'
     implementation 'org.glassfish.web:jakarta.servlet.jsp.jstl:3.0.1'
 
+    // Legacy JSTL (consider removing if not needed)
     implementation 'javax.servlet:jstl:1.2'
 
     implementation "com.googlecode.owasp-java-html-sanitizer:owasp-java-html-sanitizer:20220608.1"
@@ -88,9 +95,16 @@ dependencies {
 
     implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
 
+    // Test dependencies
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.springframework.boot:spring-boot-starter-webmvc-test'
     testImplementation 'org.springframework.security:spring-security-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+// Enable Jackson 2 defaults for compatibility
+tasks.withType(JavaCompile).configureEach {
+    options.compilerArgs += ['-parameters']
 }
 
 dependencyManagement {

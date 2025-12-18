@@ -48,7 +48,7 @@ class ContentControllerUnitTest {
 
         ResponseEntity<ViewContent> result = contentController.getContent(testContentUuid);
 
-        assertEquals(200, result.getStatusCodeValue());
+        assertEquals(200, result.getStatusCode().value());
         assertNotNull(result.getBody());
         assertEquals(testContentUuid, result.getBody().getContentUuid());
         assertEquals("Test Title", result.getBody().getTitle());
@@ -61,7 +61,7 @@ class ContentControllerUnitTest {
 
         ResponseEntity<ViewContent> result = contentController.getContent(testContentUuid);
 
-        assertEquals(404, result.getStatusCodeValue());
+        assertEquals(404, result.getStatusCode().value());
         assertNull(result.getBody());
         verify(contentService).getContent(testContentUuid);
     }
@@ -75,7 +75,7 @@ class ContentControllerUnitTest {
 
         ResponseEntity<DynamoResultList<ViewContent>> result = contentController.getAllContent(null, 10);
 
-        assertEquals(200, result.getStatusCodeValue());
+        assertEquals(200, result.getStatusCode().value());
         assertNotNull(result.getBody());
         assertEquals(1, result.getBody().getList().size());
         assertEquals(testContentUuid, result.getBody().getList().get(0).getContentUuid());
@@ -86,12 +86,12 @@ class ContentControllerUnitTest {
     void getAllContent_ReturnsContentList_WithCustomParameters() {
         List<Content> contentList = List.of(testContent);
         DynamoResultList<Content> resultList = new DynamoResultList<>(contentList, Map.of());
-        
+
         when(contentService.getAllContent(eq(5), any())).thenReturn(resultList);
 
         ResponseEntity<DynamoResultList<ViewContent>> result = contentController.getAllContent("someCursor", 5);
 
-        assertEquals(200, result.getStatusCodeValue());
+        assertEquals(200, result.getStatusCode().value());
         assertNotNull(result.getBody());
         assertEquals(1, result.getBody().getList().size());
         verify(contentService).getAllContent(eq(5), any());
@@ -100,12 +100,12 @@ class ContentControllerUnitTest {
     @Test
     void getAllContent_HandlesEmptyResult() {
         DynamoResultList<Content> emptyResultList = new DynamoResultList<>(List.of(), Map.of());
-        
+
         when(contentService.getAllContent(eq(10), any())).thenReturn(emptyResultList);
 
         ResponseEntity<DynamoResultList<ViewContent>> result = contentController.getAllContent(null, 10);
 
-        assertEquals(200, result.getStatusCodeValue());
+        assertEquals(200, result.getStatusCode().value());
         assertNotNull(result.getBody());
         assertTrue(result.getBody().getList().isEmpty());
         verify(contentService).getAllContent(eq(10), any());

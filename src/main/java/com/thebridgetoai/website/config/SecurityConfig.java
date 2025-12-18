@@ -37,10 +37,8 @@ import org.springframework.security.oauth2.core.DelegatingOAuth2TokenValidator;
 import org.springframework.security.oauth2.jwt.JwtDecoder;
 import org.springframework.security.oauth2.jwt.NimbusJwtDecoder;
 import org.springframework.security.oauth2.jwt.NimbusJwtEncoder;
-import org.springframework.security.oauth2.server.authorization.config.annotation.web.configuration.OAuth2AuthorizationServerConfiguration;
 import org.springframework.security.oauth2.server.authorization.settings.AuthorizationServerSettings;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @EnableWebSecurity
@@ -56,9 +54,9 @@ public class SecurityConfig {
 				.csrf(csrf -> csrf.disable())
 				.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
 				.authorizeHttpRequests(authorize -> authorize
-						.requestMatchers(new AntPathRequestMatcher("/*.action")).permitAll()
-						.requestMatchers(new AntPathRequestMatcher("/WEB-INF/jsp/**")).permitAll()
-						.requestMatchers(new AntPathRequestMatcher("/rest/auth/**")).permitAll()
+						.requestMatchers("/*.action").permitAll()
+						.requestMatchers("/WEB-INF/jsp/**").permitAll()
+						.requestMatchers("/rest/auth/**").permitAll()
 						.requestMatchers("/error",
 								"/rest/api/**",
 								"/rest/auth/**").permitAll()
@@ -81,13 +79,22 @@ public class SecurityConfig {
 	@Bean
 	@Primary
 	public JwtDecoder jwtDecoder(JWKSource<SecurityContext> jwkSource) {
-		return OAuth2AuthorizationServerConfiguration.jwtDecoder(jwkSource);
+		return createJwtDecoder();
+	}
+
+	private NimbusJwtDecoder createJwtDecoder() {
+		RSAKey rsaKey = generateRsa();
+		try {
+			return NimbusJwtDecoder.withPublicKey(rsaKey.toRSAPublicKey()).build();
+		} catch (JOSEException e) {
+			throw new RuntimeException("Failed to create JWT decoder", e);
+		}
 	}
 
 	@Bean
 	@Qualifier("ignoreExpirationJwtDecoder")
 	public JwtDecoder ignoreExpirationJwtDecoder(JWKSource<SecurityContext> jwkSource) {
-		NimbusJwtDecoder jwtDecoder = (NimbusJwtDecoder) OAuth2AuthorizationServerConfiguration.jwtDecoder(jwkSource);
+		NimbusJwtDecoder jwtDecoder = createJwtDecoder();
 		jwtDecoder.setJwtValidator(new DelegatingOAuth2TokenValidator<>(new ArrayList<>()));
 
 		return jwtDecoder;

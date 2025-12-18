@@ -2,6 +2,7 @@ package com.mattvorst.shared.logging.spring;
 
 import java.lang.reflect.Type;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -60,8 +61,8 @@ public class SpringRequestBodyAdviceAdapter extends RequestBodyAdviceAdapter {
 				Map<String, String> headerMap = new TreeMap<>();
 
 				if(inputMessage.getHeaders() != null) {
-					for(String headerName : inputMessage.getHeaders().keySet()) {
-						String value = inputMessage.getHeaders().getFirst(headerName);
+					inputMessage.getHeaders().forEach((headerName, values) -> {
+						String value = values != null && !values.isEmpty() ? values.get(0) : null;
 						if ("Authorization".equalsIgnoreCase(headerName)) {
 							SpringRequestHandler.addTokenClaimsToMap(requestMap);
 						} else if ("source".equalsIgnoreCase(headerName)) {
@@ -73,7 +74,7 @@ public class SpringRequestBodyAdviceAdapter extends RequestBodyAdviceAdapter {
 								requestMap.put("source", "load-balancer");
 							}
 						}
-					}
+					});
 					requestMap.put("headers", headerMap);
 				}
 
