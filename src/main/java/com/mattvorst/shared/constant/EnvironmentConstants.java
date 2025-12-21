@@ -74,6 +74,7 @@ public class EnvironmentConstants
 	public static final String JWT_PUBLIC_KEY = "JWT_PUBLIC_KEY";
 	public static final String JWT_PRIVATE_KEY = "JWT_PRIVATE_KEY";
 	public static final String JWT_KEY_ID = "JWT_KEY_ID";
+	public static final String JWT_ISSUER = "JWT_ISSUER";
 
 	public static final String ADMINISTRATOR_EMAIL = "ADMINISTRATOR_EMAIL";
 	public static final String ADMIN_USER_UUID = "ADMIN_USER_UUID";

@@ -134,6 +134,17 @@ public class SecurityConfig {
 	}
 
 	@Bean
+	public AuthorizationServerSettings authorizationServerSettings() {
+		String issuer = Environment.get(EnvironmentConstants.JWT_ISSUER);
+		if (issuer == null || issuer.isEmpty()) {
+			issuer = "https://thebridgeto.ai";
+		}
+		return AuthorizationServerSettings.builder()
+				.issuer(issuer)
+				.build();
+	}
+
+	@Bean
 	public JwtService jwtService(RSAPublicKey rsaPublicKey, JWKSource<SecurityContext> jwkSource, AuthorizationServerSettings authorizationServerSettings) {
 		NimbusJwtDecoder jwtDecoder = NimbusJwtDecoder.withPublicKey(rsaPublicKey).build();
 		NimbusJwtEncoder jwtEncoder = new NimbusJwtEncoder(jwkSource);
