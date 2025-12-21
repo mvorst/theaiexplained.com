@@ -1,18 +1,24 @@
 package com.thebridgetoai.website.config;
 
+import java.io.File;
 import java.util.Locale;
 
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mattvorst.shared.util.UUIDConverter;
+import org.springframework.boot.web.server.WebServerFactoryCustomizer;
+import org.springframework.boot.tomcat.servlet.TomcatServletWebServerFactory;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.format.FormatterRegistry;
+import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.view.InternalResourceViewResolver;
+import org.springframework.web.servlet.view.JstlView;
 
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
@@ -33,9 +39,26 @@ public class WebConfig implements WebMvcConfigurer {
 		return messageSource;
 	}
 
-	@Override
-	public void configureViewResolvers(ViewResolverRegistry registry) {
-		registry.jsp("/WEB-INF/jsp/", ".jsp");
+	@Bean
+	public ViewResolver jspViewResolver() {
+		InternalResourceViewResolver resolver = new InternalResourceViewResolver();
+		resolver.setViewClass(JstlView.class);
+		resolver.setPrefix("/WEB-INF/jsp/");
+		resolver.setSuffix(".jsp");
+		resolver.setOrder(1);
+		return resolver;
+	}
+
+	@Bean
+	public WebServerFactoryCustomizer<TomcatServletWebServerFactory> tomcatCustomizer() {
+		return factory -> {
+			// Set document base to webapp directory for JSP support when running embedded
+			File webappDir = new File("webapp");
+//			File webappDir = new File("src/main/webapp");
+			if (webappDir.exists()) {
+				factory.setDocumentRoot(webappDir);
+			}
+		};
 	}
 
 	public void addFormatters(FormatterRegistry registry) {
