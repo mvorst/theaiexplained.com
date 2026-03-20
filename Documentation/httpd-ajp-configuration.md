@@ -17,7 +17,7 @@ Ensure these properties are set in `application.properties`:
 
 ```properties
 server.tomcat.ajp.enabled=true
-server.tomcat.ajp.port=8009
+server.tomcat.ajp.port=8029
 server.tomcat.ajp.secret=your-secret-here
 server.tomcat.ajp.protocol=AJP/1.3
 ```
@@ -76,13 +76,14 @@ Edit `/etc/apache2/extra/httpd-vhosts.conf`:
     </Directory>
 
     # Proxy only specific patterns to Tomcat via AJP
-    ProxyPassMatch "^/rest/.*$" "ajp://localhost:8009/" secret=your-secret-here
-    ProxyPassReverse "/rest/" "ajp://localhost:8009/"
+    # Note: No trailing slash on ajp:// URL to avoid double-slash in path
+    ProxyPassMatch "^/rest/.*$" "ajp://localhost:8029" secret=your-secret-here
+    ProxyPassReverse "/rest/" "ajp://localhost:8029/"
 
-    ProxyPassMatch "^/.*\.jsp$" "ajp://localhost:8009/" secret=your-secret-here
-    ProxyPassReverse "/" "ajp://localhost:8009/"
+    ProxyPassMatch "^/.*\.jsp$" "ajp://localhost:8029" secret=your-secret-here
+    ProxyPassReverse "/" "ajp://localhost:8029/"
 
-    ProxyPassMatch "^/.*\.action$" "ajp://localhost:8009/" secret=your-secret-here
+    ProxyPassMatch "^/.*\.action$" "ajp://localhost:8029" secret=your-secret-here
 
     # Everything else is served by Apache from DocumentRoot
 </VirtualHost>
@@ -140,7 +141,7 @@ sudo tail -f /var/log/apache2/thebridgetoai-error.log
 
 ```bash
 # Check if Tomcat AJP port is listening
-lsof -i :8009
+lsof -i :8029
 ```
 
 ### Common Issues
@@ -149,7 +150,7 @@ lsof -i :8009
 |-------|-------|----------|
 | 503 Service Unavailable | Tomcat not running or AJP not enabled | Start Tomcat and verify `server.tomcat.ajp.enabled=true` |
 | 403 Forbidden | AJP secret mismatch | Ensure secret matches in both configs |
-| Connection refused | Wrong port or firewall blocking | Check port 8009 is open locally |
+| Connection refused | Wrong port or firewall blocking | Check port 8029 is open locally |
 | Static files return 404 | Incorrect DocumentRoot | Verify directory exists and has correct permissions |
 
 ### Test Connectivity

@@ -27,7 +27,7 @@
 			<property id="AWS_SQS_REGION">us-west-1</property>
 			<property id="AWS_S3_REGION">us-west-1</property>
 			<property id="AWS_SQS_SERVICE_ENDPOINT">https://sqs.us-west-1.amazonaws.com</property>
-			<property id="BASE_URL">http://thebridgetoai.local</property>
+			<property id="BASE_URL">https://dev.thebridgeto.ai</property>
 			<property id="CDN_URL"></property>
 			<property id="LOG_REQUESTS_LOCALLY">TRUE</property>
 

@@ -24,11 +24,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import software.amazon.awssdk.services.dynamodb.model.AttributeValue;
 
-@RestController
+@Controller
 public class WebController {
 
 	@Autowired private ContentService contentService;
@@ -123,6 +124,7 @@ public class WebController {
 
 	/* POST: /rest/api/1/subscribe */
 	@PostMapping("/rest/api/1/subscribe")
+	@ResponseBody
 	public ResponseEntity<Map<String, String>> subscribe(@RequestBody SubscriptionRequest request) {
 		// For now, just return success - in a real implementation you would:
 		// 1. Validate the email
