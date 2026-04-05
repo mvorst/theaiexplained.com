@@ -16,13 +16,11 @@ The architecture uses Apache HTTPD as a reverse proxy:
 Ensure these properties are set in `application.properties`:
 
 ```properties
-server.tomcat.ajp.enabled=true
-server.tomcat.ajp.port=8029
-server.tomcat.ajp.secret=019684b2-77c6-70b1-b8ab-a12f404181ff_2c5506b8-0e78-452f-b808-e4
-server.tomcat.ajp.protocol=AJP/1.3
+tomcat.ajp.port=8029
+tomcat.ajp.secret=019684b2-77c6-70b1-b8ab-a12f404181ff_2c5506b8-0e78-452f-b808-e4
 ```
 
-**Important**: Replace `your-secret-here` with a strong, unique secret. This secret must match in both the application and Apache configuration.
+**Important**: The AJP secret must match in both `application.properties` and the Apache `ProxyPassMatch` directives below. Replace `your-secret-here` in the Apache config with the value from `application.properties`.
 
 ---
 
@@ -62,14 +60,14 @@ Edit `/etc/apache2/extra/httpd-vhosts.conf`:
 <VirtualHost *:80>
     ServerName dev.theBridgeTo.ai
 
-    DocumentRoot "/Users/matthewvorst/IdeaProjects/TheBridgeTo.ai/src/main/docs"
+    DocumentRoot "/Library/Eclipse/workspace/TheAIExplained.com/src/main/docs"
 
     # Logging
     ErrorLog "/var/log/apache2/thebridgetoai-error.log"
     CustomLog "/var/log/apache2/thebridgetoai-access.log" combined
 
     # Static files directory
-    <Directory "/Users/matthewvorst/IdeaProjects/TheBridgeTo.ai/src/main/docs">
+    <Directory "/Library/Eclipse/workspace/TheAIExplained.com/src/main/docs">
         Options Indexes FollowSymLinks
         AllowOverride None
         Require all granted
@@ -148,7 +146,7 @@ lsof -i :8029
 
 | Issue | Cause | Solution |
 |-------|-------|----------|
-| 503 Service Unavailable | Tomcat not running or AJP not enabled | Start Tomcat and verify `server.tomcat.ajp.enabled=true` |
+| 503 Service Unavailable | Tomcat not running or AJP not configured | Start Tomcat and verify `tomcat.ajp.port` is set in `application.properties` |
 | 403 Forbidden | AJP secret mismatch | Ensure secret matches in both configs |
 | Connection refused | Wrong port or firewall blocking | Check port 8029 is open locally |
 | Static files return 404 | Incorrect DocumentRoot | Verify directory exists and has correct permissions |
@@ -166,7 +164,7 @@ curl -v http://dev.theBridgeTo.ai/
 Static files are served from the project's docs directory:
 
 ```
-/Users/matthewvorst/IdeaProjects/TheBridgeTo.ai/src/main/docs/
+/Library/Eclipse/workspace/TheAIExplained.com/src/main/docs/
 ├── static/
 ├── images/
 ├── css/

@@ -17,6 +17,41 @@ The design supports **multiple clients from a single Docker image** — all clie
 
 ---
 
+## 1.1 Deployment Types
+
+The application supports three deployment types. Each uses the same WAR artifact and static content, but differs in how Apache HTTPD, environment configuration, and process management are set up.
+
+| | **Local (Laptop)** | **CI (Docker)** | **Production (EC2)** |
+|---|---|---|---|
+| **Purpose** | Active development | Integration testing, client demos | Live traffic |
+| **Apache HTTPD** | macOS system Apache, configured per `httpd-ajp-configuration.md` | Container Apache inside Docker (managed by supervisord) | Dedicated EC2 Apache with SSL termination |
+| **Spring Boot** | IntelliJ run config or `./gradlew bootRun` | Launched by supervisord inside the container | systemd service (`webapp.service`) |
+| **Static content** | Served directly from `src/main/docs/` by local Apache | Extracted from `docs.zip` to `/var/www/html/` | Deployed to `/var/www/` via `deploy.sh` |
+| **Environment selection** | Program argument: `VORST` | System property: `-Dapp.environment=VORST` | Auto-detected via EC2 metadata service |
+| **AJP port** | Set in `application.properties` (default: `8029`) | Set via `-Dtomcat.ajp.port` from `AJP_PORT` env var | Set in `application.properties` or systemd config |
+
+### Environment Resolution
+
+The application selects its configuration from `environment.xml` using an environment ID (e.g., `VORST`, `US-WEST-1`). The resolution order in `Application.main()` is:
+
+1. **Program argument** (`args[0]`) — used by IntelliJ run configs
+2. **System property** (`-Dapp.environment`) — used by Docker supervisord
+3. **EC2 metadata** (availability zone) — used by production EC2 instances
+4. **Fallback** — if none of the above resolve, only the `ALL` base properties from `environment.xml` are loaded
+
+### Static Content and Cache Busting
+
+All three deployment types serve static files through Apache HTTPD. JSPs reference static assets with a build-number prefix (e.g., `/20/style/public.css`) for cache busting. A `.htaccess` rewrite rule strips the numeric prefix before Apache serves the file:
+
+```
+RewriteCond %{REQUEST_URI} ^/\d+/(\S+)$ [NC]
+RewriteRule ^.*$ /%1 [NC,L]
+```
+
+This requires `mod_rewrite` and `AllowOverride All` on the document root in all three deployment types.
+
+---
+
 ## 2. Architecture
 
 ### 2.1 Two-Layer Apache Design
@@ -179,7 +214,7 @@ Each client project is built via **AWS CodeBuild** using a `buildspec.yml` at th
 │   │       ├── html/         # Static HTML, CSS, images
 │   │       ├── js/           # JS source (built by Vite/Rollup)
 │   │       ├── package.json
-│   │       ├── yarn.lock
+│   │       ├── package-lock.json
 │   │       └── vite.config.js
 │   └── test/
 └── ...
@@ -268,7 +303,7 @@ bootWar {
 
 // ------------------------------------------------------------------
 // makeDocs — zips the docs folder for Apache HTTPD, excluding JS
-// source/build tooling. The built JS output (from yarn build) is
+// source/build tooling. The built JS output (from npm run build) is
 // included; the source files, node_modules, and configs are excluded.
 // ------------------------------------------------------------------
 tasks.register('makeDocs', Zip) {
@@ -283,7 +318,7 @@ tasks.register('makeDocs', Zip) {
         exclude("scripts")
         exclude("static")
         exclude("vite.config.js")
-        exclude("yarn.lock")
+        exclude("package-lock.json")
     }
 }
 
@@ -348,8 +383,8 @@ phases:
       # Build the frontend JS (Vite/Rollup) before Gradle packages docs
       - echo "Building frontend JS..."
       - cd src/main/docs
-      - yarn install --frozen-lockfile
-      - yarn build
+      - npm ci
+      - npm run build
       - cd ../../..
 
   build:
@@ -426,7 +461,7 @@ CodeBuild Project (per client)
      │
      ├─ install: set up Java 17 + Node 22, verify Gradle
      │
-     ├─ pre_build: cd src/main/docs → yarn install → yarn build
+     ├─ pre_build: cd src/main/docs → npm ci → npm run build
      │   (compiles JS via Vite/Rollup into docs build output)
      │
      ├─ build: ./gradlew clean test bootWar makeDocs packageRelease
@@ -451,7 +486,7 @@ To bring an existing Spring Boot project into this pipeline:
 
 3. **Add the `packageRelease` task** to `build.gradle`. This task depends on `bootWar` and `makeDocs` and produces the canonical `release.tar.gz`.
 
-4. **Move or verify the JS build** in `src/main/docs/`. The project should have a `package.json` with a `build` script that compiles JS via Vite, Rollup, Webpack, or similar. The `buildspec.yml` runs `yarn build` before Gradle so the compiled output is in place when `makeDocs` runs.
+4. **Move or verify the JS build** in `src/main/docs/`. The project should have a `package.json` with a `build` script that compiles JS via Vite, Rollup, Webpack, or similar. The `buildspec.yml` runs `npm run build` before Gradle so the compiled output is in place when `makeDocs` runs.
 
 5. **Add the `buildspec.yml`** to the project root. The template above works as-is for most projects. Only the CodeBuild environment variables need to be configured per client.
 
@@ -471,8 +506,8 @@ All per-client and per-environment configuration is supplied via environment var
 | `AWS_ACCESS_KEY_ID` | Yes | AWS access key — used for both S3 download and app runtime |
 | `AWS_SECRET_ACCESS_KEY` | Yes | AWS secret key — used for both S3 download and app runtime |
 | `AWS_DEFAULT_REGION` | No | AWS region (default: `us-east-1`) |
-| `APP_PROFILE` | No | Spring Boot profile to activate (default: `production`) |
-| `AJP_PORT` | No | AJP connector port inside the container (default: `8009`) |
+| `APP_ENVIRONMENT` | No | Environment ID from `environment.xml` (e.g., `VORST` for dev). Passed to the app via `-Dapp.environment`. If not set, the app attempts EC2 metadata auto-detection. |
+| `AJP_PORT` | No | AJP connector port inside the container (default: `8009`). Must match the `tomcat.ajp.port` property in the Spring Boot application — see Section 9. |
 | `AJP_SECRET` | No | Shared secret for AJP authentication (default: `changeit` — **must be overridden in production**) |
 | `HTTPD_PORT` | No | Container Apache HTTPD listen port (default: `80`) |
 | `HTTPD_SERVER_NAME` | No | Apache `ServerName` directive (default: `localhost`) |
@@ -496,6 +531,7 @@ Amazon Corretto 17 on Amazon Linux 2023 provides LTS Java 17 and straightforward
 ### 6.2 Installed Packages
 
 - `httpd` (Apache HTTPD 2.4) — static content serving
+- `mod_rewrite` — `.htaccess` URL rewriting (friendly URLs and cache-bust path stripping)
 - `mod_proxy`, `mod_proxy_ajp` — AJP reverse proxy to Spring Boot
 - `python3-pip` + `supervisor` — process supervision for Apache and Spring Boot
 - `awscli` — S3 archive download via `aws s3 cp`
@@ -564,7 +600,7 @@ priority=10
 
 [program:springboot]
 command=java %(ENV_JAVA_OPTS)s
-    -Dspring.profiles.active=%(ENV_APP_PROFILE)s
+    -Dapp.environment=%(ENV_APP_ENVIRONMENT)s
     -Dtomcat.ajp.port=%(ENV_AJP_PORT)s
     -Dtomcat.ajp.secret=%(ENV_AJP_SECRET)s
     -jar /opt/app/app.war
@@ -681,7 +717,7 @@ fi
 # ------------------------------------------------------------------
 # 5. Export env vars for supervisord to pass to Spring Boot
 # ------------------------------------------------------------------
-export APP_PROFILE="${APP_PROFILE:-production}"
+export APP_ENVIRONMENT="${APP_ENVIRONMENT:-}"
 export JAVA_OPTS="${JAVA_OPTS:-}"
 
 # ------------------------------------------------------------------
@@ -754,6 +790,22 @@ public class AjpConnectorConfig {
 
 This class should be included in the Spring Boot application's source code. It creates an AJP/1.3 connector alongside the default HTTP connector.
 
+The `@Value` defaults (`8009` and `changeit`) act as fallbacks. Each project can override the port in its own `application.properties`:
+
+```properties
+# application.properties — project-level default (used for local dev)
+tomcat.ajp.port=8029
+tomcat.ajp.secret=your-local-dev-secret
+```
+
+At runtime in Docker, the supervisord config passes `-Dtomcat.ajp.port=%(ENV_AJP_PORT)s` and `-Dtomcat.ajp.secret=%(ENV_AJP_SECRET)s`, which take precedence over `application.properties`. The resolution order is:
+
+1. **`-D` system property** (set by supervisord from container env vars) — highest priority
+2. **`application.properties`** value (baked into the WAR) — project-level default
+3. **`@Value` default** in the annotation (`8009` / `changeit`) — fallback if nothing else is set
+
+The `AJP_PORT` environment variable in the Docker Compose / `.env` file and the container Apache `httpd-container.conf` template must agree on the same port. When a project uses a non-default port (e.g., `8029`), set `AJP_PORT=8029` in the container's environment to keep them in sync.
+
 > **Tip:** If you want to keep an HTTP connector available for debugging inside the container (e.g., `curl localhost:8080/actuator/health`), leave `server.port` at its default. If all traffic must go through AJP, set `server.port=-1` to disable the HTTP connector entirely.
 
 ---
@@ -802,7 +854,7 @@ Each client gets a vhost entry on the host Apache that terminates SSL and proxie
 
     <Directory /var/www/html>
         Options -Indexes +FollowSymLinks
-        AllowOverride None
+        AllowOverride All
         Require all granted
     </Directory>
 
@@ -817,9 +869,9 @@ Each client gets a vhost entry on the host Apache that terminates SSL and proxie
     ProxyPassMatch "^/(.*\.action)$" "ajp://localhost:__AJP_PORT__/$1" secret=__AJP_SECRET__
     ProxyPassMatch "^/(.*\.jsp)$"    "ajp://localhost:__AJP_PORT__/$1" secret=__AJP_SECRET__
 
-    # API endpoints
-    ProxyPass         /api  ajp://localhost:__AJP_PORT__/api  secret=__AJP_SECRET__
-    ProxyPassReverse  /api  ajp://localhost:__AJP_PORT__/api
+    # REST API endpoints
+    ProxyPass         /rest  ajp://localhost:__AJP_PORT__/rest  secret=__AJP_SECRET__
+    ProxyPassReverse  /rest  ajp://localhost:__AJP_PORT__/rest
 
     # Container-level health check (HTTPD server-status)
     <Location /container-health>
@@ -895,7 +947,7 @@ services:
       AWS_SECRET_ACCESS_KEY: "${ACME_AWS_SECRET_ACCESS_KEY}"
       AWS_DEFAULT_REGION: "us-east-1"
       AJP_SECRET: "${ACME_AJP_SECRET}"
-      APP_PROFILE: "production"
+      APP_ENVIRONMENT: "${ACME_APP_ENVIRONMENT}"
       HTTPD_SERVER_NAME: "acme.example.com"
       SQS_LOG_QUEUE_URL: "${SQS_LOG_QUEUE_URL}"
       JAVA_OPTS: "-Xmx512m -Xms256m"
@@ -922,7 +974,7 @@ services:
       AWS_SECRET_ACCESS_KEY: "${GLOBEX_AWS_SECRET_ACCESS_KEY}"
       AWS_DEFAULT_REGION: "us-west-2"
       AJP_SECRET: "${GLOBEX_AJP_SECRET}"
-      APP_PROFILE: "production"
+      APP_ENVIRONMENT: "${GLOBEX_APP_ENVIRONMENT}"
       HTTPD_SERVER_NAME: "globex.example.com"
       SQS_LOG_QUEUE_URL: "${SQS_LOG_QUEUE_URL}"
       JAVA_OPTS: "-Xmx1g -Xms512m"
@@ -950,12 +1002,14 @@ ACME_BUILD_VERSION=2.0.0
 ACME_AWS_ACCESS_KEY_ID=AKIA...
 ACME_AWS_SECRET_ACCESS_KEY=wJal...
 ACME_AJP_SECRET=acme-ajp-s3cret-value
+ACME_APP_ENVIRONMENT=VORST
 
 # Globex Corporation
 GLOBEX_BUILD_VERSION=1.5.0
 GLOBEX_AWS_ACCESS_KEY_ID=AKIA...
 GLOBEX_AWS_SECRET_ACCESS_KEY=wJal...
 GLOBEX_AJP_SECRET=globex-ajp-s3cret-value
+GLOBEX_APP_ENVIRONMENT=VORST
 ```
 
 ### 12.3 Docker Run (single client)
@@ -975,7 +1029,7 @@ docker run -d \
   -e AWS_SECRET_ACCESS_KEY="wJal..." \
   -e AWS_DEFAULT_REGION="us-east-1" \
   -e AJP_SECRET="s3cur3-r4ndom-str1ng" \
-  -e APP_PROFILE="production" \
+  -e APP_ENVIRONMENT="VORST" \
   -e HTTPD_SERVER_NAME="acme.example.com" \
   -e JAVA_OPTS="-Xmx512m -Xms256m" \
   your-registry/website-bootstrap:latest

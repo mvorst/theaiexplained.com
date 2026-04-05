@@ -1,36 +1,57 @@
 version: 0.2
 
+env:
+  variables:
+    # These should be overridden per-project in CodeBuild environment config.
+    # They are listed here as documentation of what's required.
+    S3_DEPLOY_BUCKET: "your-deploy-bucket"
+    CLIENT_NAME: "your-client"
+    BUILD_VERSION: "0.0.0"
+
 phases:
   install:
-    #If you use the Ubuntu standard image 2.0 or later, you must specify runtime-versions.
-    #If you specify runtime-versions and use an image other than Ubuntu standard image 2.0, the build fails.
     runtime-versions:
       java: corretto17
       nodejs: 22
     commands:
-      - echo Installing dependencies...
+      - echo "=== Install Phase ==="
       - chmod +x gradlew
-      - ./gradlew clean
+      - ./gradlew --version
+
+  pre_build:
+    commands:
+      - echo "=== Pre-Build Phase ==="
+      - echo "Building frontend JS..."
+      - cd src/main/docs
+      - npm ci
+      - npm run build
+      - cd ../../..
+
   build:
     commands:
-      - cd src/main/docs
-      - yarn install
-      - yarn build
-      - cd ../../..
+      - echo "=== Build Phase ==="
       - java --version
-      - ./gradlew --version
-      - echo Building WAR file `date`
-      - ./gradlew jar bootWar makeDocs makeUtilJar makeUtilDependencies
+      - ./gradlew clean test bootWar makeDocs packageRelease
+      - echo "Build complete"
+      - ls -la build/release/
+
   post_build:
     commands:
-      - echo Deploying assets...
-      - unzip ./build/libs/BridgeToAI_Webapp-0.0.1.war -d ./build/libs/dependencies
-      - java -cp ./build/libs/dependencies/WEB-INF/lib/*:./build/libs/dependencies/WEB-INF/classes "com.mattvorst.deploy.main.CodeBuildDeployMain"
-      - rm -rf ./build/libs/dependencies
-      - echo Build complete `date`
+      - echo "=== Post-Build Phase ==="
+      - >
+        aws s3 cp
+        build/release/release.tar.gz
+        s3://${S3_DEPLOY_BUCKET}/clients/${CLIENT_NAME}/builds/${BUILD_VERSION}/release.tar.gz
+        --only-show-errors
+      - echo "Uploaded release to s3://${S3_DEPLOY_BUCKET}/clients/${CLIENT_NAME}/builds/${BUILD_VERSION}/"
+      - >
+        aws s3 cp
+        build/release/release.tar.gz
+        s3://${S3_DEPLOY_BUCKET}/clients/${CLIENT_NAME}/builds/latest/release.tar.gz
+        --only-show-errors
+      - echo "Deploy complete"
+
 artifacts:
   files:
-    - '**/BridgeToAI_*.war'
-    - '**/BridgeToAI_*.zip'
-    - '**/BridgeToAI_*.jar'
+    - build/release/release.tar.gz
   discard-paths: yes

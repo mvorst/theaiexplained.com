@@ -1,7 +1,7 @@
 package com.thebridgetoai.website.config;
 
 import org.apache.catalina.connector.Connector;
-import org.apache.coyote.ajp.AjpNioProtocol;
+import org.apache.coyote.ajp.AbstractAjpProtocol;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.tomcat.servlet.TomcatServletWebServerFactory;
 import org.springframework.context.annotation.Bean;
@@ -10,34 +10,30 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class TomcatConfig {
 
-	@Value( "${server.tomcat.ajp.enabled}" )
-	private boolean tomcatAJPEnabled;
+	@Value("${tomcat.ajp.port:8009}")
+	private int ajpPort;
 
-	@Value( "${server.tomcat.ajp.port}" )
-	private int tomcatAJPPort;
-
-	@Value( "${server.tomcat.ajp.secret}" )
-	private String tomcatAJPSecret;
-
-	@Value( "${server.tomcat.ajp.protocol}" )
-	private String tomcatAJPProtocol;
+	@Value("${tomcat.ajp.secret:changeit}")
+	private String ajpSecret;
 
 	@Bean
 	public TomcatServletWebServerFactory servletContainer() {
 		TomcatServletWebServerFactory tomcat = new TomcatServletWebServerFactory();
-		if(tomcatAJPEnabled) {
-			tomcat.addAdditionalConnectors(ajpConnector());
-		}
+		tomcat.addAdditionalConnectors(ajpConnector());
 		return tomcat;
 	}
 
 	private Connector ajpConnector() {
-		Connector connector = new Connector(tomcatAJPProtocol);
-		connector.setPort(tomcatAJPPort);
-		connector.setSecure(true);
+		Connector connector = new Connector("AJP/1.3");
+		connector.setPort(ajpPort);
+		connector.setSecure(false);
 		connector.setAllowTrace(false);
-		AjpNioProtocol protocol = (AjpNioProtocol)connector.getProtocolHandler();
-		protocol.setSecret(tomcatAJPSecret);
+		connector.setScheme("http");
+
+		AbstractAjpProtocol<?> protocol =
+			(AbstractAjpProtocol<?>) connector.getProtocolHandler();
+		protocol.setSecret(ajpSecret);
+		protocol.setSecretRequired(true);
 
 		return connector;
 	}

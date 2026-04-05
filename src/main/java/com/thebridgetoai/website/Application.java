@@ -23,6 +23,9 @@ public class Application extends SpringBootServletInitializer {
 		if(args.length > 0 && !Utils.empty(args[0])){
 			environment = args[0];
 		}
+		if(Utils.empty(environment)) {
+			environment = System.getProperty("app.environment");
+		}
 
 		Environment.instance(environment);
 

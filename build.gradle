@@ -153,8 +153,23 @@ tasks.register('makeDocs', Zip) {
         exclude("scripts")
         exclude("static")
         exclude("vite.config.js")
-        exclude("yarn.lock")
-        into("html")
+        exclude("package-lock.json")
+    }
+}
+
+tasks.register('packageRelease', Tar) {
+    dependsOn bootWar, 'makeDocs'
+    archiveBaseName = "release"
+    archiveVersion = ""
+    archiveExtension = "tar.gz"
+    compression = Compression.GZIP
+    destinationDirectory = layout.buildDirectory.dir("release")
+
+    from(bootWar.archiveFile) {
+        rename { "app.war" }
+    }
+    from(tasks.named('makeDocs').flatMap { it.archiveFile }) {
+        rename { "docs.zip" }
     }
 }
 
