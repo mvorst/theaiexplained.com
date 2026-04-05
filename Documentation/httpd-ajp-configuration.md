@@ -18,7 +18,7 @@ Ensure these properties are set in `application.properties`:
 ```properties
 server.tomcat.ajp.enabled=true
 server.tomcat.ajp.port=8029
-server.tomcat.ajp.secret=your-secret-here
+server.tomcat.ajp.secret=019684b2-77c6-70b1-b8ab-a12f404181ff_2c5506b8-0e78-452f-b808-e4
 server.tomcat.ajp.protocol=AJP/1.3
 ```
 

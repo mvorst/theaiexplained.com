@@ -93,6 +93,8 @@ dependencies {
     implementation "org.apache.xmlgraphics:batik-svg-dom:1.14"
     implementation "org.apache.xmlgraphics:batik-util:1.14"
 
+    implementation 'com.eatthepath:java-otp:0.4.0'
+
     implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
 
     // Test dependencies
