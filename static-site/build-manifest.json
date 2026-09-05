@@ -1,0 +1,3131 @@
+{
+ "built_at": "2026-09-05T16:46:14+00:00",
+ "source_site": "https://www.thebridgeto.ai",
+ "source_cdn": "https://cdn.thebridgeto.ai",
+ "target": "https://v2.thebridgeto.ai",
+ "pages": 237,
+ "assets": 167,
+ "bytes": 160535840,
+ "paginated_listings": {
+  "https://www.thebridgeto.ai/our-thinking.action?cursor=5Id5goCXA6Tv+YketIUSL+EqoVSewrusPQy9FO4YURScIB+Pp5PDzxvAKp7bu6R25G9rfv9d3bVzao4a+g1tIw6QafthxrIImQ8kFIR9euERVCL6pYKzzAobcb4uhkUrYBcyp3QbJ+7aGBbO56dEPoiEngbzW4vOdfKB6S4ETIpHJfLVUkjjlPuL5ov4eAgFf+d4NUYp85KbmQH/j9UIga7B4DePNy/zuVDiCpxjoRnFoLyd/C9gjgcdJHqowg7nvgO+1VQCSL0ZPgV6F4gilUkrvEumPFo=": "/our-thinking/page/2/"
+ },
+ "missing": [
+  {
+   "kind": "asset",
+   "source": "https://cdn.thebridgeto.ai/49/dist/js/about/index.js",
+   "error": "HTTP 403",
+   "found_on": "/about/"
+  },
+  {
+   "kind": "asset",
+   "source": "https://cdn.thebridgeto.ai/49/dist/js/ai-101.js",
+   "error": "HTTP 403",
+   "found_on": "/ai-101/"
+  },
+  {
+   "kind": "asset",
+   "source": "https://cdn.thebridgeto.ai/49/dist/js/bridge-network/builder.js",
+   "error": "HTTP 403",
+   "found_on": "/bridge-network/builder/"
+  },
+  {
+   "kind": "asset",
+   "source": "https://cdn.thebridgeto.ai/49/dist/js/bridge-network/index.js",
+   "error": "HTTP 403",
+   "found_on": "/bridge-network/"
+  },
+  {
+   "kind": "asset",
+   "source": "https://cdn.thebridgeto.ai/49/dist/js/bridge-network/operator.js",
+   "error": "HTTP 403",
+   "found_on": "/bridge-network/operator/"
+  },
+  {
+   "kind": "asset",
+   "source": "https://cdn.thebridgeto.ai/49/dist/js/case-studies.js",
+   "error": "HTTP 403",
+   "found_on": "/case-studies/"
+  },
+  {
+   "kind": "asset",
+   "source": "https://cdn.thebridgeto.ai/49/dist/js/contact.js",
+   "error": "HTTP 403",
+   "found_on": "/contact/"
+  },
+  {
+   "kind": "asset",
+   "source": "https://cdn.thebridgeto.ai/49/dist/js/cookie-policy.js",
+   "error": "HTTP 403",
+   "found_on": "/cookie-policy/"
+  },
+  {
+   "kind": "asset",
+   "source": "https://cdn.thebridgeto.ai/49/dist/js/events/detail.js",
+   "error": "HTTP 403",
+   "found_on": "/events/02c1655a-c91c-459e-b0fc-c8a0a600b28d/"
+  },
+  {
+   "kind": "asset",
+   "source": "https://cdn.thebridgeto.ai/49/dist/js/events/index.js",
+   "error": "HTTP 403",
+   "found_on": "/events/"
+  },
+  {
+   "kind": "asset",
+   "source": "https://cdn.thebridgeto.ai/49/dist/js/guides.js",
+   "error": "HTTP 403",
+   "found_on": "/guides/"
+  },
+  {
+   "kind": "asset",
+   "source": "https://cdn.thebridgeto.ai/49/dist/js/index.js",
+   "error": "HTTP 403",
+   "found_on": "/"
+  },
+  {
+   "kind": "asset",
+   "source": "https://cdn.thebridgeto.ai/49/dist/js/learn-ai.js",
+   "error": "HTTP 403",
+   "found_on": "/learn-ai/"
+  },
+  {
+   "kind": "asset",
+   "source": "https://cdn.thebridgeto.ai/49/dist/js/news.js",
+   "error": "HTTP 403",
+   "found_on": "/news/"
+  },
+  {
+   "kind": "asset",
+   "source": "https://cdn.thebridgeto.ai/49/dist/js/newsletter.js",
+   "error": "HTTP 403",
+   "found_on": "/newsletter/"
+  },
+  {
+   "kind": "asset",
+   "source": "https://cdn.thebridgeto.ai/49/dist/js/our-thinking/detail.js",
+   "error": "HTTP 403",
+   "found_on": "/our-thinking/a798d2c3-ae33-4790-94f0-acbeb1794390/"
+  },
+  {
+   "kind": "asset",
+   "source": "https://cdn.thebridgeto.ai/49/dist/js/our-thinking/index.js",
+   "error": "HTTP 403",
+   "found_on": "/our-thinking/"
+  },
+  {
+   "kind": "asset",
+   "source": "https://cdn.thebridgeto.ai/49/dist/js/privacy-policy.js",
+   "error": "HTTP 403",
+   "found_on": "/privacy-policy/"
+  },
+  {
+   "kind": "asset",
+   "source": "https://cdn.thebridgeto.ai/49/dist/js/resources.js",
+   "error": "HTTP 403",
+   "found_on": "/resources/"
+  },
+  {
+   "kind": "asset",
+   "source": "https://cdn.thebridgeto.ai/49/dist/js/resources/companies/detail.js",
+   "error": "HTTP 403",
+   "found_on": "/resources/companies/e8eb39c6-6ebe-469a-9b85-bf4c6c0f825f/"
+  },
+  {
+   "kind": "asset",
+   "source": "https://cdn.thebridgeto.ai/49/dist/js/resources/companies/index.js",
+   "error": "HTTP 403",
+   "found_on": "/resources/companies/"
+  },
+  {
+   "kind": "asset",
+   "source": "https://cdn.thebridgeto.ai/49/dist/js/resources/dictionary/detail.js",
+   "error": "HTTP 403",
+   "found_on": "/resources/dictionary/f9dca689-b9db-4d59-8028-5228363c76df/"
+  },
+  {
+   "kind": "asset",
+   "source": "https://cdn.thebridgeto.ai/49/dist/js/resources/dictionary/index.js",
+   "error": "HTTP 403",
+   "found_on": "/resources/dictionary/"
+  },
+  {
+   "kind": "asset",
+   "source": "https://cdn.thebridgeto.ai/49/dist/js/resources/models/detail.js",
+   "error": "HTTP 403",
+   "found_on": "/resources/models/1a50dc40-cac6-40b2-a3b5-72ef6d79d9fd/"
+  },
+  {
+   "kind": "asset",
+   "source": "https://cdn.thebridgeto.ai/49/dist/js/resources/models/index.js",
+   "error": "HTTP 403",
+   "found_on": "/resources/models/"
+  },
+  {
+   "kind": "asset",
+   "source": "https://cdn.thebridgeto.ai/49/dist/js/resources/people/detail.js",
+   "error": "HTTP 403",
+   "found_on": "/resources/people/e78e90d9-c575-40d5-80fe-0ee6d396dda3/"
+  },
+  {
+   "kind": "asset",
+   "source": "https://cdn.thebridgeto.ai/49/dist/js/resources/people/index.js",
+   "error": "HTTP 403",
+   "found_on": "/resources/people/"
+  },
+  {
+   "kind": "asset",
+   "source": "https://cdn.thebridgeto.ai/49/dist/js/resources/timeline/index.js",
+   "error": "HTTP 403",
+   "found_on": "/resources/timeline/"
+  },
+  {
+   "kind": "asset",
+   "source": "https://cdn.thebridgeto.ai/49/dist/js/start-here.js",
+   "error": "HTTP 403",
+   "found_on": "/start-here/"
+  },
+  {
+   "kind": "asset",
+   "source": "https://cdn.thebridgeto.ai/49/dist/js/terms-of-use.js",
+   "error": "HTTP 403",
+   "found_on": "/terms-of-use/"
+  },
+  {
+   "kind": "asset",
+   "source": "https://cdn.thebridgeto.ai/49/dist/js/what-we-do/advisory.js",
+   "error": "HTTP 403",
+   "found_on": "/what-we-do/advisory/"
+  },
+  {
+   "kind": "asset",
+   "source": "https://cdn.thebridgeto.ai/49/dist/js/what-we-do/capability.js",
+   "error": "HTTP 403",
+   "found_on": "/what-we-do/capability/"
+  },
+  {
+   "kind": "asset",
+   "source": "https://cdn.thebridgeto.ai/49/dist/js/what-we-do/discovery.js",
+   "error": "HTTP 403",
+   "found_on": "/what-we-do/discovery/"
+  },
+  {
+   "kind": "asset",
+   "source": "https://cdn.thebridgeto.ai/49/dist/js/what-we-do/implementation.js",
+   "error": "HTTP 403",
+   "found_on": "/what-we-do/implementation/"
+  },
+  {
+   "kind": "asset",
+   "source": "https://cdn.thebridgeto.ai/49/dist/js/what-we-do/index.js",
+   "error": "HTTP 403",
+   "found_on": "/what-we-do/"
+  },
+  {
+   "kind": "asset",
+   "source": "https://cdn.thebridgeto.ai/49/dist/js/what-we-do/projects.js",
+   "error": "HTTP 403",
+   "found_on": "/what-we-do/projects/"
+  },
+  {
+   "kind": "asset",
+   "source": "https://cdn.thebridgeto.ai/49/dist/js/what-we-do/roadmap.js",
+   "error": "HTTP 403",
+   "found_on": "/what-we-do/roadmap/"
+  },
+  {
+   "kind": "asset",
+   "source": "https://cdn.thebridgeto.ai/49/dist/js/who-we-serve.js",
+   "error": "HTTP 403",
+   "found_on": "/who-we-serve/"
+  },
+  {
+   "kind": "asset",
+   "source": "https://cdn.thebridgeto.ai/49/img/placeholder.png",
+   "error": "HTTP 403",
+   "found_on": "/resources/people/e78e90d9-c575-40d5-80fe-0ee6d396dda3/"
+  },
+  {
+   "kind": "asset",
+   "source": "https://cdn.thebridgeto.ai/49/img/start-here/blog.png",
+   "error": "HTTP 403",
+   "found_on": "/start-here/"
+  },
+  {
+   "kind": "asset",
+   "source": "https://cdn.thebridgeto.ai/49/img/start-here/guides.png",
+   "error": "HTTP 403",
+   "found_on": "/start-here/"
+  },
+  {
+   "kind": "asset",
+   "source": "https://cdn.thebridgeto.ai/49/img/start-here/interactive.png",
+   "error": "HTTP 403",
+   "found_on": "/start-here/"
+  },
+  {
+   "kind": "asset",
+   "source": "https://cdn.thebridgeto.ai/49/safari-pinned-tab.svg",
+   "error": "HTTP 403",
+   "found_on": "/"
+  },
+  {
+   "kind": "page",
+   "source": "https://www.thebridgeto.ai/blog",
+   "error": "HTTP 404 text/html; charset=iso-8859-1",
+   "found_on": "/start-here/"
+  },
+  {
+   "kind": "page",
+   "source": "https://www.thebridgeto.ai/interactive",
+   "error": "HTTP 404 text/html; charset=iso-8859-1",
+   "found_on": "/start-here/"
+  },
+  {
+   "kind": "page",
+   "source": "https://www.thebridgeto.ai/models/",
+   "error": "HTTP 404 text/html; charset=iso-8859-1",
+   "found_on": "sitemap.xml"
+  }
+ ],
+ "skipped_endpoints": [
+  "/rest/api/1/content/related",
+  "/rest/api/1/subscribe"
+ ],
+ "files": [
+  {
+   "key": "index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 21709,
+   "sha256": "f36b69bed8b23c9a8fff9504c0da190089d88f7cd465f509223a85e03f33eba4",
+   "source": "https://www.thebridgeto.ai/"
+  },
+  {
+   "key": "about/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 15584,
+   "sha256": "c89f5049156fd12929832710166399e8bfece57eb2db8c8c07e20d1da2f79024",
+   "source": "https://www.thebridgeto.ai/about/"
+  },
+  {
+   "key": "ai-101/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 13612,
+   "sha256": "785827daa0c395f99a39ee625ec15d975dd8b9e9614179f692bb9de2ba7693fb",
+   "source": "https://www.thebridgeto.ai/ai-101/"
+  },
+  {
+   "key": "bridge-network/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 12001,
+   "sha256": "1ea8e68335ae730b14be13ee198ca0b17d4b60282c62e1431a77af99cbce72a4",
+   "source": "https://www.thebridgeto.ai/bridge-network/"
+  },
+  {
+   "key": "bridge-network/builder/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 13248,
+   "sha256": "6a153549876916d727ffbecf371850d58744c9d1f33f0aaf211c7fa0d29cc22a",
+   "source": "https://www.thebridgeto.ai/bridge-network/builder/"
+  },
+  {
+   "key": "bridge-network/operator/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 13215,
+   "sha256": "0f4474fd17dacdf233339b2458f0bcc23368724dec1a7c6733869e671bdc3a53",
+   "source": "https://www.thebridgeto.ai/bridge-network/operator/"
+  },
+  {
+   "key": "case-studies/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 12798,
+   "sha256": "cfbbc9ffdab0eda1eee6a615b905dcb6d1cb8539e5d7d4329371c09866756d54",
+   "source": "https://www.thebridgeto.ai/case-studies/"
+  },
+  {
+   "key": "contact/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 13479,
+   "sha256": "87d68fc16182d16ff41052b1a5e20a5801fbd70569256205dbc190f586892994",
+   "source": "https://www.thebridgeto.ai/contact/"
+  },
+  {
+   "key": "cookie-policy/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 12565,
+   "sha256": "ca4e6171559379a5324641bb4bbb39ce3a56664a13b761e1768f64816509755f",
+   "source": "https://www.thebridgeto.ai/cookie-policy/"
+  },
+  {
+   "key": "events/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 19178,
+   "sha256": "0d27db8659f6e0ccee65deffb7c46ca70578711d73c119994d9d8fe89ee83db2",
+   "source": "https://www.thebridgeto.ai/events/"
+  },
+  {
+   "key": "events/02c1655a-c91c-459e-b0fc-c8a0a600b28d/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 18639,
+   "sha256": "2c7716cf1a67d322aac8ee210f4c1092acf774f20e013ad8a0a5e37d7c9baf66",
+   "source": "https://www.thebridgeto.ai/events/02c1655a-c91c-459e-b0fc-c8a0a600b28d/bridge-to-ai-the-operator-s-circle"
+  },
+  {
+   "key": "events/04a4305a-6839-467f-bd3d-a15642f3b157/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 24361,
+   "sha256": "1668857673c458c99b04790a45b7feb4db3fda61007289ad89af0e0edccfd0a2",
+   "source": "https://www.thebridgeto.ai/events/04a4305a-6839-467f-bd3d-a15642f3b157/how-smbs-are-actually-using-ai"
+  },
+  {
+   "key": "guides/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 13286,
+   "sha256": "5fc64a576eacb1d52a8ba9a29de198c440053396109e79d5bd2e62c767adf592",
+   "source": "https://www.thebridgeto.ai/guides/"
+  },
+  {
+   "key": "learn-ai/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 12300,
+   "sha256": "546442ab4695d8f5207592d81d7f4c0970b181e53596682cdf99ce20dbb60b38",
+   "source": "https://www.thebridgeto.ai/learn-ai/"
+  },
+  {
+   "key": "news/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 12030,
+   "sha256": "70e4e64bc643f36bbcff45f0dedb1d783a53657ac2977b3ad64d216d2d469137",
+   "source": "https://www.thebridgeto.ai/news/"
+  },
+  {
+   "key": "newsletter/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 17195,
+   "sha256": "984b8780a7fe93af4436f270a01fac75eba014d21c6b9368e4c82f4947311c7b",
+   "source": "https://www.thebridgeto.ai/newsletter/"
+  },
+  {
+   "key": "our-thinking/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 22923,
+   "sha256": "f1c8d732fa301702f2ca4e25e5dbe3cda8731aa0359cf430a7ecfdcdd481c5b3",
+   "source": "https://www.thebridgeto.ai/our-thinking/"
+  },
+  {
+   "key": "our-thinking/2b34b9ae-b1cf-4674-8f32-5913ff53356c/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 14631,
+   "sha256": "be9b0780e7be1f70677570aabb2ab2e8cb585a4aacc0f1e223d2cf6b08538541",
+   "source": "https://www.thebridgeto.ai/our-thinking/2b34b9ae-b1cf-4674-8f32-5913ff53356c/ai-took-the-creative-part-first"
+  },
+  {
+   "key": "our-thinking/4ed7633d-9a66-4cd1-a482-95aad9cb3156/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 17072,
+   "sha256": "a99bbd82aa4aa8015fa3ea6588f49b0e45dc07333c590f1dc94fb41175b0aeec",
+   "source": "https://www.thebridgeto.ai/our-thinking/4ed7633d-9a66-4cd1-a482-95aad9cb3156/the-rise-of-local-ai-appliances"
+  },
+  {
+   "key": "our-thinking/5d13e22b-1b8b-4014-a23d-f4e55224035b/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 13091,
+   "sha256": "a0a41e7cd8115e194f5ef7f28a8d34afd7c08b3d421470771ecac63b355d54f9",
+   "source": "https://www.thebridgeto.ai/our-thinking/5d13e22b-1b8b-4014-a23d-f4e55224035b/ai-is-becoming-part-of-business-operations,-not-a-separate-tool."
+  },
+  {
+   "key": "our-thinking/62e49b88-8d12-403c-a6dd-f31f59f05fcb/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 13215,
+   "sha256": "e6974d77ac6815f7d1fc42587cf1b6f0c2a4b79ec3f53a7cbaf4a1d132d0041c",
+   "source": "https://www.thebridgeto.ai/our-thinking/62e49b88-8d12-403c-a6dd-f31f59f05fcb/ai-vs-business:-seven-questions-every-executive-should-re:-ai"
+  },
+  {
+   "key": "our-thinking/7331b0a9-367c-401b-9c26-bba534ac4243/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 14699,
+   "sha256": "0c2bb5b48c9b738e06584a827a822117a5eb000ed03ac1655bd84e978e34477f",
+   "source": "https://www.thebridgeto.ai/our-thinking/7331b0a9-367c-401b-9c26-bba534ac4243/six-years-of-city-hall-in-one-afternoon"
+  },
+  {
+   "key": "our-thinking/8309385e-cb7e-4a9a-b00c-a13919839278/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 24190,
+   "sha256": "cd408e7a52c504561178f8ff4e5f1c70f6fa767f755cbc6fa159dbcb32ecfcd7",
+   "source": "https://www.thebridgeto.ai/our-thinking/8309385e-cb7e-4a9a-b00c-a13919839278/the-token-panic-of-2026"
+  },
+  {
+   "key": "our-thinking/a2f1173f-ad42-46b5-9d48-fbd1828e13e6/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 14605,
+   "sha256": "7bf46f60b014fe81ca333f6bb00578f62a20a69ec34909a909f2449c44f2df2d",
+   "source": "https://www.thebridgeto.ai/our-thinking/a2f1173f-ad42-46b5-9d48-fbd1828e13e6/understanding-false-positives"
+  },
+  {
+   "key": "our-thinking/a798d2c3-ae33-4790-94f0-acbeb1794390/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 14026,
+   "sha256": "747b77d419b828a0b631c814bc58df6c76c8d624801addd63bc0f94ac87b2e20",
+   "source": "https://www.thebridgeto.ai/our-thinking/a798d2c3-ae33-4790-94f0-acbeb1794390/game-recognizes-game"
+  },
+  {
+   "key": "our-thinking/b08fe5a2-6082-4cdf-bc57-2cafccd44fc7/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 18553,
+   "sha256": "bdd8af01cacba7c46edf77ffa61ffc9ea62a4be05206269dfcdf66ce28cc1c0c",
+   "source": "https://www.thebridgeto.ai/our-thinking/b08fe5a2-6082-4cdf-bc57-2cafccd44fc7/ai-isn"
+  },
+  {
+   "key": "our-thinking/b480edcd-ba12-42cb-9270-20fb59314303/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 13274,
+   "sha256": "da054959dfe918cb17ce202f46e71b1db652004bde4762ea22c18c0b6e817cad",
+   "source": "https://www.thebridgeto.ai/our-thinking/b480edcd-ba12-42cb-9270-20fb59314303/ai:-speeding-up-the-wrong-tasks"
+  },
+  {
+   "key": "our-thinking/e490fbc0-2cb2-47d3-b37a-7041c5f66c0c/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 13805,
+   "sha256": "a7242c2083cd6aac2b6cb53795ab6668a71b54e51ce01a435a3aa8c20c25cd09",
+   "source": "https://www.thebridgeto.ai/our-thinking/e490fbc0-2cb2-47d3-b37a-7041c5f66c0c/can-ai-write-code?"
+  },
+  {
+   "key": "our-thinking/f5e551da-6bcb-4a16-a0c7-8b393231e0f6/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 14762,
+   "sha256": "09fb3ebd3f4a7bd32b4e10d51e6a0e08886a2df8d8a94b64d6a750b61d3b519d",
+   "source": "https://www.thebridgeto.ai/our-thinking/f5e551da-6bcb-4a16-a0c7-8b393231e0f6/ai-is-faster-than-i-am"
+  },
+  {
+   "key": "our-thinking/f96dd348-55dc-4359-8075-827b05b7c071/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 12712,
+   "sha256": "0c618ee69ccaf4bc4d10e411b2a01f2b0e16249c22f163d5dc5ae00acf05500e",
+   "source": "https://www.thebridgeto.ai/our-thinking/f96dd348-55dc-4359-8075-827b05b7c071/ai-just-crossed-an-important-line"
+  },
+  {
+   "key": "our-thinking/page/2/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 14905,
+   "sha256": "215f7dd243f4922a0ba3e3f56127735d2bf82b9de59ab693ec4d12b0481f5b9e",
+   "source": "https://www.thebridgeto.ai/our-thinking.action?cursor=5Id5goCXA6Tv+YketIUSL+EqoVSewrusPQy9FO4YURScIB+Pp5PDzxvAKp7bu6R25G9rfv9d3bVzao4a+g1tIw6QafthxrIImQ8kFIR9euERVCL6pYKzzAobcb4uhkUrYBcyp3QbJ+7aGBbO56dEPoiEngbzW4vOdfKB6S4ETIpHJfLVUkjjlPuL5ov4eAgFf+d4NUYp85KbmQH/j9UIga7B4DePNy/zuVDiCpxjoRnFoLyd/C9gjgcdJHqowg7nvgO+1VQCSL0ZPgV6F4gilUkrvEumPFo="
+  },
+  {
+   "key": "privacy-policy/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 13763,
+   "sha256": "f606b4c4e77601786b8919cd50e836047e410fba3060a78b4d0c37ef6313f799",
+   "source": "https://www.thebridgeto.ai/privacy-policy/"
+  },
+  {
+   "key": "resources/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 11457,
+   "sha256": "0bd6590126687ce051f74cd62cc7730559f3cbab374d4289447886fbfee76316",
+   "source": "https://www.thebridgeto.ai/resources/"
+  },
+  {
+   "key": "resources/companies/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 27150,
+   "sha256": "832781866ff816c879c956cec0aab8493eeed0016f7499ee11732e4c1dc7956f",
+   "source": "https://www.thebridgeto.ai/resources/companies/"
+  },
+  {
+   "key": "resources/companies/02964414-dd6a-4287-b1e8-7ff5d347f4e9/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 22370,
+   "sha256": "baa70c267b80bc113663319cd1caa09692c2231fccbe5105f7f00142950edc48",
+   "source": "https://www.thebridgeto.ai/resources/companies/02964414-dd6a-4287-b1e8-7ff5d347f4e9/anthropic:-ai-safety-leader"
+  },
+  {
+   "key": "resources/companies/4c32320c-ffad-48fe-bb35-9b2614b82d2a/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 15217,
+   "sha256": "3bcc9f8371c070452d699dd08ac3634dbd3d6073f9a4c5027dee535bc4cbe791",
+   "source": "https://www.thebridgeto.ai/resources/companies/4c32320c-ffad-48fe-bb35-9b2614b82d2a/safe-superintelligence-inc.-overview"
+  },
+  {
+   "key": "resources/companies/5d05e44d-9924-47bf-a4a4-59a394f2b45e/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 16920,
+   "sha256": "00ce1d1d67e0aead2c8a6e3c43e80a4548c53b69cd61794ff5208c48d0d0d164",
+   "source": "https://www.thebridgeto.ai/resources/companies/5d05e44d-9924-47bf-a4a4-59a394f2b45e/meta-ai:-a-new-frontier"
+  },
+  {
+   "key": "resources/companies/83024d09-f69c-4012-8575-911c6103bdfe/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 18636,
+   "sha256": "fa240582882ea891ecfcda833147b1745e14442eb27e6893e6104694c523d50e",
+   "source": "https://www.thebridgeto.ai/resources/companies/83024d09-f69c-4012-8575-911c6103bdfe/inside-google-deepmind"
+  },
+  {
+   "key": "resources/companies/877f3184-3b9e-4070-98dc-97d1dcbbd313/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 15088,
+   "sha256": "1cdb4d76749948686c54a7e839e16452acc1c0bace7a7150c9f93ba1040e3cb4",
+   "source": "https://www.thebridgeto.ai/resources/companies/877f3184-3b9e-4070-98dc-97d1dcbbd313/figure-ai:-humanoid-robotics-leader"
+  },
+  {
+   "key": "resources/companies/8a230f8c-f2fe-4d31-b8c8-beacf7d838e2/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 18752,
+   "sha256": "efa954b0cb67b28fca8172ae441781ece0db9ba2b26dae2c6ef3f9f13e4ae68c",
+   "source": "https://www.thebridgeto.ai/resources/companies/8a230f8c-f2fe-4d31-b8c8-beacf7d838e2/openai:-leading-ai-innovation"
+  },
+  {
+   "key": "resources/companies/aa2f5c76-9cad-4d8e-b46d-8b8d6e3b48cd/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 15969,
+   "sha256": "9d256c84e6a6dd830e2ae80d92d249cbdbcbad5bc6e3c075fa45d19f21cf1518",
+   "source": "https://www.thebridgeto.ai/resources/companies/aa2f5c76-9cad-4d8e-b46d-8b8d6e3b48cd/deepseek:-a-new-ai-challenger"
+  },
+  {
+   "key": "resources/companies/b1fae440-c06f-4656-8a49-286294ab5522/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 15650,
+   "sha256": "7b665fd612455aeefd8380611350258f07de29ec7541aeefe660211aab0b2a4b",
+   "source": "https://www.thebridgeto.ai/resources/companies/b1fae440-c06f-4656-8a49-286294ab5522/minimax:-leading-ai-innovation"
+  },
+  {
+   "key": "resources/companies/b75dbaa9-9b69-49e4-b39a-14f56462eee2/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 14764,
+   "sha256": "532c2d953cb6762731a715504243892824380c6e1bb218a5683b0d807f7f28b0",
+   "source": "https://www.thebridgeto.ai/resources/companies/b75dbaa9-9b69-49e4-b39a-14f56462eee2/moonshot-ai:-frontier-agentic-models"
+  },
+  {
+   "key": "resources/companies/ba39e421-d2c6-4948-b97c-a60b8ece1f1b/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 15199,
+   "sha256": "d5a9b274a14daa36202f6ccdde013680d418241bb152159ab7b3462583ec2a0d",
+   "source": "https://www.thebridgeto.ai/resources/companies/ba39e421-d2c6-4948-b97c-a60b8ece1f1b/black-forest-labs-overview"
+  },
+  {
+   "key": "resources/companies/bca7ebd4-4fc8-4fe4-9b04-0819cf483fea/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 14922,
+   "sha256": "fd3132221e27359aa8969c451753c5446920bb55ed17db3478759d284b66d751",
+   "source": "https://www.thebridgeto.ai/resources/companies/bca7ebd4-4fc8-4fe4-9b04-0819cf483fea/inside-bytedance"
+  },
+  {
+   "key": "resources/companies/ccae3303-590a-41f3-a3f8-e0b5a4d3cf8b/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 14805,
+   "sha256": "1c46434f437f6aa4169ac41c45c1115abca6a0604f1c4afbe5d7f7cea76adeda",
+   "source": "https://www.thebridgeto.ai/resources/companies/ccae3303-590a-41f3-a3f8-e0b5a4d3cf8b/perplexity:-ai-native-search-leader"
+  },
+  {
+   "key": "resources/companies/e0c97009-4d34-4909-9632-0b5f0cb6a77e/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 15200,
+   "sha256": "e7460e106aa5b63d61b727ca9c0312fefd0bd820e7d90305a2d90bee4adb9554",
+   "source": "https://www.thebridgeto.ai/resources/companies/e0c97009-4d34-4909-9632-0b5f0cb6a77e/midjourney:-ai-image-pioneer"
+  },
+  {
+   "key": "resources/companies/e1e52f3e-1455-4ed7-9cad-d81c6d6fe92e/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 15075,
+   "sha256": "0ca955c50154d6eb30f7b5e3a5163f96f69f45af91bcb283350cde3007ce22fc",
+   "source": "https://www.thebridgeto.ai/resources/companies/e1e52f3e-1455-4ed7-9cad-d81c6d6fe92e/stability-ai-overview"
+  },
+  {
+   "key": "resources/companies/e8eb39c6-6ebe-469a-9b85-bf4c6c0f825f/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 17244,
+   "sha256": "148964a3e0bb4a57615333eec444e3e4f48fc952dc689e58eb947130d33a8842",
+   "source": "https://www.thebridgeto.ai/resources/companies/e8eb39c6-6ebe-469a-9b85-bf4c6c0f825f/mistral-ai:-europe"
+  },
+  {
+   "key": "resources/dictionary/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 171144,
+   "sha256": "d956b356340cc2d12534317509521ff5b9f5a3abe09941311d701dbeb3d42f54",
+   "source": "https://www.thebridgeto.ai/resources/dictionary/"
+  },
+  {
+   "key": "resources/dictionary/0274dde6-e0a8-4bfd-b5a5-eccfe67cecdc/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 11454,
+   "sha256": "89eddf88dfb58786408d621a82cd664c0201bb445fea163505d271a79d8c1d48",
+   "source": "https://www.thebridgeto.ai/resources/dictionary/0274dde6-e0a8-4bfd-b5a5-eccfe67cecdc/"
+  },
+  {
+   "key": "resources/dictionary/0279e439-ff68-484c-99e0-247015f2fc79/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 11294,
+   "sha256": "446c1739d8b6cbea883d575e339a5e7a83e276990c11ba1cff3a0a7149026ea4",
+   "source": "https://www.thebridgeto.ai/resources/dictionary/0279e439-ff68-484c-99e0-247015f2fc79/"
+  },
+  {
+   "key": "resources/dictionary/03d8f0e0-a49e-4150-a160-a655ddff0a75/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 11292,
+   "sha256": "3c8dde456bd82549572ec77ecca20b42d3262237a2d680844e2e646a892b596d",
+   "source": "https://www.thebridgeto.ai/resources/dictionary/03d8f0e0-a49e-4150-a160-a655ddff0a75/"
+  },
+  {
+   "key": "resources/dictionary/048f97db-adef-4ea3-8300-e7fa578d1c31/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 11329,
+   "sha256": "971efd92fa8a34a760ac7d40f33e4ff5f55c07d4374eb021e17ac7b1d7afe1b9",
+   "source": "https://www.thebridgeto.ai/resources/dictionary/048f97db-adef-4ea3-8300-e7fa578d1c31/"
+  },
+  {
+   "key": "resources/dictionary/04bcc611-12de-4b35-824c-8d9c45465b67/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 11319,
+   "sha256": "fc10cc7307648ec067dda5af1ca932b49849274b620342429402c8e6e13ebce1",
+   "source": "https://www.thebridgeto.ai/resources/dictionary/04bcc611-12de-4b35-824c-8d9c45465b67/"
+  },
+  {
+   "key": "resources/dictionary/061634d1-ac2a-400b-9b25-4c23b446f218/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 11333,
+   "sha256": "a149d55bc41a9894453f1b0195bd574f9b8442cb64f87f8306ae9325c9437365",
+   "source": "https://www.thebridgeto.ai/resources/dictionary/061634d1-ac2a-400b-9b25-4c23b446f218/"
+  },
+  {
+   "key": "resources/dictionary/0f1b3737-dfbb-4997-809b-61f678d8c092/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 11257,
+   "sha256": "79a7fafa32209a2204d23d119055fd3e86850398de0aaa55c3a649ade2a2b00b",
+   "source": "https://www.thebridgeto.ai/resources/dictionary/0f1b3737-dfbb-4997-809b-61f678d8c092/"
+  },
+  {
+   "key": "resources/dictionary/141ea8a3-361a-43e6-a587-eebe8b3e7a4e/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 11249,
+   "sha256": "f50a9007745310f57aab5031ad52e6cd7b8094d8124ee1e364996fc7ca49849c",
+   "source": "https://www.thebridgeto.ai/resources/dictionary/141ea8a3-361a-43e6-a587-eebe8b3e7a4e/"
+  },
+  {
+   "key": "resources/dictionary/1f89de54-41a8-4a96-8841-50de1c7e7dcb/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 11341,
+   "sha256": "fb089460dbe2c7111de2136a4a3b49db8c9331c5a6b307c4dacb68659a08adf2",
+   "source": "https://www.thebridgeto.ai/resources/dictionary/1f89de54-41a8-4a96-8841-50de1c7e7dcb/"
+  },
+  {
+   "key": "resources/dictionary/20432d61-ceba-4d71-a56b-620ef726bb06/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 11278,
+   "sha256": "a6a6c8e531b9461e3a25be5a7580783b3cd05b5bf3155261f6042dd5b1455669",
+   "source": "https://www.thebridgeto.ai/resources/dictionary/20432d61-ceba-4d71-a56b-620ef726bb06/"
+  },
+  {
+   "key": "resources/dictionary/20a5598c-340e-4ebd-99eb-fc5cc2720fac/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 11402,
+   "sha256": "a812569b480692fc565489a0741cb4337431126bceeb73c7d648d3c6f930bda2",
+   "source": "https://www.thebridgeto.ai/resources/dictionary/20a5598c-340e-4ebd-99eb-fc5cc2720fac/"
+  },
+  {
+   "key": "resources/dictionary/2178e08f-ed1d-47d9-a088-908e6fea8790/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 11123,
+   "sha256": "1fa294d74943f7030ebda06bbd7441bf02f8aa65a76b367f5e498cbd2abfd3c0",
+   "source": "https://www.thebridgeto.ai/resources/dictionary/2178e08f-ed1d-47d9-a088-908e6fea8790/"
+  },
+  {
+   "key": "resources/dictionary/27660d49-7dc8-49d7-b748-8395a1712bea/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 11325,
+   "sha256": "f681f5339a8ca53f98ebe07477e43ff64648c399fdabcaca452e17f8308f2dce",
+   "source": "https://www.thebridgeto.ai/resources/dictionary/27660d49-7dc8-49d7-b748-8395a1712bea/"
+  },
+  {
+   "key": "resources/dictionary/2a95aec7-cf3d-4716-b6fd-5264f5d88a80/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 11330,
+   "sha256": "e5693ee5e4e9b15e0c925dbb26208a80e1d5f2dd98bfcd1a63c6cc2938ee6de0",
+   "source": "https://www.thebridgeto.ai/resources/dictionary/2a95aec7-cf3d-4716-b6fd-5264f5d88a80/"
+  },
+  {
+   "key": "resources/dictionary/2d437dce-1bf3-4e5e-9c71-6100adf652cb/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 11292,
+   "sha256": "9827e2957c6d4120442bac01effd59f0c917bdabc73e776489d47385c71dcdf3",
+   "source": "https://www.thebridgeto.ai/resources/dictionary/2d437dce-1bf3-4e5e-9c71-6100adf652cb/"
+  },
+  {
+   "key": "resources/dictionary/3386932b-444d-4efb-afc4-a1bbcd06f614/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 11296,
+   "sha256": "8a1093b381d72c3ae34cbd0a186ca5ee8f493b6adb5e5c9182fcf9ee68ebadfc",
+   "source": "https://www.thebridgeto.ai/resources/dictionary/3386932b-444d-4efb-afc4-a1bbcd06f614/"
+  },
+  {
+   "key": "resources/dictionary/3416158d-35e4-4c69-841a-54ee4fb77318/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 11378,
+   "sha256": "e38dc7851548281202b17f4a4740ab024c5539fc0cd1296dd56fc87594fea22e",
+   "source": "https://www.thebridgeto.ai/resources/dictionary/3416158d-35e4-4c69-841a-54ee4fb77318/"
+  },
+  {
+   "key": "resources/dictionary/35edfa06-9a7f-4e11-adfa-5020a07cf1aa/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 11336,
+   "sha256": "c7cf90048ec155aa572b29f1ce8e72894c3eb15c6a4c759fbe49e4fa5d1f754c",
+   "source": "https://www.thebridgeto.ai/resources/dictionary/35edfa06-9a7f-4e11-adfa-5020a07cf1aa/"
+  },
+  {
+   "key": "resources/dictionary/37b76149-f953-4900-9e0c-29110b22d496/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 11213,
+   "sha256": "09fc69f44a9c6339958d944f9fea669bbf7a6ab3299cb3c330c88041f608ed51",
+   "source": "https://www.thebridgeto.ai/resources/dictionary/37b76149-f953-4900-9e0c-29110b22d496/"
+  },
+  {
+   "key": "resources/dictionary/3c3f3a2a-b90e-49c8-af44-d9a41c7a69e5/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 11263,
+   "sha256": "e38f555151278054be6a2287d986153d267de862e3a4dc73f9a16294a553fc00",
+   "source": "https://www.thebridgeto.ai/resources/dictionary/3c3f3a2a-b90e-49c8-af44-d9a41c7a69e5/"
+  },
+  {
+   "key": "resources/dictionary/3ed58a98-4977-4aa6-be40-93b89af973dd/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 11340,
+   "sha256": "37257445b47469cb1b0ec9ea679d5d078228017549cc83a36257770479430933",
+   "source": "https://www.thebridgeto.ai/resources/dictionary/3ed58a98-4977-4aa6-be40-93b89af973dd/"
+  },
+  {
+   "key": "resources/dictionary/40ff0650-fb89-4ab2-8986-a256e42e53d2/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 11401,
+   "sha256": "2b70abc2647d434ed35f3b022282e62bcd724f029a5dde583dd9c8cb583ea02b",
+   "source": "https://www.thebridgeto.ai/resources/dictionary/40ff0650-fb89-4ab2-8986-a256e42e53d2/"
+  },
+  {
+   "key": "resources/dictionary/42cbbbf7-0389-4fb1-84cc-6afe167caa5b/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 11229,
+   "sha256": "18fe12f3f9a7a187e8f5ed7afb797884cea2528f6646f96e9c510a4870063010",
+   "source": "https://www.thebridgeto.ai/resources/dictionary/42cbbbf7-0389-4fb1-84cc-6afe167caa5b/"
+  },
+  {
+   "key": "resources/dictionary/4457eb15-b1c1-422b-8d21-82f86324d568/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 11335,
+   "sha256": "5978fefb0c4008d60c8f670383f9ad96ec4881fe38bee45ac4f90227676967e3",
+   "source": "https://www.thebridgeto.ai/resources/dictionary/4457eb15-b1c1-422b-8d21-82f86324d568/"
+  },
+  {
+   "key": "resources/dictionary/47fa368d-6518-4f9d-9042-155e3de60427/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 11353,
+   "sha256": "fe387bfff55a745458661beabbdedbce63021e4e15b2ccdba281cb5d58d1a895",
+   "source": "https://www.thebridgeto.ai/resources/dictionary/47fa368d-6518-4f9d-9042-155e3de60427/"
+  },
+  {
+   "key": "resources/dictionary/4b4ebd21-72b4-4015-a849-553cfb0b4d89/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 11299,
+   "sha256": "5e23f4564ff2b4a5d20921d52f6890e34ddc489e4544cbf234820ac2f226c9a1",
+   "source": "https://www.thebridgeto.ai/resources/dictionary/4b4ebd21-72b4-4015-a849-553cfb0b4d89/"
+  },
+  {
+   "key": "resources/dictionary/4bd48821-eb88-4e67-ba92-d4784c80eda8/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 11197,
+   "sha256": "f084136f1efa37107f17ba93784ee927f7ec2b1957d651fb2f7a5bf9e92126c7",
+   "source": "https://www.thebridgeto.ai/resources/dictionary/4bd48821-eb88-4e67-ba92-d4784c80eda8/"
+  },
+  {
+   "key": "resources/dictionary/4c58e453-17da-424f-9dd2-da55e68668fe/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 11408,
+   "sha256": "6aa44fb547a86e7593900e3c8b1c4e74ac291bb65a10baed070a013b902d233c",
+   "source": "https://www.thebridgeto.ai/resources/dictionary/4c58e453-17da-424f-9dd2-da55e68668fe/"
+  },
+  {
+   "key": "resources/dictionary/4e217642-bcf7-49c1-aabf-86376a11e028/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 11285,
+   "sha256": "61b651176df7914bb9801a0defc0adbd821298cb931cd13ddadae06dfbf727de",
+   "source": "https://www.thebridgeto.ai/resources/dictionary/4e217642-bcf7-49c1-aabf-86376a11e028/"
+  },
+  {
+   "key": "resources/dictionary/52a09c63-33e5-4fd4-997e-fdbb677a9450/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 11286,
+   "sha256": "186531842d4fbb943411285520afd03cf1cc922e855aa01dc54951b0ce4ffb11",
+   "source": "https://www.thebridgeto.ai/resources/dictionary/52a09c63-33e5-4fd4-997e-fdbb677a9450/"
+  },
+  {
+   "key": "resources/dictionary/5369fb53-0873-445b-a8ee-a7e67d8eb5fe/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 11272,
+   "sha256": "1334c070b7a693cba7d050aa4e3ae079afc583dae46ce4aca629257ed5ecead1",
+   "source": "https://www.thebridgeto.ai/resources/dictionary/5369fb53-0873-445b-a8ee-a7e67d8eb5fe/"
+  },
+  {
+   "key": "resources/dictionary/54d59458-5d81-4127-9291-b35a4c32963d/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 11353,
+   "sha256": "ec5b4648c9c92b83d7c0903631505fbfa59a0ab761c06e4d9581d58a0343da37",
+   "source": "https://www.thebridgeto.ai/resources/dictionary/54d59458-5d81-4127-9291-b35a4c32963d/"
+  },
+  {
+   "key": "resources/dictionary/552224e4-4383-4810-8003-63ee0fc168df/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 11410,
+   "sha256": "e8d334bc4c8e02115744f2b4acc1b2647416d6b01cc512bbd812c0ce5327737a",
+   "source": "https://www.thebridgeto.ai/resources/dictionary/552224e4-4383-4810-8003-63ee0fc168df/"
+  },
+  {
+   "key": "resources/dictionary/56b0467f-1384-4fb6-badf-19f77980e219/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 11496,
+   "sha256": "9f7098c8093bc4afef57c70a57efcb9fe6f7f256698ab0d1dad8d3cc74af3908",
+   "source": "https://www.thebridgeto.ai/resources/dictionary/56b0467f-1384-4fb6-badf-19f77980e219/"
+  },
+  {
+   "key": "resources/dictionary/61231567-81a8-4299-8068-4ec0d8bd4687/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 11212,
+   "sha256": "f4011405174a5278e252fd91eff72603eefd4456f8d18867a35e55f4d512f609",
+   "source": "https://www.thebridgeto.ai/resources/dictionary/61231567-81a8-4299-8068-4ec0d8bd4687/"
+  },
+  {
+   "key": "resources/dictionary/616e9ecf-865b-45e4-8ac8-58fe0e01f959/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 11359,
+   "sha256": "9c528d02dc7361ec045a79bb74fc639838cd8c91631cb125b5e6360860fc3443",
+   "source": "https://www.thebridgeto.ai/resources/dictionary/616e9ecf-865b-45e4-8ac8-58fe0e01f959/"
+  },
+  {
+   "key": "resources/dictionary/62502756-d105-4b2a-82a0-57611f6ac500/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 11467,
+   "sha256": "70f384f30f046458ead80b1edaf840206f8b4cb18d59a6c35510e8356cf0d8d3",
+   "source": "https://www.thebridgeto.ai/resources/dictionary/62502756-d105-4b2a-82a0-57611f6ac500/"
+  },
+  {
+   "key": "resources/dictionary/6423bcf3-96cf-47f8-8191-573fab437198/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 11303,
+   "sha256": "b2d5e1b90d1c209092ad8b90f0fef5614d99067d41cc861cefbf0efa93d9bd60",
+   "source": "https://www.thebridgeto.ai/resources/dictionary/6423bcf3-96cf-47f8-8191-573fab437198/"
+  },
+  {
+   "key": "resources/dictionary/6c373b45-898d-4946-8c0c-6e8686f4641b/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 11324,
+   "sha256": "6430fce33e25a07f756f7c4c0cecc13d2540d618495dc60e8c595f6229a9de07",
+   "source": "https://www.thebridgeto.ai/resources/dictionary/6c373b45-898d-4946-8c0c-6e8686f4641b/"
+  },
+  {
+   "key": "resources/dictionary/6e86b882-5811-4381-b56d-3532c909c566/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 11410,
+   "sha256": "5b8264e4abdf48d1d59bc0b2152119e50a1bfb9746f520cea7b8af79995f88dd",
+   "source": "https://www.thebridgeto.ai/resources/dictionary/6e86b882-5811-4381-b56d-3532c909c566/"
+  },
+  {
+   "key": "resources/dictionary/74b06424-de02-4691-b39b-ae5b2f117170/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 11393,
+   "sha256": "e45d0f5f6bd4e6dbd5e016e50be75805d6180d0fb04de683e4ebd7b54b7b50a3",
+   "source": "https://www.thebridgeto.ai/resources/dictionary/74b06424-de02-4691-b39b-ae5b2f117170/"
+  },
+  {
+   "key": "resources/dictionary/77895a02-b01a-45a4-af18-0a68f5cb35cd/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 11587,
+   "sha256": "58a0ba359d6471e257c8e579c21adaf7bad8b15b2a26e61744c3d3d5833640e6",
+   "source": "https://www.thebridgeto.ai/resources/dictionary/77895a02-b01a-45a4-af18-0a68f5cb35cd/"
+  },
+  {
+   "key": "resources/dictionary/795aa270-97ce-4a5f-bc80-7d36ff9bc8be/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 11403,
+   "sha256": "dc8474812f512513bd6c1505623c7ee85897db82f54a8b4bb8a64aabd14d3592",
+   "source": "https://www.thebridgeto.ai/resources/dictionary/795aa270-97ce-4a5f-bc80-7d36ff9bc8be/"
+  },
+  {
+   "key": "resources/dictionary/7aec2438-d3ac-4806-ba63-06ae97e0e292/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 11330,
+   "sha256": "78a7820dfb90ae6d27bc3454f0a17eadd9c211bf1692061389efa22678b4e2c7",
+   "source": "https://www.thebridgeto.ai/resources/dictionary/7aec2438-d3ac-4806-ba63-06ae97e0e292/"
+  },
+  {
+   "key": "resources/dictionary/7d857dc5-4cd7-4ab7-a573-b44036e9e9ab/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 11359,
+   "sha256": "59b8283ef3c4b9499d35a5899e1323ac35cc67cf73d96dfbfb946511ff90fcef",
+   "source": "https://www.thebridgeto.ai/resources/dictionary/7d857dc5-4cd7-4ab7-a573-b44036e9e9ab/"
+  },
+  {
+   "key": "resources/dictionary/7f297cb9-9c5d-4dc7-aad2-38ecc220902b/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 11210,
+   "sha256": "f0c251332eb825327b6f41359426dd7456fcce55e111caaee790f05f694eae9e",
+   "source": "https://www.thebridgeto.ai/resources/dictionary/7f297cb9-9c5d-4dc7-aad2-38ecc220902b/"
+  },
+  {
+   "key": "resources/dictionary/80058372-5271-4df3-8119-dcc0cb2d746b/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 11359,
+   "sha256": "c45774b4ae05d858e315cffd54ba2672f121295b077edb0cea6313d23098383a",
+   "source": "https://www.thebridgeto.ai/resources/dictionary/80058372-5271-4df3-8119-dcc0cb2d746b/"
+  },
+  {
+   "key": "resources/dictionary/806518be-87ea-4575-a6f0-e8d06cf80709/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 11266,
+   "sha256": "6292679b9969df78da7c1243149ea7d93af869abde0431a25afa1c63ac989731",
+   "source": "https://www.thebridgeto.ai/resources/dictionary/806518be-87ea-4575-a6f0-e8d06cf80709/"
+  },
+  {
+   "key": "resources/dictionary/83ffa91b-a039-40d5-a80a-7a4b955fe366/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 11298,
+   "sha256": "6989472f7c8d516749bd6391ad3d4cc65629cf2f95c110ead952ba0a382d1986",
+   "source": "https://www.thebridgeto.ai/resources/dictionary/83ffa91b-a039-40d5-a80a-7a4b955fe366/"
+  },
+  {
+   "key": "resources/dictionary/85565cde-a21f-4a98-9706-68a4455f4fc5/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 11233,
+   "sha256": "6384d35496181eeadfff8eaf67ffa5e3f253a5c080709d1feab96b563e7e0cd7",
+   "source": "https://www.thebridgeto.ai/resources/dictionary/85565cde-a21f-4a98-9706-68a4455f4fc5/"
+  },
+  {
+   "key": "resources/dictionary/8bda0d52-9fb2-4c16-a3ac-1ba629971461/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 11364,
+   "sha256": "4ee1df765dcce9784d689e8c2cd296c9fe0b483e0917787d437b11c07e2d1532",
+   "source": "https://www.thebridgeto.ai/resources/dictionary/8bda0d52-9fb2-4c16-a3ac-1ba629971461/"
+  },
+  {
+   "key": "resources/dictionary/8c60f343-fb8c-427c-888f-ea99a227ef90/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 11290,
+   "sha256": "55675dd094bd934e87cf7d13ecd0fad4bce5b1a91bec55fda00fa51b242900c6",
+   "source": "https://www.thebridgeto.ai/resources/dictionary/8c60f343-fb8c-427c-888f-ea99a227ef90/"
+  },
+  {
+   "key": "resources/dictionary/8ccd4e62-e656-422b-af9d-17f8629d492b/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 11288,
+   "sha256": "9c45e6ec9f052316517d50d9fd4db3855e6fca46c3b3e35a0c643948e3d7352a",
+   "source": "https://www.thebridgeto.ai/resources/dictionary/8ccd4e62-e656-422b-af9d-17f8629d492b/"
+  },
+  {
+   "key": "resources/dictionary/8e128d82-569e-499b-86d2-85157844eab9/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 11393,
+   "sha256": "05d1e6cb8e47010c1d04c7370ef0ecc87a97098970139dc980def7191102fdba",
+   "source": "https://www.thebridgeto.ai/resources/dictionary/8e128d82-569e-499b-86d2-85157844eab9/"
+  },
+  {
+   "key": "resources/dictionary/91a9be4d-d790-42c9-a5ec-b4b609a11501/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 11372,
+   "sha256": "3b2cf2df15b09e7136d17ed334951f7d32db2a3d4cd9c702ab9b74b9f56af0a6",
+   "source": "https://www.thebridgeto.ai/resources/dictionary/91a9be4d-d790-42c9-a5ec-b4b609a11501/"
+  },
+  {
+   "key": "resources/dictionary/926f9f16-70dc-4ea9-8633-9c1c3a9682d9/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 11426,
+   "sha256": "6812897f5fc68a5396eccaaca4c6480592b94b115817a39a2058aa04fa4f9bf3",
+   "source": "https://www.thebridgeto.ai/resources/dictionary/926f9f16-70dc-4ea9-8633-9c1c3a9682d9/"
+  },
+  {
+   "key": "resources/dictionary/938bb4e7-a5d3-4e01-af40-7bfb9fa68317/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 11262,
+   "sha256": "334a278e1c356ad368ed71e2f5ad584466057f94b911f1ec83ae9e714bdccc23",
+   "source": "https://www.thebridgeto.ai/resources/dictionary/938bb4e7-a5d3-4e01-af40-7bfb9fa68317/"
+  },
+  {
+   "key": "resources/dictionary/947c8d67-672c-4d1e-b94e-709850cc8819/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 11228,
+   "sha256": "314b0be2940f13b3c0ba50f306f36d16d69f93ba3b607f4af82ec1cc3e02d027",
+   "source": "https://www.thebridgeto.ai/resources/dictionary/947c8d67-672c-4d1e-b94e-709850cc8819/"
+  },
+  {
+   "key": "resources/dictionary/98978db7-55ef-4227-b7a3-f2de806fe17d/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 11355,
+   "sha256": "9ab73542c23d911f38c1583108be134ff1d54c5f0cbd63dbd4797051a54305b6",
+   "source": "https://www.thebridgeto.ai/resources/dictionary/98978db7-55ef-4227-b7a3-f2de806fe17d/"
+  },
+  {
+   "key": "resources/dictionary/98eee5fe-1f3b-4db3-aa16-4b91ffd0dceb/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 11469,
+   "sha256": "469a52b7098d5342ee10a867a36a23a0bfe5e67081ad20f4f88a0e73b0f4f8f9",
+   "source": "https://www.thebridgeto.ai/resources/dictionary/98eee5fe-1f3b-4db3-aa16-4b91ffd0dceb/"
+  },
+  {
+   "key": "resources/dictionary/9a907040-045e-4eb9-ad96-adc031589d47/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 11378,
+   "sha256": "4bb0145d41a2585d7466289e6e3e97a627c5a0038bfabc0366b834e7be5bf92a",
+   "source": "https://www.thebridgeto.ai/resources/dictionary/9a907040-045e-4eb9-ad96-adc031589d47/"
+  },
+  {
+   "key": "resources/dictionary/9f0fcb41-d33d-45b9-b15a-17fb3a4d0b24/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 11302,
+   "sha256": "e7aa3f8f9130a3655f572b11aaae0b17b2073f19ce0da273f4007016c1126a57",
+   "source": "https://www.thebridgeto.ai/resources/dictionary/9f0fcb41-d33d-45b9-b15a-17fb3a4d0b24/"
+  },
+  {
+   "key": "resources/dictionary/9f5201a4-c995-473f-a951-a0f60902ed6d/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 11364,
+   "sha256": "3daaf6bbf55721ca13e35ca1f0caa8b32eb17989f38a88de3b1429a84aa3b3c8",
+   "source": "https://www.thebridgeto.ai/resources/dictionary/9f5201a4-c995-473f-a951-a0f60902ed6d/"
+  },
+  {
+   "key": "resources/dictionary/a47915af-5439-4c42-a37a-647bb8ff7062/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 11329,
+   "sha256": "f1e4cca7873d7a00827a98a3f1cffdaaba6525d43d64bcf36f89a52f1aab127a",
+   "source": "https://www.thebridgeto.ai/resources/dictionary/a47915af-5439-4c42-a37a-647bb8ff7062/"
+  },
+  {
+   "key": "resources/dictionary/a7490087-c158-4cee-b8bf-835575aa190f/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 11212,
+   "sha256": "ac9909a43763c184ebc825afadb5e1a8ebb1ce2095bb18b17441264be5921248",
+   "source": "https://www.thebridgeto.ai/resources/dictionary/a7490087-c158-4cee-b8bf-835575aa190f/"
+  },
+  {
+   "key": "resources/dictionary/a79d4324-ebe4-4c57-b804-d176a3971af8/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 11362,
+   "sha256": "92e6787eb5abb60a0c3626fdbe9b54451148b81c4c284df75382b9bae8f9d460",
+   "source": "https://www.thebridgeto.ai/resources/dictionary/a79d4324-ebe4-4c57-b804-d176a3971af8/"
+  },
+  {
+   "key": "resources/dictionary/a98a5314-c64f-4f3a-851d-b32d920bb7bf/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 11181,
+   "sha256": "f79a127775875b93d7eee72e0a1b875199951f892c1059a8cbdd478658d9220f",
+   "source": "https://www.thebridgeto.ai/resources/dictionary/a98a5314-c64f-4f3a-851d-b32d920bb7bf/"
+  },
+  {
+   "key": "resources/dictionary/aca68cae-4f77-4708-a746-b53120fa4906/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 11249,
+   "sha256": "ac7a81d02dc3fbb65f5a07b5aef7987314767732a03b31c65626ab5d8cc68ac0",
+   "source": "https://www.thebridgeto.ai/resources/dictionary/aca68cae-4f77-4708-a746-b53120fa4906/"
+  },
+  {
+   "key": "resources/dictionary/b5d441ac-0bad-405e-9a0b-5a0a84e28c2d/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 11346,
+   "sha256": "84c3058ac231dbb6d998828047d39998517d25815ace3b1ae7ba510bd41f417a",
+   "source": "https://www.thebridgeto.ai/resources/dictionary/b5d441ac-0bad-405e-9a0b-5a0a84e28c2d/"
+  },
+  {
+   "key": "resources/dictionary/b747ef46-c636-4366-a7dd-f919f4e08e2f/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 11215,
+   "sha256": "9b2fde48be6d4fb12648c49544610e7e4fb5577fa0f4ff3bec1d2bc8e4bf5f58",
+   "source": "https://www.thebridgeto.ai/resources/dictionary/b747ef46-c636-4366-a7dd-f919f4e08e2f/"
+  },
+  {
+   "key": "resources/dictionary/b7b38b4e-c408-43d9-8f14-abb24c417e27/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 11482,
+   "sha256": "3864edc5c58d70efa2311ef55fecb5a10214bad71b3f09b3eaf2c231bde8d07c",
+   "source": "https://www.thebridgeto.ai/resources/dictionary/b7b38b4e-c408-43d9-8f14-abb24c417e27/"
+  },
+  {
+   "key": "resources/dictionary/bef7aa74-9594-4053-9b3e-311aeacbc031/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 11292,
+   "sha256": "c108b3acdc17a845ee29ccbd2fe7565d1fef966d6523754755b0c7cd5e4b5bba",
+   "source": "https://www.thebridgeto.ai/resources/dictionary/bef7aa74-9594-4053-9b3e-311aeacbc031/"
+  },
+  {
+   "key": "resources/dictionary/c887678a-09af-4ca3-94e4-f531a76c512f/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 11292,
+   "sha256": "d1c5c1b83a32f472949e1cfe6605763fe51d41dbd5d7c7b5cf5fdd1bb2fa877b",
+   "source": "https://www.thebridgeto.ai/resources/dictionary/c887678a-09af-4ca3-94e4-f531a76c512f/"
+  },
+  {
+   "key": "resources/dictionary/c8a4ac9f-ed10-49fd-a974-3ec7bb4659b8/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 11308,
+   "sha256": "a69fe466173a5015851ee6d163878576a7f975edd2d2982d93321f3e6566fead",
+   "source": "https://www.thebridgeto.ai/resources/dictionary/c8a4ac9f-ed10-49fd-a974-3ec7bb4659b8/"
+  },
+  {
+   "key": "resources/dictionary/c8d00367-fb51-4a09-bba5-1e04c0da1092/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 11318,
+   "sha256": "cab3e6479152feb3d32f20eeed4165469033311ab805a77e2d1afa2d7fe02fe7",
+   "source": "https://www.thebridgeto.ai/resources/dictionary/c8d00367-fb51-4a09-bba5-1e04c0da1092/"
+  },
+  {
+   "key": "resources/dictionary/c9837ce9-63a9-46e0-a485-1b8f6ba61edf/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 11198,
+   "sha256": "97ba8f8a3491fb8971d04c82ebd476f5e029fd275f8681186b38a51722124030",
+   "source": "https://www.thebridgeto.ai/resources/dictionary/c9837ce9-63a9-46e0-a485-1b8f6ba61edf/"
+  },
+  {
+   "key": "resources/dictionary/cdab8a21-fb5f-495d-b4c8-b4566ea2d0fb/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 11207,
+   "sha256": "637f67af80ffb57cfd906d96108934520b0a0fd99ac732ff1abcac2cef35876b",
+   "source": "https://www.thebridgeto.ai/resources/dictionary/cdab8a21-fb5f-495d-b4c8-b4566ea2d0fb/"
+  },
+  {
+   "key": "resources/dictionary/d1a50ede-2978-4519-9f94-82bb5666ce50/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 11820,
+   "sha256": "8e14826b987f686368e1c4c8a6cfb09ab29b019591425c5f63eda5a1e2647043",
+   "source": "https://www.thebridgeto.ai/resources/dictionary/d1a50ede-2978-4519-9f94-82bb5666ce50/"
+  },
+  {
+   "key": "resources/dictionary/dd253898-6b15-4b61-97d3-7602e3c441b2/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 11363,
+   "sha256": "990791bd14d885fb323c9f0e2d6cf030091f3a2f7b07d32bb9358beb82c0549c",
+   "source": "https://www.thebridgeto.ai/resources/dictionary/dd253898-6b15-4b61-97d3-7602e3c441b2/"
+  },
+  {
+   "key": "resources/dictionary/e3e1db10-99c6-4102-a16c-41bb5b394846/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 11230,
+   "sha256": "42a1e7bc705531e52d1593f90581899c6e8194c0d696e4f61a6ab7314a890fe1",
+   "source": "https://www.thebridgeto.ai/resources/dictionary/e3e1db10-99c6-4102-a16c-41bb5b394846/"
+  },
+  {
+   "key": "resources/dictionary/e50e5cc0-d43b-41c7-b6b0-faa35d537a3a/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 11235,
+   "sha256": "84ab5a4d4d1ebe41e50344de1dcc259c494ea91968691de7ca23cb6628829206",
+   "source": "https://www.thebridgeto.ai/resources/dictionary/e50e5cc0-d43b-41c7-b6b0-faa35d537a3a/"
+  },
+  {
+   "key": "resources/dictionary/e578c11c-b671-4447-be68-f7771c278a7b/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 11254,
+   "sha256": "9d0b7d2ad0651afe204f40ebaac72e286ef09d589f928b54cfa7bc8e6d8c096f",
+   "source": "https://www.thebridgeto.ai/resources/dictionary/e578c11c-b671-4447-be68-f7771c278a7b/"
+  },
+  {
+   "key": "resources/dictionary/e5fbc1f0-a6dc-49ca-a998-19ddbed53f97/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 11185,
+   "sha256": "fccd7e06ce5e361b329c8a28305cea4c7f810b6a9d0e1b9944da1d70724ebfc1",
+   "source": "https://www.thebridgeto.ai/resources/dictionary/e5fbc1f0-a6dc-49ca-a998-19ddbed53f97/"
+  },
+  {
+   "key": "resources/dictionary/e871d054-1f24-418f-82c8-485e5e1a11a9/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 11229,
+   "sha256": "ad3ce347056a3635f4642b6a728be8092ea50d62aec076b4ea54a852085a74a2",
+   "source": "https://www.thebridgeto.ai/resources/dictionary/e871d054-1f24-418f-82c8-485e5e1a11a9/"
+  },
+  {
+   "key": "resources/dictionary/ec874679-55a6-4368-bca7-0c45cf284a5c/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 11278,
+   "sha256": "96d10875147675d006f3caec7e488d59afd2ae97a722178e3da948608f9b733e",
+   "source": "https://www.thebridgeto.ai/resources/dictionary/ec874679-55a6-4368-bca7-0c45cf284a5c/"
+  },
+  {
+   "key": "resources/dictionary/ee14a229-5c13-4f1b-a8ca-360fb6344240/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 11323,
+   "sha256": "aba7ad1bf7476e3056401a09691d62c4b392be80c5a27e5ca8ed48c64f3f3ab7",
+   "source": "https://www.thebridgeto.ai/resources/dictionary/ee14a229-5c13-4f1b-a8ca-360fb6344240/"
+  },
+  {
+   "key": "resources/dictionary/eeaea6d0-82af-4622-9696-1ec99ef5d431/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 11437,
+   "sha256": "f505d3667b70a1bcd209f489e5a614dd7fabb4e3838a3a65d0694366e9b53018",
+   "source": "https://www.thebridgeto.ai/resources/dictionary/eeaea6d0-82af-4622-9696-1ec99ef5d431/"
+  },
+  {
+   "key": "resources/dictionary/f09c2040-72d9-499b-b851-e56ee98064a2/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 11209,
+   "sha256": "20d16be0a6dc2c4403ff27356f991a05a8cc86fe630bd6be47ddc87c5415c96d",
+   "source": "https://www.thebridgeto.ai/resources/dictionary/f09c2040-72d9-499b-b851-e56ee98064a2/"
+  },
+  {
+   "key": "resources/dictionary/f0edb27c-a0aa-420e-986f-b4363215a190/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 11323,
+   "sha256": "ee0c4e8e74e15b9738d170a2d7f35e741c759bc3867826dfa98d85be5625af6b",
+   "source": "https://www.thebridgeto.ai/resources/dictionary/f0edb27c-a0aa-420e-986f-b4363215a190/"
+  },
+  {
+   "key": "resources/dictionary/f117a783-3373-4040-bd01-f2e7b0bb1d90/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 11300,
+   "sha256": "5afdfaa51a0443a624690e22e06f674b6e85ef8d890471261b3b15146d190fff",
+   "source": "https://www.thebridgeto.ai/resources/dictionary/f117a783-3373-4040-bd01-f2e7b0bb1d90/"
+  },
+  {
+   "key": "resources/dictionary/f3c015bc-b2ed-45b1-83d3-a495314f66a9/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 11394,
+   "sha256": "74abb34c3675d949a9c72a464220328558abe41b09f5a6c5f7edd70053f85b6f",
+   "source": "https://www.thebridgeto.ai/resources/dictionary/f3c015bc-b2ed-45b1-83d3-a495314f66a9/"
+  },
+  {
+   "key": "resources/dictionary/f455e701-483e-445f-b1fb-0441de41f49c/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 11307,
+   "sha256": "24005acda2037ab717a88c2cfbd55fe72d9f2bc8b0acf1459b33604e469acac3",
+   "source": "https://www.thebridgeto.ai/resources/dictionary/f455e701-483e-445f-b1fb-0441de41f49c/"
+  },
+  {
+   "key": "resources/dictionary/f9dca689-b9db-4d59-8028-5228363c76df/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 11522,
+   "sha256": "1d280ccaa16ab468ca2f7f47cf567b83c88cdf2850e4ab6c7b73aff6560b28c2",
+   "source": "https://www.thebridgeto.ai/resources/dictionary/f9dca689-b9db-4d59-8028-5228363c76df/"
+  },
+  {
+   "key": "resources/dictionary/fc81cbdd-a175-4d43-bd35-50f19cd48655/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 11382,
+   "sha256": "ca3744288caa713535531f8b4977d1f19604d71a8252fb04771cc1414c7faabc",
+   "source": "https://www.thebridgeto.ai/resources/dictionary/fc81cbdd-a175-4d43-bd35-50f19cd48655/"
+  },
+  {
+   "key": "resources/dictionary/fef4591f-22d0-4131-9c4d-3bf6fe257c7e/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 11356,
+   "sha256": "78fed79661270bf830addde937a67488fc4b9ba419da6c61e4d488850922dd46",
+   "source": "https://www.thebridgeto.ai/resources/dictionary/fef4591f-22d0-4131-9c4d-3bf6fe257c7e/"
+  },
+  {
+   "key": "resources/models/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 104798,
+   "sha256": "797aca1ffd2473a544a6436a7cc052d44af447229fdee2a0ab965e6178b3585d",
+   "source": "https://www.thebridgeto.ai/resources/models/"
+  },
+  {
+   "key": "resources/models/04e4d9b6-fa55-4e4d-abda-0a8ba3ef2c4c/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 15484,
+   "sha256": "c9e6f6a72cfa4d2a4dcd6c0aea07fff63066efcf1d7ae5ceba24fbee1776c3c6",
+   "source": "https://www.thebridgeto.ai/resources/models/04e4d9b6-fa55-4e4d-abda-0a8ba3ef2c4c/"
+  },
+  {
+   "key": "resources/models/07e1eea1-1ac8-4c04-8401-afc3394c1940/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 13715,
+   "sha256": "5923ce5c6f31d54359ea94649511957092cf5da5ab2b2f40eef0ec082a5f4969",
+   "source": "https://www.thebridgeto.ai/resources/models/07e1eea1-1ac8-4c04-8401-afc3394c1940/"
+  },
+  {
+   "key": "resources/models/113f57ef-a340-4d3b-a3be-bee6029a4557/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 15432,
+   "sha256": "d03276d702481d080891914c9dec7fdf467d7b19c8c0402b8b04f4dcd20813e8",
+   "source": "https://www.thebridgeto.ai/resources/models/113f57ef-a340-4d3b-a3be-bee6029a4557/"
+  },
+  {
+   "key": "resources/models/14385e36-d627-4217-ac29-b106a702f861/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 15309,
+   "sha256": "39ab41b2160ba53c82b738ef201e2ab6bf6044efc679cb777e039bab6db42757",
+   "source": "https://www.thebridgeto.ai/resources/models/14385e36-d627-4217-ac29-b106a702f861/"
+  },
+  {
+   "key": "resources/models/18ad7702-0928-41d5-baf3-55c9247a31bd/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 15305,
+   "sha256": "6270863e81cc592660f66fea10eedf997c7a355b4bdf2ddd48ff6a88e1df2fc7",
+   "source": "https://www.thebridgeto.ai/resources/models/18ad7702-0928-41d5-baf3-55c9247a31bd/"
+  },
+  {
+   "key": "resources/models/18f7f207-2ad6-40e7-81eb-51c4c23bb748/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 15180,
+   "sha256": "295e0c4f082995af89cdfaf8613623f36264ff31fcebc8dd311aa30dd6e3b607",
+   "source": "https://www.thebridgeto.ai/resources/models/18f7f207-2ad6-40e7-81eb-51c4c23bb748/"
+  },
+  {
+   "key": "resources/models/1a50dc40-cac6-40b2-a3b5-72ef6d79d9fd/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 18406,
+   "sha256": "fb72f56a35049cac2fee2029cb1d8598ab2431e228f56744f461dd88a8d51331",
+   "source": "https://www.thebridgeto.ai/resources/models/1a50dc40-cac6-40b2-a3b5-72ef6d79d9fd/"
+  },
+  {
+   "key": "resources/models/1a6b45c9-f9b5-40ea-a24e-408a77229339/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 15594,
+   "sha256": "2d679676c24551b9e92e99973252255eb76c0bfe2d2ecf033aa0ac95eac09a50",
+   "source": "https://www.thebridgeto.ai/resources/models/1a6b45c9-f9b5-40ea-a24e-408a77229339/"
+  },
+  {
+   "key": "resources/models/1d2bd6d1-016e-42a8-8ce9-d57f315eea1d/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 14437,
+   "sha256": "f7b87f568d26da39fe00454908a3136f1f2e9428a28af21e3009fbb708e16a3b",
+   "source": "https://www.thebridgeto.ai/resources/models/1d2bd6d1-016e-42a8-8ce9-d57f315eea1d/"
+  },
+  {
+   "key": "resources/models/29ec4dd6-9610-4ec1-a0fb-75f4f18a03d0/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 16072,
+   "sha256": "5a13887cddbdc66cd4079db4a410017c8af86fe7ec509370ff4c9e7783b04039",
+   "source": "https://www.thebridgeto.ai/resources/models/29ec4dd6-9610-4ec1-a0fb-75f4f18a03d0/"
+  },
+  {
+   "key": "resources/models/2ce94ced-9636-49e0-933e-dfba1bc878b3/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 14099,
+   "sha256": "77b534653d5f43807a9322b6913c835f67978c9edf2a440ea921f724a1abe8f5",
+   "source": "https://www.thebridgeto.ai/resources/models/2ce94ced-9636-49e0-933e-dfba1bc878b3/"
+  },
+  {
+   "key": "resources/models/319ddc4e-e74f-4d3b-86d1-3b2810c744fb/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 14272,
+   "sha256": "6b0c4357e13153ead66d3fbcd55490686c0b6ff22b641cac3537bc3648e914d3",
+   "source": "https://www.thebridgeto.ai/resources/models/319ddc4e-e74f-4d3b-86d1-3b2810c744fb/"
+  },
+  {
+   "key": "resources/models/353fb7d2-3fe3-4ff2-80a1-fc5225052672/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 14205,
+   "sha256": "9675ada7cc61bbb9eaf7ab5c658b17a2745255f930ceff544e6e46be36f9c472",
+   "source": "https://www.thebridgeto.ai/resources/models/353fb7d2-3fe3-4ff2-80a1-fc5225052672/"
+  },
+  {
+   "key": "resources/models/3857117e-0873-404c-bf0b-418407c95ee1/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 14699,
+   "sha256": "15a5c5a2b04f060fad7dd5d49aa4694cea705033443d6d2770eefd990d1354ed",
+   "source": "https://www.thebridgeto.ai/resources/models/3857117e-0873-404c-bf0b-418407c95ee1/"
+  },
+  {
+   "key": "resources/models/3aa36a7c-6500-46de-b407-53171ad88e4d/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 13307,
+   "sha256": "318c6ca7e89bf730ef2724a7cef804c179aca44c522c92f2aa2cd867ba29fbcc",
+   "source": "https://www.thebridgeto.ai/resources/models/3aa36a7c-6500-46de-b407-53171ad88e4d/"
+  },
+  {
+   "key": "resources/models/3b778cf2-6c24-45d0-9c17-b6ab85859479/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 14033,
+   "sha256": "c59b34c24782ec71c3b586650b9cdd6c93f588dc2df5530f355aa06407328e25",
+   "source": "https://www.thebridgeto.ai/resources/models/3b778cf2-6c24-45d0-9c17-b6ab85859479/"
+  },
+  {
+   "key": "resources/models/3c4940e3-cc21-452b-8cc2-9f7742c0e547/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 13700,
+   "sha256": "c24d585621f8005d29579b50aee0173f5d32353de355374a246d74b722a88f67",
+   "source": "https://www.thebridgeto.ai/resources/models/3c4940e3-cc21-452b-8cc2-9f7742c0e547/"
+  },
+  {
+   "key": "resources/models/40c852ce-15be-48a2-937c-f73ed996879e/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 14504,
+   "sha256": "cf99e9f015aceda7f850d07d8df1480ef7e2478b37265e6a15470c845b88321b",
+   "source": "https://www.thebridgeto.ai/resources/models/40c852ce-15be-48a2-937c-f73ed996879e/"
+  },
+  {
+   "key": "resources/models/459a33a7-c87d-45a4-bd90-49ddcda7f96d/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 12909,
+   "sha256": "e4dbea1ceaa029455437d27e249f033b0fd1d2f31d711c710f326691569d7818",
+   "source": "https://www.thebridgeto.ai/resources/models/459a33a7-c87d-45a4-bd90-49ddcda7f96d/"
+  },
+  {
+   "key": "resources/models/4989f8c8-eeb7-4d9d-87b3-e999c7c0dbdc/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 13593,
+   "sha256": "0daf5018795feb041d78ffc88710c45360c4b70cbed38eafb06f21eba0896338",
+   "source": "https://www.thebridgeto.ai/resources/models/4989f8c8-eeb7-4d9d-87b3-e999c7c0dbdc/"
+  },
+  {
+   "key": "resources/models/4cf4ea26-f09e-4c8a-9ae6-b859a7567d97/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 15199,
+   "sha256": "29aacce7eab678d327e522bcfca8841c0a8dd0f724f3e9aeaa394fa712b708d3",
+   "source": "https://www.thebridgeto.ai/resources/models/4cf4ea26-f09e-4c8a-9ae6-b859a7567d97/"
+  },
+  {
+   "key": "resources/models/4d75d160-cc66-4662-b1ff-c95e2a87e1bc/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 14800,
+   "sha256": "8691213ccc8b1641d7e89c8d9c4fef6c30ee18877b2c80218a9b875a71f2b599",
+   "source": "https://www.thebridgeto.ai/resources/models/4d75d160-cc66-4662-b1ff-c95e2a87e1bc/"
+  },
+  {
+   "key": "resources/models/530717d2-6b9c-4b9f-910f-923712574ed3/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 14671,
+   "sha256": "61b7cdf9755195d82e6e035ca939fac458922fa0b858e83f410e59f805cc77a5",
+   "source": "https://www.thebridgeto.ai/resources/models/530717d2-6b9c-4b9f-910f-923712574ed3/"
+  },
+  {
+   "key": "resources/models/60c8315f-a04a-462d-816f-3ad2dd555d80/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 13608,
+   "sha256": "9e63549a8896699ad712557981e64eeb7d0f012da21129949ddd67e51240c8b4",
+   "source": "https://www.thebridgeto.ai/resources/models/60c8315f-a04a-462d-816f-3ad2dd555d80/"
+  },
+  {
+   "key": "resources/models/644bbda1-39c9-4b75-8d32-aa19ad6fc72e/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 13759,
+   "sha256": "19864416fe7af048713d691ac2fdbdd47d601d4626294a262b7ef2c7e67a85aa",
+   "source": "https://www.thebridgeto.ai/resources/models/644bbda1-39c9-4b75-8d32-aa19ad6fc72e/"
+  },
+  {
+   "key": "resources/models/668c43cb-3df8-4499-9c94-2a154bf64411/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 16308,
+   "sha256": "6256c51254bc216a8d44af5306a510180232983a8668230940d16093c3077ce3",
+   "source": "https://www.thebridgeto.ai/resources/models/668c43cb-3df8-4499-9c94-2a154bf64411/"
+  },
+  {
+   "key": "resources/models/68d7736d-fd06-4e3d-b49a-03c9accd0ef3/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 15689,
+   "sha256": "679460c9c11906409a584749ab4f9588c20e431d428e1cf80d3639f0890b8c4a",
+   "source": "https://www.thebridgeto.ai/resources/models/68d7736d-fd06-4e3d-b49a-03c9accd0ef3/"
+  },
+  {
+   "key": "resources/models/69d92c2b-bc6d-4356-9218-8114c8df5a17/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 14165,
+   "sha256": "e1149982fbcd7a58aaf1d0c46f2dd41f7d54ebfc14bb3f476a4e35afb852e339",
+   "source": "https://www.thebridgeto.ai/resources/models/69d92c2b-bc6d-4356-9218-8114c8df5a17/"
+  },
+  {
+   "key": "resources/models/6acaa3e7-71c6-485d-9dc8-873a44137bb9/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 16144,
+   "sha256": "21d73d88ddc8b69d63f4073264a7567fce836f568e3db471ecc90f3abd67c098",
+   "source": "https://www.thebridgeto.ai/resources/models/6acaa3e7-71c6-485d-9dc8-873a44137bb9/"
+  },
+  {
+   "key": "resources/models/74ad2632-339e-445f-a9af-14befd698774/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 15911,
+   "sha256": "4f4d180f39d71346b592dd2f47cc17718800329fc17952deab24b9b12cbcbd5d",
+   "source": "https://www.thebridgeto.ai/resources/models/74ad2632-339e-445f-a9af-14befd698774/"
+  },
+  {
+   "key": "resources/models/7b88e1fd-d962-4616-9446-fbad13113959/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 13314,
+   "sha256": "dfd00175eb1d0c9a6880cdfc722a7432823a5242f39a18c7e39a67727005597c",
+   "source": "https://www.thebridgeto.ai/resources/models/7b88e1fd-d962-4616-9446-fbad13113959/"
+  },
+  {
+   "key": "resources/models/7e500a3b-e4e6-41e6-a18b-2d300ca0dba8/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 14236,
+   "sha256": "78226bf0653168c2834c1a564f91319eb655dce9d1295eabe9a033c1c171e5ee",
+   "source": "https://www.thebridgeto.ai/resources/models/7e500a3b-e4e6-41e6-a18b-2d300ca0dba8/"
+  },
+  {
+   "key": "resources/models/7ff57f6b-d63a-40a2-a6b0-e98452a6a3c8/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 13824,
+   "sha256": "627794b478080b8020af2044022352c63b4a0d007b7f8b5b2b076a01b370c6f2",
+   "source": "https://www.thebridgeto.ai/resources/models/7ff57f6b-d63a-40a2-a6b0-e98452a6a3c8/"
+  },
+  {
+   "key": "resources/models/810a0486-94fd-462a-9a41-8d925991982c/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 14341,
+   "sha256": "401cf88be89811ffc5892ab0ef302876fcd5c544a3c58669207114c7d000d818",
+   "source": "https://www.thebridgeto.ai/resources/models/810a0486-94fd-462a-9a41-8d925991982c/"
+  },
+  {
+   "key": "resources/models/8794cb81-39a9-43ce-9980-0d729413771f/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 15825,
+   "sha256": "caff5385bbd226ebd6f6ba3d10cba3ccf5d56355026be85c8c6c42adab538fea",
+   "source": "https://www.thebridgeto.ai/resources/models/8794cb81-39a9-43ce-9980-0d729413771f/"
+  },
+  {
+   "key": "resources/models/88f53c6b-1b29-46ea-8d44-512b97f878c8/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 14685,
+   "sha256": "b1604f1e3b0fd9b6b1cdfcb27782f78fe3f5c33ad2298a83a60b79c11c63e78f",
+   "source": "https://www.thebridgeto.ai/resources/models/88f53c6b-1b29-46ea-8d44-512b97f878c8/"
+  },
+  {
+   "key": "resources/models/8992ec80-a0ea-402c-90a3-f1c2c31b6c0d/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 15676,
+   "sha256": "109de9a53c9cb30f8663c5bafb4a317d21d6a416f0a972099ecd2ad586fb15e3",
+   "source": "https://www.thebridgeto.ai/resources/models/8992ec80-a0ea-402c-90a3-f1c2c31b6c0d/"
+  },
+  {
+   "key": "resources/models/92a063b5-a4d8-41f4-ac10-d6aedcab1198/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 15935,
+   "sha256": "c410ae8c2723779bb95e6f0e127cf82e837a320877516910e30cf9cffd925099",
+   "source": "https://www.thebridgeto.ai/resources/models/92a063b5-a4d8-41f4-ac10-d6aedcab1198/"
+  },
+  {
+   "key": "resources/models/9388e59c-1828-4ff2-b0ef-afa725248b3b/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 16367,
+   "sha256": "aa3f5e1039e02ac572987f9eea8215890615e5ca227decb357e5345145babc72",
+   "source": "https://www.thebridgeto.ai/resources/models/9388e59c-1828-4ff2-b0ef-afa725248b3b/"
+  },
+  {
+   "key": "resources/models/97daa391-b135-4242-91d4-ddd417c38a3f/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 16101,
+   "sha256": "ebe1c0514550fbaa07e6f0c40ff560a77a9d8a2975a98435c3328693f1ada21e",
+   "source": "https://www.thebridgeto.ai/resources/models/97daa391-b135-4242-91d4-ddd417c38a3f/"
+  },
+  {
+   "key": "resources/models/97f46e77-3407-48da-bc36-bb1ae45007ae/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 14563,
+   "sha256": "af762fa22e9c1f001a6e1ec62a0de4e33d7d05320ad4283d5fd90f917299849f",
+   "source": "https://www.thebridgeto.ai/resources/models/97f46e77-3407-48da-bc36-bb1ae45007ae/"
+  },
+  {
+   "key": "resources/models/a47a9be2-fc36-4b01-b202-f76b90831730/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 13914,
+   "sha256": "4fa01bead79b5be1eb2f7c399423ca7c53ccea80edf192702131221718b048aa",
+   "source": "https://www.thebridgeto.ai/resources/models/a47a9be2-fc36-4b01-b202-f76b90831730/"
+  },
+  {
+   "key": "resources/models/a9335d5f-d1c4-4606-88d8-307ccb717df5/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 15414,
+   "sha256": "de3f4d1847af103ef4135be3802398439f71e1b3aa90092d6d6b4537cea65c43",
+   "source": "https://www.thebridgeto.ai/resources/models/a9335d5f-d1c4-4606-88d8-307ccb717df5/"
+  },
+  {
+   "key": "resources/models/b621e15d-4a29-49f1-a7cf-95b5af46f543/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 16111,
+   "sha256": "0a3e1958bec2a940f82e641dbdb85acd1767d752433b1acbdb196dd6fba15052",
+   "source": "https://www.thebridgeto.ai/resources/models/b621e15d-4a29-49f1-a7cf-95b5af46f543/"
+  },
+  {
+   "key": "resources/models/b9a2a067-28c9-41fe-bd00-6a44772c885a/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 14616,
+   "sha256": "4791335f46a9c09e38801e3dc0a82f8cff713bb2981bf140930d71a95ac14c1f",
+   "source": "https://www.thebridgeto.ai/resources/models/b9a2a067-28c9-41fe-bd00-6a44772c885a/"
+  },
+  {
+   "key": "resources/models/c32a07ff-be20-4030-bfb4-2d63e41f8e18/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 15643,
+   "sha256": "dac97a5f16dc80d5c665b28a18a9af1ebdd48cc2abf946f2781136cd5a854d25",
+   "source": "https://www.thebridgeto.ai/resources/models/c32a07ff-be20-4030-bfb4-2d63e41f8e18/"
+  },
+  {
+   "key": "resources/models/c3f16eb9-69f8-48ae-a9f2-4a13a67be395/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 14556,
+   "sha256": "907611f23b9a907f6f40930717bb9b3e18a95d7ae32678c465bffcc6b747e4c6",
+   "source": "https://www.thebridgeto.ai/resources/models/c3f16eb9-69f8-48ae-a9f2-4a13a67be395/"
+  },
+  {
+   "key": "resources/models/c700c273-3a61-4500-bcf0-1aa3b34710d3/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 14088,
+   "sha256": "2d3cabf0ff57a26150dc20ec0f64e1ff13513ce97bd826e7d9fb5ba14f18067c",
+   "source": "https://www.thebridgeto.ai/resources/models/c700c273-3a61-4500-bcf0-1aa3b34710d3/"
+  },
+  {
+   "key": "resources/models/c9179294-77b6-4ab2-acbb-ef2c2ecfbb49/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 14542,
+   "sha256": "f2e0ff72e9f9a260000728aabb640589a735cc3cca22c8fbc6be6b0a211b0451",
+   "source": "https://www.thebridgeto.ai/resources/models/c9179294-77b6-4ab2-acbb-ef2c2ecfbb49/"
+  },
+  {
+   "key": "resources/models/cb7f7021-3b37-4479-8bc1-0a176d1ab432/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 15679,
+   "sha256": "39754b34f7dc4c749db1b4167e0d4bc8372162d7cebc69b110bb1edcdbec42f2",
+   "source": "https://www.thebridgeto.ai/resources/models/cb7f7021-3b37-4479-8bc1-0a176d1ab432/"
+  },
+  {
+   "key": "resources/models/cc6a2804-4c01-4bff-8ba1-3b6a3a641c34/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 14605,
+   "sha256": "67560be0f07c59d91fd7559efd34e98c12eee62153a66362247816205c326174",
+   "source": "https://www.thebridgeto.ai/resources/models/cc6a2804-4c01-4bff-8ba1-3b6a3a641c34/"
+  },
+  {
+   "key": "resources/models/cd336ad8-e6a9-45cc-ad29-489cec13d86e/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 14036,
+   "sha256": "5c833a70a50cd28f69a6c01674651184f6f101245b182878a6da717ac1b43ecd",
+   "source": "https://www.thebridgeto.ai/resources/models/cd336ad8-e6a9-45cc-ad29-489cec13d86e/"
+  },
+  {
+   "key": "resources/models/cea8d329-d8d0-479d-a0b8-9f20c60f3e26/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 15339,
+   "sha256": "bd13c1b9b9a8944bea9a2e5079ff7fb19e1e7b35ba4ccdc4f062a4157e37c4cf",
+   "source": "https://www.thebridgeto.ai/resources/models/cea8d329-d8d0-479d-a0b8-9f20c60f3e26/"
+  },
+  {
+   "key": "resources/models/d10c7b3f-cb56-41e4-aa6f-5b4ae4d7fba8/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 15893,
+   "sha256": "7f1dc3d2b00292c4013e9e6521ab14e77353890533ac444ceb4e1e9f00564dcb",
+   "source": "https://www.thebridgeto.ai/resources/models/d10c7b3f-cb56-41e4-aa6f-5b4ae4d7fba8/"
+  },
+  {
+   "key": "resources/models/d1675c88-b2c5-4000-b92b-a1b23e68e628/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 14189,
+   "sha256": "284f8ab0bdf22d4d356dd3842cfad41e26da91d0dd1c0661e0d6b18e3bc5d8da",
+   "source": "https://www.thebridgeto.ai/resources/models/d1675c88-b2c5-4000-b92b-a1b23e68e628/"
+  },
+  {
+   "key": "resources/models/d1bae1b5-a240-4426-aedf-d4daed90cc69/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 13529,
+   "sha256": "aa67272036203f19dfbf9b010e07216094fcc22c481a00f147a5bce77d4e1548",
+   "source": "https://www.thebridgeto.ai/resources/models/d1bae1b5-a240-4426-aedf-d4daed90cc69/"
+  },
+  {
+   "key": "resources/models/db8f6cb2-d85e-4395-a611-91c9fc8e6f95/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 14636,
+   "sha256": "0ab7d4b796837788c51c475c9376927c74b3fafedc0226f86bfc394ac0938ebf",
+   "source": "https://www.thebridgeto.ai/resources/models/db8f6cb2-d85e-4395-a611-91c9fc8e6f95/"
+  },
+  {
+   "key": "resources/models/e3f7cade-9986-408f-8acb-dbd19bdf9d9f/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 15558,
+   "sha256": "60743841a55193d0f7d6257123a39b9239a87da548fa35927aaf94cd6785442b",
+   "source": "https://www.thebridgeto.ai/resources/models/e3f7cade-9986-408f-8acb-dbd19bdf9d9f/"
+  },
+  {
+   "key": "resources/models/e5c0daff-cc60-4fd6-8d8b-6e2b32c5cc90/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 16538,
+   "sha256": "60362c0a9f1cc0368205377512f7a555f502c4d579c457d64ca979f961f5da70",
+   "source": "https://www.thebridgeto.ai/resources/models/e5c0daff-cc60-4fd6-8d8b-6e2b32c5cc90/"
+  },
+  {
+   "key": "resources/models/ebb09f35-eb69-456c-a450-79b6950f1e09/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 14143,
+   "sha256": "51f5e2036ac8d90fba04e3eec464ab4588d21be7532fd9c301e8a61af6e0c48c",
+   "source": "https://www.thebridgeto.ai/resources/models/ebb09f35-eb69-456c-a450-79b6950f1e09/"
+  },
+  {
+   "key": "resources/models/ec119ebc-0d7d-4792-ada0-ca12ab2a1305/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 13593,
+   "sha256": "d8e520372d9c36a48e0f0a0b9f2818c832f4a7bc3925a5253fe81462524c841a",
+   "source": "https://www.thebridgeto.ai/resources/models/ec119ebc-0d7d-4792-ada0-ca12ab2a1305/"
+  },
+  {
+   "key": "resources/models/ee78740d-864f-4ae5-8f17-e92479a13e00/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 15716,
+   "sha256": "36853143c29c8a20d6714a65fd19aad88ccb36eea2be7bb684099038058d602b",
+   "source": "https://www.thebridgeto.ai/resources/models/ee78740d-864f-4ae5-8f17-e92479a13e00/"
+  },
+  {
+   "key": "resources/models/f0bc7a91-0b23-4caa-8f04-8581dbcde0ca/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 16170,
+   "sha256": "c178be0046edaeb890a931f44e2dcc3a80d48ffbf7ae02ebc8e172625da7b03a",
+   "source": "https://www.thebridgeto.ai/resources/models/f0bc7a91-0b23-4caa-8f04-8581dbcde0ca/"
+  },
+  {
+   "key": "resources/models/f142e833-c455-4d37-b440-bf471cdeaa1e/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 14053,
+   "sha256": "3f8820be68f5ae8cd94e477839a08c908189ea88ca4acc25b16d845fdc4949b5",
+   "source": "https://www.thebridgeto.ai/resources/models/f142e833-c455-4d37-b440-bf471cdeaa1e/"
+  },
+  {
+   "key": "resources/models/f59bcb79-856c-4728-abf1-101a8a4cfeb9/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 16227,
+   "sha256": "c2dd9167088f15c22fa5e30b51d7d9ae3fbd9a6e948f6e74d78a619ee0bf1742",
+   "source": "https://www.thebridgeto.ai/resources/models/f59bcb79-856c-4728-abf1-101a8a4cfeb9/"
+  },
+  {
+   "key": "resources/models/f93101cf-6b28-4bf7-8c58-966f4d542220/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 15768,
+   "sha256": "eed0d343cb3183368a73e99ae773b26b0707f025ddaa22ce0aa4c38ab2fb27a7",
+   "source": "https://www.thebridgeto.ai/resources/models/f93101cf-6b28-4bf7-8c58-966f4d542220/"
+  },
+  {
+   "key": "resources/models/ff4de50e-d21e-44d4-958c-aaf1c3de77d2/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 13422,
+   "sha256": "44afc4f388cc6dca3d17524cd5b09ab84a3e1263195b668813470c0fda73193e",
+   "source": "https://www.thebridgeto.ai/resources/models/ff4de50e-d21e-44d4-958c-aaf1c3de77d2/"
+  },
+  {
+   "key": "resources/people/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 31305,
+   "sha256": "8a542c5b0b67e98fffa12457898661e60dd25ef84e5d3c19ae79894c8d6a37c5",
+   "source": "https://www.thebridgeto.ai/resources/people/"
+  },
+  {
+   "key": "resources/people/0652c4b1-84d5-42d9-a96c-939dbee9a913/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 31028,
+   "sha256": "988f9ecb1badfd71a9bbe6660398d5335a0049752ca6c47bb8f101da084da6a2",
+   "source": "https://www.thebridgeto.ai/resources/people/0652c4b1-84d5-42d9-a96c-939dbee9a913/reid-hoffman:-ai-visionary"
+  },
+  {
+   "key": "resources/people/34a83487-9a3b-48dc-82b7-bf2d4472a5e4/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 26790,
+   "sha256": "e1ab04070858ed06806a7ce0f0b747be06adea0ab170877e61d350252c6259f3",
+   "source": "https://www.thebridgeto.ai/resources/people/34a83487-9a3b-48dc-82b7-bf2d4472a5e4/peter-h.-diamandis:-ai-visionary"
+  },
+  {
+   "key": "resources/people/3958760d-fcc7-44b3-85c8-b10b1df6abe7/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 26963,
+   "sha256": "1ae6562ab57d1dcaf38340aa9b0d4100671e5ab21b292de4cf8585f762e9892e",
+   "source": "https://www.thebridgeto.ai/resources/people/3958760d-fcc7-44b3-85c8-b10b1df6abe7/ray-kurzweil:-ai-visionary"
+  },
+  {
+   "key": "resources/people/53b6ce22-201c-4b76-81b3-dc63205d31a1/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 26029,
+   "sha256": "ff88314b4fcc40ede1b1f101057a5c6d789187a17e1f8d8a7f10f8865c6c9491",
+   "source": "https://www.thebridgeto.ai/resources/people/53b6ce22-201c-4b76-81b3-dc63205d31a1/demis-hassabis:-ai-pioneer"
+  },
+  {
+   "key": "resources/people/63358cfc-ba65-44fc-bf2c-1669815eafda/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 25608,
+   "sha256": "fcf6dd1b1e37304af8251750f7cafafac2b28e6d723579dae6e2ff144688ee72",
+   "source": "https://www.thebridgeto.ai/resources/people/63358cfc-ba65-44fc-bf2c-1669815eafda/mo-gawdat:-ai-visionary"
+  },
+  {
+   "key": "resources/people/6ef2f749-3742-4d2d-b1bd-4b78d937a251/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 24729,
+   "sha256": "6b413e2a705b3e371f94df0082960bf865f41081fff924664071fdafcc64467d",
+   "source": "https://www.thebridgeto.ai/resources/people/6ef2f749-3742-4d2d-b1bd-4b78d937a251/eliezer-yudkowsky:-ai-pioneer"
+  },
+  {
+   "key": "resources/people/76dd39d1-8275-4801-ac9c-c3330d6c214f/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 27131,
+   "sha256": "55964684c7fe6821786cefbb3fde503992b176487c22545b5d8cca63e42ef5e5",
+   "source": "https://www.thebridgeto.ai/resources/people/76dd39d1-8275-4801-ac9c-c3330d6c214f/leopold-aschenbrenner:-ai-visionary"
+  },
+  {
+   "key": "resources/people/9f3ff567-1342-43a7-a4fc-47adf0068ccd/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 23548,
+   "sha256": "7843d0098480ae9312ca697acae2bb3bc0d054d16baeb5ab54248a512a323df3",
+   "source": "https://www.thebridgeto.ai/resources/people/9f3ff567-1342-43a7-a4fc-47adf0068ccd/salim-ismail:-exponential-visionary"
+  },
+  {
+   "key": "resources/people/aaab3928-973f-41ec-abac-41dbf34db6bc/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 28590,
+   "sha256": "845ba6b81d9073ca67052760b2622c8a2a6d9dd905c49b6d2bb1595eb68f4681",
+   "source": "https://www.thebridgeto.ai/resources/people/aaab3928-973f-41ec-abac-41dbf34db6bc/eric-schmidt"
+  },
+  {
+   "key": "resources/people/cc62a63a-6ead-422b-a75c-080975a305ef/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 26025,
+   "sha256": "d2201cdb7d6e4f30c805d8402def004cc9af235cb7f3e963905b650d7e476572",
+   "source": "https://www.thebridgeto.ai/resources/people/cc62a63a-6ead-422b-a75c-080975a305ef/dario-amodei:-ai-visionary"
+  },
+  {
+   "key": "resources/people/d0ced277-66f8-4fe3-a105-0515968a65c5/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 24064,
+   "sha256": "bc289f3a038cd1430e88b5e55faea2155862f7166f3c36c0aa773eea8728102a",
+   "source": "https://www.thebridgeto.ai/resources/people/d0ced277-66f8-4fe3-a105-0515968a65c5/sam-altman:-ai-visionary"
+  },
+  {
+   "key": "resources/people/e78e90d9-c575-40d5-80fe-0ee6d396dda3/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 30004,
+   "sha256": "ed351598ddcdc54c886cc83f710e78e00e77d80b85ffb98ac556dd4613bd823d",
+   "source": "https://www.thebridgeto.ai/resources/people/e78e90d9-c575-40d5-80fe-0ee6d396dda3/elon-musk"
+  },
+  {
+   "key": "resources/timeline/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 10081,
+   "sha256": "d695da88e83a6046d9bf07ac115e1ac12734beadee2b1798f2d58e6443d9c0c5",
+   "source": "https://www.thebridgeto.ai/resources/timeline/"
+  },
+  {
+   "key": "start-here/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 27140,
+   "sha256": "ac68fde550c38bb5f2e4e93ef27d0443030a83f764abc3bb7e1c7b6c306fcc07",
+   "source": "https://www.thebridgeto.ai/start-here/"
+  },
+  {
+   "key": "terms-of-use/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 13864,
+   "sha256": "60aa928191ed9b20f3831f29236be76a702a256a03f771603ee84aeaf6ab0a20",
+   "source": "https://www.thebridgeto.ai/terms-of-use/"
+  },
+  {
+   "key": "what-we-do/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 12402,
+   "sha256": "93a6d0dd1d595420c67fae6763bc90708d649ca667718502d2958264f0e87032",
+   "source": "https://www.thebridgeto.ai/what-we-do/"
+  },
+  {
+   "key": "what-we-do/advisory/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 10582,
+   "sha256": "33929f8695e63c45bb9754d3be5e66e06a0deb3d98beb973bf1e1e42fbbff5ec",
+   "source": "https://www.thebridgeto.ai/what-we-do/advisory/"
+  },
+  {
+   "key": "what-we-do/capability/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 10638,
+   "sha256": "daec1f8670b9d456611cfac4b8fad833ef87081f9b1e9835801d738b7d47d380",
+   "source": "https://www.thebridgeto.ai/what-we-do/capability/"
+  },
+  {
+   "key": "what-we-do/discovery/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 10632,
+   "sha256": "7d945f3629421feff3aa0dc43f26882f82dde74dfcc3c1887b4f9e50c05b155a",
+   "source": "https://www.thebridgeto.ai/what-we-do/discovery/"
+  },
+  {
+   "key": "what-we-do/implementation/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 10637,
+   "sha256": "c3747b9a6b6786b22812e16114c0c99a8b76128c10ee1d32800f338140a9186c",
+   "source": "https://www.thebridgeto.ai/what-we-do/implementation/"
+  },
+  {
+   "key": "what-we-do/projects/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 10579,
+   "sha256": "3c025e6749eb01e0cf5bee34d91c63aaa7b2384d3ade272f77af8959950fc9fa",
+   "source": "https://www.thebridgeto.ai/what-we-do/projects/"
+  },
+  {
+   "key": "what-we-do/roadmap/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 10645,
+   "sha256": "2f5b6eaf79695ef495a52392171e64105e316fd6660c3bf8ebfa6138e7e7d406",
+   "source": "https://www.thebridgeto.ai/what-we-do/roadmap/"
+  },
+  {
+   "key": "who-we-serve/index.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 10661,
+   "sha256": "abbf1f147a903078bd97adb0de9de0c53f281c45bbe23a0a499369e5bc490037",
+   "source": "https://www.thebridgeto.ai/who-we-serve/"
+  },
+  {
+   "key": "00f94d39-f3a1-4259-bdd6-3fe169ab01ee",
+   "content_type": "image/png",
+   "bytes": 4282797,
+   "sha256": "53d0cd23cbc42f6dfaf81d12219741323bf975e6c88ac22df9661147d87894a8",
+   "source": "https://cdn.thebridgeto.ai/00f94d39-f3a1-4259-bdd6-3fe169ab01ee"
+  },
+  {
+   "key": "02e77689-f570-451d-ab16-92138d7f0692",
+   "content_type": "image/png",
+   "bytes": 36656,
+   "sha256": "89de1476feed59f323913d0311f1435951184919feccb82f4386aacc57d20963",
+   "source": "https://cdn.thebridgeto.ai/02e77689-f570-451d-ab16-92138d7f0692"
+  },
+  {
+   "key": "0d06e058-3d6f-4f1d-b744-badb8b351264",
+   "content_type": "application/pdf",
+   "bytes": 1780353,
+   "sha256": "2e999b7714e94f12a1ed6f761504280a4687f8d481409bdb32dfb14a6b23499b",
+   "source": "https://cdn.thebridgeto.ai/0d06e058-3d6f-4f1d-b744-badb8b351264"
+  },
+  {
+   "key": "0d92fef1-ae7e-4c85-8d06-ce635acb2b92",
+   "content_type": "application/pdf",
+   "bytes": 641294,
+   "sha256": "42c668709f7c7142392a4f94a70235b426b30ba15e01e1c6e6e41e0f96e1aa13",
+   "source": "https://cdn.thebridgeto.ai/0d92fef1-ae7e-4c85-8d06-ce635acb2b92"
+  },
+  {
+   "key": "10415fe7-492e-46be-bc58-ff9327ee1f7a",
+   "content_type": "image/png",
+   "bytes": 33689,
+   "sha256": "0bf4dd04bf927a9535bfe72648006aa0901d7a8db5f1f1368d705f726b8abc6e",
+   "source": "https://cdn.thebridgeto.ai/10415fe7-492e-46be-bc58-ff9327ee1f7a"
+  },
+  {
+   "key": "197e721e-92f2-4f85-ab0f-49000fa80f13",
+   "content_type": "image/png",
+   "bytes": 38290,
+   "sha256": "d2da168a20b661be49f9b252eb3ceb7786ba7057754eb353cc46aa6f50305dce",
+   "source": "https://cdn.thebridgeto.ai/197e721e-92f2-4f85-ab0f-49000fa80f13"
+  },
+  {
+   "key": "19d4d079-eaf6-45b9-a179-e8dc6ee26657",
+   "content_type": "image/jpeg",
+   "bytes": 1545886,
+   "sha256": "7491726ca688e37f803008cf0010ec126c8fb4da39ee4a54f13b0cd1c749d822",
+   "source": "https://cdn.thebridgeto.ai/19d4d079-eaf6-45b9-a179-e8dc6ee26657"
+  },
+  {
+   "key": "208b654b-2c60-4c50-82cc-4d3b87b12a58",
+   "content_type": "image/png",
+   "bytes": 36656,
+   "sha256": "89de1476feed59f323913d0311f1435951184919feccb82f4386aacc57d20963",
+   "source": "https://cdn.thebridgeto.ai/208b654b-2c60-4c50-82cc-4d3b87b12a58"
+  },
+  {
+   "key": "21232799-3fcb-45d4-98b0-1be9761ccab6",
+   "content_type": "image/jpeg",
+   "bytes": 226408,
+   "sha256": "94375239f4249cd0c7c6651ec68e1570f6857258c7642a8ca0ac0c604a5f9917",
+   "source": "https://cdn.thebridgeto.ai/21232799-3fcb-45d4-98b0-1be9761ccab6"
+  },
+  {
+   "key": "21389753-8465-4ace-a686-26101146a9a1",
+   "content_type": "image/jpeg",
+   "bytes": 1947206,
+   "sha256": "a630efd1fb6c75ded9c7154981c24fcb065296cb3d08135faae7456dec5b6688",
+   "source": "https://cdn.thebridgeto.ai/21389753-8465-4ace-a686-26101146a9a1"
+  },
+  {
+   "key": "214e6c95-a104-4205-ae4d-9a5c24f7519a",
+   "content_type": "image/jpeg",
+   "bytes": 21109604,
+   "sha256": "7bf5fa2d00be4408143610900fea9442c4a8cbccfb91bf98b5265f39dfd2d8ff",
+   "source": "https://cdn.thebridgeto.ai/214e6c95-a104-4205-ae4d-9a5c24f7519a"
+  },
+  {
+   "key": "22193b88-c818-40f7-8c65-e26ea6f2ced4",
+   "content_type": "image/jpeg",
+   "bytes": 113584,
+   "sha256": "d5e5aae3ecb4d12d7de2462e9c53b7cf3ae3a2149ccfc636300912b15b5a14d9",
+   "source": "https://cdn.thebridgeto.ai/22193b88-c818-40f7-8c65-e26ea6f2ced4"
+  },
+  {
+   "key": "223dcfac-3d44-4231-a0b9-8952f18b6885",
+   "content_type": "image/png",
+   "bytes": 103983,
+   "sha256": "9ccdfbc2296a56f0d00947d8763921a789d656e52c41077b770590fbe33c865b",
+   "source": "https://cdn.thebridgeto.ai/223dcfac-3d44-4231-a0b9-8952f18b6885"
+  },
+  {
+   "key": "26c2834c-b60a-4ca8-a6a8-36667f4a4aee",
+   "content_type": "image/jpeg",
+   "bytes": 314062,
+   "sha256": "12f77fa248d1ed0868ebb67378c652cd1f2df1c534b1267a4dbc9a2ac9fce2c7",
+   "source": "https://cdn.thebridgeto.ai/26c2834c-b60a-4ca8-a6a8-36667f4a4aee"
+  },
+  {
+   "key": "2a4d7f96-68ad-4130-872f-6181477d16db",
+   "content_type": "image/jpeg",
+   "bytes": 2994271,
+   "sha256": "ace3469658620656118a48c2ed86f30316c9101f696134030cff1e242c4fed3c",
+   "source": "https://cdn.thebridgeto.ai/2a4d7f96-68ad-4130-872f-6181477d16db"
+  },
+  {
+   "key": "2b5e7f58-0831-4ce7-91b7-56aebad3670a",
+   "content_type": "image/png",
+   "bytes": 32268,
+   "sha256": "188fd633debb2ddabc516cdb039595c815bde7794a204db7d3ee2481d209fa21",
+   "source": "https://cdn.thebridgeto.ai/2b5e7f58-0831-4ce7-91b7-56aebad3670a"
+  },
+  {
+   "key": "3037e0a9-dcfc-427f-b797-2e596d62f7b3",
+   "content_type": "image/jpeg",
+   "bytes": 21109604,
+   "sha256": "7bf5fa2d00be4408143610900fea9442c4a8cbccfb91bf98b5265f39dfd2d8ff",
+   "source": "https://cdn.thebridgeto.ai/3037e0a9-dcfc-427f-b797-2e596d62f7b3"
+  },
+  {
+   "key": "357b3ebc-8bea-417a-b0d4-88bdddd54869",
+   "content_type": "image/png",
+   "bytes": 33428,
+   "sha256": "dc5939c77775b9ebe787d0bce70cc7b35f212c00f77704e803573889121b6e03",
+   "source": "https://cdn.thebridgeto.ai/357b3ebc-8bea-417a-b0d4-88bdddd54869"
+  },
+  {
+   "key": "37265925-7880-4676-ab37-05b12a4f30e2",
+   "content_type": "image/jpeg",
+   "bytes": 2336323,
+   "sha256": "9739c8cbf374fc56c895388d2707de65cb1a3b176ec21e5c506184e9452bd95b",
+   "source": "https://cdn.thebridgeto.ai/37265925-7880-4676-ab37-05b12a4f30e2"
+  },
+  {
+   "key": "3c344eff-fcea-41ab-b0e1-ef5f2b173f48",
+   "content_type": "image/jpeg",
+   "bytes": 1545886,
+   "sha256": "7491726ca688e37f803008cf0010ec126c8fb4da39ee4a54f13b0cd1c749d822",
+   "source": "https://cdn.thebridgeto.ai/3c344eff-fcea-41ab-b0e1-ef5f2b173f48"
+  },
+  {
+   "key": "3ce56761-d80b-48f7-8410-487cd572eb51",
+   "content_type": "image/png",
+   "bytes": 19856,
+   "sha256": "1ae4cebf82c22c735478736b2f0384ae1d74c1dd011aff2fcde668cf925a0ca5",
+   "source": "https://cdn.thebridgeto.ai/3ce56761-d80b-48f7-8410-487cd572eb51"
+  },
+  {
+   "key": "4332651a-5443-459a-b2bf-9bd169856c7c",
+   "content_type": "image/jpeg",
+   "bytes": 351746,
+   "sha256": "3406d5eee43789843073b485c1d7088111e9491f63f085c72dca318dca92f082",
+   "source": "https://cdn.thebridgeto.ai/4332651a-5443-459a-b2bf-9bd169856c7c"
+  },
+  {
+   "key": "45e173a7-622b-446b-9f5a-707c0caa63df",
+   "content_type": "image/jpeg",
+   "bytes": 226408,
+   "sha256": "94375239f4249cd0c7c6651ec68e1570f6857258c7642a8ca0ac0c604a5f9917",
+   "source": "https://cdn.thebridgeto.ai/45e173a7-622b-446b-9f5a-707c0caa63df"
+  },
+  {
+   "key": "49/apple-touch-icon.png",
+   "content_type": "image/png",
+   "bytes": 12732,
+   "sha256": "0e0ce487cd596754282a9e0bbfe1f5a9b57eb456c44fa7bc999d6287c2e6825e",
+   "source": "https://cdn.thebridgeto.ai/49/apple-touch-icon.png"
+  },
+  {
+   "key": "49/favicon-16x16.png",
+   "content_type": "image/png",
+   "bytes": 701,
+   "sha256": "410a239c93b445d35f55975a30407b1493a12d5a69f176d5c2eaaef09e92c81d",
+   "source": "https://cdn.thebridgeto.ai/49/favicon-16x16.png"
+  },
+  {
+   "key": "49/favicon-32x32.png",
+   "content_type": "image/png",
+   "bytes": 1799,
+   "sha256": "fc99d7a9719532c9b7f2555733f71507ee85e771bf77b65298bcbfcc94224c19",
+   "source": "https://cdn.thebridgeto.ai/49/favicon-32x32.png"
+  },
+  {
+   "key": "49/img/LogoH.png",
+   "content_type": "image/png",
+   "bytes": 206111,
+   "sha256": "f41a01d48c23dcb1ba9a9cd605df1e69afb090a863aa48cf0f72a9e18ecb392c",
+   "source": "https://cdn.thebridgeto.ai/49/img/LogoH.png"
+  },
+  {
+   "key": "49/img/LogoHLight.png",
+   "content_type": "image/png",
+   "bytes": 12013,
+   "sha256": "74eadf6a3dcdaa2864f0ebe2bfb40d0aac66d00f6a13ea5cf0edd6194657da14",
+   "source": "https://cdn.thebridgeto.ai/49/img/LogoHLight.png"
+  },
+  {
+   "key": "49/img/founders/boyer-headshot.jpg",
+   "content_type": "image/jpeg",
+   "bytes": 88666,
+   "sha256": "6ceccefec011cd75af6c614ed48178f0f91dd05ad8fe4864dc5fdce1f8976d08",
+   "source": "https://cdn.thebridgeto.ai/49/img/founders/boyer-headshot.jpg"
+  },
+  {
+   "key": "49/img/founders/vorst-headshot.jpg",
+   "content_type": "image/jpeg",
+   "bytes": 166333,
+   "sha256": "c855bcfbe56370f36fb68edb6bb6e19014e392599807911eb2fe670a5c17efac",
+   "source": "https://cdn.thebridgeto.ai/49/img/founders/vorst-headshot.jpg"
+  },
+  {
+   "key": "49/img/home/main_md.png",
+   "content_type": "image/png",
+   "bytes": 474512,
+   "sha256": "e07431bfaa01a297c36a274def28ac60a2a59110bc119a7fc8ad9a99c91d5a89",
+   "source": "https://cdn.thebridgeto.ai/49/img/home/main_md.png"
+  },
+  {
+   "key": "49/img/network/builder.jpg",
+   "content_type": "image/jpeg",
+   "bytes": 152743,
+   "sha256": "cbeb082f392de83eaec8322ebf9aea2fcf5880c5a2c1281bab2a60f0cdd14cb6",
+   "source": "https://cdn.thebridgeto.ai/49/img/network/builder.jpg"
+  },
+  {
+   "key": "49/img/network/operator.jpg",
+   "content_type": "image/jpeg",
+   "bytes": 122647,
+   "sha256": "c7476acb8fe644452f0c41994eca08419fd8adf43756ac5dcf475bd0c272ee40",
+   "source": "https://cdn.thebridgeto.ai/49/img/network/operator.jpg"
+  },
+  {
+   "key": "49/img/start-here/entertainment.png",
+   "content_type": "image/png",
+   "bytes": 1371639,
+   "sha256": "27e5f9ecf49d6ddb3136c4426b383bef4ef9d2d8a2175daa2d38379f824f7cf1",
+   "source": "https://cdn.thebridgeto.ai/49/img/start-here/entertainment.png"
+  },
+  {
+   "key": "49/img/start-here/health.png",
+   "content_type": "image/png",
+   "bytes": 1622103,
+   "sha256": "1af7a3440c590782dc5c16c57ad78dca6697fedf52d3e774499aedde2863f768",
+   "source": "https://cdn.thebridgeto.ai/49/img/start-here/health.png"
+  },
+  {
+   "key": "49/img/start-here/intro_ai.png",
+   "content_type": "image/png",
+   "bytes": 2501470,
+   "sha256": "c5928223e5dca92f561d577641a843fc3c52593994c69a4f1215d12cc8e683bb",
+   "source": "https://cdn.thebridgeto.ai/49/img/start-here/intro_ai.png"
+  },
+  {
+   "key": "49/img/start-here/more.png",
+   "content_type": "image/png",
+   "bytes": 1699683,
+   "sha256": "41da21c7073e39111e1eeb04daa333dca464236b4653aefd5755d28f02b9f421",
+   "source": "https://cdn.thebridgeto.ai/49/img/start-here/more.png"
+  },
+  {
+   "key": "49/img/start-here/photos.png",
+   "content_type": "image/png",
+   "bytes": 1434071,
+   "sha256": "4e2d9daee1c9eeb882722af448793cf43c1af36733cb15568dfae56cee089f09",
+   "source": "https://cdn.thebridgeto.ai/49/img/start-here/photos.png"
+  },
+  {
+   "key": "49/img/start-here/security.png",
+   "content_type": "image/png",
+   "bytes": 1327047,
+   "sha256": "08429969b0aab0143c96f4d751a6c3f3d9991071f645755188f969d728ac9f0a",
+   "source": "https://cdn.thebridgeto.ai/49/img/start-here/security.png"
+  },
+  {
+   "key": "49/img/start-here/voice-assistant.png",
+   "content_type": "image/png",
+   "bytes": 1425108,
+   "sha256": "21135372ceba434a99bf81fdfe64192f3cc0401ada73a6f61789303ae300bd3c",
+   "source": "https://cdn.thebridgeto.ai/49/img/start-here/voice-assistant.png"
+  },
+  {
+   "key": "49/style/public.css",
+   "content_type": "text/css",
+   "bytes": 47275,
+   "sha256": "596a1a0384635bd99dae1ba0d3609180dfe995cf19b67ded1c2c5ecfdd7559d6",
+   "source": "https://cdn.thebridgeto.ai/49/style/public.css"
+  },
+  {
+   "key": "4c063386-0f78-4a37-99f2-60282bca762b",
+   "content_type": "image/png",
+   "bytes": 38290,
+   "sha256": "d2da168a20b661be49f9b252eb3ceb7786ba7057754eb353cc46aa6f50305dce",
+   "source": "https://cdn.thebridgeto.ai/4c063386-0f78-4a37-99f2-60282bca762b"
+  },
+  {
+   "key": "5085e93f-4d35-4840-88cf-b2958c5e609b",
+   "content_type": "image/png",
+   "bytes": 28013,
+   "sha256": "02624869aef181a41d76ce7d72a727af02a21433a4c7e1ca44d193da0358d09d",
+   "source": "https://cdn.thebridgeto.ai/5085e93f-4d35-4840-88cf-b2958c5e609b"
+  },
+  {
+   "key": "572a68f9-4ca3-4f9e-950b-4b0428e2732e",
+   "content_type": "image/jpeg",
+   "bytes": 88666,
+   "sha256": "6ceccefec011cd75af6c614ed48178f0f91dd05ad8fe4864dc5fdce1f8976d08",
+   "source": "https://cdn.thebridgeto.ai/572a68f9-4ca3-4f9e-950b-4b0428e2732e"
+  },
+  {
+   "key": "5b8d665e-47e3-458f-9a48-2c59d62b8aa7",
+   "content_type": "image/png",
+   "bytes": 712914,
+   "sha256": "10b11ba7545623c23f64717f4d57fc354c8b8189ef68d866761585ac52faf11f",
+   "source": "https://cdn.thebridgeto.ai/5b8d665e-47e3-458f-9a48-2c59d62b8aa7"
+  },
+  {
+   "key": "5ea5d974-eeaf-47c4-b8cd-78bf5fef67a9",
+   "content_type": "application/pdf",
+   "bytes": 3355115,
+   "sha256": "554ff23ebf7cfda08cfcebe3bc22b574f63b5fc376db0301db897c28a925710c",
+   "source": "https://cdn.thebridgeto.ai/5ea5d974-eeaf-47c4-b8cd-78bf5fef67a9"
+  },
+  {
+   "key": "60dce80a-6e64-4905-bf39-0683f9d8d9ec",
+   "content_type": "image/jpeg",
+   "bytes": 190216,
+   "sha256": "b5d4f16188091c9585cbea39ce6a06f346c4b43811a840bd877f652f5d33c127",
+   "source": "https://cdn.thebridgeto.ai/60dce80a-6e64-4905-bf39-0683f9d8d9ec"
+  },
+  {
+   "key": "623372a0-ff35-4272-8762-72323f175855",
+   "content_type": "image/jpeg",
+   "bytes": 176773,
+   "sha256": "c73f0766ca4cc90e5c83b13fa3494b086e0006759e62f1691071fa5c48e265dd",
+   "source": "https://cdn.thebridgeto.ai/623372a0-ff35-4272-8762-72323f175855"
+  },
+  {
+   "key": "667d53eb-1a62-46c2-9bb3-7c24bbc58484",
+   "content_type": "image/png",
+   "bytes": 31254,
+   "sha256": "3d9e4547d5eb0f7aab73b15d1d20eaad66c1f1af799955629d530f93910dce11",
+   "source": "https://cdn.thebridgeto.ai/667d53eb-1a62-46c2-9bb3-7c24bbc58484"
+  },
+  {
+   "key": "676729ba-6613-45f3-ab79-6e234be36553",
+   "content_type": "image/jpeg",
+   "bytes": 17382,
+   "sha256": "fc4957f6b30951b53bc66ed595e49d8acbcdc497d181e70ef01bc21c14dcc26b",
+   "source": "https://cdn.thebridgeto.ai/676729ba-6613-45f3-ab79-6e234be36553"
+  },
+  {
+   "key": "692eb9dd-941b-4adc-a990-498870842cc1",
+   "content_type": "image/png",
+   "bytes": 31254,
+   "sha256": "3d9e4547d5eb0f7aab73b15d1d20eaad66c1f1af799955629d530f93910dce11",
+   "source": "https://cdn.thebridgeto.ai/692eb9dd-941b-4adc-a990-498870842cc1"
+  },
+  {
+   "key": "69a4241d-dbe2-4025-8aa9-c8264a5348df",
+   "content_type": "image/jpeg",
+   "bytes": 176773,
+   "sha256": "c73f0766ca4cc90e5c83b13fa3494b086e0006759e62f1691071fa5c48e265dd",
+   "source": "https://cdn.thebridgeto.ai/69a4241d-dbe2-4025-8aa9-c8264a5348df"
+  },
+  {
+   "key": "705872d7-b14d-43d2-994f-1f2ac5f5a6a1",
+   "content_type": "image/png",
+   "bytes": 103983,
+   "sha256": "9ccdfbc2296a56f0d00947d8763921a789d656e52c41077b770590fbe33c865b",
+   "source": "https://cdn.thebridgeto.ai/705872d7-b14d-43d2-994f-1f2ac5f5a6a1"
+  },
+  {
+   "key": "7141d1d0-d520-4976-8d68-3414184a6cdc",
+   "content_type": "image/png",
+   "bytes": 27896,
+   "sha256": "82aacfae5b400f7f97168a198768748c802a13999a787043ad7d9656b79146ac",
+   "source": "https://cdn.thebridgeto.ai/7141d1d0-d520-4976-8d68-3414184a6cdc"
+  },
+  {
+   "key": "7273252e-2c09-4d1f-8537-a69520e048f1",
+   "content_type": "image/jpeg",
+   "bytes": 64647,
+   "sha256": "3685aabc595087051aac4d1971133b8e164cdd9ea3c94a2521c29e3e22a6369c",
+   "source": "https://cdn.thebridgeto.ai/7273252e-2c09-4d1f-8537-a69520e048f1"
+  },
+  {
+   "key": "73bcfc42-e43c-4c1c-aeb2-ddeee75ddac8",
+   "content_type": "image/png",
+   "bytes": 37290,
+   "sha256": "ef5eedff06dfcf500e9be1667484fc1ae4e1c33dd7d164669e22f3e74475e1d8",
+   "source": "https://cdn.thebridgeto.ai/73bcfc42-e43c-4c1c-aeb2-ddeee75ddac8"
+  },
+  {
+   "key": "74331063-259f-4e9f-ac57-388210dbdb5b",
+   "content_type": "image/jpeg",
+   "bytes": 340426,
+   "sha256": "41c3627a4dd73fe4d4c066d25df17a63e930b08b419d85d1dc4a2f0fb2de3caa",
+   "source": "https://cdn.thebridgeto.ai/74331063-259f-4e9f-ac57-388210dbdb5b"
+  },
+  {
+   "key": "747cd096-ed7c-4c3a-b7f3-07f84642dbc8",
+   "content_type": "image/png",
+   "bytes": 33689,
+   "sha256": "0bf4dd04bf927a9535bfe72648006aa0901d7a8db5f1f1368d705f726b8abc6e",
+   "source": "https://cdn.thebridgeto.ai/747cd096-ed7c-4c3a-b7f3-07f84642dbc8"
+  },
+  {
+   "key": "7626d61e-22f7-417b-88e5-be008ac7df7c",
+   "content_type": "image/png",
+   "bytes": 32268,
+   "sha256": "188fd633debb2ddabc516cdb039595c815bde7794a204db7d3ee2481d209fa21",
+   "source": "https://cdn.thebridgeto.ai/7626d61e-22f7-417b-88e5-be008ac7df7c"
+  },
+  {
+   "key": "798dd917-2955-4480-8b2e-c08396ab49cd",
+   "content_type": "image/jpeg",
+   "bytes": 166333,
+   "sha256": "c855bcfbe56370f36fb68edb6bb6e19014e392599807911eb2fe670a5c17efac",
+   "source": "https://cdn.thebridgeto.ai/798dd917-2955-4480-8b2e-c08396ab49cd"
+  },
+  {
+   "key": "8357524e-4117-46b3-9ad9-8502f4d78b50",
+   "content_type": "image/png",
+   "bytes": 33234,
+   "sha256": "f150f3196e8c3137338411fa891642c34475322c5129e80e3442cdc8c4ec8d1f",
+   "source": "https://cdn.thebridgeto.ai/8357524e-4117-46b3-9ad9-8502f4d78b50"
+  },
+  {
+   "key": "85464896-cd38-4851-afcf-066156c4526c",
+   "content_type": "image/png",
+   "bytes": 103983,
+   "sha256": "9ccdfbc2296a56f0d00947d8763921a789d656e52c41077b770590fbe33c865b",
+   "source": "https://cdn.thebridgeto.ai/85464896-cd38-4851-afcf-066156c4526c"
+  },
+  {
+   "key": "85a5a7b3-4d0b-4597-aed9-26e0ba6619c1",
+   "content_type": "image/jpeg",
+   "bytes": 1564644,
+   "sha256": "2664f1c5d9e32a6a6081ccc9acfa3cc9f3f953c02e2632baaaba434e35d5726f",
+   "source": "https://cdn.thebridgeto.ai/85a5a7b3-4d0b-4597-aed9-26e0ba6619c1"
+  },
+  {
+   "key": "85c181f5-a373-46bb-b953-7ad97123d4bf",
+   "content_type": "image/png",
+   "bytes": 33428,
+   "sha256": "dc5939c77775b9ebe787d0bce70cc7b35f212c00f77704e803573889121b6e03",
+   "source": "https://cdn.thebridgeto.ai/85c181f5-a373-46bb-b953-7ad97123d4bf"
+  },
+  {
+   "key": "885e4e0d-f6b0-4444-8759-f17020a2391c",
+   "content_type": "image/jpeg",
+   "bytes": 656247,
+   "sha256": "da00d85531d111b0573b45ecb99c11138e646d5f5c5dce5a86092bbcf41cc824",
+   "source": "https://cdn.thebridgeto.ai/885e4e0d-f6b0-4444-8759-f17020a2391c"
+  },
+  {
+   "key": "8ad4ee50-6b8e-40c2-a54e-d39cff5f252b",
+   "content_type": "image/png",
+   "bytes": 33428,
+   "sha256": "dc5939c77775b9ebe787d0bce70cc7b35f212c00f77704e803573889121b6e03",
+   "source": "https://cdn.thebridgeto.ai/8ad4ee50-6b8e-40c2-a54e-d39cff5f252b"
+  },
+  {
+   "key": "980ffbf6-4198-455c-a1f2-a12b9a2a554d",
+   "content_type": "image/png",
+   "bytes": 35319,
+   "sha256": "a44e227ec6fbc4c3b35f5f79314af26a932d4486d875dad41e42733caed8dccd",
+   "source": "https://cdn.thebridgeto.ai/980ffbf6-4198-455c-a1f2-a12b9a2a554d"
+  },
+  {
+   "key": "9b5bd68f-3c8b-456e-a116-e0941b56d07e",
+   "content_type": "image/jpeg",
+   "bytes": 113584,
+   "sha256": "d5e5aae3ecb4d12d7de2462e9c53b7cf3ae3a2149ccfc636300912b15b5a14d9",
+   "source": "https://cdn.thebridgeto.ai/9b5bd68f-3c8b-456e-a116-e0941b56d07e"
+  },
+  {
+   "key": "9efd846b-0848-482f-b03f-c086a256b94e",
+   "content_type": "image/jpeg",
+   "bytes": 17382,
+   "sha256": "fc4957f6b30951b53bc66ed595e49d8acbcdc497d181e70ef01bc21c14dcc26b",
+   "source": "https://cdn.thebridgeto.ai/9efd846b-0848-482f-b03f-c086a256b94e"
+  },
+  {
+   "key": "a1d8159b-4c7b-47e0-84bc-8b8bf8ca1864",
+   "content_type": "image/png",
+   "bytes": 31254,
+   "sha256": "3d9e4547d5eb0f7aab73b15d1d20eaad66c1f1af799955629d530f93910dce11",
+   "source": "https://cdn.thebridgeto.ai/a1d8159b-4c7b-47e0-84bc-8b8bf8ca1864"
+  },
+  {
+   "key": "a1f10c6f-35f7-4b80-83c8-288a315c29c7",
+   "content_type": "image/png",
+   "bytes": 35319,
+   "sha256": "a44e227ec6fbc4c3b35f5f79314af26a932d4486d875dad41e42733caed8dccd",
+   "source": "https://cdn.thebridgeto.ai/a1f10c6f-35f7-4b80-83c8-288a315c29c7"
+  },
+  {
+   "key": "a1f9e480-7ff2-43a7-ae51-a1cd58892719",
+   "content_type": "image/jpeg",
+   "bytes": 64647,
+   "sha256": "3685aabc595087051aac4d1971133b8e164cdd9ea3c94a2521c29e3e22a6369c",
+   "source": "https://cdn.thebridgeto.ai/a1f9e480-7ff2-43a7-ae51-a1cd58892719"
+  },
+  {
+   "key": "a20e59d5-2571-4b59-8308-05d53521b97f",
+   "content_type": "image/jpeg",
+   "bytes": 21109604,
+   "sha256": "7bf5fa2d00be4408143610900fea9442c4a8cbccfb91bf98b5265f39dfd2d8ff",
+   "source": "https://cdn.thebridgeto.ai/a20e59d5-2571-4b59-8308-05d53521b97f"
+  },
+  {
+   "key": "a5a1bea3-d35a-4c77-a721-f97f1acf8d6e",
+   "content_type": "image/jpeg",
+   "bytes": 113584,
+   "sha256": "d5e5aae3ecb4d12d7de2462e9c53b7cf3ae3a2149ccfc636300912b15b5a14d9",
+   "source": "https://cdn.thebridgeto.ai/a5a1bea3-d35a-4c77-a721-f97f1acf8d6e"
+  },
+  {
+   "key": "a620e7d3-31b0-46a8-b3d7-c4dfa07d82f6",
+   "content_type": "image/png",
+   "bytes": 30601,
+   "sha256": "6f90bc64c0c76c8e4b453551ae80fe086f0864964a9ad284630d484f73accb15",
+   "source": "https://cdn.thebridgeto.ai/a620e7d3-31b0-46a8-b3d7-c4dfa07d82f6"
+  },
+  {
+   "key": "ab28f6b3-6f47-44e0-a982-b26990c459be",
+   "content_type": "image/png",
+   "bytes": 19856,
+   "sha256": "1ae4cebf82c22c735478736b2f0384ae1d74c1dd011aff2fcde668cf925a0ca5",
+   "source": "https://cdn.thebridgeto.ai/ab28f6b3-6f47-44e0-a982-b26990c459be"
+  },
+  {
+   "key": "abe68974-02ea-4d81-a2e6-02c1e8c55b3b",
+   "content_type": "image/jpeg",
+   "bytes": 340426,
+   "sha256": "41c3627a4dd73fe4d4c066d25df17a63e930b08b419d85d1dc4a2f0fb2de3caa",
+   "source": "https://cdn.thebridgeto.ai/abe68974-02ea-4d81-a2e6-02c1e8c55b3b"
+  },
+  {
+   "key": "ai-audio/020498f9-9b0d-40d6-8822-97810d35c734_alloy.mp3",
+   "content_type": "audio/mpeg",
+   "bytes": 1987200,
+   "sha256": "68c0a03f06a4de15c09fef28cfbb0c28dbcbb86e5ecdc4efa9b04645d1a34c4d",
+   "source": "https://cdn.thebridgeto.ai/ai-audio/020498f9-9b0d-40d6-8822-97810d35c734_alloy.mp3"
+  },
+  {
+   "key": "ai-audio/0a33859b-8be1-4bc2-8016-ee4fa8dccf5d_alloy.mp3",
+   "content_type": "audio/mpeg",
+   "bytes": 1812096,
+   "sha256": "42ff44bec77ddb1bbbd5428279bcc72e6c8e0782a6b667445f0bcafb82129140",
+   "source": "https://cdn.thebridgeto.ai/ai-audio/0a33859b-8be1-4bc2-8016-ee4fa8dccf5d_alloy.mp3"
+  },
+  {
+   "key": "ai-audio/766550f7-1ae8-46ae-84af-4d2cd7a92c50_alloy.mp3",
+   "content_type": "audio/mpeg",
+   "bytes": 2716800,
+   "sha256": "21241703402ff7d1e02d51c7ee41bfc089b8b765a4584ba5a1f1e3d594c2ab1f",
+   "source": "https://cdn.thebridgeto.ai/ai-audio/766550f7-1ae8-46ae-84af-4d2cd7a92c50_alloy.mp3"
+  },
+  {
+   "key": "ai-audio/8d1664e9-5e34-4e3e-8673-cd7d880a6ae8_alloy.mp3",
+   "content_type": "audio/mpeg",
+   "bytes": 6341760,
+   "sha256": "c0a9f6471ab3fb06d2bc6ae36707355c3fdc29cb32ea0731c3767e9775641ca2",
+   "source": "https://cdn.thebridgeto.ai/ai-audio/8d1664e9-5e34-4e3e-8673-cd7d880a6ae8_alloy.mp3"
+  },
+  {
+   "key": "ai-audio/958bcad7-d193-4e04-8c26-3a634d73438c_alloy.mp3",
+   "content_type": "audio/mpeg",
+   "bytes": 2545920,
+   "sha256": "730c6c7cf8b6a3cd12f08ea820fd9d98b53638e4b0a9799810edf87658bbf53c",
+   "source": "https://cdn.thebridgeto.ai/ai-audio/958bcad7-d193-4e04-8c26-3a634d73438c_alloy.mp3"
+  },
+  {
+   "key": "ai-audio/af5376d4-9d7a-4fc2-be30-f7db1eb24797_alloy.mp3",
+   "content_type": "audio/mpeg",
+   "bytes": 2982528,
+   "sha256": "0045427c6be843c2cf11e5f65bb9b5c13a541c5de5cd1e5691a9aa048183ee28",
+   "source": "https://cdn.thebridgeto.ai/ai-audio/af5376d4-9d7a-4fc2-be30-f7db1eb24797_alloy.mp3"
+  },
+  {
+   "key": "ai-audio/cf8156eb-3865-4086-8341-f7aba0650106_shimmer.mp3",
+   "content_type": "audio/mpeg",
+   "bytes": 2133120,
+   "sha256": "912ac491585c4b3e44ae5d32323fc6cf909e5f4a816d3ff38dbd25b90c136fa5",
+   "source": "https://cdn.thebridgeto.ai/ai-audio/cf8156eb-3865-4086-8341-f7aba0650106_shimmer.mp3"
+  },
+  {
+   "key": "ai-audio/d8a1e1f4-1101-4fd0-aea3-3b452f006b1b_nova.mp3",
+   "content_type": "audio/mpeg",
+   "bytes": 3120768,
+   "sha256": "625524837c79dbfdee8551b04186efb586da0adeae04231e8353031f1b787639",
+   "source": "https://cdn.thebridgeto.ai/ai-audio/d8a1e1f4-1101-4fd0-aea3-3b452f006b1b_nova.mp3"
+  },
+  {
+   "key": "ai-audio/da994519-da54-4fe0-95f3-f0ef605de97d_alloy.mp3",
+   "content_type": "audio/mpeg",
+   "bytes": 1656192,
+   "sha256": "7df7d23eaa079ec06f705ed655a7aea916c811b5ff0ca9b5e8cbfa7231537e27",
+   "source": "https://cdn.thebridgeto.ai/ai-audio/da994519-da54-4fe0-95f3-f0ef605de97d_alloy.mp3"
+  },
+  {
+   "key": "ai-audio/dc9384f0-9f86-4cb3-a999-1a7491d38b3b_alloy.mp3",
+   "content_type": "audio/mpeg",
+   "bytes": 3088896,
+   "sha256": "f6413c47a73844bafdf7abec1dba74e023aad043f618ab33bcd48d857fabeb6e",
+   "source": "https://cdn.thebridgeto.ai/ai-audio/dc9384f0-9f86-4cb3-a999-1a7491d38b3b_alloy.mp3"
+  },
+  {
+   "key": "ai-image/379fc1b2-31c8-423e-9a32-092214526cab_1200x630.jpg",
+   "content_type": "image/jpeg",
+   "bytes": 198316,
+   "sha256": "b63ac14714a4b3eaa93477dd033269437b7931d45f664cdea747d71ff28e1ccd",
+   "source": "https://cdn.thebridgeto.ai/ai-image/379fc1b2-31c8-423e-9a32-092214526cab_1200x630.jpg"
+  },
+  {
+   "key": "ai-image/379fc1b2-31c8-423e-9a32-092214526cab_1600x900.jpg",
+   "content_type": "image/jpeg",
+   "bytes": 312040,
+   "sha256": "6f3dc004036946deafbdfdc188e0f588e830e4e1fa3b0c9bbce863a414004951",
+   "source": "https://cdn.thebridgeto.ai/ai-image/379fc1b2-31c8-423e-9a32-092214526cab_1600x900.jpg"
+  },
+  {
+   "key": "ai-image/3f18a7c4-6d68-4b45-9376-02f82d52b46d_1200x630.jpg",
+   "content_type": "image/jpeg",
+   "bytes": 154815,
+   "sha256": "acd1d89634919ccdc491369c865745b81038c2ff036fc27a2ff0a74bf509ad18",
+   "source": "https://cdn.thebridgeto.ai/ai-image/3f18a7c4-6d68-4b45-9376-02f82d52b46d_1200x630.jpg"
+  },
+  {
+   "key": "ai-image/3f18a7c4-6d68-4b45-9376-02f82d52b46d_1600x900.jpg",
+   "content_type": "image/jpeg",
+   "bytes": 250932,
+   "sha256": "dc235b35a273064ce771569505c6bc18ab375e5aab6f67b2b52d62882fc0f7fd",
+   "source": "https://cdn.thebridgeto.ai/ai-image/3f18a7c4-6d68-4b45-9376-02f82d52b46d_1600x900.jpg"
+  },
+  {
+   "key": "ai-image/3f18a7c4-6d68-4b45-9376-02f82d52b46d_800x500.jpg",
+   "content_type": "image/jpeg",
+   "bytes": 95835,
+   "sha256": "5ffba969a0ef10f45879479c5b25db00aadc2b1d578f6aae07a0572ee76f30f0",
+   "source": "https://cdn.thebridgeto.ai/ai-image/3f18a7c4-6d68-4b45-9376-02f82d52b46d_800x500.jpg"
+  },
+  {
+   "key": "ai-image/46dfce6a-4e7d-45a9-8724-5324af2b124f_1200x630.jpg",
+   "content_type": "image/jpeg",
+   "bytes": 195318,
+   "sha256": "e96683029ad18d7e95f197fd81dc51ea79ac58c7268c62fd77c066860d0c4bea",
+   "source": "https://cdn.thebridgeto.ai/ai-image/46dfce6a-4e7d-45a9-8724-5324af2b124f_1200x630.jpg"
+  },
+  {
+   "key": "ai-image/46dfce6a-4e7d-45a9-8724-5324af2b124f_1600x900.jpg",
+   "content_type": "image/jpeg",
+   "bytes": 325623,
+   "sha256": "2fc17dd38977b9d8ef5e0ce4146db6e02e03f744442191051c9a97b359c278db",
+   "source": "https://cdn.thebridgeto.ai/ai-image/46dfce6a-4e7d-45a9-8724-5324af2b124f_1600x900.jpg"
+  },
+  {
+   "key": "ai-image/46dfce6a-4e7d-45a9-8724-5324af2b124f_800x500.jpg",
+   "content_type": "image/jpeg",
+   "bytes": 114762,
+   "sha256": "b154635ae52a17b81591fede2f1d9205767e29fb887a42bcb6f3bf36e1df0652",
+   "source": "https://cdn.thebridgeto.ai/ai-image/46dfce6a-4e7d-45a9-8724-5324af2b124f_800x500.jpg"
+  },
+  {
+   "key": "ai-image/4847e12a-86f5-44c6-a9a9-6c17316dab4a_1200x630.jpg",
+   "content_type": "image/jpeg",
+   "bytes": 181306,
+   "sha256": "ebc7ed28a455c33b84f39ff7c0d2a3de3f2bc8e5a0be4c00ce188954a3c01275",
+   "source": "https://cdn.thebridgeto.ai/ai-image/4847e12a-86f5-44c6-a9a9-6c17316dab4a_1200x630.jpg"
+  },
+  {
+   "key": "ai-image/4847e12a-86f5-44c6-a9a9-6c17316dab4a_1600x900.jpg",
+   "content_type": "image/jpeg",
+   "bytes": 291809,
+   "sha256": "314176c560205d10cfd179b0ae39dfe156abc768aabecfac4e24f20562ea80fc",
+   "source": "https://cdn.thebridgeto.ai/ai-image/4847e12a-86f5-44c6-a9a9-6c17316dab4a_1600x900.jpg"
+  },
+  {
+   "key": "ai-image/4847e12a-86f5-44c6-a9a9-6c17316dab4a_800x500.jpg",
+   "content_type": "image/jpeg",
+   "bytes": 111987,
+   "sha256": "d7289557db6b1cf7117e9005b02311138878755ac20fcdf04610fe673c1e5865",
+   "source": "https://cdn.thebridgeto.ai/ai-image/4847e12a-86f5-44c6-a9a9-6c17316dab4a_800x500.jpg"
+  },
+  {
+   "key": "ai-image/596492ca-5691-4de0-beaa-cd222a040dcf_1200x630.jpg",
+   "content_type": "image/jpeg",
+   "bytes": 283976,
+   "sha256": "f5932dab7497bf398fcd3906c8202a40bfb050a4ee07ecedae02117e50fe7d5a",
+   "source": "https://cdn.thebridgeto.ai/ai-image/596492ca-5691-4de0-beaa-cd222a040dcf_1200x630.jpg"
+  },
+  {
+   "key": "ai-image/596492ca-5691-4de0-beaa-cd222a040dcf_1600x900.jpg",
+   "content_type": "image/jpeg",
+   "bytes": 456150,
+   "sha256": "0304e2017f22f0d415aa324bb4cdfe7462ca2a68446fe47419c8bd4ffd84092a",
+   "source": "https://cdn.thebridgeto.ai/ai-image/596492ca-5691-4de0-beaa-cd222a040dcf_1600x900.jpg"
+  },
+  {
+   "key": "ai-image/596492ca-5691-4de0-beaa-cd222a040dcf_800x500.jpg",
+   "content_type": "image/jpeg",
+   "bytes": 169440,
+   "sha256": "110965001809c08ace5411d81bf156ccd42e2d79582cb687d3e48053abc43e4d",
+   "source": "https://cdn.thebridgeto.ai/ai-image/596492ca-5691-4de0-beaa-cd222a040dcf_800x500.jpg"
+  },
+  {
+   "key": "ai-image/7aacc0c2-ab96-41ed-b71c-3d5a5197a2d3_1200x630.jpg",
+   "content_type": "image/jpeg",
+   "bytes": 212547,
+   "sha256": "9befb127defb2f01d4dbc95760637bd067b98b98e25011a9bcc645b43df45bb3",
+   "source": "https://cdn.thebridgeto.ai/ai-image/7aacc0c2-ab96-41ed-b71c-3d5a5197a2d3_1200x630.jpg"
+  },
+  {
+   "key": "ai-image/7aacc0c2-ab96-41ed-b71c-3d5a5197a2d3_1600x900.jpg",
+   "content_type": "image/jpeg",
+   "bytes": 340557,
+   "sha256": "7b233dd3f5672bebc008dca3dd307a2b502cbbf9f66e0b213d5c470b881e7e0d",
+   "source": "https://cdn.thebridgeto.ai/ai-image/7aacc0c2-ab96-41ed-b71c-3d5a5197a2d3_1600x900.jpg"
+  },
+  {
+   "key": "ai-image/7aacc0c2-ab96-41ed-b71c-3d5a5197a2d3_800x500.jpg",
+   "content_type": "image/jpeg",
+   "bytes": 145898,
+   "sha256": "3b40861025fc5e9ebfcaa244588b436cef0390cd539f50303ce0ae4655193eb9",
+   "source": "https://cdn.thebridgeto.ai/ai-image/7aacc0c2-ab96-41ed-b71c-3d5a5197a2d3_800x500.jpg"
+  },
+  {
+   "key": "ai-image/90a486ba-b8ba-499a-9901-dc80fbc76f00_1200x630.jpg",
+   "content_type": "image/jpeg",
+   "bytes": 186510,
+   "sha256": "c9da51ead8578595e367722bb018975590df646f55e1c5aee74671cfc5e6b809",
+   "source": "https://cdn.thebridgeto.ai/ai-image/90a486ba-b8ba-499a-9901-dc80fbc76f00_1200x630.jpg"
+  },
+  {
+   "key": "ai-image/90a486ba-b8ba-499a-9901-dc80fbc76f00_1600x900.jpg",
+   "content_type": "image/jpeg",
+   "bytes": 331895,
+   "sha256": "fa0eba2880950b30c9f03d5cd60868ad318c07875ecc7782669268109b2820c0",
+   "source": "https://cdn.thebridgeto.ai/ai-image/90a486ba-b8ba-499a-9901-dc80fbc76f00_1600x900.jpg"
+  },
+  {
+   "key": "ai-image/90a486ba-b8ba-499a-9901-dc80fbc76f00_800x500.jpg",
+   "content_type": "image/jpeg",
+   "bytes": 120085,
+   "sha256": "2e107546be03e74575871d3b2c3187e95ba0040af5e0660864e65df96698ea12",
+   "source": "https://cdn.thebridgeto.ai/ai-image/90a486ba-b8ba-499a-9901-dc80fbc76f00_800x500.jpg"
+  },
+  {
+   "key": "ai-image/97bef363-fcdd-4606-ba35-d7d03e34cb2d_1200x630.jpg",
+   "content_type": "image/jpeg",
+   "bytes": 192794,
+   "sha256": "2467fef316282151763aa68bf7e600b15e866422081444b401f5bc3998c570ab",
+   "source": "https://cdn.thebridgeto.ai/ai-image/97bef363-fcdd-4606-ba35-d7d03e34cb2d_1200x630.jpg"
+  },
+  {
+   "key": "ai-image/97bef363-fcdd-4606-ba35-d7d03e34cb2d_1600x900.jpg",
+   "content_type": "image/jpeg",
+   "bytes": 308789,
+   "sha256": "5632fb335471890f5a743c7812a140ce5a9aea24838f7e9844ec2cb99be4f81e",
+   "source": "https://cdn.thebridgeto.ai/ai-image/97bef363-fcdd-4606-ba35-d7d03e34cb2d_1600x900.jpg"
+  },
+  {
+   "key": "ai-image/97bef363-fcdd-4606-ba35-d7d03e34cb2d_800x500.jpg",
+   "content_type": "image/jpeg",
+   "bytes": 117528,
+   "sha256": "14ab554bb3472c8a459c662cb4798285e3c320e935a83f3a22a52889cf2b07f9",
+   "source": "https://cdn.thebridgeto.ai/ai-image/97bef363-fcdd-4606-ba35-d7d03e34cb2d_800x500.jpg"
+  },
+  {
+   "key": "ai-image/9d018cba-a7f0-4290-91c0-7886a05f19d3_1200x630.jpg",
+   "content_type": "image/jpeg",
+   "bytes": 171842,
+   "sha256": "27e85cf968d99339e88e2c796fe1d91e4e932729cf85446a6731fcfb8c0e35cc",
+   "source": "https://cdn.thebridgeto.ai/ai-image/9d018cba-a7f0-4290-91c0-7886a05f19d3_1200x630.jpg"
+  },
+  {
+   "key": "ai-image/9d018cba-a7f0-4290-91c0-7886a05f19d3_1600x900.jpg",
+   "content_type": "image/jpeg",
+   "bytes": 295584,
+   "sha256": "594e2b2673531ba11716a593de19a6a0d64f64a737702916c808a34dbb509dba",
+   "source": "https://cdn.thebridgeto.ai/ai-image/9d018cba-a7f0-4290-91c0-7886a05f19d3_1600x900.jpg"
+  },
+  {
+   "key": "ai-image/9d018cba-a7f0-4290-91c0-7886a05f19d3_800x500.jpg",
+   "content_type": "image/jpeg",
+   "bytes": 112014,
+   "sha256": "4c1f705c537b0a47673a5b298fa45c638c4b98c328ac64443e73d0a3dd6fa6b0",
+   "source": "https://cdn.thebridgeto.ai/ai-image/9d018cba-a7f0-4290-91c0-7886a05f19d3_800x500.jpg"
+  },
+  {
+   "key": "ai-image/abf3b74b-0147-4189-a6e1-1b877f3f937d_1200x630.jpg",
+   "content_type": "image/jpeg",
+   "bytes": 176351,
+   "sha256": "be67688b3854a17503df0f7cd80080cdd5c183e17ec4bde384cfd58d6625bbb9",
+   "source": "https://cdn.thebridgeto.ai/ai-image/abf3b74b-0147-4189-a6e1-1b877f3f937d_1200x630.jpg"
+  },
+  {
+   "key": "ai-image/abf3b74b-0147-4189-a6e1-1b877f3f937d_1600x900.jpg",
+   "content_type": "image/jpeg",
+   "bytes": 313225,
+   "sha256": "6d863fcbf8cc7fba18816d7f40e1a8b48c21b48ffd702a7cb8975bb64bbb3e5e",
+   "source": "https://cdn.thebridgeto.ai/ai-image/abf3b74b-0147-4189-a6e1-1b877f3f937d_1600x900.jpg"
+  },
+  {
+   "key": "ai-image/abf3b74b-0147-4189-a6e1-1b877f3f937d_800x500.jpg",
+   "content_type": "image/jpeg",
+   "bytes": 100660,
+   "sha256": "c19cea65b7ff3ef1003278ba42e6bf6d722a5cd6d3e85ec232882d1adb2ad403",
+   "source": "https://cdn.thebridgeto.ai/ai-image/abf3b74b-0147-4189-a6e1-1b877f3f937d_800x500.jpg"
+  },
+  {
+   "key": "ai-image/bb9d426d-629d-4a6b-8ffd-f7d687da085a_1200x630.jpg",
+   "content_type": "image/jpeg",
+   "bytes": 280844,
+   "sha256": "8e9b163e6c5ec1544fd13bc6995993a0fb14221bb6b6726498a0f2845fcd38f0",
+   "source": "https://cdn.thebridgeto.ai/ai-image/bb9d426d-629d-4a6b-8ffd-f7d687da085a_1200x630.jpg"
+  },
+  {
+   "key": "ai-image/bb9d426d-629d-4a6b-8ffd-f7d687da085a_1600x900.jpg",
+   "content_type": "image/jpeg",
+   "bytes": 454347,
+   "sha256": "a48b3ebaa0d1a75d8b0b46e72a2d4d87ddaf6d0a89645342d5acc5172fa9b638",
+   "source": "https://cdn.thebridgeto.ai/ai-image/bb9d426d-629d-4a6b-8ffd-f7d687da085a_1600x900.jpg"
+  },
+  {
+   "key": "ai-image/bb9d426d-629d-4a6b-8ffd-f7d687da085a_800x500.jpg",
+   "content_type": "image/jpeg",
+   "bytes": 165858,
+   "sha256": "be5ddf1ef72a0ef3a232487642d8920c42876e442fba938c397f0d6d1b1a0e99",
+   "source": "https://cdn.thebridgeto.ai/ai-image/bb9d426d-629d-4a6b-8ffd-f7d687da085a_800x500.jpg"
+  },
+  {
+   "key": "ai-image/c3c883ac-551e-409e-8038-f71ddefccdb2_1200x630.jpg",
+   "content_type": "image/jpeg",
+   "bytes": 129497,
+   "sha256": "21db569a5b2bc2a91a2a73ed05c2c49f7d90e4ca22cd8aa5681c445437241042",
+   "source": "https://cdn.thebridgeto.ai/ai-image/c3c883ac-551e-409e-8038-f71ddefccdb2_1200x630.jpg"
+  },
+  {
+   "key": "ai-image/c3c883ac-551e-409e-8038-f71ddefccdb2_1600x900.jpg",
+   "content_type": "image/jpeg",
+   "bytes": 223967,
+   "sha256": "b8f79ef397b69b540729e8e1147434924188fc8a596a09690742470b42413a40",
+   "source": "https://cdn.thebridgeto.ai/ai-image/c3c883ac-551e-409e-8038-f71ddefccdb2_1600x900.jpg"
+  },
+  {
+   "key": "ai-image/c3c883ac-551e-409e-8038-f71ddefccdb2_800x500.jpg",
+   "content_type": "image/jpeg",
+   "bytes": 79189,
+   "sha256": "c59ea54c1c2f7cd4f8baee77492b0ff371568dc56242ba6f88bc636cad08e7c0",
+   "source": "https://cdn.thebridgeto.ai/ai-image/c3c883ac-551e-409e-8038-f71ddefccdb2_800x500.jpg"
+  },
+  {
+   "key": "ai-image/cb9bea9e-2876-42e5-9723-4c8983cfe60d_1200x630.jpg",
+   "content_type": "image/jpeg",
+   "bytes": 236565,
+   "sha256": "3123f3e4c7ec3817b733149a635522fc4c96d7b250d1754ab1e189041c4f97ee",
+   "source": "https://cdn.thebridgeto.ai/ai-image/cb9bea9e-2876-42e5-9723-4c8983cfe60d_1200x630.jpg"
+  },
+  {
+   "key": "ai-image/cb9bea9e-2876-42e5-9723-4c8983cfe60d_1600x900.jpg",
+   "content_type": "image/jpeg",
+   "bytes": 385125,
+   "sha256": "d4f88b93b1eca5b798e97bf13290c41548e826e1d3256783da0c22ef01d6eb2b",
+   "source": "https://cdn.thebridgeto.ai/ai-image/cb9bea9e-2876-42e5-9723-4c8983cfe60d_1600x900.jpg"
+  },
+  {
+   "key": "ai-image/cb9bea9e-2876-42e5-9723-4c8983cfe60d_800x500.jpg",
+   "content_type": "image/jpeg",
+   "bytes": 147863,
+   "sha256": "7ef6056dc8474814392409571a3be6c5b36b9eef3f8b95f1ceff99a8f756766a",
+   "source": "https://cdn.thebridgeto.ai/ai-image/cb9bea9e-2876-42e5-9723-4c8983cfe60d_800x500.jpg"
+  },
+  {
+   "key": "android-chrome-192x192.png",
+   "content_type": "image/png",
+   "bytes": 14276,
+   "sha256": "2fa01cb4b3e80a8a04453b7dd6d3fe776f9b6001326463c5d65d28eafa36580d",
+   "source": "https://www.thebridgeto.ai/android-chrome-192x192.png"
+  },
+  {
+   "key": "android-chrome-512x512.png",
+   "content_type": "image/png",
+   "bytes": 38958,
+   "sha256": "46cd10bd8b142e0db7f326d536ad460795e843caab166f349a8a07ec56163aac",
+   "source": "https://www.thebridgeto.ai/android-chrome-512x512.png"
+  },
+  {
+   "key": "apple-touch-icon.png",
+   "content_type": "image/png",
+   "bytes": 12732,
+   "sha256": "0e0ce487cd596754282a9e0bbfe1f5a9b57eb456c44fa7bc999d6287c2e6825e",
+   "source": "https://www.thebridgeto.ai/apple-touch-icon.png"
+  },
+  {
+   "key": "b1737438-f527-439c-b8bd-2d622d36594a",
+   "content_type": "image/png",
+   "bytes": 27896,
+   "sha256": "82aacfae5b400f7f97168a198768748c802a13999a787043ad7d9656b79146ac",
+   "source": "https://cdn.thebridgeto.ai/b1737438-f527-439c-b8bd-2d622d36594a"
+  },
+  {
+   "key": "b2b877a8-41fa-494e-9016-b53cdee9a71a",
+   "content_type": "image/png",
+   "bytes": 33234,
+   "sha256": "f150f3196e8c3137338411fa891642c34475322c5129e80e3442cdc8c4ec8d1f",
+   "source": "https://cdn.thebridgeto.ai/b2b877a8-41fa-494e-9016-b53cdee9a71a"
+  },
+  {
+   "key": "b75049d3-c1d1-4fed-9146-c7f88e4f541d",
+   "content_type": "image/png",
+   "bytes": 38222,
+   "sha256": "9497cce58fefcf30fec5990971c9d1fbb2b216c88379d2d23187c3be04f591c8",
+   "source": "https://cdn.thebridgeto.ai/b75049d3-c1d1-4fed-9146-c7f88e4f541d"
+  },
+  {
+   "key": "ba0f36d5-43d6-4ab9-81a7-6a5272e805d0",
+   "content_type": "image/png",
+   "bytes": 19856,
+   "sha256": "1ae4cebf82c22c735478736b2f0384ae1d74c1dd011aff2fcde668cf925a0ca5",
+   "source": "https://cdn.thebridgeto.ai/ba0f36d5-43d6-4ab9-81a7-6a5272e805d0"
+  },
+  {
+   "key": "bfee01d4-d3d8-4b56-8f1b-635dd0e8de14",
+   "content_type": "image/png",
+   "bytes": 30601,
+   "sha256": "6f90bc64c0c76c8e4b453551ae80fe086f0864964a9ad284630d484f73accb15",
+   "source": "https://cdn.thebridgeto.ai/bfee01d4-d3d8-4b56-8f1b-635dd0e8de14"
+  },
+  {
+   "key": "c04c9c49-d9a0-4253-a172-e3639665c445",
+   "content_type": "image/png",
+   "bytes": 37290,
+   "sha256": "ef5eedff06dfcf500e9be1667484fc1ae4e1c33dd7d164669e22f3e74475e1d8",
+   "source": "https://cdn.thebridgeto.ai/c04c9c49-d9a0-4253-a172-e3639665c445"
+  },
+  {
+   "key": "c0f73851-db3a-4cca-9453-d198d48151eb",
+   "content_type": "image/png",
+   "bytes": 32268,
+   "sha256": "188fd633debb2ddabc516cdb039595c815bde7794a204db7d3ee2481d209fa21",
+   "source": "https://cdn.thebridgeto.ai/c0f73851-db3a-4cca-9453-d198d48151eb"
+  },
+  {
+   "key": "c101bfe5-bb3e-47ec-b588-4c8c0800bc76",
+   "content_type": "image/jpeg",
+   "bytes": 340426,
+   "sha256": "41c3627a4dd73fe4d4c066d25df17a63e930b08b419d85d1dc4a2f0fb2de3caa",
+   "source": "https://cdn.thebridgeto.ai/c101bfe5-bb3e-47ec-b588-4c8c0800bc76"
+  },
+  {
+   "key": "c476009a-a00b-44b5-a303-2ce9c645257a",
+   "content_type": "image/jpeg",
+   "bytes": 17382,
+   "sha256": "fc4957f6b30951b53bc66ed595e49d8acbcdc497d181e70ef01bc21c14dcc26b",
+   "source": "https://cdn.thebridgeto.ai/c476009a-a00b-44b5-a303-2ce9c645257a"
+  },
+  {
+   "key": "c9a0d3c2-db8b-4514-a73e-85777fd4a55f",
+   "content_type": "image/jpeg",
+   "bytes": 4697128,
+   "sha256": "c698b509c4b429c9682868aa245ab351bc646ddfb7d594760b8af0eb5928c705",
+   "source": "https://cdn.thebridgeto.ai/c9a0d3c2-db8b-4514-a73e-85777fd4a55f"
+  },
+  {
+   "key": "cb0cf24e-85f6-44ed-b0af-ecae08ab1cfa",
+   "content_type": "image/jpeg",
+   "bytes": 2336323,
+   "sha256": "9739c8cbf374fc56c895388d2707de65cb1a3b176ec21e5c506184e9452bd95b",
+   "source": "https://cdn.thebridgeto.ai/cb0cf24e-85f6-44ed-b0af-ecae08ab1cfa"
+  },
+  {
+   "key": "cfaacfa6-f09d-44c1-b319-76b3d3c83bbe",
+   "content_type": "image/jpeg",
+   "bytes": 656247,
+   "sha256": "da00d85531d111b0573b45ecb99c11138e646d5f5c5dce5a86092bbcf41cc824",
+   "source": "https://cdn.thebridgeto.ai/cfaacfa6-f09d-44c1-b319-76b3d3c83bbe"
+  },
+  {
+   "key": "d19c4ecc-58e2-431f-bff2-1c4a576824c5",
+   "content_type": "image/jpeg",
+   "bytes": 2336323,
+   "sha256": "9739c8cbf374fc56c895388d2707de65cb1a3b176ec21e5c506184e9452bd95b",
+   "source": "https://cdn.thebridgeto.ai/d19c4ecc-58e2-431f-bff2-1c4a576824c5"
+  },
+  {
+   "key": "d371c946-2ff9-4f6c-b78d-972420ec974f",
+   "content_type": "image/png",
+   "bytes": 28013,
+   "sha256": "02624869aef181a41d76ce7d72a727af02a21433a4c7e1ca44d193da0358d09d",
+   "source": "https://cdn.thebridgeto.ai/d371c946-2ff9-4f6c-b78d-972420ec974f"
+  },
+  {
+   "key": "d53f5efb-a65d-4b3e-8bf0-d3c96dd51733",
+   "content_type": "image/png",
+   "bytes": 37290,
+   "sha256": "ef5eedff06dfcf500e9be1667484fc1ae4e1c33dd7d164669e22f3e74475e1d8",
+   "source": "https://cdn.thebridgeto.ai/d53f5efb-a65d-4b3e-8bf0-d3c96dd51733"
+  },
+  {
+   "key": "d555a13a-9116-4dfa-a13d-d98e3e542c2e",
+   "content_type": "image/jpeg",
+   "bytes": 64647,
+   "sha256": "3685aabc595087051aac4d1971133b8e164cdd9ea3c94a2521c29e3e22a6369c",
+   "source": "https://cdn.thebridgeto.ai/d555a13a-9116-4dfa-a13d-d98e3e542c2e"
+  },
+  {
+   "key": "d71bf694-195b-484e-b6ea-b492ff703b12",
+   "content_type": "image/png",
+   "bytes": 28013,
+   "sha256": "02624869aef181a41d76ce7d72a727af02a21433a4c7e1ca44d193da0358d09d",
+   "source": "https://cdn.thebridgeto.ai/d71bf694-195b-484e-b6ea-b492ff703b12"
+  },
+  {
+   "key": "d8878744-3b9f-4634-a001-6ddcb1c97063",
+   "content_type": "application/pdf",
+   "bytes": 3073380,
+   "sha256": "c7a052aecc726333946f06342d9c1666e0834741482669364b3285da29f993e6",
+   "source": "https://cdn.thebridgeto.ai/d8878744-3b9f-4634-a001-6ddcb1c97063"
+  },
+  {
+   "key": "e42a6e89-4717-4a09-8da0-e3ae53fe4e22",
+   "content_type": "image/png",
+   "bytes": 27896,
+   "sha256": "82aacfae5b400f7f97168a198768748c802a13999a787043ad7d9656b79146ac",
+   "source": "https://cdn.thebridgeto.ai/e42a6e89-4717-4a09-8da0-e3ae53fe4e22"
+  },
+  {
+   "key": "e6d0ab37-38d3-49d8-8572-1781cb7c6561",
+   "content_type": "image/jpeg",
+   "bytes": 1125231,
+   "sha256": "24bb88af72b89eac0e1dccf4eff420d4eb93bf2fc4996a252432531348ae3d60",
+   "source": "https://cdn.thebridgeto.ai/e6d0ab37-38d3-49d8-8572-1781cb7c6561"
+  },
+  {
+   "key": "e72a14fe-25a1-4a5b-82f8-d630d814d828",
+   "content_type": "image/png",
+   "bytes": 36656,
+   "sha256": "89de1476feed59f323913d0311f1435951184919feccb82f4386aacc57d20963",
+   "source": "https://cdn.thebridgeto.ai/e72a14fe-25a1-4a5b-82f8-d630d814d828"
+  },
+  {
+   "key": "e8e5b659-0c30-48f2-b9ab-8959868394ca",
+   "content_type": "image/png",
+   "bytes": 30601,
+   "sha256": "6f90bc64c0c76c8e4b453551ae80fe086f0864964a9ad284630d484f73accb15",
+   "source": "https://cdn.thebridgeto.ai/e8e5b659-0c30-48f2-b9ab-8959868394ca"
+  },
+  {
+   "key": "eb6210d8-360d-4510-bf7a-f5c179bdb45f",
+   "content_type": "image/png",
+   "bytes": 33234,
+   "sha256": "f150f3196e8c3137338411fa891642c34475322c5129e80e3442cdc8c4ec8d1f",
+   "source": "https://cdn.thebridgeto.ai/eb6210d8-360d-4510-bf7a-f5c179bdb45f"
+  },
+  {
+   "key": "efcaceda-98bf-4c82-8b3f-385e7df540f5",
+   "content_type": "image/png",
+   "bytes": 38290,
+   "sha256": "d2da168a20b661be49f9b252eb3ceb7786ba7057754eb353cc46aa6f50305dce",
+   "source": "https://cdn.thebridgeto.ai/efcaceda-98bf-4c82-8b3f-385e7df540f5"
+  },
+  {
+   "key": "external/js/axios.1.9.0.min.js",
+   "content_type": "application/javascript",
+   "bytes": 54249,
+   "sha256": "cca98387e18456f3f13c5162dccce960ed7f66c2e0789d6c152cf6a12bc11ba6",
+   "source": "https://cdn.thebridgeto.ai/external/js/axios.1.9.0.min.js"
+  },
+  {
+   "key": "external/js/react-dom.production.18.3.1.min.js",
+   "content_type": "application/javascript",
+   "bytes": 131835,
+   "sha256": "35f4f974f4b2bcd44da73963347f8952e341f83909e4498227d4e26b98f66f0d",
+   "source": "https://cdn.thebridgeto.ai/external/js/react-dom.production.18.3.1.min.js"
+  },
+  {
+   "key": "external/js/react.production.18.3.1.min.js",
+   "content_type": "application/javascript",
+   "bytes": 10751,
+   "sha256": "d949f1c3687aedadcedac85261865f29b17cd273997e7f6b2bfc53b2f9d4c4dd",
+   "source": "https://cdn.thebridgeto.ai/external/js/react.production.18.3.1.min.js"
+  },
+  {
+   "key": "f2a22a19-a662-4ad5-8111-35da3109d45b",
+   "content_type": "image/jpeg",
+   "bytes": 440664,
+   "sha256": "bf7e363790018a79ad2cbac949da20864b6261cd5d76472e3728ab345253cbae",
+   "source": "https://cdn.thebridgeto.ai/f2a22a19-a662-4ad5-8111-35da3109d45b"
+  },
+  {
+   "key": "f42efdb3-b887-4bac-8066-c6522a4b446f",
+   "content_type": "image/png",
+   "bytes": 38222,
+   "sha256": "9497cce58fefcf30fec5990971c9d1fbb2b216c88379d2d23187c3be04f591c8",
+   "source": "https://cdn.thebridgeto.ai/f42efdb3-b887-4bac-8066-c6522a4b446f"
+  },
+  {
+   "key": "f67636f8-d312-4837-a859-1986ebc3bcd8",
+   "content_type": "image/png",
+   "bytes": 35319,
+   "sha256": "a44e227ec6fbc4c3b35f5f79314af26a932d4486d875dad41e42733caed8dccd",
+   "source": "https://cdn.thebridgeto.ai/f67636f8-d312-4837-a859-1986ebc3bcd8"
+  },
+  {
+   "key": "favicon-16x16.png",
+   "content_type": "image/png",
+   "bytes": 701,
+   "sha256": "410a239c93b445d35f55975a30407b1493a12d5a69f176d5c2eaaef09e92c81d",
+   "source": "https://www.thebridgeto.ai/favicon-16x16.png"
+  },
+  {
+   "key": "favicon-32x32.png",
+   "content_type": "image/png",
+   "bytes": 1799,
+   "sha256": "fc99d7a9719532c9b7f2555733f71507ee85e771bf77b65298bcbfcc94224c19",
+   "source": "https://www.thebridgeto.ai/favicon-32x32.png"
+  },
+  {
+   "key": "favicon.ico",
+   "content_type": "image/vnd.microsoft.icon",
+   "bytes": 15406,
+   "sha256": "5848d43620fa1a3fccbca9a6b33a0993a5c696b4bae946890ee84caa88dc5b8c",
+   "source": "https://www.thebridgeto.ai/favicon.ico"
+  },
+  {
+   "key": "fe562947-b672-4e07-8aac-f0dd6b2776b8",
+   "content_type": "image/png",
+   "bytes": 712914,
+   "sha256": "10b11ba7545623c23f64717f4d57fc354c8b8189ef68d866761585ac52faf11f",
+   "source": "https://cdn.thebridgeto.ai/fe562947-b672-4e07-8aac-f0dd6b2776b8"
+  },
+  {
+   "key": "rest/api/1/event/02c1655a-c91c-459e-b0fc-c8a0a600b28d.ics",
+   "content_type": "text/calendar;charset=UTF-8",
+   "bytes": 2222,
+   "sha256": "9da6a58eaaa9561e12865ac61eec26a8c3b4a39272853d0ebc350712e28fe7e5",
+   "source": "https://www.thebridgeto.ai/rest/api/1/event/02c1655a-c91c-459e-b0fc-c8a0a600b28d.ics"
+  },
+  {
+   "key": "rest/api/1/event/04a4305a-6839-467f-bd3d-a15642f3b157.ics",
+   "content_type": "text/calendar;charset=UTF-8",
+   "bytes": 1683,
+   "sha256": "5dadad8edcf78280afb5c0986bc68475d8c962db2a3d858586b134b4653298a9",
+   "source": "https://www.thebridgeto.ai/rest/api/1/event/04a4305a-6839-467f-bd3d-a15642f3b157.ics"
+  },
+  {
+   "key": "robots.txt",
+   "content_type": "text/plain; charset=UTF-8",
+   "bytes": 196,
+   "sha256": "9669bd34a08e8636632b9e1cbbd303d40d6c1d952eac46f477de07b59f755066",
+   "source": "https://www.thebridgeto.ai/robots.txt"
+  },
+  {
+   "key": "site.webmanifest",
+   "content_type": "application/manifest+json",
+   "bytes": 457,
+   "sha256": "315bc3cf285a28faf904a51c4fbce1a8957a088cefda064f2918ca4aec015a03",
+   "source": "https://www.thebridgeto.ai/site.webmanifest"
+  },
+  {
+   "key": "sitemap.xml",
+   "content_type": "text/xml",
+   "bytes": 4292,
+   "sha256": "268eca4d78fe0a36774b682fcdeeb1ac897d5405904db464c8511e96dce3a19d",
+   "source": "https://www.thebridgeto.ai/sitemap.xml"
+  },
+  {
+   "key": "404.html",
+   "content_type": "text/html; charset=utf-8",
+   "bytes": 236,
+   "sha256": "9448f8a1159c9b14e3e1b9d8eab1a6ddf88d26e1f888a34cef430c756e4e6e1e",
+   "source": "generated"
+  }
+ ]
+}
