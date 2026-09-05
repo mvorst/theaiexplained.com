@@ -37,3 +37,9 @@ out/
 .vscode/
 src/main/docs/node_modules
 .DS_Store
+
+### Static site snapshot (static-site/)
+static-site/dist/
+static-site/dist.tmp/
+static-site/build-manifest.json
+static-site/__pycache__/
