@@ -32,7 +32,7 @@ single-admin instance. The design keeps the move to RDS a two-line change
 - `prod-n8n-app` (`i-05042d1f1a1fc8cad`): t4g.medium launched 2026-09-05 via
   the console wizard into the **default** VPC with a public Elastic IP, SSH and
   443 open to the world, no IAM role, an 8 GB root disk, and Node.js 22
-  installed. Reachable with `ssh prod-n8n-app`.
+  installed. Terminated later the same day (section 4.10).
 
 **Recommendation: relaunch into the website VPC.** The wizard instance is in
 the wrong VPC to be an ALB target and has nothing on it worth keeping. The new
@@ -40,12 +40,26 @@ instance lives in a private subnet with no public IP, no SSH, an encrypted
 30 GB disk, and an IAM role. Appendix A covers keeping the current box if you
 prefer.
 
+**As built on 2026-09-05 (sections 4 and 5 applied):**
+
+| Resource | Identifier |
+|---|---|
+| Instance | `i-0d9d06478fc71f6f0`, private IP 10.0.10.107, subnet prod-webapp-website-private-a |
+| Security group | `sg-0bbf6176bb1dbfd79` (prod-n8n-app-sg) |
+| IAM | role `prod-n8n-app-role`, instance profile `prod-n8n-app-profile` |
+| Target group | `prod-n8n-tg` |
+| Certificate | `arn:aws:acm:us-west-2:148768123182:certificate/a3b37894-8033-439d-887b-0f59d70346ea` |
+| Listener rules | priorities 10, 20, 30 on the website ALB 443 listener |
+| Backup bucket | `us-west-2.backup.thebridgeto.ai`, prefix `n8n/` |
+| Install script | `s3://us-west-2.build.thebridgeto.ai/infrastructure/n8n/install-n8n.sh` |
+| SSM parameters | `/prod/n8n/encryption-key`, `/prod/n8n/db-password`, `/prod/n8n/runners-auth-token` |
+
 **Versions pinned in this plan (current on 2026-09-05):**
 
 | Component | Version | Notes |
 |---|---|---|
 | n8n image | `docker.n8n.io/n8nio/n8n:2.37.10` | arm64 build available |
-| Task runner image | `docker.n8n.io/n8nio/runners:2.37.10` | must match the n8n version exactly |
+| Task runner image | `n8nio/runners:2.37.10` | must match the n8n version exactly |
 | Docker Engine | AL2023 `docker` package | Compose plugin is not packaged; installed from the docker/compose release with checksum verification |
 | Docker Compose | v5.5.1 | |
 | PostgreSQL | 17, AL2023 `postgresql17-server` | |
@@ -154,8 +168,8 @@ aws s3api put-bucket-lifecycle-configuration --bucket $BACKUP_BUCKET --lifecycle
 
 ### 4.3 IAM role and instance profile
 
-SSM core for Session Manager, read the three parameters, write (never
-delete) under the backup prefix.
+SSM core for Session Manager, read the three parameters, fetch the install
+script from the build bucket, write (never delete) under the backup prefix.
 
 ```bash
 aws iam create-role --role-name prod-n8n-app-role --assume-role-policy-document '{"Version":"2012-10-17","Statement":[{"Effect":"Allow","Principal":{"Service":"ec2.amazonaws.com"},"Action":"sts:AssumeRole"}]}'
@@ -164,6 +178,7 @@ aws iam put-role-policy --role-name prod-n8n-app-role --policy-name N8nAppAccess
   "Version":"2012-10-17",
   "Statement":[
     {"Effect":"Allow","Action":["ssm:GetParameter","ssm:GetParameters"],"Resource":"arn:aws:ssm:us-west-2:148768123182:parameter/prod/n8n/*"},
+    {"Effect":"Allow","Action":["s3:GetObject"],"Resource":"arn:aws:s3:::us-west-2.build.thebridgeto.ai/infrastructure/n8n/*"},
     {"Effect":"Allow","Action":["s3:PutObject"],"Resource":"arn:aws:s3:::us-west-2.backup.thebridgeto.ai/n8n/*"},
     {"Effect":"Allow","Action":["s3:ListBucket"],"Resource":"arn:aws:s3:::us-west-2.backup.thebridgeto.ai","Condition":{"StringLike":{"s3:prefix":["n8n/*"]}}}
   ]}'
@@ -268,7 +283,9 @@ aws route53 change-resource-record-sets --hosted-zone-id $ZONE_ID --change-batch
 
 ### 4.10 Decommission the wizard instance
 
-Destructive. Only after section 6 passes.
+Destructive. Only after section 6 passes. Done 2026-09-05 with Matthew's
+approval: instance terminated, 34.210.201.213 released, wizard security group
+and `prod-n8n-app` key pair deleted.
 
 ```bash
 aws ec2 terminate-instances --instance-ids i-05042d1f1a1fc8cad
@@ -278,9 +295,9 @@ aws ec2 delete-security-group --group-id sg-0213802cbfab2154d
 aws ec2 delete-key-pair --key-name prod-n8n-app
 ```
 
-Three other Elastic IPs in us-west-2 are unattached and billing hourly
-(34.215.17.116, 44.235.71.20, 54.213.252.5). Unrelated to n8n; release them if
-nothing needs them.
+The other three Elastic IPs in us-west-2 are in use even though they show no
+instance: 34.215.17.116 and 44.235.71.20 are the website ALB's addresses and
+54.213.252.5 belongs to the NAT gateway. Do not release them.
 
 ## 5. Server install (run inside the instance)
 
@@ -294,6 +311,18 @@ sudo -i
 
 Run the script below as root. It is safe to re-run. All secrets come from SSM
 through the instance role; nothing is typed in.
+
+The build on 2026-09-05 ran it without an interactive shell: the script was
+uploaded to `s3://us-west-2.build.thebridgeto.ai/infrastructure/n8n/install-n8n.sh`
+and executed through SSM Run Command, which needs no plugin on the Mac:
+
+```bash
+aws ssm send-command --instance-ids $INSTANCE_ID --document-name AWS-RunShellScript \
+  --parameters '{"commands":["set -euo pipefail","aws s3 cp s3://us-west-2.build.thebridgeto.ai/infrastructure/n8n/install-n8n.sh /root/install-n8n.sh --region us-west-2","chmod 700 /root/install-n8n.sh","/root/install-n8n.sh 2>&1"],"executionTimeout":["3600"]}' \
+  --output-s3-bucket-name us-west-2.backup.thebridgeto.ai --output-s3-key-prefix n8n/ssm-output
+```
+
+Poll with `aws ssm get-command-invocation --command-id <id> --instance-id $INSTANCE_ID`.
 
 ```bash
 #!/bin/bash
@@ -416,6 +445,7 @@ DB_POSTGRESDB_POOL_SIZE=4
 # --- task runners: external sidecar ---
 N8N_RUNNERS_MODE=external
 N8N_RUNNERS_BROKER_LISTEN_ADDRESS=0.0.0.0
+N8N_RUNNERS_TASK_TIMEOUT=300
 
 # --- security ---
 N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=true
@@ -470,12 +500,12 @@ services:
     cap_drop: [ALL]
     security_opt:
       - no-new-privileges:true
-    pids_limit: 512
     deploy:
       resources:
         limits:
           cpus: "1.5"
           memory: 2g
+          pids: 512
     networks: [n8n-net]
     ports:
       - "${HOST_IP}:5678:5678"
@@ -495,7 +525,7 @@ services:
       start_period: 90s
 
   runners:
-    image: docker.n8n.io/n8nio/runners:${N8N_VERSION}
+    image: n8nio/runners:${N8N_VERSION}
     container_name: n8n-runners
     restart: unless-stopped
     read_only: true
@@ -504,12 +534,12 @@ services:
     cap_drop: [ALL]
     security_opt:
       - no-new-privileges:true
-    pids_limit: 256
     deploy:
       resources:
         limits:
           cpus: "1"
           memory: 1g
+          pids: 256
     networks: [n8n-net]
     environment:
       N8N_RUNNERS_TASK_BROKER_URI: http://n8n:5679
@@ -543,7 +573,7 @@ EOF
 echo "== pull images and record digests"
 ( cd /etc/n8n && set -a && . ./compose.env && set +a && docker compose pull --quiet )
 docker image inspect --format '{{index .RepoDigests 0}}' "docker.n8n.io/n8nio/n8n:${N8N_VERSION}"     | tee -a /etc/n8n/image-digests.txt
-docker image inspect --format '{{index .RepoDigests 0}}' "docker.n8n.io/n8nio/runners:${N8N_VERSION}" | tee -a /etc/n8n/image-digests.txt
+docker image inspect --format '{{index .RepoDigests 0}}' "n8nio/runners:${N8N_VERSION}" | tee -a /etc/n8n/image-digests.txt
 
 echo "== start"
 systemctl daemon-reload
@@ -556,7 +586,7 @@ set -euo pipefail
 BUCKET=us-west-2.backup.thebridgeto.ai
 STAMP=$(date -u +%Y-%m-%dT%H%M%SZ)
 sudo -u postgres pg_dump -Fc n8n | aws s3 cp --region us-west-2 --only-show-errors - "s3://${BUCKET}/n8n/postgres/n8n-${STAMP}.dump"
-tar -C /var/lib/n8n -czf - data --exclude='data/n8nEventLog*' --exclude='data/crash.journal' \
+tar -C /var/lib/n8n --exclude="data/n8nEventLog*" --exclude="data/crash.journal" -czf - data \
   | aws s3 cp --region us-west-2 --only-show-errors - "s3://${BUCKET}/n8n/data/n8n-${STAMP}.tar.gz"
 EOF
 chmod 700 /usr/local/sbin/n8n-backup.sh
@@ -581,7 +611,7 @@ systemctl enable --now n8n-backup.timer
 
 echo "== local checks"
 sleep 20
-docker compose -f /etc/n8n/compose.yaml ps
+( cd /etc/n8n && set -a && . ./compose.env && set +a && docker compose -f /etc/n8n/compose.yaml ps )
 curl -sf "http://${HOST_IP}:5678/healthz" && echo
 ```
 
@@ -593,7 +623,12 @@ line for the `runners` service and restart; the n8n container should keep it.
 Run these before decommissioning anything.
 
 1. **Target healthy.** `aws elbv2 describe-target-health --target-group-arn $TG_ARN` reports `healthy` within a minute or two.
-2. **Encryption key came from SSM, not auto-generated.** On the box: `docker exec n8n sh -c 'grep -c encryptionKey /home/node/.n8n/config || true'` must print `0`. A `1` means n8n generated its own key and stored it in the config file; stop, fix the secret mount, wipe `/var/lib/n8n/data`, restart.
+2. **Encryption key came from SSM, not auto-generated.** n8n always writes the
+   key it is using into `/home/node/.n8n/config`, so check that it equals the
+   SSM value without printing either. On the box:
+   `KEY=$(aws ssm get-parameter --region us-west-2 --name /prod/n8n/encryption-key --with-decryption --query Parameter.Value --output text); CFG=$(docker exec n8n cat /home/node/.n8n/config | python3 -c 'import json,sys; print(json.load(sys.stdin)["encryptionKey"])'); [ "$KEY" = "$CFG" ] && echo MATCH || echo MISMATCH`.
+   A mismatch means n8n generated its own key; stop, fix the secret mount, wipe
+   `/var/lib/n8n/data`, restart. (Verified MATCH on 2026-09-05.)
 3. **Runner connected.** `docker logs n8n 2>&1 | grep -i runner` shows the runner registering. Then in the editor, run a workflow with a Code node returning a constant.
 4. **Containers cannot reach instance credentials.** `docker exec n8n wget -qO- --timeout=2 http://169.254.169.254/latest/meta-data/ || echo BLOCKED` prints `BLOCKED`.
 5. **PostgreSQL not on the instance IP.** `ss -ltn | grep 5432` lists only `127.0.0.1` and `172.30.0.1`.
