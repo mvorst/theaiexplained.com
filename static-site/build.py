@@ -18,6 +18,8 @@ same mapping to incoming requests):
     /section/<uuid>/<any-slug>        -> section/<uuid>/index.html   (the Java site ignores the slug)
     /our-thinking.action?cursor=...   -> our-thinking/page/2/index.html
     https://cdn.thebridgeto.ai/<path> -> <path>   (same key, same content type as the CDN)
+    /rest/api/1/event/<uuid>.ics      -> events/<uuid>.ics   (/rest/* on the static host is proxied to n8n)
+    form posts to /rest/api/1/{subscribe,contact} -> /rest/btai/{subscribe,contact}/  (n8n webhooks)
 
 Only the Python standard library is used.
 """
@@ -60,6 +62,15 @@ CONTENT_PAGE_RE = re.compile(r"^(/[^/]+(?:/[^/]+)*?/" + UUID + r")(?:/.*)?$")
 URL_RE = re.compile(r"https://(?:www|cdn)\.thebridgeto\.ai(?:/[^\s\"'<>`)]*)?")
 CSS_REF_RE = re.compile(r"url\(\s*['\"]?([^'\")]+?)['\"]?\s*\)|@import\s+['\"]([^'\"]+)['\"]")
 LOC_RE = re.compile(r"<loc>\s*([^<\s]+)\s*</loc>")
+
+# On the static host every /rest/* request is proxied to n8n's /webhook/ (infra/website.yaml),
+# so the forms post to the webhook paths and the two static calendar downloads move out of
+# /rest/. Applied to page text and to the keys static files are stored under.
+PATH_REWRITES = [
+    (re.compile(r"/rest/api/1/subscribe(?![\w/])"), "/rest/btai/subscribe/"),
+    (re.compile(r"/rest/api/1/contact(?![\w/])"), "/rest/btai/contact/"),
+    (re.compile(r"/rest/api/1/event/(" + UUID + r")\.ics"), r"/events/\1.ics"),
+]
 
 CONTENT_TYPE_BY_EXT = {
     ".html": "text/html; charset=utf-8", ".webmanifest": "application/manifest+json",
@@ -129,6 +140,12 @@ def classify(url):
     else:
         canonical = path if path.endswith("/") else path + "/"
     return ("page", canonical, url)
+
+
+def remap_path(text):
+    for pattern, replacement in PATH_REWRITES:
+        text = pattern.sub(replacement, text)
+    return text
 
 
 def content_type_for(key, header_value):
@@ -232,7 +249,7 @@ class Snapshot:
         for raw, canonical in self.cursors.items():
             for form in {raw, html.escape(raw, quote=False), html.escape(raw, quote=True)}:
                 text = text.replace(form, self.target + canonical)
-        return text.replace(SOURCE_SITE, self.target).replace(SOURCE_CDN, self.target)
+        return remap_path(text.replace(SOURCE_SITE, self.target).replace(SOURCE_CDN, self.target))
 
     def write(self, out_dir, manifest_path):
         tmp_dir = out_dir + ".tmp"
@@ -260,7 +277,7 @@ class Snapshot:
             data = rec["data"]
             if rec["content_type"].lower().startswith(TEXT_TYPES):
                 data = self.rewrite(data.decode("utf-8", "replace")).encode("utf-8")
-            emit(key, data, rec["content_type"], rec["source"])
+            emit(remap_path(key), data, rec["content_type"], rec["source"])
         emit("/404.html", NOT_FOUND_HTML.encode("utf-8"), CONTENT_TYPE_BY_EXT[".html"], "generated")
 
         shutil.rmtree(out_dir, ignore_errors=True)

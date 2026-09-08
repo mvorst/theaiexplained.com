@@ -3,8 +3,10 @@
 
 For every file the build wrote, fetches it from the target host and compares the bytes.
 Pages are also requested in the other forms the live site accepts (no trailing slash,
-UUID with a different slug), unknown paths must return the 404 page, and plain HTTP
-must redirect to HTTPS.
+UUID with a different slug), unknown paths must return the 404 page, plain HTTP must
+redirect to HTTPS, and /rest/* must reach the API origin: a CORS preflight to each form
+webhook must come back from n8n with POST among the allowed methods, which is only the case
+while that workflow is active (nothing is posted).
 
     python3 verify.py                         # against https://v2.thebridgeto.ai
     python3 verify.py --target https://d123.cloudfront.net
@@ -23,8 +25,10 @@ from concurrent.futures import ThreadPoolExecutor
 UUID_DIR_RE = re.compile(r"^(.*/)[0-9a-fA-F-]{36}/index\.html$")
 
 
-def get(url):
-    req = urllib.request.Request(url, headers={"User-Agent": "TheBridgeToAI-static-verify/1.0"})
+def get(url, method="GET", extra_headers=None):
+    headers = {"User-Agent": "TheBridgeToAI-static-verify/1.0"}
+    headers.update(extra_headers or {})
+    req = urllib.request.Request(url, method=method, headers=headers)
     try:
         with urllib.request.urlopen(req, timeout=60) as resp:
             return resp.status, resp.headers, resp.read()
@@ -63,15 +67,27 @@ def main():
     not_found = hashlib.sha256(open(os.path.join(args.dist, "404.html"), "rb").read()).hexdigest()
     checks.append(("404", target + "/models/", not_found, 404))
     checks.append(("404", target + "/definitely/not/here", not_found, 404))
+    for path in ("/rest/btai/subscribe/", "/rest/btai/contact/"):
+        checks.append(("rest-proxy", target + path, None, 204))
 
     def run(check):
         label, url, digest, expected = check
         try:
-            status, headers, body = get(url)
+            if label == "rest-proxy":
+                status, headers, body = get(url, "OPTIONS", {
+                    "Origin": target, "Access-Control-Request-Method": "POST",
+                    "Access-Control-Request-Headers": "content-type"})
+            else:
+                status, headers, body = get(url)
         except Exception as err:  # noqa: BLE001
             return (label, url, f"error {err}")
         if status != expected:
-            return (label, url, f"HTTP {status}, expected {expected}")
+            return (label, url, f"HTTP {status}, expected {expected}"
+                    + (" (n8n answers 500 to a browser when the workflow is not active)" if label == "rest-proxy" else ""))
+        if label == "rest-proxy":
+            allowed = headers.get("Access-Control-Allow-Methods") or ""
+            if "POST" not in allowed.upper():
+                return (label, url, f"POST not registered (Access-Control-Allow-Methods: {allowed or 'absent'})")
         if digest and hashlib.sha256(body).hexdigest() != digest:
             return (label, url, f"content differs ({len(body)} bytes served)")
         if label.startswith("page") and not (headers.get("Content-Type") or "").startswith("text/html"):

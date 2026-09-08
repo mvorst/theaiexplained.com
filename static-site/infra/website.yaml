@@ -10,6 +10,8 @@ Metadata:
     ParameterGroups:
       - Label: { default: Domain }
         Parameters: [SiteHostname, HostedZoneId]
+      - Label: { default: API proxy }
+        Parameters: [ApiOriginDomain, ApiOriginBasePath]
       - Label: { default: Housekeeping }
         Parameters: [ResourcePrefix, LogRetentionDays]
 
@@ -23,6 +25,21 @@ Parameters:
     Type: String
     Default: Z00041362HB0V7RN0S0GA
     Description: Existing Route53 hosted zone for thebridgeto.ai (certificate validation and alias records).
+  ApiOriginDomain:
+    Type: String
+    Default: n8n.thebridgeto.ai
+    Description: >-
+      Host that answers /rest/* requests (the n8n instance). It must present a valid public
+      certificate; CloudFront connects to it over HTTPS only.
+    AllowedPattern: '^[a-z0-9][a-z0-9.-]*\.[a-z]{2,}$'
+  ApiOriginBasePath:
+    Type: String
+    Default: /webhook
+    Description: >-
+      Path prefix on ApiOriginDomain that replaces the /rest prefix, so /rest/btai/subscribe/
+      is fetched from <ApiOriginDomain><ApiOriginBasePath>/btai/subscribe/. New endpoints need
+      no stack change; register the webhook under this prefix and call it under /rest/.
+    AllowedPattern: '^/[A-Za-z0-9._~/-]*[A-Za-z0-9._~-]$'
   ResourcePrefix:
     Type: String
     Default: thebridgetoai-v2
@@ -108,16 +125,9 @@ Resources:
             Condition:
               StringEquals:
                 AWS:SourceArn: !Sub 'arn:aws:cloudfront::${AWS::AccountId}:distribution/${Distribution}'
-          # ListBucket lets S3 answer a missing object with 404 instead of 403.
-          - Sid: AllowCloudFrontList
-            Effect: Allow
-            Principal:
-              Service: cloudfront.amazonaws.com
-            Action: s3:ListBucket
-            Resource: !GetAtt SiteBucket.Arn
-            Condition:
-              StringEquals:
-                AWS:SourceArn: !Sub 'arn:aws:cloudfront::${AWS::AccountId}:distribution/${Distribution}'
+          # No ListBucket on purpose: S3 then answers a missing object with 403, which is the
+          # only status mapped to the static 404 page below, so 404s from the API origin
+          # (for example n8n's "webhook not registered" JSON) reach the browser unchanged.
 
   # ---------------------------------------------------------------- CloudFront
   OriginAccessControl:
@@ -172,6 +182,26 @@ Resources:
             return request;
           }
           request.uri = uri + '/index.html';
+          return request;
+        }
+
+  RestProxyFunction:
+    Type: AWS::CloudFront::Function
+    Properties:
+      Name: !Sub '${ResourcePrefix}-rest-proxy'
+      AutoPublish: true
+      FunctionConfig:
+        Comment: Rewrites /rest/<path> to the API origin's base path before the request leaves CloudFront
+        Runtime: cloudfront-js-2.0
+      FunctionCode: !Sub |
+        // v2.thebridgeto.ai - /rest/* viewer-request function.
+        // The /rest/* cache behavior sends requests to ${ApiOriginDomain}. This swaps the /rest
+        // prefix for the origin's base path and leaves everything else (trailing slash, query
+        // string, method, headers, body) exactly as the browser sent it:
+        //   /rest/btai/subscribe/  ->  ${ApiOriginBasePath}/btai/subscribe/
+        function handler(event) {
+          var request = event.request;
+          request.uri = '${ApiOriginBasePath}' + request.uri.substring('/rest'.length);
           return request;
         }
 
@@ -238,6 +268,14 @@ Resources:
             OriginAccessControlId: !GetAtt OriginAccessControl.Id
             S3OriginConfig:
               OriginAccessIdentity: ''
+          - Id: api-origin
+            DomainName: !Ref ApiOriginDomain
+            CustomOriginConfig:
+              OriginProtocolPolicy: https-only
+              HTTPSPort: 443
+              OriginSSLProtocols: [TLSv1.2]
+              OriginReadTimeout: 30
+              OriginKeepaliveTimeout: 5
         DefaultCacheBehavior:
           TargetOriginId: site-bucket
           ViewerProtocolPolicy: redirect-to-https
@@ -249,12 +287,23 @@ Resources:
           FunctionAssociations:
             - EventType: viewer-request
               FunctionARN: !GetAtt ViewerRequestFunction.FunctionARN
+        # /rest/* is a pass-through proxy to the API origin: nothing is cached, every method and
+        # every header except Host is forwarded, and the response comes back unmodified (except
+        # that a 403 from the API origin is also replaced by the distribution-wide error page).
+        CacheBehaviors:
+          - PathPattern: '/rest/*'
+            TargetOriginId: api-origin
+            ViewerProtocolPolicy: https-only
+            AllowedMethods: [GET, HEAD, OPTIONS, PUT, POST, PATCH, DELETE]
+            CachedMethods: [GET, HEAD]
+            Compress: true
+            CachePolicyId: 4135ea2d-6df8-44a3-9df3-4b5a84be39ad  # AWS managed CachingDisabled
+            OriginRequestPolicyId: b689b0a8-53d0-40ab-baf2-68738e2966ac  # AWS managed AllViewerExceptHostHeader
+            FunctionAssociations:
+              - EventType: viewer-request
+                FunctionARN: !GetAtt RestProxyFunction.FunctionARN
         CustomErrorResponses:
           - ErrorCode: 403
-            ResponseCode: 404
-            ResponsePagePath: /404.html
-            ErrorCachingMinTTL: 60
-          - ErrorCode: 404
             ResponseCode: 404
             ResponsePagePath: /404.html
             ErrorCachingMinTTL: 60
@@ -295,3 +344,6 @@ Outputs:
     Value: !Ref LogsBucket
   CertificateArn:
     Value: !Ref Certificate
+  ApiProxy:
+    Description: Where /rest/<path> requests are sent
+    Value: !Sub 'https://${ApiOriginDomain}${ApiOriginBasePath}/<path>'

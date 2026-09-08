@@ -1,11 +1,11 @@
 {
- "built_at": "2026-09-05T16:46:14+00:00",
+ "built_at": "2026-09-06T02:23:25+00:00",
  "source_site": "https://www.thebridgeto.ai",
  "source_cdn": "https://cdn.thebridgeto.ai",
  "target": "https://v2.thebridgeto.ai",
  "pages": 237,
  "assets": 167,
- "bytes": 160535840,
+ "bytes": 160535820,
  "paginated_listings": {
   "https://www.thebridgeto.ai/our-thinking.action?cursor=5Id5goCXA6Tv+YketIUSL+EqoVSewrusPQy9FO4YURScIB+Pp5PDzxvAKp7bu6R25G9rfv9d3bVzao4a+g1tIw6QafthxrIImQ8kFIR9euERVCL6pYKzzAobcb4uhkUrYBcyp3QbJ+7aGBbO56dEPoiEngbzW4vOdfKB6S4ETIpHJfLVUkjjlPuL5ov4eAgFf+d4NUYp85KbmQH/j9UIga7B4DePNy/zuVDiCpxjoRnFoLyd/C9gjgcdJHqowg7nvgO+1VQCSL0ZPgV6F4gilUkrvEumPFo=": "/our-thinking/page/2/"
  },
@@ -324,14 +324,14 @@
    "key": "bridge-network/builder/index.html",
    "content_type": "text/html; charset=utf-8",
    "bytes": 13248,
-   "sha256": "6a153549876916d727ffbecf371850d58744c9d1f33f0aaf211c7fa0d29cc22a",
+   "sha256": "a6777be137df2d4587bcc30346282a45afde8433c88b00fa69e0212c4a98cda7",
    "source": "https://www.thebridgeto.ai/bridge-network/builder/"
   },
   {
    "key": "bridge-network/operator/index.html",
    "content_type": "text/html; charset=utf-8",
    "bytes": 13215,
-   "sha256": "0f4474fd17dacdf233339b2458f0bcc23368724dec1a7c6733869e671bdc3a53",
+   "sha256": "50e242be605b3ae069aab1742d9f9fd9d40327e3e3d7b341fb520ce71b2880bc",
    "source": "https://www.thebridgeto.ai/bridge-network/operator/"
   },
   {
@@ -345,7 +345,7 @@
    "key": "contact/index.html",
    "content_type": "text/html; charset=utf-8",
    "bytes": 13479,
-   "sha256": "87d68fc16182d16ff41052b1a5e20a5801fbd70569256205dbc190f586892994",
+   "sha256": "b0d381c30f7daf81b6f3b6540c71c4d4a7dded54d370a69f4c39b9769ce5695f",
    "source": "https://www.thebridgeto.ai/contact/"
   },
   {
@@ -365,15 +365,15 @@
   {
    "key": "events/02c1655a-c91c-459e-b0fc-c8a0a600b28d/index.html",
    "content_type": "text/html; charset=utf-8",
-   "bytes": 18639,
-   "sha256": "2c7716cf1a67d322aac8ee210f4c1092acf774f20e013ad8a0a5e37d7c9baf66",
+   "bytes": 18629,
+   "sha256": "11a196ae7774f5f529ff31c4000cfa4489d0e8f791378adb85abcce1c2248b6d",
    "source": "https://www.thebridgeto.ai/events/02c1655a-c91c-459e-b0fc-c8a0a600b28d/bridge-to-ai-the-operator-s-circle"
   },
   {
    "key": "events/04a4305a-6839-467f-bd3d-a15642f3b157/index.html",
    "content_type": "text/html; charset=utf-8",
-   "bytes": 24361,
-   "sha256": "1668857673c458c99b04790a45b7feb4db3fda61007289ad89af0e0edccfd0a2",
+   "bytes": 24351,
+   "sha256": "f7b613bf9dff3c8a1c2a842f15e1cd0c001c2450987361e35d0abca55fa2cc53",
    "source": "https://www.thebridgeto.ai/events/04a4305a-6839-467f-bd3d-a15642f3b157/how-smbs-are-actually-using-ai"
   },
   {
@@ -401,7 +401,7 @@
    "key": "newsletter/index.html",
    "content_type": "text/html; charset=utf-8",
    "bytes": 17195,
-   "sha256": "984b8780a7fe93af4436f270a01fac75eba014d21c6b9368e4c82f4947311c7b",
+   "sha256": "132a895964b896f3ebecef81c4b5908ace6865d54d953bac055d43f3319b3f51",
    "source": "https://www.thebridgeto.ai/newsletter/"
   },
   {
@@ -3086,17 +3086,17 @@
    "source": "https://cdn.thebridgeto.ai/fe562947-b672-4e07-8aac-f0dd6b2776b8"
   },
   {
-   "key": "rest/api/1/event/02c1655a-c91c-459e-b0fc-c8a0a600b28d.ics",
+   "key": "events/02c1655a-c91c-459e-b0fc-c8a0a600b28d.ics",
    "content_type": "text/calendar;charset=UTF-8",
    "bytes": 2222,
-   "sha256": "9da6a58eaaa9561e12865ac61eec26a8c3b4a39272853d0ebc350712e28fe7e5",
+   "sha256": "cdb3903f91c137004f309196a24e7978835f3864bd9c0babcc69ac108c300c56",
    "source": "https://www.thebridgeto.ai/rest/api/1/event/02c1655a-c91c-459e-b0fc-c8a0a600b28d.ics"
   },
   {
-   "key": "rest/api/1/event/04a4305a-6839-467f-bd3d-a15642f3b157.ics",
+   "key": "events/04a4305a-6839-467f-bd3d-a15642f3b157.ics",
    "content_type": "text/calendar;charset=UTF-8",
    "bytes": 1683,
-   "sha256": "5dadad8edcf78280afb5c0986bc68475d8c962db2a3d858586b134b4653298a9",
+   "sha256": "3a9f3a84447b74a73ea40f8960f3e113b45aaebe3e30e39d37ff2fb4592610c9",
    "source": "https://www.thebridgeto.ai/rest/api/1/event/04a4305a-6839-467f-bd3d-a15642f3b157.ics"
   },
   {

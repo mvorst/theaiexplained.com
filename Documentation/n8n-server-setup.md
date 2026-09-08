@@ -734,6 +734,277 @@ forwards it to `/webhook/api/subscribe`, and rule 10 admits it. The ALB then
 sees CloudFront's IP, so the per-IP rate limit for the form belongs on the
 distribution's own WAF, not this one.
 
+## 10. Website database (as built 2026-09-05)
+
+The static site's forms (section 9 and `static-site/README.md`) land in a
+second database on the same PostgreSQL 17 instance, separate from n8n's own
+store, so workflow data and site data can be backed up, moved and dropped
+independently.
+
+| Item | Value |
+|------|-------|
+| Role | `btai_website_user`: LOGIN, no superuser, createdb or createrole |
+| Database | `btai_website_db`, owned by the role, `REVOKE ALL ... FROM PUBLIC` |
+| Tables | `subscribers`, `contact_messages`, owned by the role (schema in the script below) |
+| Password | SSM SecureString `/prod/n8n/btai-website-db-password`. It stays under the n8n prefix because the instance role may only read `/prod/n8n/*` (section 4.3). |
+| pg_hba | `host btai_website_db btai_website_user 127.0.0.1/32 scram-sha-256` and the same line for `172.30.0.0/24`, appended after the n8n lines |
+| From n8n | Postgres credential with host `172.30.0.1`, port `5432`, database `btai_website_db`, user `btai_website_user`, SSL off (traffic never leaves the host) |
+
+`subscribers` has no surrogate id: `email` is the primary key. The column
+is `citext` (the contrib extension), so equality, lookups and the primary
+key are case-insensitive, and a `BEFORE INSERT OR UPDATE OF email` trigger
+trims surrounding whitespace and lowercases the address before it is
+stored, so the table only ever holds the canonical form. A check constraint
+rejects empty, whitespace-only or malformed addresses. The other columns are
+`name` (the builder form posts `firstName`; map it to `name` in the
+workflow), `source` (which form it came from), `status` (`subscribed`,
+`unsubscribed`, `bounced`), `subscribed_at`, `unsubscribed_at`, an
+`unsubscribe_token` UUID, optional `ip_address` and `user_agent`, and
+`created_at` / `updated_at` (trigger-maintained). A subscribe workflow can
+pass the address exactly as typed and run
+`INSERT ... ON CONFLICT (email) DO NOTHING RETURNING email`, answering
+`{"status":"already_subscribed"}` when no row comes back; the trigger runs
+before the conflict check, so `" Foo@Example.com "` collides with
+`foo@example.com`.
+
+`contact_messages` keeps `name`, `email`, `subject`, `message`, `status`
+(`new`, `read`, `replied`, `spam`, `archived`), optional `ip_address` and
+`user_agent`, `received_at`, and `created_at` / `updated_at`. Both tables
+carry length and email-format check constraints as a backstop behind the
+workflow's own validation.
+
+Provisioning ran through SSM Run Command (the same channel as section 5)
+with the script below. It is idempotent and doubles as the rebuild step: on a
+fresh instance, run it after section 5.
+
+Verified 2026-09-05: loopback SCRAM login as the role, an insert into each
+table (rolled back), a mixed-case padded address stored trimmed and
+lowercased, a case-variant upsert detected as a conflict, a case-variant
+lookup finding the row, blank, malformed and duplicate addresses rejected,
+the `n8n` role rejected by pg_hba for this database, and the same insert,
+lookup and upsert run with bound parameters from inside the n8n container
+against `172.30.0.1:5432`.
+
+The `subscribers` table was first built with a bigint identity key and
+reshaped the same day with an in-place `ALTER` (drop `id`, `email` to
+`citext`, new primary key, check and trigger) while empty. The script below
+is the final shape; the dry run of its schema in a scratch schema matched
+the live table exactly.
+
+**Not yet done.** The nightly backup (`/usr/local/sbin/n8n-backup.sh`)
+still dumps only `n8n`; it needs a second `pg_dump -Fc btai_website_db`
+line before this database holds anything worth keeping. The section 5
+install script does not run this script, so a rebuild must run it as a
+separate step until it is folded in.
+
+```bash
+#!/bin/bash
+# create-website-db.sh -- btai_website_user / btai_website_db (subscribers, contact_messages)
+# on the n8n host's native PostgreSQL 17. Idempotent: safe to re-run.
+set -euo pipefail
+REGION=us-west-2
+PARAM=/prod/n8n/btai-website-db-password
+DB=btai_website_db
+ROLE=btai_website_user
+NET_SUBNET=172.30.0.0/24
+HBA=/var/lib/pgsql/data/pg_hba.conf
+
+echo "== password from SSM"
+DB_PASS=$(aws ssm get-parameter --region $REGION --name $PARAM --with-decryption --query Parameter.Value --output text)
+[ -n "$DB_PASS" ] || { echo "empty password from SSM"; exit 1; }
+
+echo "== role and database"
+sudo -u postgres psql -v ON_ERROR_STOP=1 -v pw="$DB_PASS" <<'SQL'
+SELECT 'CREATE ROLE btai_website_user LOGIN NOSUPERUSER NOCREATEDB NOCREATEROLE' WHERE NOT EXISTS (SELECT 1 FROM pg_roles WHERE rolname='btai_website_user') \gexec
+ALTER ROLE btai_website_user WITH PASSWORD :'pw';
+SELECT 'CREATE DATABASE btai_website_db OWNER btai_website_user' WHERE NOT EXISTS (SELECT 1 FROM pg_database WHERE datname='btai_website_db') \gexec
+REVOKE ALL ON DATABASE btai_website_db FROM PUBLIC;
+SQL
+
+echo "== schema (created as the owner role)"
+sudo -u postgres psql -v ON_ERROR_STOP=1 -d "$DB" <<'SCHEMA_SQL'
+CREATE EXTENSION IF NOT EXISTS citext;   -- case-insensitive text, from postgresql17-contrib
+SET ROLE btai_website_user;
+
+CREATE OR REPLACE FUNCTION set_updated_at() RETURNS trigger LANGUAGE plpgsql AS $$
+BEGIN
+  NEW.updated_at := now();
+  RETURN NEW;
+END $$;
+
+-- Trim surrounding whitespace and lowercase the address before it is stored.
+CREATE OR REPLACE FUNCTION normalize_email() RETURNS trigger LANGUAGE plpgsql AS $$
+BEGIN
+  NEW.email := lower(regexp_replace(NEW.email::text, '^\s+|\s+$', '', 'g'));
+  RETURN NEW;
+END $$;
+
+-- Newsletter / Bridge Network sign-ups, one row per address. The address is the
+-- primary key: citext makes comparisons and uniqueness case-insensitive, the
+-- normalize_email trigger stores it trimmed and lowercased, and the check
+-- constraint rejects anything empty or malformed. The forms post {email, name}
+-- or {email, firstName}; the workflow maps both into "name" and sets "source".
+CREATE TABLE IF NOT EXISTS subscribers (
+  email             citext      PRIMARY KEY,
+  name              text,
+  source            text,
+  status            text        NOT NULL DEFAULT 'subscribed',
+  subscribed_at     timestamptz NOT NULL DEFAULT now(),
+  unsubscribed_at   timestamptz,
+  unsubscribe_token uuid        NOT NULL DEFAULT gen_random_uuid(),
+  ip_address        inet,
+  user_agent        text,
+  created_at        timestamptz NOT NULL DEFAULT now(),
+  updated_at        timestamptz NOT NULL DEFAULT now(),
+  CONSTRAINT subscribers_email_chk CHECK (
+        email::text <> ''
+    AND email::text = lower(regexp_replace(email::text, '^\s+|\s+$', '', 'g'))
+    AND email::text ~ '^[^@[:space:]]+@[^@[:space:]]+\.[^@[:space:]]+$'
+    AND char_length(email::text) <= 320),
+  CONSTRAINT subscribers_name_len_chk       CHECK (name IS NULL OR char_length(name) <= 200),
+  CONSTRAINT subscribers_source_len_chk     CHECK (source IS NULL OR char_length(source) <= 100),
+  CONSTRAINT subscribers_status_chk         CHECK (status IN ('subscribed', 'unsubscribed', 'bounced')),
+  CONSTRAINT subscribers_user_agent_len_chk CHECK (user_agent IS NULL OR char_length(user_agent) <= 1000)
+);
+CREATE UNIQUE INDEX IF NOT EXISTS subscribers_unsubscribe_token_uidx ON subscribers (unsubscribe_token);
+CREATE INDEX        IF NOT EXISTS subscribers_status_idx             ON subscribers (status);
+DROP TRIGGER IF EXISTS subscribers_normalize_email ON subscribers;
+CREATE TRIGGER subscribers_normalize_email BEFORE INSERT OR UPDATE OF email ON subscribers
+  FOR EACH ROW EXECUTE FUNCTION normalize_email();
+DROP TRIGGER IF EXISTS subscribers_set_updated_at ON subscribers;
+CREATE TRIGGER subscribers_set_updated_at BEFORE UPDATE ON subscribers
+  FOR EACH ROW EXECUTE FUNCTION set_updated_at();
+
+-- Contact form submissions: {name, email, subject, message}.
+CREATE TABLE IF NOT EXISTS contact_messages (
+  id           bigint      GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  name         text        NOT NULL,
+  email        text        NOT NULL,
+  subject      text,
+  message      text        NOT NULL,
+  status       text        NOT NULL DEFAULT 'new',
+  ip_address   inet,
+  user_agent   text,
+  received_at  timestamptz NOT NULL DEFAULT now(),
+  created_at   timestamptz NOT NULL DEFAULT now(),
+  updated_at   timestamptz NOT NULL DEFAULT now(),
+  CONSTRAINT contact_messages_email_format_chk   CHECK (email ~ '^[^@[:space:]]+@[^@[:space:]]+\.[^@[:space:]]+$' AND char_length(email) <= 320),
+  CONSTRAINT contact_messages_name_len_chk       CHECK (char_length(name) BETWEEN 1 AND 200),
+  CONSTRAINT contact_messages_subject_len_chk    CHECK (subject IS NULL OR char_length(subject) <= 300),
+  CONSTRAINT contact_messages_message_len_chk    CHECK (char_length(message) BETWEEN 1 AND 20000),
+  CONSTRAINT contact_messages_status_chk         CHECK (status IN ('new', 'read', 'replied', 'spam', 'archived')),
+  CONSTRAINT contact_messages_user_agent_len_chk CHECK (user_agent IS NULL OR char_length(user_agent) <= 1000)
+);
+CREATE INDEX IF NOT EXISTS contact_messages_received_at_idx ON contact_messages (received_at DESC);
+CREATE INDEX IF NOT EXISTS contact_messages_email_lower_idx ON contact_messages (lower(email));
+CREATE INDEX IF NOT EXISTS contact_messages_status_idx      ON contact_messages (status);
+DROP TRIGGER IF EXISTS contact_messages_set_updated_at ON contact_messages;
+CREATE TRIGGER contact_messages_set_updated_at BEFORE UPDATE ON contact_messages
+  FOR EACH ROW EXECUTE FUNCTION set_updated_at();
+
+COMMENT ON TABLE subscribers      IS 'Newsletter and Bridge Network sign-ups posted by the static site to the n8n subscribe webhook';
+COMMENT ON TABLE contact_messages IS 'Contact form submissions posted by the static site to the n8n contact webhook';
+SCHEMA_SQL
+
+echo "== pg_hba"
+add_hba() {
+  local addr_re=${1//./\\.}
+  if grep -qE "^host[[:space:]]+${DB}[[:space:]]+${ROLE}[[:space:]]+${addr_re}[[:space:]]" "$HBA"; then
+    echo "pg_hba line for $1 already present"
+  else
+    printf 'host    %s    %s    %s    scram-sha-256\n' "$DB" "$ROLE" "$1" >> "$HBA"
+    echo "added pg_hba line for $1"
+  fi
+}
+add_hba 127.0.0.1/32
+add_hba "$NET_SUBNET"
+systemctl reload postgresql
+tail -n 3 "$HBA"
+
+echo "== verify: TCP login as $ROLE over loopback with scram"
+PGPASSWORD="$DB_PASS" psql "host=127.0.0.1 dbname=$DB user=$ROLE" -v ON_ERROR_STOP=1 -Atc "select current_user||' @ '||current_database()||' on '||inet_server_addr()||':'||inet_server_port()"
+PGPASSWORD="$DB_PASS" psql "host=127.0.0.1 dbname=$DB user=$ROLE" -v ON_ERROR_STOP=1 <<'SQL'
+\dt
+BEGIN;
+INSERT INTO subscribers (email, name, source) VALUES ('  Verify@Example.COM ', 'Verify', 'verify') RETURNING email AS stored_as, status, unsubscribe_token IS NOT NULL AS tokened;
+INSERT INTO subscribers (email) VALUES ('VERIFY@example.com') ON CONFLICT (email) DO NOTHING RETURNING email AS should_be_no_rows;
+SELECT email AS found_case_insensitively FROM subscribers WHERE email = 'VERIFY@EXAMPLE.COM';
+INSERT INTO contact_messages (name, email, subject, message) VALUES ('Verify', 'verify@example.com', 'verify', 'verify') RETURNING id, status, received_at IS NOT NULL AS stamped;
+ROLLBACK;
+SELECT (SELECT count(*) FROM subscribers) AS subscribers_rows, (SELECT count(*) FROM contact_messages) AS contact_messages_rows;
+SQL
+
+echo "== verify: blank, malformed and duplicate addresses are rejected (three ERROR lines expected)"
+PGPASSWORD="$DB_PASS" psql "host=127.0.0.1 dbname=$DB user=$ROLE" <<'SQL'
+BEGIN;
+INSERT INTO subscribers (email) VALUES ('verify@example.com');
+SAVEPOINT neg;
+INSERT INTO subscribers (email) VALUES ('   ');
+ROLLBACK TO SAVEPOINT neg;
+INSERT INTO subscribers (email) VALUES ('not an address');
+ROLLBACK TO SAVEPOINT neg;
+INSERT INTO subscribers (email) VALUES (' VERIFY@Example.com ');
+ROLLBACK TO SAVEPOINT neg;
+ROLLBACK;
+SQL
+
+echo "== verify: n8n role is NOT admitted to $DB (expect a pg_hba rejection)"
+PGPASSWORD=wrong psql "host=127.0.0.1 dbname=$DB user=n8n" -Atc 'select 1' 2>&1 | head -1 || true
+
+echo "== verify: from the n8n container over the docker bridge, with bound parameters (best effort)"
+PG_MOD=$(docker exec n8n sh -c 'ls -d /usr/local/lib/node_modules/n8n/node_modules/pg 2>/dev/null || find /usr/local/lib/node_modules/n8n -maxdepth 6 -type d -path "*/node_modules/pg" 2>/dev/null | head -1' || true)
+if [ -n "$PG_MOD" ]; then
+  docker exec -e PGPASSWORD="$DB_PASS" -e PG_MOD="$PG_MOD" n8n node -e '
+    const { Client } = require(process.env.PG_MOD);
+    const c = new Client({ host: "172.30.0.1", port: 5432, database: "btai_website_db", user: "btai_website_user", password: process.env.PGPASSWORD, connectionTimeoutMillis: 5000 });
+    (async () => {
+      try {
+        await c.connect();
+        await c.query("BEGIN");
+        const ins = await c.query("INSERT INTO subscribers (email, source) VALUES ($1, $2) RETURNING email", ["  Container@Example.COM ", "verify"]);
+        const sel = await c.query("SELECT email FROM subscribers WHERE email = $1", ["CONTAINER@EXAMPLE.COM"]);
+        const dup = await c.query("INSERT INTO subscribers (email) VALUES ($1) ON CONFLICT (email) DO NOTHING RETURNING email", ["container@example.com"]);
+        await c.query("ROLLBACK");
+        console.log("container ok:", JSON.stringify({ client: (await c.query("select inet_client_addr()::text a")).rows[0].a, stored_as: ins.rows[0].email, lookup_hits: sel.rowCount, duplicate_inserted: dup.rowCount }));
+      } catch (e) { console.log("container check failed:", e.message); }
+      finally { await c.end().catch(() => {}); }
+    })();
+  ' || echo "container check could not run"
+else
+  echo "pg module not found in the n8n container; skipped"
+fi
+echo "== done"
+```
+
+## 11. Email from n8n through SES (as built 2026-09-06)
+
+n8n sends mail with the **AWS SES** node over HTTPS, against SES in
+us-west-2, where the account has production access, the `thebridgeto.ai`
+domain identity is verified and the quota is 50,000 messages a day (the
+us-east-1 copy is still in the sandbox). Two constraints from section 2 shape
+the design: the host security group allows outbound 443 only, so the SES SMTP
+endpoint is unreachable on purpose, and the container cannot use the instance
+role (metadata hop limit 1, and n8n's AWS credential type takes an access key
+regardless), so a dedicated send-only IAM user carries the credential.
+
+| Item | Value |
+|------|-------|
+| IAM user | `prod-n8n-ses-sender`, no console access, tags `Project=n8n`, `Purpose=ses-send-only` |
+| Policy | `prod-n8n-ses-send`, attached to the user: `ses:SendEmail`, `ses:SendRawEmail`, `ses:SendTemplatedEmail` on `arn:aws:ses:us-west-2:148768123182:identity/*`, only when `ses:FromAddress` matches `*@thebridgeto.ai`. Checked with the IAM policy simulator: allowed from the domain, implicit deny from any other address, implicit deny for everything else. |
+| Access key | Created from the Mac with `aws iam create-access-key --user-name prod-n8n-ses-sender` and pasted into the n8n credential. n8n stores it encrypted with the key from `/prod/n8n/encryption-key`; there is no other copy. |
+| n8n credential | Type AWS: Access Key ID, Secret Access Key, Region `us-west-2`, custom endpoints empty. The credential test calls STS `GetCallerIdentity`, which needs no permissions. |
+| n8n node | AWS SES, resource Email, operation Send. From must be an `@thebridgeto.ai` address or the policy denies the call. |
+
+**Rotate.** Create a second key on the user, update the n8n credential, then
+delete the old key. **Revoke** by deleting the key; the user and policy can
+stay.
+
+**Not yet done.** There is no SES configuration set, so bounces and
+complaints are not fed back to `subscribers`. Add a configuration set with an
+SNS event destination for bounce and complaint events, subscribe an n8n
+webhook to the topic, and have that workflow mark the subscriber. Until then,
+watch the SES reputation dashboard.
+
 ## Appendix A: keep the wizard-launched instance instead
 
 If you would rather not relaunch:
